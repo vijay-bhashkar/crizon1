@@ -170,8 +170,10 @@ export const Adddemographics = () => {
         if (demograficObj?._id) {
             dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
             dispatch(SETDEMOGRAFICObj(null))
+            toast.success(" Demografic Updated Successfully ");
         } else {
             dispatch(DEMOGRAFICAdd(obj));
+            toast.success(" Demografic Added Successfully ");
         }
         navigate("/Patients/clinicalhistory");
     }

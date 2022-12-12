@@ -6,6 +6,7 @@ import Select from "react-select";
 import { Link , useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { TREATMENTAdd, TREATMENTGet, SETTREATMENTObj, TREATMENTUpdate, TREATMENTDelete, TREATGet_BY_PATIENT_ID } from "../../redux/actions/Treatment/Treatment.actions";
+import { toast } from 'react-hot-toast';
 export const Treatment = () => {
 
 const [patientId, setPatientId] = useState("");
@@ -61,15 +62,13 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
 
   const handleAddTreatment = ()=>{
 
-    if(!oralAsa){
-      alert("Oral ASA is required");
+    if(oralAsa == "" || oralAsa == undefined){
+      toast.error("Oral ASA is mandatory");
       return
-    }
-    if(!rectalAsa){
-      alert("Rectal ASA is required");
+    }if(rectalAsa == "" || rectalAsa == undefined){
+      toast.error("Rectal ASA is mandatory");
       return
-    }
-
+    }else{
     let obj = {
       patientId,
       oralAsa,
@@ -105,14 +104,13 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
     }
     console.log(obj);
     if (treatmentObj?._id) {
-        dispatch(TREATMENTUpdate(treatmentObj._id, obj));
-        dispatch(SETTREATMENTObj(null))
-    } else {
-        console.log(obj);
-    dispatch(TREATMENTAdd(obj));
+      dispatch(TREATMENTUpdate(treatmentObj._id, obj));
+      dispatch(SETTREATMENTObj(null))
+    }else{
+      dispatch(TREATMENTAdd(obj));
     }
-
-    navigate("/Patients/infections");
+      navigate("/Patients/infections");
+  }
   };
 
   useEffect(() => {

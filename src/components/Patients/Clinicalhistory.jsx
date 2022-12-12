@@ -132,7 +132,6 @@ const [manifestations, setManifestations] = useState("");
 const [totalScore_2, setTotalScore_2] = useState("");
 
 const handleAddClinicalHistory = ()=>{
-
     if(patientId == ""){
         toast.error("Please fill data")
         return
@@ -252,8 +251,10 @@ console.log(demograficObj?._id);
     if (cliHistoryObj?._id) {
       dispatch(CLINICALHISTORYUpdate(cliHistoryObj._id, obj));
       dispatch(SETCLINICALHISTORYObj(null))
+      toast.success(" Clinical History Updated Successfully ");
     } else {
       dispatch(CLINICALHISTORYAdd(obj));
+      toast.success(" Clinical History created Successfully ");
     }
       navigate("/Patients/previoustreatment");
   }

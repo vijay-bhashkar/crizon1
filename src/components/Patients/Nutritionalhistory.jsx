@@ -121,9 +121,11 @@ export const Nutritionalhistory = () => {
     if (nutritionObj?._id) {
         dispatch(NUTRITIONUpdate(nutritionObj._id, obj));
         dispatch(SETNUTRITIONObj(null))
+        toast.success(" Nutrition Updated Successfully ");
     } else {
-        console.log(obj);
-    dispatch(NUTRITIONAdd(obj));
+      console.log(obj);
+      dispatch(NUTRITIONAdd(obj));
+      toast.success(" Nutrition Created Successfully ");
     }
     navigate("/Patients/investigations");
   }

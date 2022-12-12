@@ -6,6 +6,7 @@ import Select from "react-select";
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { PREVIOUSTREATMENTAdd, PREVIOUSTREATMENTGet, SETPREVIOUSTREATMENTObj, PREVIOUSTREATMENTUpdate, PREVIOUSTREATMENTDelete, PREVIOUSTREATMENTGet_BY_PATIENT_ID } from "../../redux/actions/PreviousTreatment/PreviousTreatment.actions";
+import { toast } from 'react-hot-toast';
 export const Previoustreatment = () => {
 
 const [patientId, setPateintId] = useState("");
@@ -18,11 +19,8 @@ useEffect(() => {
     }
 }, [patientId]);
 
-
-
 const preTreatObj = useSelector((states) => states.previoustreatment.previousTreatmentsObj); 
 const demograficObj = useSelector((states) => states.demografic.demograficObj);  
-
 
 useEffect(() => {
     dispatch(SETPREVIOUSTREATMENTObj({}))
@@ -31,7 +29,6 @@ useEffect(() => {
     }
   }, [demograficObj]);
 
-//  console.log(preTreatObj);
     const [oralAsaName, setOralAsaName] = useState("");
     const [oralAsaDose, setOralAsaDose] = useState("");
     const [oralAsaStart, setOralAsaStart] = useState("");
@@ -117,11 +114,10 @@ useEffect(() => {
 
     const handleAddPreTreat = ()=> {
 
-        if(!preSurgery){
-         alert("Previous Surgery is required");
+        if(preSurgery == "" || preSurgery == undefined){
+         toast.error("Previous Surgery is required");
          return
-        }
-
+        }else{
         let obj = {
         patientId,
         oralAsa:{
@@ -220,16 +216,14 @@ useEffect(() => {
         sergeryDate,
         typeSurgery
     }
-    console.log(obj);
     if (preTreatObj?._id) {
         dispatch(PREVIOUSTREATMENTUpdate(preTreatObj._id, obj));
         dispatch(SETPREVIOUSTREATMENTObj(null))
     } else {
-    console.log(obj);
     dispatch(PREVIOUSTREATMENTAdd(obj));
     }
-
     navigate("/Patients/nutritionalhistory");
+}
 };
 
    useEffect(()=>{

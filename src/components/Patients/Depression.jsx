@@ -92,8 +92,10 @@ const handleAddDepression = () => {
   if(depressionObj?._id) {
     dispatch(DEPRESSIONUpdate(depressionObj._id, obj));
     dispatch(SETDEPRESSIONObj(null))
+    toast.success(" Depression Updated Successfully ");
   } else {
     dispatch(DEPRESSIONAdd(obj));
+    toast.success(" Depression created Successfully ");
   }
 }
 };

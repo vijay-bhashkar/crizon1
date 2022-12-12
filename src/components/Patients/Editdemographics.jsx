@@ -55,7 +55,6 @@ useEffect(() => {
   if(role == rolesObj.PATIENT){
     query += `patient=${user?.roleUser?._id}`;
   }
-
     dispatch(DEMOGRAFICGet());
     dispatch(DOCTORGet(query));
     dispatch(GETALLDoctor(query));
@@ -140,8 +139,8 @@ const navigate = useNavigate();
     };
 
     if (demograficObj?._id) {
-        dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
-    
+      dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
+      toast.success(" Demografic Updated Successfully ");
     } 
     // else {
     //     console.log(obj);

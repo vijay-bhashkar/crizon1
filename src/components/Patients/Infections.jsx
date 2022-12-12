@@ -67,8 +67,10 @@ const handleAddInfection = () => {
     if(infectionObj?._id) {
       dispatch(INFECTIONUpdate(infectionObj._id, obj));
       dispatch(SETINFECTIONObj(null))
+      toast.success(" Infection Updated Successfully ");
     }else {
       dispatch(INFECTIONAdd(obj));
+      toast.success(" Infection Created Successfully ");
     }
     navigate("/Patients/depression");
   }

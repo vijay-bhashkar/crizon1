@@ -163,8 +163,10 @@ const handleAddInvestigation = ()=> {
     if (investigationObj?._id) {
       dispatch(INVESTIGATIONUpdate(investigationObj._id, obj));
       dispatch(SETINVESTIGATIONObj(null))
+      toast.success(" Investigation Updated Successfully ");
     }else{
       dispatch(INVESTIGATIONAdd(obj));
+      toast.success(" Investigation Created Successfully ");
     }
       navigate("/Patients/treatment");
   }
