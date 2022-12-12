@@ -14,7 +14,6 @@ export const Departments = () => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="secound-header">
-                
               </div>
             </div>
             <div className="col-lg-4">

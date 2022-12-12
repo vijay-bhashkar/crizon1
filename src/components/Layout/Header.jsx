@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { images } from "../Utility/Images";
 import { BsBell } from "react-icons/bs";
+import { logoutUser } from "../../redux/actions/auth/auth.actions";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
+
+  const dispatch = useDispatch();
+
+  const handleLogout = ()=>{
+  dispatch(logoutUser());
+  }
+
   return (
     <header>
       <div className="headertop">
@@ -27,7 +36,7 @@ function Header() {
                   <ul className="header-right">
                       <li className="icons"> <BsBell /></li>
                       <li>
-                        <img src={images.avatar} alt="" />
+                        <img src={images.avatar} alt="" onClick={handleLogout} />
                       </li>
                     </ul>
                 </div>
@@ -35,9 +44,7 @@ function Header() {
               </div>
               </div>
             </div>
-           
           </div>
-        
       </div>
     </header>
   );

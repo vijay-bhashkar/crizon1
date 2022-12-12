@@ -1,0 +1,30 @@
+
+
+export const rolesObj = {
+    HOD : "HOD",
+    ADMIN : "ADMIN",
+    DOCTOR : "DOCTOR",
+    PATIENT : "PATIENT",
+    SUBADMIN : "SUBADMIN",
+}
+
+export const businessTypeObj = {
+    MANUFACTURER: "MANUFACTURER",
+    IMPORTER: "IMPORTER",
+    EXPORTER: "EXPORTER",
+    WHOLESALER: "WHOLESALER",
+    RESELLER: "RESELLER",
+    OTHERS: "OTHERS",
+}
+
+
+export const businessNatureObj = {
+
+    PROPRIETOR: "PROPRIETOR",
+    PARTNERSHIP: "PARTNERSHIP",
+    PRIVATELTDCO: "PRIVATE LTD CO.",
+    PUBLICLTDCO: "PUBLIC LTD CO.",
+    ONEPERSONCOMPANY: "ONE PERSON COMPANY",
+    OTHERS: "OTHERS",
+}
+

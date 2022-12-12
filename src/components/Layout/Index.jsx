@@ -3,7 +3,6 @@ import Header from "../Layout/Header";
 import Sidebar from "../Layout/Sidebar";
  const DefaultLayout = ({children}) => {
 
-       
         return (
           <>
           <Header/>
