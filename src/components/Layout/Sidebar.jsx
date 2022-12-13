@@ -10,8 +10,7 @@ const Sidebar = () => {
 
 const auth = useSelector((states)=> states.auth.user);
 const role = useSelector((states)=> states.auth.role);
-// console.log("hello ds");
-// console.log(getAuth.user);
+
   useDispatch(loginUser());
 if(role == rolesObj.ADMIN){
   return (

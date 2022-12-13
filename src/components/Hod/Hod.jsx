@@ -4,28 +4,57 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
-import { HODAdd,HODGet, HODDelete, SETHODObj } from "../../redux/actions/Hod/Hod.actions";
+import { HODAdd, HODGet, HODDelete, SETHODObj } from "../../redux/actions/Hod/Hod.actions";
 export const Hod = () => {
 
 useEffect(() => {
     handleGet()
   }, []);
 
-  const navigate = useNavigate();
   const hodArr = useSelector((states) => states.hod.hods);
-  console.log(hodArr);
+  const diseaseArr = useSelector((states) => states.hod.diseases);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [hodMainArr, sethodMainArr] = useState([]);
+  const [hodDisplayArr, sethodDisplayArr] = useState([]);
+  const [disease , setDisease] =  useState("");
+  const [doctor , setDoctor] =  useState("");
+
   const handleGet = () => {
     dispatch(HODGet());
   };
-
+ 
   useEffect(() => {
     if (hodArr?.length) {
       sethodMainArr(hodArr);
-      console.log(hodArr);
+      sethodDisplayArr(hodArr);
       }
     }, [hodArr])
+
+    useEffect(() => {
+      if (diseaseArr?.length) {
+        setDisease(diseaseArr);
+        }
+      }, [diseaseArr]);
+
+    const hadleDisease = (disease) => {
+      console.log(disease,"valuevalue")
+      if (disease) {
+
+        if(disease.value == 'all'){
+          sethodDisplayArr(hodArr);
+
+        } else {
+          let hodDisease = hodArr.filter(el => el.disease == disease.value);
+          console.log(hodDisease, "disease doctor");
+          sethodDisplayArr(hodDisease);
+        }
+       
+
+      }
+    }
   
     const handleHodEdit = (row) => {
       dispatch(SETHODObj(row));
@@ -37,12 +66,11 @@ useEffect(() => {
       dispatch(SETHODObj(null))
   }
 
-
-    const options = [
-        { value: "Secect Doctor", label: "Secect Doctor" },
-        { value: "Doctor strawberry", label: "Doctor Strawberry" },
-        { value: "Doctor vanilla", label: "Doctor Vanilla" },
-      ];
+  const options = [
+    { value: "all", label: "All" },
+    { value: "colitis", label: "colitis" },
+    { value: "ulcerstive", label: "ulcerstive" },
+  ];
   return (
     <div className="content_wrapper">
       <div className="contentwraper_header">
@@ -68,7 +96,10 @@ useEffect(() => {
               <div className=""></div>
               <div className="col-lg-5">
                 <label>DISEASES</label>
-                <Select options={options} />
+                {/* <select className='form-control' value={disease} onChange={(el)=>{setDisease(el.target.value)}}>
+                  { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.name}</option>)}
+                </select> */}
+                <Select options={options} placeholder="Select" onChange={hadleDisease}/>
               </div>
               <div className="col-lg-5">
               
@@ -97,7 +128,7 @@ useEffect(() => {
                     </thead>
                     <tbody>
                     {
-                      hodMainArr && hodMainArr.map((item,index) =>
+                      hodDisplayArr && hodDisplayArr.map((item,index) =>
                       <tr>
                         <th scope="row">{index+1}</th>
                         <th>{item.firstName}</th>

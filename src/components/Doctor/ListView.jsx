@@ -55,8 +55,6 @@ const handleCustomerView = (row) => {
   navigate("/Doctor/ShowView");
 };
 
-
-
   return (
     <div className="content_wrapper">
       <div className="contentwraper_header">

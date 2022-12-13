@@ -4,6 +4,7 @@ import CustomButton from "../Utility/Button";
 import { DashboardBox } from "../Utility/DashboardBox";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/actions/auth/auth.actions";
+import { Link } from "react-router-dom";
 
 function Login({ Unauth }) {
   const [password, setpassword] = useState("");
@@ -67,3 +68,18 @@ function Login({ Unauth }) {
 }
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

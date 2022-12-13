@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link, useParams } from 'react-router-dom';
+import moment from "moment/moment";
 import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICGet, } from "../../redux/actions/Demografic/Demografic.actions";
 import { CLINICALHISTORYGet,CLINICALHISTORYGet_BY_PATIENT_ID,SETCLINICALHISTORYObj } from "../../redux/actions/ClinicalHistory/ClinicalHistory.actions";
@@ -424,7 +425,7 @@ const [patientId, setPatientId] = useState("");
 useEffect(() => {
     if (demograficObj) {
         setCcfId(demograficObj?.ccfId);
-        setEnrollDate(demograficObj?.enrollDate);
+        setEnrollDate(moment(demograficObj?.enrollDate).format("YYYY-MM-DD"));
         setPatientName(demograficObj?.patientName);
         setParentName(demograficObj?.parentName);
         setAge(demograficObj?.age);
@@ -503,33 +504,33 @@ useEffect(()=>{
         setIvdu(cliHistoryObj?.ivdu);
         setOpium(cliHistoryObj?.opium);
         setAlcohol(cliHistoryObj?.alcohol);
-        setHbv_1(cliHistoryObj?.hbv_1);
-        setHbv_2(cliHistoryObj?.hbv_2);
-        setHbv_3(cliHistoryObj?.hbv_3);
-        setPneumococcal_1(cliHistoryObj?.pneumococcal_1);
-        setPneumococcal_2(cliHistoryObj?.pneumococcal_2);
-        setPneumococcal_3(cliHistoryObj?.pneumococcal_3);
-        setInfluenza_1(cliHistoryObj?.influenza_1);
-        setInfluenza_2(cliHistoryObj?.influenza_2);
-        setInfluenza_3(cliHistoryObj?.influenza_3);
-        setMmr_1(cliHistoryObj?.mmr_1);
-        setMmr_2(cliHistoryObj?.mmr_2);
-        setMmr_3(cliHistoryObj?.mmr_3);
-        setBcg_1(cliHistoryObj?.bcg_1);
-        setBcg_2(cliHistoryObj?.bcg_2);
-        setBcg_3(cliHistoryObj?.bcg_3);
-        setVzv_1(cliHistoryObj?.vzv_1);
-        setVzv_2(cliHistoryObj?.vzv_2);
-        setVzv_3(cliHistoryObj?.vzv_3);
-        setHav_1(cliHistoryObj?.hav_1);
-        setHav_2(cliHistoryObj?.hav_2);
-        setHav_3(cliHistoryObj?.hav_3);
-        setDpt_1(cliHistoryObj?.dpt_1);
-        setDpt_2(cliHistoryObj?.dpt_2);
-        setDpt_3(cliHistoryObj?.dpt_3);
-        setHpv_1(cliHistoryObj?.hpv_1);
-        setHpv_2(cliHistoryObj?.hpv_2);
-        setHpv_3(cliHistoryObj?.hpv_3);
+        setHbv_1(moment(cliHistoryObj?.hbv_1).format("YYYY-MM-DD"));
+        setHbv_2(moment(cliHistoryObj?.hbv_2).format("YYYY-MM-DD"));
+        setHbv_3(moment(cliHistoryObj?.hbv_3).format("YYYY-MM-DD"));
+        setPneumococcal_1(moment(cliHistoryObj?.pneumococcal_1).format("YYYY-MM-DD"));
+        setPneumococcal_2(moment(cliHistoryObj?.pneumococcal_2).format("YYYY-MM-DD"));
+        setPneumococcal_3(moment(cliHistoryObj?.pneumococcal_3).format("YYYY-MM-DD"));
+        setInfluenza_1(moment(cliHistoryObj?.influenza_1).format("YYYY-MM-DD"));
+        setInfluenza_2(moment(cliHistoryObj?.influenza_2).format("YYYY-MM-DD"));
+        setInfluenza_3(moment(cliHistoryObj?.influenza_3).format("YYYY-MM-DD"));
+        setMmr_1(moment(cliHistoryObj?.mmr_1).format("YYYY-MM-DD"));
+        setMmr_2(moment(cliHistoryObj?.mmr_2).format("YYYY-MM-DD"));
+        setMmr_3(moment(cliHistoryObj?.mmr_3).format("YYYY-MM-DD"));
+        setBcg_1(moment(cliHistoryObj?.bcg_1).format("YYYY-MM-DD"));
+        setBcg_2(moment(cliHistoryObj?.bcg_2).format("YYYY-MM-DD"));
+        setBcg_3(moment(cliHistoryObj?.bcg_3).format("YYYY-MM-DD"));
+        setVzv_1(moment(cliHistoryObj?.vzv_1).format("YYYY-MM-DD"));
+        setVzv_2(moment(cliHistoryObj?.vzv_2).format("YYYY-MM-DD"));
+        setVzv_3(moment(cliHistoryObj?.vzv_3).format("YYYY-MM-DD"));
+        setHav_1(moment(cliHistoryObj?.hav_1).format("YYYY-MM-DD"));
+        setHav_2(moment(cliHistoryObj?.hav_2).format("YYYY-MM-DD"));
+        setHav_3(moment(cliHistoryObj?.hav_3).format("YYYY-MM-DD"));
+        setDpt_1(moment(cliHistoryObj?.dpt_1).format("YYYY-MM-DD"));
+        setDpt_2(moment(cliHistoryObj?.dpt_2).format("YYYY-MM-DD"));
+        setDpt_3(moment(cliHistoryObj?.dpt_3).format("YYYY-MM-DD"));
+        setHpv_1(moment(cliHistoryObj?.hpv_1).format("YYYY-MM-DD"));
+        setHpv_2(moment(cliHistoryObj?.hpv_2).format("YYYY-MM-DD"));
+        setHpv_3(moment(cliHistoryObj?.hpv_3).format("YYYY-MM-DD"));
         setDiseaseExtent(cliHistoryObj?.diseaseExtent);
         setStoolFrequency(cliHistoryObj?.stoolFrequency);
         setRectalBleeding(cliHistoryObj?.rectalBleeding);
@@ -555,83 +556,83 @@ useEffect(()=>{
     if(preTreatObj){
         setOralAsaName(preTreatObj?.oralAsa?.name);
         setOralAsaDose(preTreatObj?.oralAsa?.dose);
-        setOralAsaStart(preTreatObj?.oralAsa?.start);
-        setOralAsaEnd(preTreatObj?.oralAsa?.end);
+        setOralAsaStart(moment(preTreatObj?.oralAsa?.start).format("YYYY-MM-DD"));
+        setOralAsaEnd(moment(preTreatObj?.oralAsa?.end).format("YYYY-MM-DD"));
         
         setRectalSuppositoryName(preTreatObj?.rectalSuppository?.name);
         setRectalSuppositoryDose(preTreatObj?.rectalSuppository?.dose);
-        setRectalSuppositoryStart(preTreatObj?.rectalSuppository?.start);
-        setRectalSuppositoryEnd(preTreatObj?.rectalSuppository?.end);
+        setRectalSuppositoryStart(moment(preTreatObj?.rectalSuppository?.start).format("YYYY-MM-DD"));
+        setRectalSuppositoryEnd(moment(preTreatObj?.rectalSuppository?.end).format("YYYY-MM-DD"));
 
         setReacalFoamName(preTreatObj?.reacalFoam?.name);
         setReacalFoamDose(preTreatObj?.reacalFoam?.dose);
-        setReacalFoamStart(preTreatObj?.reacalFoam?.start);
-        setReacalFoamEnd(preTreatObj?.reacalFoam?.end);
+        setReacalFoamStart(moment(preTreatObj?.reacalFoam?.start).format("YYYY-MM-DD"));
+        setReacalFoamEnd(moment(preTreatObj?.reacalFoam?.end).format("YYYY-MM-DD"));
 
         setOralSteroidsName(preTreatObj?.oralSteroids?.name);
         setOralSteroidsDose(preTreatObj?.oralSteroids?.dose);
-        setOralSteroidsStart(preTreatObj?.oralSteroids?.start);
-        setOralSteroidsEnd(preTreatObj?.oralSteroids?.end);
+        setOralSteroidsStart(moment(preTreatObj?.oralSteroids?.start).format("YYYY-MM-DD"));
+        setOralSteroidsEnd(moment(preTreatObj?.oralSteroids?.end).format("YYYY-MM-DD"));
         
         setIvSteroidsName(preTreatObj?.ivSteroids?.name);
         setIvSteroidsDose(preTreatObj?.ivSteroids?.dose);
-        setIvSteroidsStart(preTreatObj?.ivSteroids?.start);
-        setIvSteroidsEnd(preTreatObj?.ivSteroids?.end);
+        setIvSteroidsStart(moment(preTreatObj?.ivSteroids?.start).format("YYYY-MM-DD"));
+        setIvSteroidsEnd(moment(preTreatObj?.ivSteroids?.end).format("YYYY-MM-DD"));
 
         setEntofoamName(preTreatObj?.entofoam?.name);
         setEntofoamDose(preTreatObj?.entofoam?.dose);
-        setEntofoamStart(preTreatObj?.entofoam?.start);
-        setEntofoamEnd(preTreatObj?.entofoam?.end);
+        setEntofoamStart(moment(preTreatObj?.entofoam?.start).format("YYYY-MM-DD"));
+        setEntofoamEnd(moment(preTreatObj?.entofoam?.end).format("YYYY-MM-DD"));
 
         setAzaName(preTreatObj?.aza?.name);
         setAzaDose(preTreatObj?.aza?.dose);
-        setAzaStart(preTreatObj?.aza?.start);
-        setAzaEnd(preTreatObj?.aza?.end);
+        setAzaStart(moment(preTreatObj?.aza?.start).format("YYYY-MM-DD"));
+        setAzaEnd(moment(preTreatObj?.aza?.end).format("YYYY-MM-DD"));
 
         setMpName(preTreatObj?.mp?.name);
         setMpDose(preTreatObj?.mp?.dose);
-        setMpStart(preTreatObj?.mp?.start);
-        setMpEnd(preTreatObj?.mp?.end);
+        setMpStart(moment(preTreatObj?.mp?.start).format("YYYY-MM-DD"));
+        setMpEnd(moment(preTreatObj?.mp?.end).format("YYYY-MM-DD"));
 
         setTgName(preTreatObj?.tg?.name);
         setTgDose(preTreatObj?.tg?.dose);
-        setTgStart(preTreatObj?.tg?.start);
-        setTgEnd(preTreatObj?.tg?.end);
+        setTgStart(moment(preTreatObj?.tg?.start).format("YYYY-MM-DD"));
+        setTgEnd(moment(preTreatObj?.tg?.end).format("YYYY-MM-DD"));
 
         setInfliximabName(preTreatObj?.infliximab?.name);
         setInfliximabDose(preTreatObj?.infliximab?.dose);
-        setInfliximabStart(preTreatObj?.infliximab?.start);
-        setInfliximabEnd(preTreatObj?.infliximab?.end);
+        setInfliximabStart(moment(preTreatObj?.infliximab?.start).format("YYYY-MM-DD"));
+        setInfliximabEnd(moment(preTreatObj?.infliximab?.end).format("YYYY-MM-DD"));
 
         setAdalimumabName(preTreatObj?.adalimumab?.name);
         setAdalimumabDose(preTreatObj?.adalimumab?.dose);
-        setAdalimumabStart(preTreatObj?.adalimumab?.start);
-        setAdalimumabEnd(preTreatObj?.adalimumab?.end);
+        setAdalimumabStart(moment(preTreatObj?.adalimumab?.start).format("YYYY-MM-DD"));
+        setAdalimumabEnd(moment(preTreatObj?.adalimumab?.end).format("YYYY-MM-DD"));
 
         setVedolizumabName(preTreatObj?.vedolizumab?.name);
         setVedolizumabDose(preTreatObj?.vedolizumab?.dose);
-        setVedolizumabStart(preTreatObj?.vedolizumab?.start);
-        setVedolizumabEnd(preTreatObj?.vedolizumab?.end);
+        setVedolizumabStart(moment(preTreatObj?.vedolizumab?.start).format("YYYY-MM-DD"));
+        setVedolizumabEnd(moment(preTreatObj?.vedolizumab?.end).format("YYYY-MM-DD"));
 
         setUstekinumabName(preTreatObj?.ustekinumab?.name);
         setUstekinumabPose(preTreatObj?.ustekinumab?.dose);
-        setUstekinumabStart(preTreatObj?.ustekinumab?.start);
-        setUstekinumabEnd(preTreatObj?.ustekinumab?.end);
+        setUstekinumabStart(moment(preTreatObj?.ustekinumab?.start).format("YYYY-MM-DD"));
+        setUstekinumabEnd(moment(preTreatObj?.ustekinumab?.end).format("YYYY-MM-DD"));
 
         setTofacitinibName(preTreatObj?.tofacitinib?.name);
         setTofacitinibPose(preTreatObj?.tofacitinib?.dose);
-        setTofacitinibStart(preTreatObj?.tofacitinib?.start);
-        setTofacitinibEnd(preTreatObj?.tofacitinib?.end);
+        setTofacitinibStart(moment(preTreatObj?.tofacitinib?.start).format("YYYY-MM-DD"));
+        setTofacitinibEnd(moment(preTreatObj?.tofacitinib?.end).format("YYYY-MM-DD"));
 
         setFmtName(preTreatObj?.fmt?.name);
         setFmtPose(preTreatObj?.fmt?.dose);
-        setFmtStart(preTreatObj?.fmt?.start);
-        setFmtEnd(preTreatObj?.fmt?.end);
+        setFmtStart(moment(preTreatObj?.fmt?.start).format("YYYY-MM-DD"));
+        setFmtEnd(moment(preTreatObj?.fmt?.end).format("YYYY-MM-DD"));
 
         setOther(preTreatObj?.other);
         setAsa(preTreatObj?.asa);
         setPreSurgery(preTreatObj?.preSurgery);
-        setSergeryDate(preTreatObj?.sergeryDate);
+        setSergeryDate(moment(preTreatObj?.sergeryDate).format("YYYY-MM-DD"));
         setTypeSurgery(preTreatObj?.typeSurgery);
     }
    },[preTreatObj]);
@@ -759,18 +760,18 @@ useEffect(() => {
       setTacrolimus(treatmentObj?.tacrolimus);
       setProbiotics(treatmentObj?.probiotics);
       setFilgotinib(treatmentObj?.filgotinib);
-      setSession_1(treatmentObj?.session_1);
-      setSession_2(treatmentObj?.session_2);
-      setSession_3(treatmentObj?.session_3);
-      setSession_4(treatmentObj?.session_4);
-      setSession_5(treatmentObj?.session_5);
-      setSession_6(treatmentObj?.session_6);
-      setSession_7(treatmentObj?.session_7);
-      setSession_8(treatmentObj?.session_8);
-      setSession_9(treatmentObj?.session_9);
-      setSession_10(treatmentObj?.session_10);
-      setSession_11(treatmentObj?.session_11);
-      setSession_12(treatmentObj?.session_12);
+      setSession_1(moment(treatmentObj?.session_1).format("YYYY-MM-DD"));
+      setSession_2(moment(treatmentObj?.session_2).format("YYYY-MM-DD"));
+      setSession_3(moment(treatmentObj?.session_3).format("YYYY-MM-DD"));
+      setSession_4(moment(treatmentObj?.session_4).format("YYYY-MM-DD"));
+      setSession_5(moment(treatmentObj?.session_5).format("YYYY-MM-DD"));
+      setSession_6(moment(treatmentObj?.session_6).format("YYYY-MM-DD"));
+      setSession_7(moment(treatmentObj?.session_7).format("YYYY-MM-DD"));
+      setSession_8(moment(treatmentObj?.session_8).format("YYYY-MM-DD"));
+      setSession_9(moment(treatmentObj?.session_9).format("YYYY-MM-DD"));
+      setSession_10(moment(treatmentObj?.session_10).format("YYYY-MM-DD"));
+      setSession_11(moment(treatmentObj?.session_11).format("YYYY-MM-DD"));
+      setSession_12(moment(treatmentObj?.session_12).format("YYYY-MM-DD"));
       setSurgery(treatmentObj?.surgery);
       setSpecify(treatmentObj?.specify);
     }
@@ -2105,7 +2106,6 @@ useEffect(() =>{
                     <div className='col'>
                         <div className='form-group'> 
                         <span> {fmtName}</span>
-                        
                         </div>
                     </div>
                     <div className='col'>
@@ -2129,12 +2129,12 @@ useEffect(() =>{
                     <div className='col-lg-2'></div>
                     <div className='col-lg-5 ps-5'>
                         <div className='from-group'>
-                            <label>Other : {other}</label>
+                            <label><b>Other :</b> {other}</label>
                         </div>
                     </div>
                     <div className='col-lg-5'>
                     <div className='from-group'>
-                            <label>5-ASA : {asa}</label>
+                            <label><b>5-ASA : </b> {asa}</label>
                         </div>
                     </div>
                 </div>
@@ -2142,18 +2142,17 @@ useEffect(() =>{
                     <div className='col-lg-2'></div>
                     <div className='col-lg-4 ps-5'>
                         <div className='form-group'>
-                            <label>Previous surgery : {preSurgery}</label>
+                            <label><b>Previous surgery :</b> {preSurgery}</label>
                         </div>
                     </div>
                     <div className='col-lg-3'>
                         <div className='form-group'>
-                            <label>If Yes : {sergeryDate}</label>
+                            <label><b>If Yes :</b> {sergeryDate}</label>
                         </div>
                     </div>
                     <div className='col-lg-3'>
                         <div className='form-group'>
-                            <label>Type of surgery : {typeSurgery}</label>
-                           
+                            <label><b>Type of surgery </b>: {typeSurgery}</label> 
                         </div>
                     </div>
                 </div>

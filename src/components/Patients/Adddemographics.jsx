@@ -92,7 +92,6 @@ export const Adddemographics = () => {
         setDisease(diseaase)
         if (diseaase) {
             let diseaseDoctor = doctorRedux.filter(el => el.disease === diseaase);
-
             console.log(diseaseDoctor, "disease doctor");
             setDoctorArr(diseaseDoctor)
         }
@@ -129,19 +128,24 @@ export const Adddemographics = () => {
             return
         }if(password != conPassword){
             toast.error("Password and Confirm Password should be same")
-        }if(disease =="" || disease == undefined){
-            toast.error("Please select Disease")
-            return
-        }if(doctor == "" || doctor == undefined){
-            toast.error("Please select Doctor")
-            return
         }
-        if (role == rolesObj.DOCTOR) {
-        console.log(role,"role",roleUser)
-
-            setDoctor(roleUser._id);   
-        }
+        // if(disease =="" || disease == undefined){
+        //     toast.error("Please select Disease")
+        //     return
+        // }
+        // if(doctor == "" || doctor == undefined){
+        //     toast.error("Please select Doctor")
+        //     return
+        // }
+        // if (role == rolesObj.DOCTOR) {
+        // console.log(role,"role",roleUser)
+        // setDoctor(roleUser._id);   
+        // }
          else{
+            if (role == rolesObj.DOCTOR) {
+                console.log(role,"role",roleUser)
+                setDoctor(roleUser._id);   
+                }
         let obj = {
             ccfId,
             enrollDate,

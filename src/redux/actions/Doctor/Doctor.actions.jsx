@@ -59,9 +59,7 @@ export const DOCTORGet = (formData) => async (dispatch) => {
     dispatch({ type: GET_ALL_DOCTORS });
     let { data: response } = await getAllDoctors(formData);
     console.log(response);
-    // console.log("aaaaaaaaaaaa");
     if (response) {
-
       dispatch({
         type: GET_ALL_DOCTORS_SUCCESS,
         payload: { data: response.data, message: response.message },

@@ -4,10 +4,15 @@ import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { FOLLOWUPAdd, FOLLOWUPGet, SETFOLLOWUPObj, FOLLOWUPUpdate, FOLLOWUPDelete } from "../../redux/actions/FollowUp/FollowUp.actions";
-
+import { DEMOGRAFICGet } from "../../redux/actions/Demografic/Demografic.actions";
 export const Addfollowup = () => {
+    
+    useEffect(() => {
+        dispatch(DEMOGRAFICGet());
+    }, []);
 
     const [patientId, setPatientId] = useState("");
     const [followupDate, setFollowupDate] = useState("");
@@ -111,8 +116,8 @@ export const Addfollowup = () => {
 
     const dispatch = useDispatch();
     const followupObj = useSelector((states) => states.followup.followupObj);
-    console.log(followupObj);
-    console.log(followupObj?._id,"id followup id");
+    const patientArr = useSelector((states) => states.demografic.demografics);
+
     const handleAddFollowUp = ()=>{
         let obj = {
             patientId,
@@ -217,7 +222,8 @@ export const Addfollowup = () => {
         }
         if(followupObj?._id){
             dispatch(FOLLOWUPUpdate(followupObj._id, obj));
-            dispatch(SETFOLLOWUPObj(null))
+            dispatch(SETFOLLOWUPObj(null));
+            toast.success("Follow up updated")
         }else{
             dispatch(FOLLOWUPAdd(obj));
             dispatch(SETFOLLOWUPObj(null))
@@ -226,6 +232,8 @@ export const Addfollowup = () => {
 
 useEffect(()=>{
     if(followupObj){
+
+        console.log(followupObj?.patientId,"followupObj?.patientI")
     setPatientId(followupObj?.patientId);
     setFollowupDate(followupObj?.followupDate);
     setDiseaseExtend(followupObj?.diseaseExtend);
@@ -565,11 +573,10 @@ useEffect(()=>{
           <div className='row'>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Patient ID*</label>
+                  <label>Patient ID* </label>
                   <select className='form-control' value={patientId} onChange={(e)=>{setPatientId(e.target.value)}}>
-                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
+                    { patientArr && patientArr.map((el)=><option value={el._id}>{el._id} &nbsp; {el.patientName}</option>) }
                   </select>
-                  {/* <Select options={options} placeholder="Select" /> */}
                 </div>
               </div>
               <div className='col-lg-6'>
@@ -585,7 +592,7 @@ useEffect(()=>{
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                    <label>Disease Extent {diseaseExtend}</label>
+                    <label>Disease Extent </label>
                 <input type="text" className='form-control' value={diseaseExtend} onChange={(el)=>{setDiseaseExtend(el.target.value)}}/>
                 </div>
               </div>

@@ -12,7 +12,6 @@ const dispatch = useDispatch();
 const navigate = useNavigate();
 const [followupMainArr, setFollowupMainArr] = useState([]);
 const followupArr = useSelector((states)=> states.followup.followups);
-// console.log(followupArr,"follow up array");
 
 const handleGet = () => {
   dispatch(FOLLOWUPGet());
@@ -80,8 +79,8 @@ useEffect(() => {
             followupMainArr && followupMainArr.map((item,index) => <tr>
               <th scope="row" className="text-center">{index+1}</th>
               <th scope="row">{item.patientId}</th>
-              <td>{item.diseaseExtent}</td>
-              <td>{item.stoolFrequency}</td>
+              <td>{item.diseaseExtend}</td>
+              <td>{item.stoolFreq}</td>
               <td>{item.rectalBleeding}</td>
               <td>
               <span className="active">{item.status}</span>

@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import doctor from '../assets/images/doctor.png'
 import { Link } from "react-router-dom";
-function Login() {
+function LoginForm() {
     return ( 
     <>
     <div className='loginbody'>
@@ -22,9 +22,9 @@ function Login() {
                                 </div>
                                 <div className='from-group'>
                                 <label>Password</label>
-                                <div class="form-group has-search">
-                                    <span class="form-control-feedback"> <AiOutlineEyeInvisible /></span>
-                                    <input type="text" class="form-control" />
+                                <div className="form-group has-search">
+                                    <span className="form-control-feedback"> <AiOutlineEyeInvisible /></span>
+                                    <input type="text" className="form-control" />
                                 </div>
                                 </div>
                                 <p><Link to="/">Forgot Password?</Link></p>
@@ -42,4 +42,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginForm;

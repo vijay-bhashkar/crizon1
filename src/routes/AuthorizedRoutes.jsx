@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import "../assets/css/Style.css"
-import Login from "../components/Login";
+import Login from "../components/Login.jsx";
 import DefaultLayout from "../components/Layout/Index.jsx";
 import Appointment from "../components/Appointment/Appointment.jsx";
 import { Departments } from "../components/Departments.jsx";
@@ -76,6 +76,7 @@ function AuthorizedRoutes() {
                       <Route path="/subAdmin/addSubAdmin" exact element={<AddSubAdmin />}></Route>
                       <Route path="/subAdmin/listView" exact element={<SubAdminListview />}></Route>
                       <Route path="/Profile" exact element={<AdminProfile />}></Route>
+                      <Route path="/login" exact element={<Login />}></Route>
                     </Routes>
               </div>
             </div>
