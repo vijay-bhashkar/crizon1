@@ -172,9 +172,10 @@ export const Appointmentform = () => {
                       <table className="table paddibg0_table mb-0">
                         <thead>
                           <tr>
-                        <th> <div className="icnocneter iconarrowleft">
+                        <th style={{    padding: "10px 42px"}}> <div className="icnocneter iconarrowleft">
                         <RiArrowLeftSLine className="icon" />
-                      </div></th>
+                      </div>
+                      </th>
                           <td colSpan={7} className={"listdate"}>
                       <ul style={{display:"flex", flexDirection:"row", listStyle:"none"}}>
                           {dateArray.map((p,i) => (
@@ -183,7 +184,7 @@ export const Appointmentform = () => {
                         </ul>
                           </td>
                        
-                          <th>
+                          <th style={{    padding: "10px 23px"}}>
                           <div className="icnocneter rightbtn">
                               <RiArrowRightSLine className="icon" />
                             </div>
