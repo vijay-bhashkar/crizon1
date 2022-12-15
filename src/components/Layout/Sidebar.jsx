@@ -80,14 +80,14 @@ if(role == rolesObj.ADMIN){
       <div class="accordion-item">
         <h5 class="accordion-header" id="headingthree">
           <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#collapsethree" aria-expanded="false"  aria-controls="collapsethree"><BiUserPlus  className="iconaccrion" /> <span> Manage Follwup </span>
+            data-bs-target="#collapsethree" aria-expanded="false"  aria-controls="collapsethree"><BiUserPlus  className="iconaccrion" /> <span> Manage Followup </span>
           </span>
         </h5>
         <div id="collapsethree" class="accordion-collapse collapse" aria-labelledby="headingthree" data-bs-parent="#accordionExample">
          <div class="accordion-body">
             <ul>
-              <li><Link to="/FollowUp/Addfollowup">Add Follwup</Link></li>
-              <li> <Link to="/FollowUp/followupList"> List Follwup </Link></li>
+              <li><Link to="/FollowUp/Addfollowup">Add Followup</Link></li>
+              <li> <Link to="/FollowUp/followupList"> List Followup </Link></li>
               <li><Link to="/FollowUp/Addpatientdepression">Search Patient</Link></li>
             </ul>
           </div>
@@ -345,7 +345,7 @@ if(role == rolesObj.PATIENT){
       {/* <div class="accordion-item">
         <h5 class="accordion-header" id="headingthree">
           <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#collapsethree" aria-expanded="false"  aria-controls="collapsethree"><BiUserPlus  className="iconaccrion" /> <span> Manage Follwup </span>
+            data-bs-target="#collapsethree" aria-expanded="false"  aria-controls="collapsethree"><BiUserPlus  className="iconaccrion" /> <span> Manage Follwoup </span>
           </span>
         </h5>
         <div id="collapsethree" class="accordion-collapse collapse" aria-labelledby="headingthree" data-bs-parent="#accordionExample">

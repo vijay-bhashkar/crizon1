@@ -19,6 +19,7 @@ const user = useSelector((states)=> states.auth.user);
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const [customerMainArr, setCustomerMainArr] = useState([]);
+const [search , setSearch] =  useState("");
 
 const handleGet = () => {
   let query = "";
@@ -32,6 +33,13 @@ useEffect(() => {
   handleGet()
   }, []);
 
+useEffect(()=>{
+  if(search){
+    let filterAr = customerArr.filter(el => `${el.firstName}`.toLowerCase().includes(`${search}`.toLowerCase()));
+    console.log(filterAr);
+    setCustomerMainArr(filterAr);
+  }
+})
 
  useEffect(() => {
   if (customerArr?.length) {
@@ -63,18 +71,24 @@ const handleCustomerView = (row) => {
             <div className="col-lg-4">
               <div className="viewadduser">
                 <ul>
-                  <li>
-                    <BiUserPlus className="icon" /> <span>Add User</span>
-                  </li>
-                  <li>
-                    <AiOutlineUnorderedList className="icon" />{" "}
-                    <span>Add User</span>
-                  </li>
                 </ul>
               </div>
             </div>
-            <div className="col-lg-4"></div>
-            <div className="col-lg-4"></div>
+            <div className="col-lg-3">
+              <h5 className="mb-0 text-center text-white">
+                DOCTOR LIST
+              </h5>
+            </div>
+            <div className="col-lg-3 ">
+            <div className='btnlist'>
+              <input type="text" name="search" placeholder='Enter Doctor Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
+            </div>
+          </div>
+            <div className="col-lg-2 ">
+            <div className='btnlist'>
+              <Link to="/Doctor/Adduser" class="btn btn-defalut btn-md"> <BiUserPlus className="icon" /> Add Doctor </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

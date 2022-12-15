@@ -1,17 +1,16 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { DOCTORGet } from "../redux/actions/Doctor/Doctor.actions";
 export const Appointmentform = () => {
-  const Department = [
-    { value: "hereditary diseases s", label: "hereditary diseases s" },
-    { value: "Dental ", label: "Dental " },
-    {
-      value: "lower respiratory infections",
-      label: "lower respiratory infections",
-    },
+  const diseaseDrop = [
+    { value: "all", label: "Select Disease" },
+    { value: "ulcerstive", label: "Ulcerative" },
+    { value: "colitis", label: "Colitis" },
   ];
   const bookdate = [
     { date: "20 Mon Sep", isactive: false },
@@ -19,18 +18,35 @@ export const Appointmentform = () => {
     { date: "21 Mon Sep", isactive: false },
     { date: "22 Mon Sep", isactive: false },
     { date: "23 Mon Sep", isactive: false },
+    { date: "23 Mon Sep", isactive: false },
+    { date: "23 Mon Sep", isactive: false },
   ];
+ 
   const [selectedDate, setSelectedDate] = useState(null)
   const [dateArray, setDateArray] = useState(bookdate)
-  const doctor = [
+  const [doctorSpec, setDoctorSpec] = useState("");
+  const [doctor, setDoctor] = useState("");
+  
+
+  const doctorDrop = [
+    { value: "select", label: "Select Doctor" },
     { value: "Dr. Sanjay Sachdeva", label: "Dr. Sanjay Sachdeva" },
     { value: "Dr. Sandeep Batra", label: "Dr. Sandeep Batra" },
     { value: "Dr. Bipin S Walia", label: "Dr. Bipin S Walia" },
     { value: "Dr. Amandeep Singh Dhillon", label: "Dr. Amandeep Singh Dhillon" },
   ];
 
+  useEffect(() => {
+    handleGet()
+  }, []);
+  
+  const dispatch = useDispatch();
+  const handleGet = () => {
+    dispatch(DOCTORGet());
+  };
 
-
+  const doctorArr = useSelector((states)=> states.doctor.doctors);
+  
   const handleDateSelected = (status,index) => {
     const list  = [...bookdate];
     list[index].isactive = status;
@@ -39,6 +55,14 @@ export const Appointmentform = () => {
     setDateArray(list);
   }
 
+  const hadleDisease =(disease)=>{
+    // console.log(disease,"dsdsd");
+      if(disease.value){
+        let doctorSpec = doctorArr.filter(el => el.disease == disease.value);
+          console.log(doctorSpec, "disease ka ka doctor");
+          setDoctorSpec(doctorSpec);
+      }
+  }
 
   const data = [{ name: "test1" }, { name: "test2" }];
   const listItems = data.map((d) => <li key={d.name}>{d.name}</li>);
@@ -73,29 +97,28 @@ export const Appointmentform = () => {
               <div className="row addlist-frm mb-3">
                 <div className="col-lg-6">
                   <div className="from-group">
-                    <label>Department</label>
-                    <Select
-                      options={Department}
-                      placeholder="Select Department"
-                    />
+                    <label>Disease </label>
+                    <Select options={diseaseDrop} placeholder="Select Disease" onChange={hadleDisease}/>
+                    {/* <select className="form-control" value={disease} onChange={(el)=>{setDisease(el.target.value)}}>
+                      { diseaseDrop && diseaseDrop.map((el)=><option value={el.value}>{el.label}</option>)}
+                    </select> */}
                   </div>
                 </div>
                 <div className="col-lg-6">
                   <div className="from-group">
-                    <label>Doctor</label>
-                    <Select options={doctor} placeholder="Select Doctor" />
+                    <label>Doctor </label>
+                    {/* <Select options={doctor} placeholder="Select Doctor" /> */}
+                    <select className="form-control" value={doctor} onChange={(el)=>{setDoctor(el.target.value)}}>
+                      { doctorSpec && doctorSpec.map((el)=><option value={el._id}>{el.firstName}</option>) }
+                    </select>
                   </div>
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-12">
-                  <div className="heading-title text-center">
-                    <h4>Appointment Slot {selectedDate}</h4>
-                  </div>
-                </div>
+                
               </div>
               <div className="row">
-                <div className="col-lg-12">
+                {/* <div className="col-lg-12">
                   <div className="datemathed">
                     <div className="leftbtn">
                       <div className="icnocneter iconarrowleft">
@@ -105,11 +128,9 @@ export const Appointmentform = () => {
                     <div className="datebody">
                       <div className="listdate">
                         <ul>
-                            {dateArray.map((p,i) => <li key={i} className={`${p.isactive === true ?'active':''}`} 
-                            
-                            onClick={(e) => {handleDateSelected(!p.isactive ,i)}}
-                            
-                            > {p.date}</li>)}
+                          {dateArray.map((p,i) => <li key={i} className={`${p.isactive === true ?'active':''}`} 
+                          onClick={(e) => {handleDateSelected(!p.isactive ,i)}}
+                          > {p.date}</li>)}
                         </ul>
                       </div>
                     </div>
@@ -117,22 +138,66 @@ export const Appointmentform = () => {
                       <RiArrowRightSLine className="icon" />
                     </div>
                   </div>
+                </div> */}
+                <div className="col-lg-12">
+                  <div className="heading-title text-center">
+                    <h4>Appointment Slot {selectedDate}</h4>
+                  </div>
                 </div>
                 <div className="col-lg-12">
                   <div className="appoitmentable">  
                   {/* table-responsive */}
-                    <table className="table">
-                      <tbody className="">
-                        <tr>
-                          <th>09:00</th>
-                          <td className="bookedappoiment">Booked</td>
-                          <td className="available">Available</td>
-                          <td className="bookedappoiment">Booked</td>
-                          <td className="available">Available</td>
-                          <td className="bookedappoiment">Booked</td>
-                          <td className="available">Available</td>
-                          <td className="bookedappoiment">Booked</td>
+
+                      {/* <table className="table">
+                        <thead>
+                          <tr>
+                           
+                            <th className="bookedappoiment">
+                            <div className="icnocneter iconarrowleft">
+                              <RiArrowLeftSLine className="icon" />
+                            </div>
+                            </th>
+                            {dateArray.map((p,i) => <td key={i} className={`bookedappoiment ${p.isactive === true ?'active':''}`} 
+                          onClick={(e) => {handleDateSelected(!p.isactive ,i)}}
+                          > {p.date}</td>)}
+                            <th className="bookedappoiment">
+                             <div className="icnocneter rightbtn">
+                              <RiArrowRightSLine className="icon" />
+                            </div>
+                            </th>
+                          </tr>
+                        </thead>
+                      </table> */}
+
+                      <table className="table paddibg0_table mb-0">
+                        <thead>
+                          <tr>
+                        <th> <div className="icnocneter iconarrowleft">
+                        <RiArrowLeftSLine className="icon" />
+                      </div></th>
+                          <td colSpan={7} className={"listdate"}>
+                      <ul style={{display:"flex", flexDirection:"row", listStyle:"none"}}>
+                          {dateArray.map((p,i) => (
+                          <li key={i} style={{textDecoration:"none", flex:1, textAlign:"center"}} className={`${p.isactive === true ?'active':''}`}  onClick={(e) => {handleDateSelected(!p.isactive ,i)}}> {p.date}</li>)
+                        )}
+                        </ul>
+                          </td>
+                       
+                          <th>
+                          <div className="icnocneter rightbtn">
+                              <RiArrowRightSLine className="icon" />
+                            </div>
+                          </th>
                         </tr>
+                        </thead>
+                      </table>
+
+                      <div className="scroller_text">
+                    <table className="table paddibg0_table11 mb-0" >
+                     
+                      <tbody className="overflow_text">
+                       
+                      
                         <tr>
                           <th>10:00</th>
                           <td className="available">Available</td>
@@ -142,6 +207,8 @@ export const Appointmentform = () => {
                           <td className="available">Available</td>
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">available</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>11:00</th>
@@ -152,6 +219,8 @@ export const Appointmentform = () => {
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">Available</td>
                           <td className="bookedappoiment">Booked</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>12:00</th>
@@ -162,6 +231,8 @@ export const Appointmentform = () => {
                           <td className="available">Available</td>
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">available</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>13:00</th>
@@ -172,6 +243,8 @@ export const Appointmentform = () => {
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">Available</td>
                           <td className="bookedappoiment">available</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>14:00</th>
@@ -182,6 +255,8 @@ export const Appointmentform = () => {
                           <td className="available">Available</td>
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">available</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>15:00</th>
@@ -192,6 +267,8 @@ export const Appointmentform = () => {
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">Available</td>
                           <td className="bookedappoiment">available</td>
+                          <th></th>
+
                         </tr>
 
                         <tr>
@@ -203,6 +280,8 @@ export const Appointmentform = () => {
                           <td className="available">Available</td>
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">available</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>17:00</th>
@@ -213,6 +292,8 @@ export const Appointmentform = () => {
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">Available</td>
                           <td className="bookedappoiment">available</td>
+                          <th></th>
+
                         </tr>
                         <tr>
                           <th>18:00</th>
@@ -223,9 +304,13 @@ export const Appointmentform = () => {
                           <td className="available">Available</td>
                           <td className="bookedappoiment">Booked</td>
                           <td className="available">available</td>
+                          <th></th>
                         </tr>
                       </tbody>
                     </table>
+                    </div>
+
+
                   </div>
                 </div>
               </div>

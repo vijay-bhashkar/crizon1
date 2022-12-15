@@ -35,10 +35,15 @@ function Header() {
             </div>
             <div className="col-lg-10 col-10">
               <div className="header-right">
+                {(role == "PATIENT")?
+                    <div className="userarea">
+                      <p className="light-blue">Hi {role}</p>
+                      <h3 className="blue">Welcome Back!  {`${roleUser?.patientName }`} </h3>
+                    </div>:
                     <div className="userarea">
                       <p className="light-blue">Hi {role}</p>
                       <h3 className="blue">Welcome Back!  {`${roleUser?.firstName +" "+ roleUser?.lastName}`} </h3>
-                    </div>
+                    </div>}
                 <div className="settingarea">
                   <ul className="header-right">
                       <li className="icons"> <BsBell /></li>

@@ -33,7 +33,7 @@ export const HODAdd = (formData) => async (dispatch) => {
   try {
     dispatch({ type: HOD_ADD });
     let { data: response } = await createHod(formData);
-    console.log(response);
+    // console.log(response);
     if (response) {
        dispatch(HODGet())
       dispatch({
@@ -42,7 +42,7 @@ export const HODAdd = (formData) => async (dispatch) => {
       });
     }
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     dispatch({ type: HOD_ADD_FAIL, payload: err });
   }
 };
@@ -58,7 +58,7 @@ export const HODGet = (formData) => async (dispatch) => {
       });
     }
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     dispatch({ type: HOD_ADD_FAIL, payload: err });
   }
 };
@@ -74,7 +74,7 @@ export const DISEASEGet = (formData) => async(dispatch) => {
       });
     }
   }catch(err){
-    console.error(err);
+    // console.error(err);
     dispatch({ type: DISEASE_ADD_FAIL, payload: err });
   }
 }
@@ -94,7 +94,7 @@ export const SETHODObj = (formData) => async (dispatch) => {
       });
     }
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     dispatch({ type: SET_HOD_OBJ_FAIL, payload: { message: "NOT FOUND" } });
   }
 };
@@ -104,7 +104,7 @@ export const HODUpdate = (id, formData) => async (dispatch) => {
     dispatch({ type: UPDATE_HOD_BY_ID });
     let { data: response } = await updateHod(formData, id);
     if (response) {
-      console.log(response);
+      // console.log(response);
       dispatch({
         type: UPDATE_HOD_BY_ID_SUCCESS,
         payload: response.message,
@@ -112,7 +112,7 @@ export const HODUpdate = (id, formData) => async (dispatch) => {
       dispatch(HODGet());
     }
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     dispatch({ type: UPDATE_HOD_BY_ID_FAIL, payload: err });
   }
 };
@@ -122,7 +122,7 @@ export const HODDelete = (id) => async (dispatch) => {
     dispatch({ type: DELETE_HOD_BY_ID });
     let { data: response } = await deleteHod(id);
     if (response) {
-      console.log(response);
+      // console.log(response);
       dispatch({
         type: DELETE_HOD_BY_ID_SUCCESS,
         payload: response.message,
@@ -130,7 +130,7 @@ export const HODDelete = (id) => async (dispatch) => {
       dispatch(HODGet());
     }
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     dispatch({ type: DELETE_HOD_BY_ID_FAIL, payload: err });
   }
 };

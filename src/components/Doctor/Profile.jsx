@@ -158,13 +158,14 @@ const statues = [
         <div className="row align-items-center">
           <div className="col-lg-4">
            <div className='viewadduser'>
-            <ul >
+            {/* <ul >
                 <li><BiUserPlus className='icon' /> <span>Add User</span></li>
                 <li><AiOutlineUnorderedList className='icon' /> <span>Add User</span></li>
-            </ul>
+            </ul> */}
            </div>
           </div>
           <div className="col-lg-4">
+            <span style={{color:"white"}}><h4>Profile</h4></span>
           </div>
           <div className="col-lg-4"></div>
         </div>
@@ -178,7 +179,7 @@ const statues = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name  {firstName}<span>*</span></label>
+                                    <label>First Name <span>*</span></label>
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>

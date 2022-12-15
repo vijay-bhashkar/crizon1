@@ -183,14 +183,21 @@ const statues = [
           <div className="col-lg-4">
            <div className='viewadduser'>
             <ul >
-                <li><BiUserPlus className='icon' /> <span>Add User</span></li>
-                <li><AiOutlineUnorderedList className='icon' /> <span>Add User</span></li>
+                {/* <li><BiUserPlus className='icon' /> <span>Add User</span></li> */}
+                {/* <li><AiOutlineUnorderedList className='icon' /> <span>Add User</span></li> */}
             </ul>
            </div>
           </div>
           <div className="col-lg-4">
+            {(customerObj?._id)?
+          <h5 className="mb-0 text-center text-white"> UPDATE DOCTOR </h5>
+          :<h5 className="mb-0 text-center text-white"> ADD DOCTOR </h5>}
           </div>
-          <div className="col-lg-4"></div>
+          <div className="col-lg-4 text-end">
+            <div className='btnlist'>
+              <span><Link to="/Doctor/ListView" class="btn btn-defalut btn-md"> <AiOutlineUnorderedList className="icon" /> View List</Link></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -314,7 +321,9 @@ const statues = [
                     <div className='row mt-4'>  
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
-                                <Link to="" className='btn btn-link' onClick={handleAddCustomer}>Submit</Link>
+                                {(customerObj?._id)?
+                                <Link to="" className='btn btn-link' onClick={handleAddCustomer}>Update Doctor</Link>
+                                :<Link to="" className='btn btn-link' onClick={handleAddCustomer}>Add Doctor</Link>}
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ import { toastError, toastSuccess } from "../../utils/toastUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { HODAdd,HODGet, HODDelete, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
 import { Link } from 'react-router-dom';
-export const AddHod = () => {
+export const ShowHod = () => {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -162,9 +162,9 @@ const question = [
            <div className="btnlist">
             </div>
           </div>
-          {(hodObj?._id)?
-          <div className="col-lg-4"><h5 className="mb-0 text-center text-white"> UPDATE HOD </h5></div>
-          :<div className="col-lg-4"><h5 className="mb-0 text-center text-white">ADD HOD</h5></div>}
+          
+          <div className="col-lg-4"><h5 className="mb-0 text-center text-white"> DETAIL </h5></div>
+          
           <div className="col-lg-4 text-end">
             <div className='btnlist'>
               <Link to="/Hod/Hod" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
@@ -181,77 +181,77 @@ const question = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name  {firstName}<span>*</span></label>
-                                    <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
+                                    <label><b>First Name : </b><span> {firstName}</span></label>
+                                    {/* <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  /> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>Company <span>*</span></label>
-                                    <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
+                                    <label><b>Company : </b> <span></span> {company}</label>
+                                    {/* <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/> */}
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Email <span>*</span></label>
-                                    <input type="email" className='form-control' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                                    <label><b>Email : </b> <span> {email} </span></label>
+                                    {/* <input type="email" className='form-control' value={email} onChange={(e)=>{setEmail(e.target.value)}}/> */}
                                 </div>
-                                <div className='from-group'>
-                                    <label>Password <span>*</span></label>
+                                {/* <div className='from-group'>
+                                    <label><b>Password</b> <span>{}</span></label>
                                     <input type="text" className='form-control' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                                </div> */}
+                                <div className='from-group'>
+                                    <label><b>State : </b> <span>{state}</span></label>
+                                    {/* <input type="text" className='form-control' value={state} onChange={(e)=>{setState(e.target.value)}}/> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>State <span>*</span></label>
-                                    <input type="text" className='form-control' value={state} onChange={(e)=>{setState(e.target.value)}}/>
+                                    <label><b>City : </b> <span>{city}</span></label>
+                                    {/* <input type="text" className='form-control' value={city} onChange={(e)=>{setCity(e.target.value)}}/> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>City <span>*</span></label>
-                                    <input type="text" className='form-control' value={city} onChange={(e)=>{setCity(e.target.value)}}/>
-                                </div>
-                                <div className='from-group'>
-                                    <label>Security Question <span>*</span></label>
-                                    <select  className="form-control" value={securityQuest} onChange={(e)=>{setSecurityQuest(e.target.value)}}>
+                                    <label><b>Security Question : </b><span>{securityQuest}</span></label>
+                                    {/* <select  className="form-control" value= onChange={(e)=>{setSecurityQuest(e.target.value)}}>
                                     { question && question.map((el)=><option value={el.value}>{el.label}</option>) }
-                                    </select>
+                                    </select> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>Disease<span>*</span></label>
-                                    <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
+                                    <label><b>Disease : </b><span>{disease}</span></label>
+                                    {/* <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
                                         <option>Please Select</option>
                                         { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.name}</option>) }
-                                    </select>
+                                    </select> */}
                                 </div>
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>Last Name<span></span></label>
-                                    <input type="text" className='form-control' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
+                                    <label><b>Last Name : </b><span>{lastName}</span></label>
+                                    {/* <input type="text" className='form-control' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>Position/Title<span>*</span></label>
-                                    <input type="text" className='form-control' value={position} onChange={(e)=>{setPosition(e.target.value)}}/>
+                                    <label><b>Position/Title : </b><span>{position}</span></label>
+                                    {/* <input type="text" className='form-control' value={position} onChange={(e)=>{setPosition(e.target.value)}}/> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>Phone<span>*</span></label>
-                                    <input type="text" className='form-control' value={phone} maxLength={10} onChange={(e)=>{setPhone(e.target.value)}}/>
+                                    <label><b>Phone : </b><span>{phone}</span></label>
+                                    {/* <input type="text" className='form-control' value={phone} maxLength={10} onChange={(e)=>{setPhone(e.target.value)}}/> */}
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Confirm Password<span>*</span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
+                                </div> */}
+                                <div className='from-group'>
+                                    <label><b>Country : </b><span>{country}</span></label>
+                                    {/* <input type="text" className='form-control' value={country} onChange={(e)=>{setCountry(e.target.value)}}/> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>Country<span>*</span></label>
-                                    <input type="text" className='form-control' value={country} onChange={(e)=>{setCountry(e.target.value)}}/>
-                                </div>
-                                <div className='from-group'>
-                                    <label>ZipCode<span>*</span></label>
-                                    <input type="text" className='form-control' maxLength={6} value={zipCode} onChange={(e)=>{setZipCode(e.target.value)}}/>
+                                    <label><b>ZipCode : </b><span>{zipCode}</span></label>
+                                    {/* <input type="text" className='form-control' maxLength={6} value={zipCode} onChange={(e)=>{setZipCode(e.target.value)}}/> */}
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Answer<span>*</span></label>
-                                    <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
+                                    <label><b>Answer : </b><span>{securityAns}</span></label>
+                                    {/* <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/> */}
                                 </div>
-                                <div className='row'>
+                                {/* <div className='row'>
                                     <div className='col-lg-6'>
                                     <label>Verification Word*</label>
                                     <div className="input-group">
@@ -265,11 +265,11 @@ const question = [
                                             <input type="text" className='form-control' value={conVerification} onChange={(e)=>{setConVerification(e.target.value)}}/>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
-                    <div className='row mt-4'>  
+                    {/* <div className='row mt-4'>  
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
                                 {(hodObj?._id)?
@@ -277,7 +277,7 @@ const question = [
                                 :<Link to="" className='btn btn-link' onClick={handleAddCustomer}>Add Hod</Link>}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

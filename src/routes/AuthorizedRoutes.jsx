@@ -7,15 +7,20 @@ import Login from "../components/Login.jsx";
 import DefaultLayout from "../components/Layout/Index.jsx";
 import Appointment from "../components/Appointment/Appointment.jsx";
 import { Departments } from "../components/Departments.jsx";
+
 import { Hod } from "../components/Hod/Hod.jsx";
 import { AddHod } from "../components/Hod/AddHod.jsx";  
 import { Profile } from "../components/Hod/Profile.jsx";
+import { ShowHod } from "../components/Hod/ShowHod.jsx";
+
 import { Patientupcoming } from "../components/Patientupcoming.jsx";
 import { Medicalreport } from "../components/Medicalreport.jsx";
+
 import { Adduser } from "../components/Doctor/Adduser.jsx";
 import { ListView } from "../components/Doctor/ListView.jsx";
 import { ShowView } from "../components/Doctor/ShowView.jsx";
 import { DoctorProfile } from "../components/Doctor/Profile.jsx";
+
 import { PatientListView } from "../components/Patients/PatientListView.jsx";
 import { Adddemographics } from "../components/Patients/Adddemographics.jsx";
 import { Editdemographics } from "../components/Patients/Editdemographics.jsx";
@@ -27,6 +32,7 @@ import { Treatment } from "../components/Patients/Treatment.jsx";
 import { Infections } from "../components/Patients/Infections.jsx";
 import { Depression } from "../components/Patients/Depression.jsx";
 import { ShowpatientDetail } from "../components/Patients/ShowpatientDetail.jsx";
+
 import { Addfollowup } from "../components/FollowUp/Addfollowup.jsx";
 import { Addpatientdepression } from "../components/FollowUp/Addpatientdepression.jsx";
 import { FollowUpList } from "../components/FollowUp/FollowUpList.jsx";
@@ -51,6 +57,8 @@ function AuthorizedRoutes() {
                       <Route path="/Hod/Hod" exact element={<Hod />}></Route>
                       <Route path="/Hod/AddHod" exact element={<AddHod />}></Route>
                       <Route path="/Hod/Profile" exact element={<Profile/>}></Route>
+                      <Route path="/Hod/ShowHod" exact element={<ShowHod/>}></Route>
+
                       <Route path="/Patientupcoming" exact element={<Patientupcoming />}></Route>
                       <Route path="/Medicalreport" exact element={<Medicalreport />}></Route>
                       <Route path="/Doctor/adduser" exact element={<Adduser />}></Route>

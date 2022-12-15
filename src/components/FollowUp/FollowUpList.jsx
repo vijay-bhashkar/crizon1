@@ -46,12 +46,12 @@ useEffect(() => {
               <div className="viewadduser">
                 <ul>
                   <li>
-                    <BiUserPlus className="icon" /> <span>Add User</span>
+                    <BiUserPlus className="icon"/><span><Link to="/FollowUp/Addfollowup" style={{color: "white",textDecoration: 'none'}}>Add User</Link></span>
                   </li>
-                  <li>
+                  {/* <li>
                     <AiOutlineUnorderedList className="icon" />{" "}
                     <span>Add User</span>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

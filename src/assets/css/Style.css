@@ -116,7 +116,7 @@ ul{
     background-color: #E5E9FF;
 }
 .wrapper_contentbody{
-    padding: 50px 60px;
+    padding: 20px 60px 50px;
 }
 .sidebar_wrapper .accordion .accordion-item{
     border-radius: 0;
@@ -588,7 +588,7 @@ background-color: #C7C5C5;
     margin: 0;
     padding: 0px 0px;
     display: flex;
-    gap: 2px;
+    /* gap: 2px; */
 }
 
 .datemathed .icon{
@@ -609,7 +609,7 @@ background-color: #C7C5C5;
 }
 .bookedappoiment {
     background-color: #FFE1E1 !important;
-    padding: 26px 24px !important;
+    /* padding: 26px 24px !important; */
     text-align: center;
     font-size: 17px;
     color: #AEAEAE;
@@ -617,7 +617,7 @@ background-color: #C7C5C5;
 }
 .available{
     background-color: #B4FFCD !important;
-    padding: 26px 24px !important;
+    /* padding: 26px 24px !important; */
     text-align: center;
     font-size: 17px;
     color: #005723;
@@ -651,3 +651,39 @@ background-color: #C7C5C5;
     padding: 65px 15px;
 }
 
+.overflow_text{
+    height: 50px;
+    overflow: scroll;
+}
+.icnocneter .icon{
+    font-size: 30px;
+}
+.paddibg0_table table{
+    padding: 0 !important;
+}
+table.paddibg0_table11{
+ 
+}
+td.listdate {
+    padding: 0;
+}
+.scroller_text{
+    height: 300px; overflow-y: scroll;
+
+}
+
+
+
+.scroller_text::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .scroller_text::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  
+  .scroller_text::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+ 

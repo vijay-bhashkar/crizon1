@@ -24,6 +24,8 @@ const nutritionObj = useSelector((states) => states.nutrition.nutritionsObj);
 const investigationObj = useSelector((states) => states.investigation.investigationsObj);
 const treatmentObj = useSelector((states) => states.treatment.treatmentsObj);
 const infectionObj = useSelector((states) => states.infection.infectionsObj);
+const role = useSelector((states)=> states.auth.role);
+const roleUserData = useSelector((states)=> states.auth.user.roleUser);
 
 const {id} =  useParams();
 console.log("iaai",id)
@@ -827,12 +829,12 @@ useEffect(() =>{
           </div>
           <div className="col-lg-4">
           <h5 className="mb-0 text-center text-white">
-            Patient (ULCERATIVE Colitis DISEASE)
+          Patient Personal Details
           </h5>
           </div>
           <div className="col-lg-4 text-end">
             <div className='btnlist'>
-                <Link class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+                {/* <Link class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link> */}
             </div>
           </div>
         </div>
@@ -844,7 +846,7 @@ useEffect(() =>{
                 <div className='col-lg-10'>
                     <div className='row mb-3'>
                         <div className='heaind text-center'>
-                            <h3>Patient Personal Details</h3>
+                            <h3></h3>
                         </div>
                     </div>
                     <div className='row'>
@@ -897,7 +899,7 @@ useEffect(() =>{
                                     <label><b>Diagnosis Month</b><span>: {diagnosisMonth}</span></label>
                                 </div>
                                 <div className='from-group'>
-                                <label><b>Disease </b> <span>: {disease}</span></label>
+                                <label><b>Disease </b> <span>: {disease} {indiDisease}</span></label>
                                 </div>
                                 {/* <div className='from-group'>
                                     <label><b>Confirm Password. </b> <span>: {conPassword}</span></label>
@@ -907,7 +909,6 @@ useEffect(() =>{
                         <div className='col-lg-12'>
                         <div className='from-group addlist-frm'>
                             <label><b>Address Line 1 </b><span>: {addressLine}</span></label>
-        
                         </div>
                         </div>
                     </div>

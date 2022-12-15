@@ -176,13 +176,10 @@ const statues = [
         <div className="row align-items-center">
           <div className="col-lg-4">
            <div className='viewadduser'>
-            <ul >
-                <li><BiUserPlus className='icon' /> <span>Add User</span></li>
-                <li><AiOutlineUnorderedList className='icon' /> <span>Add User</span></li>
-            </ul>
            </div>
           </div>
           <div className="col-lg-4">
+            <span style={{color:"white"}}>DOCTOR DETAILS</span>
           </div>
           <div className="col-lg-4"></div>
         </div>
@@ -214,13 +211,10 @@ const statues = [
                                     <label>Password : <span>{password}</span></label>
                                 </div> */}
                                 <div className='from-group'>
-                                    <label><b>Security Question :</b> <span>{securityQuest}</span></label>
-                                </div>
-                                <div className='from-group'>
                                     <label><b>Statue :</b> <span>{statue}</span></label>
                                 </div>
                                 <div className='from-group'>
-                                    <label><b>Disease :</b> <span>{disease}</span></label>
+                                    <label><b>Security Question :</b> <span>{securityQuest}</span></label>
                                 </div>
                             </div>
                         </div>
@@ -244,14 +238,17 @@ const statues = [
                                 {/* <div className='from-group'>
                                     <label>Confirm Password :<span> {conPassword}</span></label>
                                 </div> */}
-                                <div className='from-group'>
-                                    <label><b>Answer :</b> <span>{securityAns}</span></label>
-                                </div>
                                 {/* <div className='row'>        
                                     <div className='from-group'>
                                     <label><b>H.O.D :</b> <span>{hod}</span></label>
                                 </div>
                                 </div> */}
+                                <div className='from-group'>
+                                    <label><b>Disease :</b> <span>{disease}</span></label>
+                                </div>
+                                <div className='from-group'>
+                                    <label><b>Answer :</b> <span>{securityAns}</span></label>
+                                </div>
                             </div>
                         </div>
                     </div>

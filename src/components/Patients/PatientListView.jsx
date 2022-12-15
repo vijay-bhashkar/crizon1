@@ -13,6 +13,7 @@ const demograficArr = useSelector((states) => states.demografic.demografics);
 const role = useSelector((states)=> states.auth.role);
 const user = useSelector((states)=> states.auth.user);
 const roleUser = useSelector((states)=> states.auth.user.roleUser);
+const [search, setSearch] = useState("");
 
 const dispatch = useDispatch();
 const navigate = useNavigate();
@@ -30,17 +31,22 @@ const handleGet = () => {
   if(role == rolesObj.PATIENT){
     query += `patient=${user?.roleUser?._id}`;
   }
-
-dispatch(DEMOGRAFICGet(query));
-
+  dispatch(DEMOGRAFICGet(query));
 };
 
 
 useEffect(() => {
   dispatch(SETDEMOGRAFICObj({}))
-
   handleGet()
   }, []);
+
+useEffect(()=>{
+  if(search){
+    let patientArr = demograficArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${search}`.toLowerCase()));
+    console.log(patientArr);
+    setDemograficMainArr(patientArr);
+  }
+})
 
  useEffect(() => {
   if (demograficArr?.length) {
@@ -81,18 +87,20 @@ useEffect(() => {
             <div className="col-lg-4">
               <div className="viewadduser">
                 <ul>
-                  <li>
-                    <BiUserPlus className="icon" /> <span>Add Patient</span>
-                  </li>
-                  <li>
-                    <AiOutlineUnorderedList className="icon" />{" "}
-                    <span>Add Patient</span>
-                  </li>
                 </ul>
               </div>
             </div>
-            <div className="col-lg-4"></div>
-            <div className="col-lg-4"></div>
+            <div className="col-lg-3"><span style={{color:"white"}}><h5>PATIENT'S NAME</h5></span></div>
+            <div className="col-lg-3 ">
+            <div className='btnlist'>
+              <input type="text" name="search" placeholder='Enter Patient Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
+            </div>
+            </div>
+            <div className="col-lg-2 text-end">
+            <div className='btnlist'>
+              <Link to={"/Patients/Adddemographics"} class="btn btn-defalut btn-md"><BiUserPlus className="icon"/> Add Patient </Link>
+            </div>
+            </div>
           </div>
         </div>
       </div>

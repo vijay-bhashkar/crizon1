@@ -233,7 +233,7 @@ export const Addfollowup = () => {
 useEffect(()=>{
     if(followupObj){
 
-        console.log(followupObj?.patientId,"followupObj?.patientI")
+    // console.log(followupObj?.patientId,"followupObj?.patientI")
     setPatientId(followupObj?.patientId);
     setFollowupDate(followupObj?.followupDate);
     setDiseaseExtend(followupObj?.diseaseExtend);
@@ -551,15 +551,19 @@ useEffect(()=>{
            
           </div>
           <div className="col-lg-5">
+            {(followupObj?._id)?
+            <h5 className="mb-0 text-center text-white">
+            Update Followup (ULCERATIVE COLITIES DISEASE)
+            </h5>:
             <h5 className="mb-0 text-center text-white">
             Add Followup (ULCERATIVE COLITIES DISEASE)
-            </h5>
+            </h5>}
           </div>
           <div className="col-lg-4 text-end">
             <div className="btnlist">
               <Link className="btn btn-defalut btn-md">
                 <AiOutlineUnorderedList className="icon" />{" "}
-                <span>View List</span>
+                <span><Link to="/FollowUp/followupList" style={{textDecoration:"none"}}>View List</Link></span>
               </Link>
             </div>
           </div>
@@ -575,6 +579,7 @@ useEffect(()=>{
                 <div className='from-group'>
                   <label>Patient ID* </label>
                   <select className='form-control' value={patientId} onChange={(e)=>{setPatientId(e.target.value)}}>
+                    <option value={"patient"}>Please Select Patient</option>
                     { patientArr && patientArr.map((el)=><option value={el._id}>{el._id} &nbsp; {el.patientName}</option>) }
                   </select>
                 </div>
@@ -1287,7 +1292,11 @@ useEffect(()=>{
              <div className='row'>
                 <div className='col-lg-12'>
                     <div className='subbtn text-center mt-4 mb-5'>
-                        <Link to="" className='btn btn-link' onClick={handleAddFollowUp}>Submit</Link>
+                        {(followupObj?._id)?
+                        <Link to="" className='btn btn-link' onClick={handleAddFollowUp}>Update</Link>
+                        :
+                        <Link to="" className='btn btn-link' onClick={handleAddFollowUp}>Add Follow Up</Link>
+                        }
                     </div>
                 </div>
              </div>

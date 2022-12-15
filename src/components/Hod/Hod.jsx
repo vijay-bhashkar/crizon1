@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+import { BiUserPlus } from "react-icons/bi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
-import { HODAdd, HODGet, HODDelete, SETHODObj } from "../../redux/actions/Hod/Hod.actions";
+import { HODGet, HODDelete, SETHODObj } from "../../redux/actions/Hod/Hod.actions";
 export const Hod = () => {
 
 useEffect(() => {
@@ -21,6 +23,7 @@ useEffect(() => {
   const [hodDisplayArr, sethodDisplayArr] = useState([]);
   const [disease , setDisease] =  useState("");
   const [doctor , setDoctor] =  useState("");
+  const [search , setSearch] =  useState("");
 
   const handleGet = () => {
     dispatch(HODGet());
@@ -31,7 +34,16 @@ useEffect(() => {
       sethodMainArr(hodArr);
       sethodDisplayArr(hodArr);
       }
-    }, [hodArr])
+    }, [hodArr]);
+
+    useEffect(() => {
+      if (search) {
+      let filterAr = hodArr.filter(el => `${el.firstName}`.toLowerCase().includes(`${search}`.toLowerCase()));
+      console.log(filterAr,"search")
+        sethodDisplayArr(filterAr);
+        }
+      }, [search])
+
 
     useEffect(() => {
       if (diseaseArr?.length) {
@@ -40,22 +52,25 @@ useEffect(() => {
       }, [diseaseArr]);
 
     const hadleDisease = (disease) => {
-      console.log(disease,"valuevalue")
       if (disease) {
-
         if(disease.value == 'all'){
           sethodDisplayArr(hodArr);
-
         } else {
           let hodDisease = hodArr.filter(el => el.disease == disease.value);
-          console.log(hodDisease, "disease doctor");
+          // console.log(hodDisease, "disease doctor");
           sethodDisplayArr(hodDisease);
         }
-       
-
       }
     }
-  
+    
+  // const handleSearch = (search)=>{
+  //   if(search){
+  //     console.log(search, "search search");
+  //     let searchData = hodArr.filter(el => el.firstName == search);
+  //     console.log(searchData, "search data search data");
+  //   }
+  // }
+
     const handleHodEdit = (row) => {
       dispatch(SETHODObj(row));
       navigate("/Hod/AddHod");
@@ -64,6 +79,10 @@ useEffect(() => {
     const handleHodDelete = (row) => {
       dispatch(HODDelete(row._id))
       dispatch(SETHODObj(null))
+  }
+    const handleHodView = (row) => {
+      dispatch(SETHODObj(row))
+      navigate("/Hod/ShowHod");
   }
 
   const options = [
@@ -78,15 +97,20 @@ useEffect(() => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="secound-header">
-              
               </div>
             </div>
             <div className="col-lg-4">
               <h5 className="mb-0 text-center text-white">
-                HODs
+                HOD LIST
               </h5>
             </div>
-            <div className="col-lg-4"></div>
+            <div className="col-lg-4 text-end">
+            <div className='viewadduser btnlist'>
+            <div className='btnlist'>
+              <Link to="/Hod/AddHod" class="btn btn-defalut btn-md"><BiUserPlus className='icon'/> Add H.O.D</Link>
+            </div>
+           </div>
+          </div>
           </div>
         </div>
       </div>
@@ -96,13 +120,11 @@ useEffect(() => {
               <div className=""></div>
               <div className="col-lg-5">
                 <label>DISEASES</label>
-                {/* <select className='form-control' value={disease} onChange={(el)=>{setDisease(el.target.value)}}>
-                  { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.name}</option>)}
-                </select> */}
-                <Select options={options} placeholder="Select" onChange={hadleDisease}/>
+                <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/>
               </div>
-              <div className="col-lg-5">
-              
+              <div className="col-lg-4">
+                <label></label>
+                <input type="text" name="search" placeholder='Enter Hod Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
               </div>
             </div>
           </div>
@@ -123,7 +145,7 @@ useEffect(() => {
                         <th scope="col">Disease</th>
                         <th scope="col">Phone No.</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Edit & Delete</th>
+                        <th scope="col">Edit & Delete & View</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -141,6 +163,9 @@ useEffect(() => {
                         </span>{" "}
                         <span className="delete_list">
                          <RiDeleteBin5Fill onClick={(e)=>{handleHodDelete(item)}}/>
+                        </span>
+                        <span className="editlist">
+                         <FiEdit onClick={(e)=>{handleHodView(item)}}/>
                         </span>
                         </td>
                       </tr>
