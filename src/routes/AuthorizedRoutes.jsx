@@ -33,6 +33,15 @@ import { Infections } from "../components/Patients/Infections.jsx";
 import { Depression } from "../components/Patients/Depression.jsx";
 import { ShowpatientDetail } from "../components/Patients/ShowpatientDetail.jsx";
 
+import { Viewdemografics } from "../components/Patients/Show/Viewdemografics.jsx";
+import { ViewClinicalhistory } from "../components/Patients/Show/ViewClinicalhistory.jsx";
+import { ViewPrevioustreatment } from "../components/Patients/Show/ViewPrevioustreatment.jsx";
+import { ViewNutrition } from "../components/Patients/Show/ViewNutrition.jsx";
+import { ViewInvestigation } from "../components/Patients/Show/ViewInvestigation.jsx";
+import { ViewTreatment } from "../components/Patients/Show/ViewTreatment.jsx";
+import { ViewInfection } from "../components/Patients/Show/ViewInfection.jsx";
+import { ViewDepression } from "../components/Patients/Show/ViewDepression.jsx";
+
 import { Addfollowup } from "../components/FollowUp/Addfollowup.jsx";
 import { Addpatientdepression } from "../components/FollowUp/Addpatientdepression.jsx";
 import { FollowUpList } from "../components/FollowUp/FollowUpList.jsx";
@@ -65,6 +74,7 @@ function AuthorizedRoutes() {
                       <Route path="/Doctor/listview" exact element={<ListView />}></Route>
                       <Route path="/Doctor/ShowView" exact element={<ShowView />}></Route>
                       <Route path="/Doctor/Profile" exact element={<DoctorProfile/>}></Route>
+
                       <Route path="/Patients/PatientListView" exact element={<PatientListView />}></Route>
                       <Route path="/Patients/adddemographics" exact element={<Adddemographics />}></Route>
                       <Route path="/Patients/editdemographics" exact element={<Editdemographics />}></Route>
@@ -76,6 +86,16 @@ function AuthorizedRoutes() {
                       <Route path="/Patients/infections" exact element={<Infections />}></Route>
                       <Route path="/Patients/depression" exact element={<Depression />}></Route>
                       <Route path="/Patients/ShowpatientDetail/:id" exact element={<ShowpatientDetail />}></Route>
+
+                      <Route path="/Patients/Viewdemografics" exact element={<Viewdemografics/>}></Route>
+                      <Route path="/Patients/Viewclinicalhistory" exact element={<ViewClinicalhistory/>}></Route>
+                      <Route path="/Patients/Viewprevioustreatment" exact element={<ViewPrevioustreatment/>}></Route>
+                      <Route path="/Patients/Viewnutrition" exact element={<ViewNutrition/>}></Route>
+                      <Route path="/Patients/Viewinvestigation" exact element={<ViewInvestigation/>}></Route>
+                      <Route path="/Patients/Viewtreatment" exact element={<ViewTreatment/>}></Route>
+                      <Route path="/Patients/Viewinfection" exact element={<ViewInfection/>}></Route>
+                      <Route path="/Patients/Viewdepression" exact element={<ViewDepression/>}></Route>
+
                       <Route path="/FollowUp/addfollowup" exact element={<Addfollowup />}></Route>
                       <Route path="/FollowUp/addpatientdepression" exact element={<Addpatientdepression />}></Route>
                       <Route path="/FollowUp/followupList" exact element={<FollowUpList />}></Route>

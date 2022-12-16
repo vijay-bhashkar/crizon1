@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
+import { GrView } from "react-icons/gr";
 import { BiRefresh } from "react-icons/bi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
@@ -107,7 +108,7 @@ const handleCustomerView = (row) => {
               {(role == rolesObj.HOD)?
               <th scope="col">View</th>
               :
-              <th scope="col">Edit & Delete</th> 
+              <th scope="col">Edit &nbsp; Delete &nbsp; View</th> 
               }
             </tr>
           </thead>
@@ -135,13 +136,13 @@ const handleCustomerView = (row) => {
               <td>
                 <span className="editlist">
                 <FiEdit onClick={(e)=>{handleCustomerEdit(item)}} />
-                </span>{" "}
+                </span>{" "}&nbsp;&nbsp;
                 <span className="delete_list">
                   <RiDeleteBin5Fill onClick={(e)=>{handleCustomerDelete(item)}}/>
-                </span>
-                {/* <span className="editlist">
-                <FiEdit onClick={(e)=>{handleCustomerView(item)}} />
-                </span>{" "} */}
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span className="editlist">
+                <GrView  onClick={(e)=>{handleCustomerView(item)}} />
+                </span>{" "}
               </td>}
             </tr>
             )

@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
+import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICGet, DEMOGRAFICDelete, SETDEMOGRAFICObj } from "../../redux/actions/Demografic/Demografic.actions";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
+import Select from "react-select";
+
 export const PatientListView = () => {
 
 const demograficArr = useSelector((states) => states.demografic.demografics);
 const role = useSelector((states)=> states.auth.role);
 const user = useSelector((states)=> states.auth.user);
 const roleUser = useSelector((states)=> states.auth.user.roleUser);
+const hodArr = useSelector((states) => states.hod.hods);
+
 const [search, setSearch] = useState("");
 
 const dispatch = useDispatch();
@@ -58,9 +63,13 @@ useEffect(()=>{
     dispatch(SETDEMOGRAFICObj(row));
     navigate("/Patients/editdemographics");
   };
+  
+  const handleDemograficAllView = (row) => {
+    dispatch(SETDEMOGRAFICObj(row));
+    navigate("/Patients/Viewdemografics");
+  };
 
   const handleDemograficDelete = (row) => {
-
     let query = "";
     if(role == rolesObj.HOD){
       query += `hod=${user?.roleUser?._id}`;
@@ -74,26 +83,39 @@ useEffect(()=>{
     dispatch(SETDEMOGRAFICObj(null))
   }
 
+  const hadleDisease = (disease) => {
+    if (disease) {
+      if(disease.value == 'all'){
+        setDemograficMainArr(demograficArr);
+      } else {
+        let hodDisease = demograficArr.filter(el => el.disease == disease.value);
+        // console.log(hodDisease, "disease doctor");
+        setDemograficMainArr(hodDisease);
+      }
+    }
+  }
+
   const handleDemograficView = (row) => {
     dispatch(SETDEMOGRAFICObj(row));
     navigate("/Patients/ShowpatientDetail/"+row?._id);
   };
+
+  const options = [
+    { value: "all", label: "All" },
+    { value: "colitis", label: "colitis" },
+    { value: "ulcerstive", label: "ulcerstive" },
+  ];
   
   return (
     <div className="content_wrapper">
       <div className="contentwraper_header">
         <div className="container-fluid">
           <div className="row align-items-center">
-            <div className="col-lg-4">
-              <div className="viewadduser">
-                <ul>
-                </ul>
-              </div>
+          <div className="col-lg-4">
             </div>
             <div className="col-lg-3"><span style={{color:"white"}}><h5>PATIENT'S NAME</h5></span></div>
             <div className="col-lg-3 ">
             <div className='btnlist'>
-              <input type="text" name="search" placeholder='Enter Patient Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
             </div>
             </div>
             <div className="col-lg-2 text-end">
@@ -104,6 +126,19 @@ useEffect(()=>{
           </div>
         </div>
       </div>
+      <div className="container-fluid">
+            <div className="row justify-content-center py-3">
+              <div className=""></div>
+              <div className="col-lg-5">
+                <label>Search by disease</label>
+                <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/>
+              </div>
+              <div className="col-lg-4">
+                <label>Seaarch by patient</label>
+                <input type="text" name="search" placeholder='Enter Patient Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
+              </div>
+            </div>
+          </div>
       <div className="table_view_list">
         <table class="table">
           <thead>
@@ -115,7 +150,7 @@ useEffect(()=>{
               <th scope="col">Sex </th>
               <th scope="col">Status</th>
               {(role == rolesObj.ADMIN || role == rolesObj.HOD || role == rolesObj.DOCTOR)?
-              <th scope="col">Edit & Delete</th>
+              <th scope="col">Edit & Delete & View</th>
               :<th scope="col">View</th>}
             </tr>
           </thead>
@@ -135,15 +170,18 @@ useEffect(()=>{
               </td>
               {(role == rolesObj.ADMIN || role == rolesObj.HOD || role == rolesObj.DOCTOR)?
               <td>
-                <span className="editlist">
+                <span className="editlist" style={{marginLeft:20}}>
                 <FiEdit onClick={(e)=>{handleDemograficEdit(item)}} />
                 </span>{" "}
                 <span className="delete_list">
                   <RiDeleteBin5Fill onClick={(e)=>{handleDemograficDelete(item)}}/>
                 </span>
+                <span className="editlist" style={{marginLeft:20}}>
+                <GrView onClick={(e)=>{handleDemograficAllView(item)}} />
+                </span>{" "}
               </td>:
               <td>
-                <span className="editlist">
+                <span className="editlist" style={{marginLeft:20}}>
                 <FiEdit onClick={(e)=>{handleDemograficView(item)}} />
                 </span>{" "}
               </td>}

@@ -116,7 +116,7 @@ const dispatch = useDispatch();
         dispatch(SETHODObj(null))
     } else {
         dispatch(HODAdd(obj));
-        toast.success(" HOD Added Successfully ");
+        // toast.success(" HOD Added Successfully ");
     }
   }
     

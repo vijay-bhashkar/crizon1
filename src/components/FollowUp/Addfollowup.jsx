@@ -580,7 +580,7 @@ useEffect(()=>{
                   <label>Patient ID* </label>
                   <select className='form-control' value={patientId} onChange={(e)=>{setPatientId(e.target.value)}}>
                     <option value={"patient"}>Please Select Patient</option>
-                    { patientArr && patientArr.map((el)=><option value={el._id}>{el._id} &nbsp; {el.patientName}</option>) }
+                    { patientArr && patientArr.map((el)=><option value={el._id}>{el.ccfId} &nbsp; {el.patientName}</option>) }
                   </select>
                 </div>
               </div>

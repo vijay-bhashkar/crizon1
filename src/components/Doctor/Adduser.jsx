@@ -127,12 +127,12 @@ const dispatch = useDispatch();
 
     if (customerObj?._id) {
         dispatch(DOCTORUpdate(customerObj._id, obj));
-        dispatch(SETDOCTORObj(null))
+        dispatch(SETDOCTORObj())
         toast.success(" Doctor Updated Successfully ");
     } else {
         dispatch(DOCTORAdd(obj));
-        dispatch(SETDOCTORObj(null))
-        toast.success(" Doctor Added Successfully ");
+        dispatch(SETDOCTORObj())
+        // toast.success(" Doctor Added Successfully ");
     }
 }
 };

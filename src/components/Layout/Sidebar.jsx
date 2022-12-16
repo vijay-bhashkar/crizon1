@@ -70,6 +70,7 @@ if(role == rolesObj.ADMIN){
          <div class="accordion-body">
             <ul>
               <li><Link to="/Patients/Adddemographics">Add Patient</Link></li>
+              {/* <li><Link to="/Patients/Viewdemografics">View Patient</Link></li> */}
               <li> <Link to="/Patients/PatientListView"> List Patient </Link></li>
               <li><Link to="/Patients/Addpatientdepression">Search Patient</Link></li>
             </ul>
@@ -171,7 +172,8 @@ if(role == rolesObj.HOD){
     <div class="accordion-body">
        <ul>
          <li><Link to="/Patients/Adddemographics">Add Patient</Link></li>
-         <li> <Link to="/Patients/PatientListView"> List Patient </Link></li>
+         <li><Link to="/Patients/Viewdemografics">View Patient</Link></li>
+         <li><Link to="/Patients/PatientListView"> List Patient </Link></li>
          <li><Link to="/Patients/Addpatientdepression">Search Patient</Link></li>
        </ul>
      </div>
@@ -270,7 +272,8 @@ if(role == rolesObj.DOCTOR){
          <div class="accordion-body">
             <ul>
               <li><Link to="/Patients/Adddemographics">Add Patient</Link></li>
-              <li> <Link to="/Patients/PatientListView"> List Patient </Link></li>
+              <li><Link to="/Patients/Viewdemografics">View Patient</Link></li>
+              <li><Link to="/Patients/PatientListView"> List Patient </Link></li>
               <li><Link to="/Patients/Addpatientdepression">Search Patient</Link></li>
             </ul>
           </div>

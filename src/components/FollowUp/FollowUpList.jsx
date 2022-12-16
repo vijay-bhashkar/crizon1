@@ -11,6 +11,7 @@ export const FollowUpList = () => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const [followupMainArr, setFollowupMainArr] = useState([]);
+const [search, setSearch] = useState("");
 const followupArr = useSelector((states)=> states.followup.followups);
 
 const handleGet = () => {
@@ -26,6 +27,13 @@ useEffect(() => {
       setFollowupMainArr(followupArr);
       }
     }, [followupArr])
+
+  useEffect(()=>{
+    if(search){
+      let followUpSearch =  followupMainArr.filter(el => `${el.patientId}`.toLowerCase().includes(`${search}`.toLowerCase()));
+      setFollowupMainArr(followUpSearch);
+    }
+  })
 
   const handleFollowupEdit = (row) => {
     dispatch(SETFOLLOWUPObj(row));
@@ -46,7 +54,6 @@ useEffect(() => {
               <div className="viewadduser">
                 <ul>
                   <li>
-                    <BiUserPlus className="icon"/><span><Link to="/FollowUp/Addfollowup" style={{color: "white",textDecoration: 'none'}}>Add User</Link></span>
                   </li>
                   {/* <li>
                     <AiOutlineUnorderedList className="icon" />{" "}
@@ -55,8 +62,14 @@ useEffect(() => {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-4"></div>
-            <div className="col-lg-4"></div>
+            <div className="col-lg-4"> 
+            <input type="text" name="search" placeholder="Enter Patient name" className="form-control" value={search} onChange={(el)=>{setSearch(el.target.value)}}/>
+            </div>
+            <div className="col-lg-4 text-end">
+            <div className='btnlist'>
+            <Link to="/FollowUp/Addfollowup" class="btn btn-defalut btn-md"> <BiUserPlus className="icon"/> Add Follow Up</Link>
+            </div>
+            </div>
           </div>
         </div>
       </div>

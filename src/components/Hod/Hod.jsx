@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiEdit } from "react-icons/fi";
+import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { BiUserPlus } from "react-icons/bi";
@@ -62,14 +63,6 @@ useEffect(() => {
         }
       }
     }
-    
-  // const handleSearch = (search)=>{
-  //   if(search){
-  //     console.log(search, "search search");
-  //     let searchData = hodArr.filter(el => el.firstName == search);
-  //     console.log(searchData, "search data search data");
-  //   }
-  // }
 
     const handleHodEdit = (row) => {
       dispatch(SETHODObj(row));
@@ -136,7 +129,7 @@ useEffect(() => {
                     <h4>HODs List</h4>
                   </div>
                 </div>
-                <div className='col-lg-10'>
+                <div className='col-lg-10 table_view_list'>
                 <table className="table">
                     <thead>
                       <tr>
@@ -158,14 +151,14 @@ useEffect(() => {
                         <td>{item.phone}</td>
                         <td><span className='status'> Active </span></td>
                         <td>
-                        <span className="editlist">
+                        <span className="editlist" style={{paddingLeft:16}}>
                           <FiEdit onClick={(e)=>{handleHodEdit(item)}} />
                         </span>{" "}
-                        <span className="delete_list">
+                        <span className="delete_list" style={{paddingLeft:16}}>
                          <RiDeleteBin5Fill onClick={(e)=>{handleHodDelete(item)}}/>
                         </span>
-                        <span className="editlist">
-                         <FiEdit onClick={(e)=>{handleHodView(item)}}/>
+                        <span className="editlist" style={{paddingLeft:20}}>
+                         <GrView onClick={(e)=>{handleHodView(item)}}/>
                         </span>
                         </td>
                       </tr>

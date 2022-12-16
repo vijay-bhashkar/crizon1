@@ -141,7 +141,7 @@ export const Adddemographics = () => {
         // console.log(role,"role",roleUser)
         // setDoctor(roleUser._id);   
         // }
-         else{
+        else{
             if (role == rolesObj.DOCTOR) {
                 console.log(role,"role",roleUser)
                 setDoctor(roleUser._id);   
@@ -177,7 +177,7 @@ export const Adddemographics = () => {
             toast.success(" Demografic Updated Successfully ");
         } else {
             dispatch(DEMOGRAFICAdd(obj));
-            toast.success(" Demografic Added Successfully ");
+            // toast.success(" Demografic Added Successfully ");
         }
         navigate("/Patients/clinicalhistory");
     }
@@ -360,7 +360,7 @@ export const Adddemographics = () => {
                                                     let selectedDoxtor = doctorArr.find(el => el._id == e.target.value)
                                                     setDoctor(e.target.value);
                                                     setHod(selectedDoxtor?.hod);
-                                                    setIndiDisease(selectedDoxtor?.disease);
+                                                    setDisease(selectedDoxtor?.disease);
                                                 }}>
                                                     <option value="">Please Select</option>
                                                     {doctorArr && doctorArr.map((el) => <option value={el._id}>{el.firstName}</option>)}
