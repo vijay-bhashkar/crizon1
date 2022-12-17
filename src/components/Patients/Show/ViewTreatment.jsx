@@ -419,50 +419,41 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 5 : </b> {session_5}</label>
-              
                     </div>
               </div>
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 6 : </b> {session_6}</label>
-               
                     </div>
               </div>
-           
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 7 : </b> {session_7}</label>
-                     
                     </div>
               </div>
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 8 : </b> {session_8}</label>
-                 
                     </div>
               </div>
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 9 : </b> {session_9}</label>
-                   
                     </div>
               </div>
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 10 : </b> {session_10}</label>
-                   
                     </div>
               </div>
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 11 : </b> {session_11}</label>
-                    
                     </div>
               </div>
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label><b>Session 12 : </b>{session_12}</label>
-                     
                     </div>
               </div>
             </div>
@@ -470,13 +461,11 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label><b>Surgery : </b> {surgery}</label>
-               
                 </div>
               </div>
                 <div className='col-lg-6'>
                 <div className='from-group'>
                   <label><b>If Yes : </b> {specify}</label>
-                 
                 </div>
               </div>
             </div>

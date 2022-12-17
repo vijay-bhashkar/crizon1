@@ -24,11 +24,7 @@ if(role == rolesObj.ADMIN){
     <div className="accordion-button">
       <h5><Link to="/appointmentform"> <BiUserPlus className="iconaccrion" /> <span>  Book Appoiment</span> </Link></h5>            
     </div>
-    {/* <div className="accordion-button">
-        <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>Manage Account</span></Link></h5>            
-    </div> */}
     <div class="accordion" id="accordionExample">
-
       <div class="accordion-item">
         <h5 class="accordion-header" id="headingOne">
           <span class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><BiUserPlus  className="iconaccrion" />
@@ -324,9 +320,12 @@ if(role == rolesObj.PATIENT){
       <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
     </div>
     <div className="accordion-button">
-      <h5><Link to="/appointmentform"> <BiUserPlus className="iconaccrion" /> <span>  Book Appoiment</span> </Link></h5>            
+      <h5><Link to="/Patients/patientAppointment"> <BiUserPlus className="iconaccrion" /> <span>  Book Appoiment</span> </Link></h5>            
     </div>
-    <div class="accordion" id="accordionExample">
+    <div className="accordion-button">
+      <h5><Link to="/Patients/PatientListView"> <BiUserPlus className="iconaccrion" /> <span>  View Detail</span> </Link></h5>            
+    </div>
+    {/* <div class="accordion" id="accordionExample">
 
       <div class="accordion-item">
         <h5 class="accordion-header" id="headingTwo">
@@ -337,15 +336,15 @@ if(role == rolesObj.PATIENT){
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
          <div class="accordion-body">
             <ul>
-              {/* <li><Link to="/Patients/Adddemographics">Add Patient</Link></li> */}
+              <li><Link to="/Patients/Adddemographics">Add Patient</Link></li> 
               <li> <Link to="/Patients/PatientListView"> View Detail </Link></li>
-              {/* <li><Link to="/Patients/Addpatientdepression">Search Patient</Link></li> */}
+              <li><Link to="/Patients/patientAppointment">Book Appointment</Link></li>
             </ul>
           </div>
         </div>
       </div>
       
-      {/* <div class="accordion-item">
+      <div class="accordion-item">
         <h5 class="accordion-header" id="headingthree">
           <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
             data-bs-target="#collapsethree" aria-expanded="false"  aria-controls="collapsethree"><BiUserPlus  className="iconaccrion" /> <span> Manage Follwoup </span>
@@ -360,8 +359,8 @@ if(role == rolesObj.PATIENT){
             </ul>
           </div>
         </div>
-      </div> */}
-      {/* <div class="accordion-item">
+      </div>
+      /* <div class="accordion-item">
         <h5 class="accordion-header" id="headingsubAdmin">
           <span class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesubAdmin" aria-expanded="true" aria-controls="collapsesubAdmin"><BiUserPlus  className="iconaccrion" />
             <span>Manage Subadmin </span>
@@ -375,9 +374,9 @@ if(role == rolesObj.PATIENT){
             </ul>
           </div>
         </div>
-      </div> */}
+      </div>
 
-    </div>
+    </div> */}
   </div>
   )
 }

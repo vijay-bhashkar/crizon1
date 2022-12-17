@@ -614,6 +614,7 @@ background-color: #C7C5C5;
     font-size: 17px;
     color: #AEAEAE;
     font-weight: 500;
+
 }
 .available{
     background-color: #B4FFCD !important;
@@ -622,6 +623,7 @@ background-color: #C7C5C5;
     font-size: 17px;
     color: #005723;
     font-weight: 500;
+    cursor: pointer;
 }
 .appoitmentable .table th{
     padding: 10px 27px;
@@ -661,9 +663,9 @@ background-color: #C7C5C5;
 .paddibg0_table table{
     padding: 0 !important;
 }
-table.paddibg0_table11{
+/* table.paddibg0_table11{
  
-}
+} */
 td.listdate {
     padding: 0;
 }
@@ -691,3 +693,86 @@ td.listdate {
     margin-left:20;
   } */
  
+
+  .custom-modal-parent {
+
+    z-index: 99999999999999999999999;
+  
+    position: relative;
+  
+  }
+  
+   
+  
+  .custom-modal {
+  
+    position: absolute;
+  width: 30%;
+    top: 50%;
+  
+    left: 50%;
+  
+    transform: translate(-50%, -50%);
+  
+    /* background-color: white; */
+  
+    border-radius: 10px;
+  
+    z-index: 9999;
+  
+  }
+  
+  .custom-modal:focus-visible {
+  
+    outline: 0;
+  
+  }
+  
+  .custom-modal-overlay {
+  
+    position: fixed;
+  
+    top: 0;
+  
+    left: 0;
+  
+    right: 0;
+  
+    bottom: 0;
+  
+    background-color: #00000080;
+  
+    backdrop-filter: blur(1px);
+  
+  }
+  
+  .custom-modal-body {
+  
+    overflow: hidden;
+  
+  }
+
+
+  .home-popup {
+
+ background-color: #fff;
+ position: relative;
+ overflow: hidden;
+ background-position: right bottom;
+ background-size:9pc;
+ background-repeat: no-repeat;
+ max-width:35vw;
+ padding: 30px 15px;
+ border-radius:10px
+
+}
+.iocnclose{
+    font-size: 25px;
+    position: absolute;
+    top: -20px;
+    cursor: pointer;
+    right: -5px;
+}
+.btn_modal_submit .btn-success{
+    
+}

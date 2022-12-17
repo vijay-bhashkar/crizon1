@@ -32,6 +32,7 @@ import { Treatment } from "../components/Patients/Treatment.jsx";
 import { Infections } from "../components/Patients/Infections.jsx";
 import { Depression } from "../components/Patients/Depression.jsx";
 import { ShowpatientDetail } from "../components/Patients/ShowpatientDetail.jsx";
+import { PatientAppointment } from "../components/Patients/PatientAppointment.jsx";
 
 import { Viewdemografics } from "../components/Patients/Show/Viewdemografics.jsx";
 import { ViewClinicalhistory } from "../components/Patients/Show/ViewClinicalhistory.jsx";
@@ -61,7 +62,7 @@ function AuthorizedRoutes() {
               <div className="wrapper_body">
                 <Sidebar/>
                   <Routes>
-                      <Route path="/" exact element={<Appointment />}></Route>
+                      <Route path="/" exact element={<Appointmentform />}></Route>
                       <Route path="/department" exact element={<Departments />}></Route>
                       <Route path="/Hod/Hod" exact element={<Hod />}></Route>
                       <Route path="/Hod/AddHod" exact element={<AddHod />}></Route>
@@ -86,6 +87,7 @@ function AuthorizedRoutes() {
                       <Route path="/Patients/infections" exact element={<Infections />}></Route>
                       <Route path="/Patients/depression" exact element={<Depression />}></Route>
                       <Route path="/Patients/ShowpatientDetail/:id" exact element={<ShowpatientDetail />}></Route>
+                      <Route path="/Patients/patientAppointment" exact element={<PatientAppointment />}></Route>
 
                       <Route path="/Patients/Viewdemografics" exact element={<Viewdemografics/>}></Route>
                       <Route path="/Patients/Viewclinicalhistory" exact element={<ViewClinicalhistory/>}></Route>

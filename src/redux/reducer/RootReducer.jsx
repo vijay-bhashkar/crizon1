@@ -14,6 +14,7 @@ import { hodReducer } from "./Hod/Hod.reducer";
 import { subAdminReducer } from "./SubAdmin/SubAdmin.reducer";
 import { doctorReducer } from "./Doctor/Doctor.reducer";
 import { followupReducer } from "./FollowUp/FollowUp.reducer";
+import { appointmentReducer } from "./Appointment/Appointment.reducer";
 
 const RootReducer = combineReducers({
   auth: authReducer,
@@ -30,6 +31,7 @@ const RootReducer = combineReducers({
   subAdmin : subAdminReducer,
   doctor : doctorReducer,
   followup : followupReducer,
+  appointment : appointmentReducer,
 });
 
 export default RootReducer;
