@@ -110,14 +110,13 @@ const question = [
         <div className="row align-items-center">
           <div className="col-lg-4">
            <div className='viewadduser'>
-            <ul >
+            {/* <ul >
                 <li><BiUserPlus className='icon' /> <span>Add User</span></li>
                 <li><AiOutlineUnorderedList className='icon' /> <span>Add User</span></li>
-            </ul>
+            </ul> */}
            </div>
           </div>
-          <div className="col-lg-4">
-          </div>
+          <div className="col-lg-4"><h4 style={{color:"white",marginLeft:150}}>Profile</h4></div>
           <div className="col-lg-4"></div>
         </div>
       </div>
@@ -154,12 +153,12 @@ const question = [
                                     <label>Password <span>*</span></label>
                                     <input type="text" className='form-control' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Security Question <span>*</span></label>
                                     <select  className="form-control" value={securityQuest} onChange={(e)=>{setSecurityQuest(e.target.value)}}>
                                     { question && question.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>
-                                </div>
+                                </div> */}
                                 <div className='from-group'>
                                     <label>Disease<span>*</span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
@@ -196,10 +195,10 @@ const question = [
                                     <label>Confirm Password<span>*</span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
-                                </div>
+                                </div> */}
                                 <div className='row'>
                                     <div className='col-lg-6'>
                                     <label>Verification Word*</label>

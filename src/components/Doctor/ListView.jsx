@@ -86,9 +86,11 @@ const handleCustomerView = (row) => {
             </div>
           </div>
             <div className="col-lg-2 ">
+            {(role == rolesObj.HOD)?"":
             <div className='btnlist'>
               <Link to="/Doctor/Adduser" class="btn btn-defalut btn-md"> <BiUserPlus className="icon" /> Add Doctor </Link>
-              </div>
+            </div>
+            }
             </div>
           </div>
         </div>

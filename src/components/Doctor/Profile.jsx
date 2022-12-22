@@ -183,7 +183,7 @@ const statues = [
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>
-                                    <label>Company <span>*</span></label>
+                                    <label>Hospital/Clinic <span>*</span></label>
                                     <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
                                 </div>
                                 
@@ -203,31 +203,28 @@ const statues = [
                                     <label>Password <span>*</span></label>
                                     <input type="text" className='form-control' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Security Question <span>*</span></label>
-
                                     <select  className="form-control" value={securityQuest} onChange={(e)=>{setSecurityQuest(e.target.value)}}>
                                         {
                                           question && question.map((el)=><option value={el.value}>{el.label}</option>)
                                         }
                                     </select>
-                                    {/* <Select options={question} placeholder="Select" value={securityQuest} onChange={(e)=>{securityQuest(e)}}/> */}
-                                </div>
+                                </div> */}
                                 <div className='from-group'>
-                                    <label>Statue<span>*</span></label>
+                                    <label>Status<span></span></label>
                                     <select className="form-control" value={statue} onChange={(e)=>{setStatue(e.target.value)}}>
                                         { statues && statues.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>
                                     {/* <Select options={statues} placeholder="Select" value={statue} onChange={(e)=>{setStatue(e.target.value)}}/> */}
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Disease<span>*</span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{hadleDisease(e.target.value)}}>
-                                    
-                                        <option value=""> Please Select Disease</option>
-                                        { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.disease}</option>) }
+                                    <option value=""> Please Select Disease</option>
+                                    { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.disease}</option>) }
                                     </select>
-                                    </div>
+                                </div> */}
                             
                             </div>
                         </div>
@@ -257,10 +254,10 @@ const statues = [
                                     <label>Confirm Password<span>*</span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
-                                </div>
+                                </div> */}
                                 <div className='row'>
                                     <div className='col-lg-6'>
                                     <label>Verification Word*</label>
@@ -275,13 +272,13 @@ const statues = [
                                             <input type="text" className='form-control '  />
                                         </div>
                                     </div>
-                                    <div className='from-group'>
+                                    {/* <div className='from-group'>
                                     <label>H.O.D<span>*</span></label>
                                     <select className="form-control" value={hod} onChange={(e)=>{sethod(e.target.value)}}>
                                     <option value=""> Please Select Hod</option>
                                         { hodArr && hodArr.map((el)=><option value={el._id}>{ el.firstName }</option>) }
                                     </select>
-                                </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

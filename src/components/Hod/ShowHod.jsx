@@ -96,7 +96,7 @@ useEffect(() => {
                                     <label><b>First Name : </b><span> {firstName}</span></label>
                                 </div>
                                 <div className='from-group'>
-                                    <label><b>Company : </b> <span></span> {company}</label>                                   
+                                    <label><b>Hospital/Clinic : </b> <span></span> {company}</label>                                   
                                 </div>                               
                                 <div className='from-group'>
                                     <label><b>Email : </b> <span> {email} </span></label>                                   

@@ -48,15 +48,9 @@ useEffect(() => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="viewadduser">
-                <ul>
-                  <li>
-                    <BiUserPlus className="icon" /> <span>Add User</span>
-                  </li>
-                  <li>
-                    <AiOutlineUnorderedList className="icon" />{" "}
-                    <span>Add User</span>
-                  </li>
-                </ul>
+              <div className='btnlist'>
+              <Link to="/SubAdmin/AddSubAdmin" class="btn btn-defalut btn-md"> <BiUserPlus className='icon' />Add Sub Admin</Link>
+              </div>
               </div>
             </div>
             <div className="col-lg-4"></div>

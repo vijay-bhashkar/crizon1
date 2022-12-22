@@ -113,7 +113,7 @@ useEffect(()=>{
           <div className="row align-items-center">
           <div className="col-lg-4">
             </div>
-            <div className="col-lg-3"><span style={{color:"white"}}><h5>PATIENT'S NAME</h5></span></div>
+            <div className="col-lg-3"><span style={{color:"white"}}><h5>PATIENT'S LIST</h5></span></div>
             <div className="col-lg-3 ">
             <div className='btnlist'>
             </div>
@@ -134,7 +134,7 @@ useEffect(()=>{
                 <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/>
               </div>
               <div className="col-lg-4">
-                <label>Seaarch by patient</label>
+                <label>Search by patient</label>
                 <input type="text" name="search" placeholder='Enter Patient Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
               </div>
             </div>

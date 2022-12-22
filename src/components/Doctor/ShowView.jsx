@@ -196,7 +196,7 @@ const statues = [
                                     <label><b>First Name :</b> <span>{firstName}</span></label>
                                 </div>
                                 <div className='from-group'>
-                                    <label><b>Company :</b> <span>{company}</span></label>
+                                    <label><b>Hospital/Clinic :</b> <span>{company}</span></label>
                                 </div>
                                 <div className='from-group'>
                                     <label><b>Email :</b> <span>{email}</span></label>
@@ -211,13 +211,13 @@ const statues = [
                                     <label>Password : <span>{password}</span></label>
                                 </div> */}
                                 <div className='from-group'>
-                                    <label><b>Statue :</b> <span>{statue}</span></label>
+                                    <label><b>Status :</b> <span>{statue}</span></label>
                                 </div>
-                                <div className='row'>        
+                                {/* <div className='row'>        
                                     <div className='from-group'>
                                     <label><b>H.O.D :</b> <span>{hod}</span></label>
                                 </div>
-                                </div>
+                                </div> */}
                                 <div className='from-group'>
                                     <label><b>Security Question :</b> <span>{securityQuest}</span></label>
                                 </div>

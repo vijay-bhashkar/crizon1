@@ -63,7 +63,7 @@ useEffect(() => {
               </div>
             </div>
             <div className="col-lg-4"> 
-            <input type="text" name="search" placeholder="Enter Patient name" className="form-control" value={search} onChange={(el)=>{setSearch(el.target.value)}}/>
+            <input type="text" name="search" placeholder="Enter Patient's followup Id" className="form-control" value={search} onChange={(el)=>{setSearch(el.target.value)}}/>
             </div>
             <div className="col-lg-4 text-end">
             <div className='btnlist'>

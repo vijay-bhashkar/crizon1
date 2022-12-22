@@ -36,7 +36,7 @@ useEffect(() => {
 
 const hodObj = useSelector((states) => states.hod.hodObj);
 const diseasesArrRedux = useSelector((states) => states.hod.diseases);
-console.log(hodObj);
+// console.log(hodObj);
 useEffect(() => {
     if(diseasesArrRedux){
         setDiseaseArr(diseasesArrRedux);
@@ -51,7 +51,7 @@ const dispatch = useDispatch();
       return;
     }
     if (company == "" || company == undefined) {
-        toast.error(" Company name is mandatory ");
+        toast.error(" Hospital/Clinic name is mandatory ");
       return;
     }
     if (position == "" || position == undefined) {
@@ -70,7 +70,8 @@ const dispatch = useDispatch();
         toast.error(" Phone Should be 10 digit ");
       return;
     }
-    if (password.trim().length == 0 ) {
+    if(!hodObj?._id){
+      if (password.trim().length == 0 ) {
         toast.error(" Password can not be Empty ");
       return;
     }
@@ -82,6 +83,8 @@ const dispatch = useDispatch();
         toast.error(" Password and Confirm Password Should Be Same");
       return;
     }
+    }
+  
     if (zipCode =="" || zipCode == undefined ) {
         toast.error(" Zipcode is mandatory");
       return;
@@ -101,8 +104,6 @@ const dispatch = useDispatch();
         state,
         country,
         city,
-        password,
-        conPassword,
         securityQuest,
         zipCode,
         securityAns,
@@ -110,7 +111,11 @@ const dispatch = useDispatch();
         verificationWord,
         conVerification
     };
-    if (hodObj?._id) {
+    if(password){
+      obj.password = password;
+      obj.conPassword = conPassword;
+    }
+    if(hodObj?._id) {
         dispatch(HODUpdate(hodObj._id, obj));
         toast.success(" HOD Updated Successfully ");
         dispatch(SETHODObj(null))
@@ -133,8 +138,8 @@ useEffect(() => {
         setState(hodObj?.state);
         setCountry(hodObj?.country);
         setCity(hodObj?.city);
-        setPassword(hodObj?.password);
-        setConPassword(hodObj?.conPassword);
+        // setPassword(hodObj?.password);
+        // setConPassword(hodObj?.conPassword);
         setSecurityQuest(hodObj?.securityQuest);
         setZipCode(hodObj?.zipCode);
         setSecurityAns(hodObj?.securityAns);
@@ -147,9 +152,9 @@ useEffect(() => {
 const question = [
     { value:"", label: "Please Select option" },
     { value:"What's your pet name?", label:"What's your pet name?" },
-    { value:"What's your favourate food?", label:"What's your favourate food?" },
+    { value:"What's your favourite food?", label:"What's your favourite food?" },
     { value:"What's your mother maiden name?", label:"What's your mother maiden name?" },
-    { value:"What's your Favorate actor name?", label:"What's your Favorate actor name?" },
+    { value:"What's your birth city?", label:"What's your birth city?" },
     { value:"What's your nick name?", label:"What's your nick name?" },
 ]
 
@@ -181,11 +186,11 @@ const question = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name  {firstName}<span>*</span></label>
+                                    <label>First Name <span>*</span></label>
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>
-                                    <label>Company <span>*</span></label>
+                                    <label>Hospital/Clinic <span>*</span></label>
                                     <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
                                 </div>
                                 

@@ -103,15 +103,22 @@ const dispatch = useDispatch();
     }if(`${phone}`.length != 10){
         toast.error("Phone should be 10 digit")
         return
-    }if(password.trim().length == 0){
-        toast.error("Password is mandatory")
-        return
-    }if(password.trim().length <5){
-        toast.error("Password can not less than 5 digit")
-        return
-    }if(password != conPassword){
-        toast.error("Password and Confirm password should be same")
-    }if(disease =="" || disease == undefined){
+    }
+    if(!customerObj?._id){
+        if (password.trim().length == 0 ) {
+          toast.error(" Password can not be Empty ");
+        return;
+      }
+      if (password.trim().length < 5 ) {
+          toast.error(" Password can not be less 5 digit");
+        return;
+      }
+      if (password != conPassword ) {
+          toast.error(" Password and Confirm Password Should Be Same");
+        return;
+      }
+      }
+    if(disease =="" || disease == undefined){
         toast.error("Please select Disease")
         return
     }if(hod == "" || hod == undefined){
@@ -120,10 +127,26 @@ const dispatch = useDispatch();
     }
     else{
     let obj = {
-        firstName, lastName, company, position, email, phone, state, country, city, password, conPassword, securityQuest, zipCode,
-         statue,securityAns,hod,
+        firstName,
+        lastName,
+        company, 
+        position, 
+        email, 
+        phone, 
+        state, 
+        country, 
+        city, 
+        securityQuest, 
+        zipCode,
+        statue,
+        securityAns,
+        hod,
         disease
     };
+    if(password){
+        obj.password = password;
+        obj.conPassword = conPassword;
+    }
 
     if (customerObj?._id) {
         dispatch(DOCTORUpdate(customerObj._id, obj));
@@ -148,8 +171,8 @@ useEffect(() => {
         setState(customerObj?.state);
         setCountry(customerObj?.country);
         setCity(customerObj?.city);
-        setPassword(customerObj?.password);
-        setConPassword(customerObj?.conPassword);
+        // setPassword(customerObj?.password);
+        // setConPassword(customerObj?.conPassword);
         setSecurityQuest(customerObj?.securityQuest);
         setZipCode(customerObj?.zipCode);
         setStatue(customerObj?.statue);
@@ -159,13 +182,11 @@ useEffect(() => {
     }
 }, [customerObj]);
 
-
-
 const question = [
     { value:"What's your pet name?", label:"What's your pet name?" },
-    { value:"What's your favourate food?", label:"What's your favourate food?" },
+    { value:"What's your favourite food?", label:"What's your favourite food?" },
     { value:"What's your mother maiden name?", label:"What's your mother maiden name?" },
-    { value:"What's your Favorate actor name?", label:"What's your Favorate actor name?" },
+    { value:"What's your birth city?", label:"What's your birth city?" },
     { value:"What's your nick name?", label:"What's your nick name?" },
 ]
 
@@ -209,11 +230,11 @@ const statues = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name  {firstName}<span>*</span></label>
+                                    <label>First Name <span>*</span></label>
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>
-                                    <label>Company <span>*</span></label>
+                                    <label>Hospital/Clinic <span>*</span></label>
                                     <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
                                 </div>
                                 
@@ -245,7 +266,7 @@ const statues = [
                                     {/* <Select options={question} placeholder="Select" value={securityQuest} onChange={(e)=>{securityQuest(e)}}/> */}
                                 </div>
                                 <div className='from-group'>
-                                    <label>Statue<span>*</span></label>
+                                    <label>Status<span></span></label>
                                     <select className="form-control" value={statue} onChange={(e)=>{setStatue(e.target.value)}}>
                                         { statues && statues.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>

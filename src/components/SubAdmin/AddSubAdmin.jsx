@@ -82,10 +82,9 @@ const roleDrop = [
         <div className="row align-items-center">
           <div className="col-lg-4">
            <div className='viewadduser'>
-            <ul >
-                <li><BiUserPlus className='icon' /> <span>Add Sub Admin</span></li>
-                <li><AiOutlineUnorderedList className='icon' /> <span>Add Sub Admin</span></li>
-            </ul>
+              <div className='btnlist'>
+              <Link to="/SubAdmin/ListView" class="btn btn-defalut btn-md"> <BiUserPlus className='icon' /> List Sub Admin</Link>
+              </div>
            </div>
           </div>
           <div className="col-lg-4">

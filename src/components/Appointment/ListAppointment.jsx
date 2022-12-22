@@ -35,7 +35,9 @@ useEffect(() => {
       var firstDay = new Date(y, m, 1);
       var lastDay = new Date(y, m + 1, 0);
       let docIID = roleUser?._id;
-      query += `startDate=${moment(firstDay).format('YYYY-MM-DD')}&lastDate=${moment(lastDay).format('YYYY-MM-DD')}&doctorId=${docIID}`
+       firstDay = moment(firstDay).format('YYYY-MM-DD');
+       lastDay = moment(lastDay).format('YYYY-MM-DD');
+      query += `startDate=${firstDay}lastDate=${lastDay}&doctorId=${docIID}`
     }
     dispatch(APPOINTMENTGet(query));
     console.log(query, "query");
