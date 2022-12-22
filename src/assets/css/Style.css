@@ -773,6 +773,8 @@ td.listdate {
     cursor: pointer;
     right: -5px;
 }
-.btn_modal_submit .btn-success{
-    
+
+
+.table_flex {
+    display: flex;
 }

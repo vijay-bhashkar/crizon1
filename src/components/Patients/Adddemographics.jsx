@@ -59,6 +59,7 @@ export const Adddemographics = () => {
 
         dispatch(DOCTORGet(query));
         dispatch(GETALLDoctor(query));
+        console.log(query , "query");
     }, []);
 
     useEffect(() => {

@@ -3,6 +3,7 @@ import { BiUserPlus } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
+import moment from 'moment/moment';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { SETPREVIOUSTREATMENTObj, PREVIOUSTREATMENTGet_BY_PATIENT_ID } from "../../../redux/actions/PreviousTreatment/PreviousTreatment.actions";
@@ -116,83 +117,83 @@ useEffect(() => {
     if(preTreatObj){
         setOralAsaName(preTreatObj?.oralAsa?.name);
         setOralAsaDose(preTreatObj?.oralAsa?.dose);
-        setOralAsaStart(preTreatObj?.oralAsa?.start);
-        setOralAsaEnd(preTreatObj?.oralAsa?.end);
+        setOralAsaStart(moment(preTreatObj?.oralAsa?.start).format("YYYY-MM-DD"));
+        setOralAsaEnd(moment(preTreatObj?.oralAsa?.end).format("YYYY-MM-DD"));
         
         setRectalSuppositoryName(preTreatObj?.rectalSuppository?.name);
         setRectalSuppositoryDose(preTreatObj?.rectalSuppository?.dose);
-        setRectalSuppositoryStart(preTreatObj?.rectalSuppository?.start);
-        setRectalSuppositoryEnd(preTreatObj?.rectalSuppository?.end);
+        setRectalSuppositoryStart(moment(preTreatObj?.rectalSuppository?.start).format("YYYY-MM-DD"));
+        setRectalSuppositoryEnd(moment(preTreatObj?.rectalSuppository?.end).format("YYYY-MM-DD"));
 
         setReacalFoamName(preTreatObj?.reacalFoam?.name);
         setReacalFoamDose(preTreatObj?.reacalFoam?.dose);
-        setReacalFoamStart(preTreatObj?.reacalFoam?.start);
-        setReacalFoamEnd(preTreatObj?.reacalFoam?.end);
+        setReacalFoamStart(moment(preTreatObj?.reacalFoam?.start).format("YYYY-MM-DD"));
+        setReacalFoamEnd(moment(preTreatObj?.reacalFoam?.end).format("YYYY-MM-DD"));
 
         setOralSteroidsName(preTreatObj?.oralSteroids?.name);
         setOralSteroidsDose(preTreatObj?.oralSteroids?.dose);
-        setOralSteroidsStart(preTreatObj?.oralSteroids?.start);
-        setOralSteroidsEnd(preTreatObj?.oralSteroids?.end);
+        setOralSteroidsStart(moment(preTreatObj?.oralSteroids?.start).format("YYYY-MM-DD"));
+        setOralSteroidsEnd(moment(preTreatObj?.oralSteroids?.end).format("YYYY-MM-DD"));
         
         setIvSteroidsName(preTreatObj?.ivSteroids?.name);
         setIvSteroidsDose(preTreatObj?.ivSteroids?.dose);
-        setIvSteroidsStart(preTreatObj?.ivSteroids?.start);
-        setIvSteroidsEnd(preTreatObj?.ivSteroids?.end);
+        setIvSteroidsStart(moment(preTreatObj?.ivSteroids?.start).format("YYYY-MM-DD"));
+        setIvSteroidsEnd(moment(preTreatObj?.ivSteroids?.end).format("YYYY-MM-DD"));
 
         setEntofoamName(preTreatObj?.entofoam?.name);
         setEntofoamDose(preTreatObj?.entofoam?.dose);
-        setEntofoamStart(preTreatObj?.entofoam?.start);
-        setEntofoamEnd(preTreatObj?.entofoam?.end);
+        setEntofoamStart(moment(preTreatObj?.entofoam?.start).format("YYYY-MM-DD"));
+        setEntofoamEnd(moment(preTreatObj?.entofoam?.end).format("YYYY-MM-DD"));
 
         setAzaName(preTreatObj?.aza?.name);
         setAzaDose(preTreatObj?.aza?.dose);
-        setAzaStart(preTreatObj?.aza?.start);
-        setAzaEnd(preTreatObj?.aza?.end);
+        setAzaStart(moment(preTreatObj?.aza?.start).format("YYYY-MM-DD"));
+        setAzaEnd(moment(preTreatObj?.aza?.end).format("YYYY-MM-DD"));
 
         setMpName(preTreatObj?.mp?.name);
         setMpDose(preTreatObj?.mp?.dose);
-        setMpStart(preTreatObj?.mp?.start);
-        setMpEnd(preTreatObj?.mp?.end);
+        setMpStart(moment(preTreatObj?.mp?.start).format("YYYY-MM-DD"));
+        setMpEnd(moment(preTreatObj?.mp?.end).format("YYYY-MM-DD"));
 
         setTgName(preTreatObj?.tg?.name);
         setTgDose(preTreatObj?.tg?.dose);
-        setTgStart(preTreatObj?.tg?.start);
-        setTgEnd(preTreatObj?.tg?.end);
+        setTgStart(moment(preTreatObj?.tg?.start).format("YYYY-MM-DD"));
+        setTgEnd(moment(preTreatObj?.tg?.end).format("YYYY-MM-DD"));
 
         setInfliximabName(preTreatObj?.infliximab?.name);
         setInfliximabDose(preTreatObj?.infliximab?.dose);
-        setInfliximabStart(preTreatObj?.infliximab?.start);
-        setInfliximabEnd(preTreatObj?.infliximab?.end);
+        setInfliximabStart(moment(preTreatObj?.infliximab?.start).format("YYYY-MM-DD"));
+        setInfliximabEnd(moment(preTreatObj?.infliximab?.end).format("YYYY-MM-DD"));
 
         setAdalimumabName(preTreatObj?.adalimumab?.name);
         setAdalimumabDose(preTreatObj?.adalimumab?.dose);
-        setAdalimumabStart(preTreatObj?.adalimumab?.start);
-        setAdalimumabEnd(preTreatObj?.adalimumab?.end);
+        setAdalimumabStart(moment(preTreatObj?.adalimumab?.start).format("YYYY-MM-DD"));
+        setAdalimumabEnd(moment(preTreatObj?.adalimumab?.end).format("YYYY-MM-DD"));
 
         setVedolizumabName(preTreatObj?.vedolizumab?.name);
         setVedolizumabDose(preTreatObj?.vedolizumab?.dose);
-        setVedolizumabStart(preTreatObj?.vedolizumab?.start);
-        setVedolizumabEnd(preTreatObj?.vedolizumab?.end);
+        setVedolizumabStart(moment(preTreatObj?.vedolizumab?.start).format("YYYY-MM-DD"));
+        setVedolizumabEnd(moment(preTreatObj?.vedolizumab?.end).format("YYYY-MM-DD"));
 
         setUstekinumabName(preTreatObj?.ustekinumab?.name);
         setUstekinumabPose(preTreatObj?.ustekinumab?.dose);
-        setUstekinumabStart(preTreatObj?.ustekinumab?.start);
-        setUstekinumabEnd(preTreatObj?.ustekinumab?.end);
+        setUstekinumabStart(moment(preTreatObj?.ustekinumab?.start).format("YYYY-MM-DD"));
+        setUstekinumabEnd(moment(preTreatObj?.ustekinumab?.end).format("YYYY-MM-DD"));
 
         setTofacitinibName(preTreatObj?.tofacitinib?.name);
         setTofacitinibPose(preTreatObj?.tofacitinib?.dose);
-        setTofacitinibStart(preTreatObj?.tofacitinib?.start);
-        setTofacitinibEnd(preTreatObj?.tofacitinib?.end);
+        setTofacitinibStart(moment(preTreatObj?.tofacitinib?.start).format("YYYY-MM-DD"));
+        setTofacitinibEnd(moment(preTreatObj?.tofacitinib?.end).format("YYYY-MM-DD"));
 
         setFmtName(preTreatObj?.fmt?.name);
         setFmtPose(preTreatObj?.fmt?.dose);
-        setFmtStart(preTreatObj?.fmt?.start);
-        setFmtEnd(preTreatObj?.fmt?.end);
+        setFmtStart(moment(preTreatObj?.fmt?.start).format("YYYY-MM-DD"));
+        setFmtEnd(moment(preTreatObj?.fmt?.end).format("YYYY-MM-DD"));
 
         setOther(preTreatObj?.other);
         setAsa(preTreatObj?.asa);
         setPreSurgery(preTreatObj?.preSurgery);
-        setSergeryDate(preTreatObj?.sergeryDate);
+        setSergeryDate(moment(preTreatObj?.sergeryDate).format("YYYY-MM-DD"));
         setTypeSurgery(preTreatObj?.typeSurgery);
     }
    },[preTreatObj]);

@@ -4,8 +4,41 @@ import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const Addpatientdepression = () => {
+
+  const [patientName, setPatientName] = useState("");
+  const [patientId, setPatientId] = useState("");
+  const [fatherName, setFatherName] = useState("");
+  const [sex, setSex] = useState("");
+  const [age, setAge] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [diagnosisYear, setDiagnosisYear] = useState("");
+  const [diagnosisMonth, setDiagnosisMonth] = useState("");
+  const [manifestation, setManifestation] = useState("");
+  const [bmi, setBmi] = useState("");
+  const [pallor, setPallor] = useState("");
+  const [fistula, setFistula] = useState("");
+
+  const patientArr = useSelector((states) => states.demografic.demografics);
+  // console.log(patientArr, "patient");
+
+
+    const onHandleFollowup = ()=>{
+    const patientAllName = patientArr.find(el => `${el.patientName}`.toLowerCase().includes(`${patientName}`.toLowerCase()));
+    const patientAllId  =  patientArr.find(el => `${el.ccfId}`.toLowerCase().includes(`${patientId}`.toLowerCase()));
+    const parentAllName = patientArr.find(el => `${el.parentName}`.toLowerCase().includes(`${fatherName}`.toLowerCase()));
+    const allGender  =  patientArr.find(el => `${el.sex}`.toLowerCase().includes(`${sex}`.toLowerCase()));
+    const allAge  =  patientArr.filter(el => `${el.age}`.toLowerCase().includes(`${age}`.toLowerCase()));
+    const allDiagnosisYear = patientArr.filter(el => `${el.diagnosisYear}`.toLowerCase().includes(`${diagnosisYear}`.toLowerCase()));
+    const allDiagnosisMonth = patientArr.filter(el => `${el.diagnosisYear}`.toLowerCase().includes(`${diagnosisYear}`.toLowerCase()));
+    console.log(allDiagnosisYear,allAge,allGender,parentAllName,patientAllId,patientAllName );
+  }
+ 
   const options = [
         { value: "select", label: "Select" },
         { value: "Yes", label: "Yes" },
@@ -76,32 +109,34 @@ export const Addpatientdepression = () => {
           <div className='row'>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Name of Patient</label>
-                    <input type="text" className='form-control' />
+                  <label>Name of Patient </label>
+                    <input type="text" className='form-control' value={patientName} onChange={(el)=>{setPatientName(el.target.value)}}/>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Patient ID</label>
-                  <input type="text" className='form-control' />
+                  <label>Patient ID : </label>
+                  <input type="text" className='form-control' value={patientId} onChange={(el)=>{setPatientId(el.target.value)}}/>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Father/Husband's Name</label>
-                  <input type="text" className='form-control' />
+                  <label>Father/Husband's Name {fatherName}</label>
+                  <input type="text" className='form-control' value={fatherName} onChange={(el)=>{setFatherName(el.target.value)}}/>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Sex</label>
-                  <Select options={sexDrop} placeholder="Select" />
+                  <select className="form-control" value={sex} onChange={(el)=>{setSex(el.target.value)}}>
+                    { sexDrop && sexDrop.map((el)=><option value={el.value}>{el.label}</option> )}
+                  </select>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Age</label>
-                  <select className='form-control'>
+                  <select className='form-control' value={age} onChange={(el)=>{setAge(el.target.value)}}>
                     { AgeArray.map(item =><option value={item}>{item}</option>) }
                   </select>
                 </div>
@@ -121,25 +156,26 @@ export const Addpatientdepression = () => {
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Diagnosis Year</label>
-                  {/* <Select options={options} placeholder="Select" /> */}
-                  <input type="number" className='form-control' />
+                  <input type="number" className='form-control' value={diagnosisYear} onChange={(el)=>{setDiagnosisYear(el.target.value)}}/>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Diagnosis Month</label>
-                  <Select options={months} placeholder="Select" />
+                  <select className='form-control' value={diagnosisMonth} onChange={(el)=>{setDiagnosisMonth(el.target.value)}}>
+                    { months && months.map((el)=><option value={el.value}>{el.label}</option> )}
+                  </select>
                 </div>
               </div>
             </div>
-           
             <div className='row mt-4'>
-                <div className='col-lg-12'>
-                    <div className='subbtn text-center'>
-                        <Link to="" className='btn btn-link'>Search</Link>
-                    </div>
+              <div className='col-lg-12'>
+                <div className='subbtn text-center'>
+                <button to="" className='btn btn-link' onClick={onHandleFollowup}>Search</button>
+                </div>
                 </div>
              </div>
+
              <div className='row mt-5'>
                 <div className='col-lg-12 heaind  text-center'>
                     <h3>Search by Clinical Manifestations</h3>

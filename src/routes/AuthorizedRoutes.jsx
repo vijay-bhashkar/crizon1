@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "../assets/css/Style.css"
 import Login from "../components/Login.jsx";
 import DefaultLayout from "../components/Layout/Index.jsx";
-import Appointment from "../components/Appointment/Appointment.jsx";
+import {Appointment} from "../components/Appointment/Appointment.jsx";
+import {ListAppointment} from "../components/Appointment/ListAppointment.jsx";
 import { Departments } from "../components/Departments.jsx";
 
 import { Hod } from "../components/Hod/Hod.jsx";
@@ -62,7 +63,8 @@ function AuthorizedRoutes() {
               <div className="wrapper_body">
                 <Sidebar/>
                   <Routes>
-                      <Route path="/" exact element={<Appointmentform />}></Route>
+                      <Route path="/" exact element={<Appointment />}></Route>
+                      <Route path="/listAppointment" exact element={<ListAppointment />}></Route>
                       <Route path="/department" exact element={<Departments />}></Route>
                       <Route path="/Hod/Hod" exact element={<Hod />}></Route>
                       <Route path="/Hod/AddHod" exact element={<AddHod />}></Route>
