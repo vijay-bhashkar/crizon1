@@ -96,7 +96,7 @@ export const subAdminReducer = (state = initialState, action) => {
         loading: true,
       };
     case SUBADMIN.SET_SUBADMIN_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         subAdminsObj: action.payload.data,

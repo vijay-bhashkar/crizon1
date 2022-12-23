@@ -17,14 +17,14 @@ export const hodReducer = (state = initialState, action) => {
         loading: true,
       };
     case HOD.HOD_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
         loading: false,
       };
     case HOD.HOD_ADD_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -46,7 +46,7 @@ export const hodReducer = (state = initialState, action) => {
 
    
     case HOD.GET_ALL_HODS_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -59,14 +59,14 @@ export const hodReducer = (state = initialState, action) => {
         loading: true,
       };
     case HOD.DELETE_HOD_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
         error: null,
       };
     case HOD.DELETE_HOD_BY_ID_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -79,14 +79,14 @@ export const hodReducer = (state = initialState, action) => {
         loading: true,
       };
     case HOD.UPDATE_HOD_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,
         error: null,
       };
     case HOD.UPDATE_HOD_BY_ID_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -108,7 +108,7 @@ export const hodReducer = (state = initialState, action) => {
       };
      
     case HOD.SET_HOD_OBJ_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -116,7 +116,7 @@ export const hodReducer = (state = initialState, action) => {
       };
 
     case HOD.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,

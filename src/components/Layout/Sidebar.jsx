@@ -16,7 +16,7 @@ if(role == rolesObj.ADMIN){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-        <h5><Link to="/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
+        {/* <h5><Link to="/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
       </div>
       <div className="accordion-button">
         <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
@@ -128,7 +128,7 @@ if(role == rolesObj.HOD){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-        <h5><Link to="Hod/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
+        {/* <h5><Link to="Hod/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
       </div>
     <div className="accordion-button">
       <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
@@ -228,7 +228,7 @@ if(role == rolesObj.DOCTOR){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-        <h5><Link to="/Doctor/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
+        {/* <h5><Link to="/Doctor/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
       </div>
       <div className="accordion-button">
         <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
@@ -308,7 +308,7 @@ if(role == rolesObj.PATIENT){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-      <h5><Link to="/profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
+      {/* <h5><Link to="/profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
     </div>
     <div className="accordion-button">
       <h5><Link to="/appointmentform"> <BiUserPlus className="iconaccrion" /> <span>  Book Appoiment</span> </Link></h5>            

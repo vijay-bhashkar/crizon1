@@ -97,7 +97,7 @@ export const demograficReducer = (state = initialState, action) => {
         loading: true,
       };
     case DEMOGRAFIC.SET_DEMOGRAFIC_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         demograficObj: action.payload.data,
@@ -112,7 +112,7 @@ export const demograficReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case DEMOGRAFIC.GET_ALL_DOCTORS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,

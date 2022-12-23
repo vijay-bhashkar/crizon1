@@ -96,7 +96,7 @@ export const nutritionReducer = (state = initialState, action) => {
         loading: true,
       };
     case NUTRITION.SET_NUTRITION_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         nutritionsObj: action.payload.data,

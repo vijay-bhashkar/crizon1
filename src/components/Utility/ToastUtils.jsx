@@ -13,7 +13,7 @@ export const toastError = (error) => {
   // else toast.error("ERROR");
 };
 export const toastSuccess = (message) => {
-  console.log(message);
-  toast.success(message);
+  // console.log(message);
+  // toast.success(message);
   // alert(message)
 };

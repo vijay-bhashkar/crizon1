@@ -96,7 +96,7 @@ export const treatmentReducer = (state = initialState, action) => {
         loading: true,
       };
     case TREATMENT.SET_TREATMENT_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         treatmentsObj: action.payload.data,

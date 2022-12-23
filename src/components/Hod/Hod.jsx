@@ -66,7 +66,7 @@ useEffect(() => {
 
     const handleHodEdit = (row) => {
       dispatch(SETHODObj(row));
-      navigate("/Hod/AddHod");
+      navigate(`/Hod/AddHod?edit=true&id=${row._id}`);
     };
   
     const handleHodDelete = (row) => {
@@ -143,12 +143,12 @@ useEffect(() => {
                     </thead>
                     <tbody>
                     {
-                      hodDisplayArr && hodDisplayArr.map((item,index) =>
-                      <tr>
+                      hodDisplayArr && hodDisplayArr.map((item,index) =>(
+                      <tr key={index}>
                         <th scope="row">{index+1}</th>
-                        <th>{item.firstName}</th>
-                        <td>{item.disease}</td>
-                        <td>{item.phone}</td>
+                        <th>{item?.firstName}</th>
+                        <td>{item?.disease}</td>
+                        <td>{item?.phone}</td>
                         <td><span className='status'> Active </span></td>
                         <td>
                         <span className="editlist" style={{paddingLeft:16}}>
@@ -162,6 +162,7 @@ useEffect(() => {
                         </span>
                         </td>
                       </tr>
+                    )
                     )}
                     </tbody>
                   </table>

@@ -96,7 +96,7 @@ export const investigationReducer = (state = initialState, action) => {
         loading: true,
       };
     case INVESTIGATION.SET_INVESTIGATION_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         investigationsObj: action.payload.data,

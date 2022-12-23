@@ -96,7 +96,7 @@ export const appointmentReducer = (state = initialState, action) => {
         loading: true,
       };
     case APPOINTMENT.SET_APPOINTMENT_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         appointmentObj: action.payload.data,
@@ -112,7 +112,7 @@ export const appointmentReducer = (state = initialState, action) => {
       };
 
     case APPOINTMENT.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -120,7 +120,7 @@ export const appointmentReducer = (state = initialState, action) => {
       }
 
       case APPOINTMENT.GET_ALL_DISEASES_SUCCESS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -128,7 +128,7 @@ export const appointmentReducer = (state = initialState, action) => {
       }
 
       case APPOINTMENT.GET_ALL_HODS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -144,7 +144,7 @@ export const appointmentReducer = (state = initialState, action) => {
       }
 
       case APPOINTMENT.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,

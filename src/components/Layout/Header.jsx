@@ -10,14 +10,20 @@ import { useNavigate, Link } from 'react-router-dom';
 function Header() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const roleUser = useSelector((states)=> states.auth.user.roleUser);
   const role = useSelector((states)=> states.auth.role);
   console.log(roleUser,"auth ,auth");
   console.log(role,"role role");
   useDispatch(loginUser());
+
+//  const handleProfile = () =>{
+//   navigate("/Profile");
+//  }
  
   const handleLogout = ()=>{
   dispatch(logoutUser());
+  navigate("/");
   }
 
   return (
@@ -45,14 +51,24 @@ function Header() {
                       <h3 className="blue">Welcome Back!  {`${roleUser?.firstName +" "+ roleUser?.lastName}`} </h3>
                     </div>}
                 <div className="settingarea">
-                  <ul className="header-right">
-                      <li className="icons"> <BsBell /></li>
-                      <li>
-                        <Link to="/" className='btn btn-link mx-4'>
-                        <img src={images.avatar} alt="" onClick={handleLogout} />
-                        </Link>
-                      </li>
-                    </ul>
+                <div class="dropdown">
+                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Setting
+                 </button>
+                  <ul class="dropdown-menu">
+                    {(role == rolesObj.DOCTOR)?
+                    <li><Link to="/Doctor/Profile" class="dropdown-item" href="#">Profile</Link></li>
+                    :""}
+                    {(role == rolesObj.HOD)?
+                    <li><Link to="/Hod/Profile" class="dropdown-item" href="#">Profile</Link></li>
+                    :""}
+                    {(role == rolesObj.ADMIN)?
+                    <li><Link to="/Profile" class="dropdown-item" href="#">Profile</Link></li>
+                    :""}
+                    <li><a class="dropdown-item"  onClick={handleLogout}>Logout</a></li>
+                    
+                  </ul>
+                </div>                
                 </div>
               </div>
               </div>

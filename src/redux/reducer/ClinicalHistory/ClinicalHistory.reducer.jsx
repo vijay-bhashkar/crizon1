@@ -96,7 +96,7 @@ export const clinicalHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case CLINICALHISTORY.SET_CLINICALHISTORY_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         clinicalHistoriesObj: action.payload.data,

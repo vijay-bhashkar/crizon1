@@ -7,9 +7,9 @@ import toast from "react-hot-toast";
 import { toastError, toastSuccess } from "../../utils/toastUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { HODAdd,HODGet, HODDelete, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 export const AddHod = () => {
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
@@ -117,8 +117,8 @@ const dispatch = useDispatch();
     }
     if(hodObj?._id) {
         dispatch(HODUpdate(hodObj._id, obj));
-        toast.success(" HOD Updated Successfully ");
-        dispatch(SETHODObj(null))
+        toast.success(" HOD Updated Successfully");
+        // dispatch(SETHODObj(null))
     } else {
         dispatch(HODAdd(obj));
         // toast.success(" HOD Added Successfully ");
@@ -148,6 +148,15 @@ useEffect(() => {
         setDisease(hodObj?.disease);
     }
 }, [hodObj]);
+
+useEffect(()=> {
+  console.log(searchParams.get("edit"), "searchParams.get('edit')")
+  if(!searchParams.get("edit") && !searchParams.get("edit") == "true"){
+    dispatch(SETHODObj(null))
+  }
+}, [searchParams.get("edit")])
+
+
 
 const question = [
     { value:"", label: "Please Select option" },
@@ -278,8 +287,8 @@ const question = [
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
                                 {(hodObj?._id)?
-                                <Link to="" className='btn btn-link' onClick={handleAddCustomer}>Update Hod</Link>
-                                :<Link to="" className='btn btn-link' onClick={handleAddCustomer}>Add Hod</Link>}
+                                <button  className='btn btn-link' onClick={handleAddCustomer}>Update Hod</button>
+                                :<button className='btn btn-link' onClick={handleAddCustomer}>Add Hod</button>}
                             </div>
                         </div>
                     </div>

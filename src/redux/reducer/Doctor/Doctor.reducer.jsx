@@ -18,14 +18,14 @@ export const doctorReducer = (state = initialState, action) => {
         loading: true,
       };
     case DOCTOR.DOCTOR_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
         loading: false,
       };
     case DOCTOR.DOCTOR_ADD_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -45,7 +45,7 @@ export const doctorReducer = (state = initialState, action) => {
         doctors: action.payload.data,
       };
     case DOCTOR.GET_ALL_DOCTORS_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -58,14 +58,14 @@ export const doctorReducer = (state = initialState, action) => {
         loading: true,
       };
     case DOCTOR.DELETE_DOCTOR_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
         error: null,
       };
     case DOCTOR.DELETE_DOCTOR_BY_ID_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -78,14 +78,14 @@ export const doctorReducer = (state = initialState, action) => {
         loading: true,
       };
     case DOCTOR.UPDATE_DOCTOR_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,
         error: null,
       };
     case DOCTOR.UPDATE_DOCTOR_BY_ID_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -98,7 +98,7 @@ export const doctorReducer = (state = initialState, action) => {
         loading: true,
       };
     case DOCTOR.SET_DOCTOR_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         doctorObj: action.payload.data,
@@ -106,7 +106,7 @@ export const doctorReducer = (state = initialState, action) => {
         error: null,
       };
     case DOCTOR.SET_DOCTOR_OBJ_FAIL:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -114,7 +114,7 @@ export const doctorReducer = (state = initialState, action) => {
       };
 
     case DOCTOR.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -122,7 +122,7 @@ export const doctorReducer = (state = initialState, action) => {
       }
 
       case DOCTOR.GET_ALL_DISEASES_SUCCESS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -130,7 +130,7 @@ export const doctorReducer = (state = initialState, action) => {
       }
 
       case DOCTOR.GET_ALL_HODS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -146,7 +146,7 @@ export const doctorReducer = (state = initialState, action) => {
       }
 
       case DOCTOR.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,

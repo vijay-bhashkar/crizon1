@@ -96,7 +96,7 @@ export const depressionReducer = (state = initialState, action) => {
         loading: true,
       };
     case DEPRESSION.SET_DEPRESSION_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         depressionObj: action.payload.data,

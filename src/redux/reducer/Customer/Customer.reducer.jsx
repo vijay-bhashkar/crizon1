@@ -114,7 +114,7 @@ export const customerReducer = (state = initialState, action) => {
       };
 
     case CUSTOMER.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -122,7 +122,7 @@ export const customerReducer = (state = initialState, action) => {
       }
 
       case CUSTOMER.GET_ALL_DISEASES_SUCCESS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -130,7 +130,7 @@ export const customerReducer = (state = initialState, action) => {
       }
 
       case CUSTOMER.GET_ALL_HODS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -146,7 +146,7 @@ export const customerReducer = (state = initialState, action) => {
       }
 
       case CUSTOMER.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,

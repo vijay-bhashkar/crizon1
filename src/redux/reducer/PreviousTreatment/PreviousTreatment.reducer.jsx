@@ -56,7 +56,7 @@ export const previousTreatmentReducer = (state = initialState, action) => {
         loading: true,
       };
     case PREVIOUSTREATMENT.DELETE_PREVIOUSTREATMENT_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -96,7 +96,7 @@ export const previousTreatmentReducer = (state = initialState, action) => {
         loading: true,
       };
     case PREVIOUSTREATMENT.SET_PREVIOUSTREATMENT_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         previousTreatmentsObj: action.payload.data,

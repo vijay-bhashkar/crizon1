@@ -98,7 +98,7 @@ export const followupReducer = (state = initialState, action) => {
         loading: true,
       };
     case FOLLOWUP.SET_FOLLOWUP_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         followupObj: action.payload.data,
@@ -114,7 +114,7 @@ export const followupReducer = (state = initialState, action) => {
       };
 
     case FOLLOWUP.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -122,7 +122,7 @@ export const followupReducer = (state = initialState, action) => {
       }
 
       case FOLLOWUP.GET_ALL_DISEASES_SUCCESS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -130,7 +130,7 @@ export const followupReducer = (state = initialState, action) => {
       }
 
       case FOLLOWUP.GET_ALL_HODS:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,
@@ -146,7 +146,7 @@ export const followupReducer = (state = initialState, action) => {
       }
 
       case FOLLOWUP.GET_ALL_DISEASES:
-      toastError(action.payload);
+      // toastError(action.payload);
       return {
         ...state,
         loading: false,

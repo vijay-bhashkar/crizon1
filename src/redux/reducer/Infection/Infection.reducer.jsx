@@ -96,7 +96,7 @@ export const infectionReducer = (state = initialState, action) => {
         loading: true,
       };
     case INFECTION.SET_INFECTION_OBJ_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         infectionsObj: action.payload.data,
