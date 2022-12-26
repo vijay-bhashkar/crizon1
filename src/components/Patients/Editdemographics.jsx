@@ -9,9 +9,11 @@ import { rolesObj } from '../../utils/roles';
 import { DEMOGRAFICAdd,DEMOGRAFICGet, SETDEMOGRAFICObj, DEMOGRAFICUpdate, GETALLDoctor } from "../../redux/actions/Demografic/Demografic.actions";
 import { DOCTORGet } from '../../redux/actions/Doctor/Doctor.actions';
 import { toast } from 'react-hot-toast';
+import { useSearchParams } from 'react-router-dom';
 // import { CUSTOMERGet } from '../../redux/actions/Customer/Customer.actions';
 export const Editdemographics = () => {
 
+    const [searchParams, setSearchParams] = useSearchParams("edit");
 const [ccfId, setCcfId] = useState("");
 const [enrollDate, setEnrollDate] = useState("");
 const [patientName, setPatientName] = useState("");
@@ -133,19 +135,17 @@ const navigate = useNavigate();
         doctor,
         disease,
         hod,
-        password,
-        conPassword,
         indiDisease
     };
+    if(password){
+        obj.password = password;
+        obj.conPassword = conPassword;
+    }
 
     if (demograficObj?._id) {
       dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
       toast.success(" Demografic Updated Successfully ");
     } 
-    // else {
-    //     console.log(obj);
-    //     dispatch(DEMOGRAFICAdd(obj));
-    // }
     navigate("/Patients/clinicalhistory");
 }
 };
@@ -172,11 +172,18 @@ useEffect(() => {
         setDoctor(demograficObj?.doctor);
         setDisease(demograficObj?.disease);
         setHod(demograficObj?.hod);
-        setPassword(demograficObj?.password);
-        setConPassword(demograficObj?.conPassword);
+        // setPassword(demograficObj?.password);
+        // setConPassword(demograficObj?.conPassword);
         setIndiDisease(demograficObj?.indiDisease);
     }
 }, [demograficObj]);
+
+useEffect(()=> {
+    console.log(searchParams.get("edit"), "edit")
+    if(!searchParams.get("edit") || !searchParams.get("edit") == "true"){
+    //   dispatch(SETDEMOGRAFICObj(null))
+    }
+  }, [searchParams.get("edit")])
 
 const education = [
     { value: "0", label: "Select Education Score" },
@@ -260,14 +267,14 @@ const gender = [
     </div>
     <div className='listheader'>
         <ul class="list-group list-group-horizontal">
-            <li class="list-group-item"><Link >Demographics</Link></li>
-            <li class="list-group-item"><Link >Clinical History</Link></li>
-            <li class="list-group-item"><Link >Previous Treatment</Link></li>
-            <li class="list-group-item"><Link >Nutritional History</Link> </li>
-            <li class="list-group-item"><Link >Investigations</Link></li>
-            <li class="list-group-item"><Link >Treatment</Link> </li>
-            <li class="list-group-item"><Link >Infections</Link></li>
-            <li class="list-group-item"><Link >Depression</Link></li>
+            <li class="list-group-item"><Link to="/Patients/editdemographics">Demographics</Link></li>
+            <li class="list-group-item"><Link to="/Patients/Clinicalhistory">Clinical History</Link></li>
+            <li class="list-group-item"><Link to="/Patients/previoustreatment">Previous Treatment</Link></li>
+            <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
+            <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
+            <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+            <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
+            <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>
         </ul>
     </div>
       <div className="wrapper_contentbody">
@@ -425,7 +432,7 @@ const gender = [
                         <div className='col-lg-12'>
                             {(role == rolesObj.PATIENT)?
                             <div className='subbtn text-center'>
-                                <Link to='/Patients/Clinicalhistory/' className='btn btn-link'>Next ssdfasddaf</Link>
+                                <Link to='/Patients/Clinicalhistory/' className='btn btn-link'>Next </Link>
                             </div>
                             :
                             <div className='subbtn text-center'>

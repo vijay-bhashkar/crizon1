@@ -227,6 +227,7 @@ export const Addfollowup = () => {
         }else{
             dispatch(FOLLOWUPAdd(obj));
             dispatch(SETFOLLOWUPObj(null))
+            toast.success("Follow up Added")
         }
     };
 

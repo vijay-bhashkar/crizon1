@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FOLLOWUPGet, FOLLOWUPDelete, SETFOLLOWUPObj } from "../../redux/actions/FollowUp/FollowUp.actions";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link ,useNavigate} from "react-router-dom";
+import { toast } from "react-hot-toast";
 export const FollowUpList = () => {
 
 const dispatch = useDispatch();
@@ -43,6 +44,7 @@ useEffect(() => {
   const handleFollowupDelete = (row) => {
     dispatch(FOLLOWUPDelete(row._id))
     dispatch(SETFOLLOWUPObj(null))
+    toast.success("Follow up deleted");
 };
 
   return (

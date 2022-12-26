@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 // import { CUSTOMERAdd,CUSTOMERGet, SETCUSTOMERObj, CUSTOMERUpdate, DISEASEGet, HODGet, ALLDISEASEGet  } from "../../redux/actions/Customer/Customer.actions";
 import { DOCTORAdd, DOCTORGet, SETDOCTORObj, DOCTORUpdate, DISEASEGet, HODGet, ALLDISEASEGet  } from "../../redux/actions/Doctor/Doctor.actions";
 import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { toastError } from "../../utils/toastUtils";
 export const Adduser = () => {
 
+const [searchParams, setSearchParams] = useSearchParams("edit");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
@@ -83,6 +85,13 @@ const hadleDisease = (diseaase)=> {
     }
 }
 
+useEffect(()=> {
+    console.log(searchParams.get("edit"), "edit")
+    if(!searchParams.get("edit") || !searchParams.get("edit") == "true"){
+      dispatch(SETDOCTORObj(null))
+    }
+  }, [searchParams.get("edit")]);
+
 const customerObj = useSelector((states) => states.doctor.doctorObj);
 
 const dispatch = useDispatch();
@@ -98,7 +107,7 @@ const dispatch = useDispatch();
         toast.error("Position is mandatory")
         return
     }if(company == "" || company == undefined){
-        toast.error("Company name is mandatory")
+        toast.error("Hospital/Clinic name is mandatory")
         return
     }if(`${phone}`.length != 10){
         toast.error("Phone should be 10 digit")
@@ -117,7 +126,7 @@ const dispatch = useDispatch();
           toast.error(" Password and Confirm Password Should Be Same");
         return;
       }
-      }
+    }
     if(disease =="" || disease == undefined){
         toast.error("Please select Disease")
         return
@@ -150,12 +159,10 @@ const dispatch = useDispatch();
 
     if (customerObj?._id) {
         dispatch(DOCTORUpdate(customerObj._id, obj));
-        dispatch(SETDOCTORObj())
         toast.success(" Doctor Updated Successfully ");
     } else {
         dispatch(DOCTORAdd(obj));
-        dispatch(SETDOCTORObj())
-        // toast.success(" Doctor Added Successfully ");
+        toast.success(" Doctor Added Successfully ");
     }
 }
 };
@@ -343,8 +350,8 @@ const statues = [
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
                                 {(customerObj?._id)?
-                                <Link to="" className='btn btn-link' onClick={handleAddCustomer}>Update Doctor</Link>
-                                :<Link to="" className='btn btn-link' onClick={handleAddCustomer}>Add Doctor</Link>}
+                                <button to="" className='btn btn-link' onClick={handleAddCustomer}>Update Doctor</button>
+                                :<button to="" className='btn btn-link' onClick={handleAddCustomer}>Add Doctor</button>}
                             </div>
                         </div>
                     </div>

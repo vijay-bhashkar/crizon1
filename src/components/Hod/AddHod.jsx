@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BiUserPlus } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
 import toast from "react-hot-toast";
 import { toastError, toastSuccess } from "../../utils/toastUtils";
 import { useDispatch, useSelector } from "react-redux";
-import { HODAdd,HODGet, HODDelete, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
+import { HODAdd,HODGet, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
 import { Link, useSearchParams } from 'react-router-dom';
 export const AddHod = () => {
   const [searchParams, setSearchParams] = useSearchParams("edit");

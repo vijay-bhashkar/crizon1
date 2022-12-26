@@ -25,7 +25,7 @@ export const doctorReducer = (state = initialState, action) => {
         loading: false,
       };
     case DOCTOR.DOCTOR_ADD_FAIL:
-      // toastError(action.payload);
+      toastError(action.payload);
       return {
         ...state,
         loading: false,

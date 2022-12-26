@@ -91,7 +91,7 @@ const handleAddDepression = () => {
 
   if(depressionObj?._id) {
     dispatch(DEPRESSIONUpdate(depressionObj._id, obj));
-    dispatch(SETDEPRESSIONObj(null))
+    // dispatch(SETDEPRESSIONObj(null))
     toast.success(" Depression Updated Successfully ");
   } else {
     dispatch(DEPRESSIONAdd(obj));
@@ -310,32 +310,14 @@ const interestInSexDrop = [
     </div>
     <div className="listheader">
       <ul className="list-group list-group-horizontal">
-        <li className="list-group-item">
-          <Link >Demographics</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Clinical History</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Previous Treatment</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >
-            Nutritional History
-          </Link>{" "}
-        </li>
-        <li className="list-group-item">
-          <Link >Investigations</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Treatment</Link>{" "}
-        </li>
-        <li className="list-group-item">
-          <Link >Infections</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Depression</Link>
-        </li>
+      <li class="list-group-item"><Link to="/Patients/editdemographics">Demographics</Link></li>
+            <li class="list-group-item"><Link to="/Patients/Clinicalhistory">Clinical History</Link></li>
+            <li class="list-group-item"><Link to="/Patients/previoustreatment">Previous Treatment</Link></li>
+            <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
+            <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
+            <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+            <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
+            <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>
       </ul>
     </div>
   

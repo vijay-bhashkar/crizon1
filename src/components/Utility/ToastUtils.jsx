@@ -2,7 +2,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 export const toastError = (error) => {
   // console.log(error)
-  // console.log(typeof error?.response?.data?.message)
+  console.log(typeof error?.response?.data?.message)
   if (typeof error?.response?.data?.message == "string") toast.error(error?.response?.data?.message);
   // alert(error?.response?.data?.message)
   else if (typeof error?.message == "string") toast.error(error.message);
@@ -13,7 +13,7 @@ export const toastError = (error) => {
   else toast.error("ERROR");
 };
 export const toastSuccess = (message) => {
-  // console.log(message);
+  console.log(message);
   toast.success(message);
   // alert(message)
 };

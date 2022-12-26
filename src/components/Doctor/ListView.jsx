@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
-import { BiRefresh } from "react-icons/bi";
+import { toast } from "react-hot-toast";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-// import { CUSTOMERAdd,CUSTOMERGet, CUSTOMERDelete, SETCUSTOMERObj } from "../../redux/actions/Customer/Customer.actions";
 import { DOCTORGet, DOCTORDelete, SETDOCTORObj } from "../../redux/actions/Doctor/Doctor.actions";
-import { AiOutlineUnorderedList } from "react-icons/ai";
-// import Select from "react-select";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
 export const ListView = () => {
@@ -45,18 +42,18 @@ useEffect(()=>{
  useEffect(() => {
   if (customerArr?.length) {
     setCustomerMainArr(customerArr);
-    // console.log(customerArr);
     }
   }, [customerArr])
 
   const handleCustomerEdit = (row) => {
     dispatch(SETDOCTORObj(row));
-    navigate("/Doctor/Adduser");
+    navigate(`/Doctor/Adduser?edit=true&id=${row._id}`);
   };
   
   const handleCustomerDelete = (row) => {
     dispatch(DOCTORDelete(row._id))
     dispatch(SETDOCTORObj(null))
+    toast.success("Doctor deleted successfully");
 };
 
 const handleCustomerView = (row) => {

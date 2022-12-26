@@ -7,6 +7,7 @@ import { BiUserPlus } from "react-icons/bi";
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
+import toast from "react-hot-toast";
 import { HODGet, HODDelete, SETHODObj } from "../../redux/actions/Hod/Hod.actions";
 export const Hod = () => {
 
@@ -71,6 +72,7 @@ useEffect(() => {
   
     const handleHodDelete = (row) => {
       dispatch(HODDelete(row._id))
+      toast.success("Hod deleted successfully");
       dispatch(SETHODObj(null))
   }
     const handleHodView = (row) => {

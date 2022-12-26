@@ -24,7 +24,7 @@ export const hodReducer = (state = initialState, action) => {
         loading: false,
       };
     case HOD.HOD_ADD_FAIL:
-      // toastError(action.payload);
+      toastError(action.payload);
       return {
         ...state,
         loading: false,

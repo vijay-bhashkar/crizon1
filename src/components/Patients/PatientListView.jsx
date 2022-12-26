@@ -61,7 +61,7 @@ useEffect(()=>{
   
   const handleDemograficEdit = (row) => {
     dispatch(SETDEMOGRAFICObj(row));
-    navigate("/Patients/editdemographics");
+    navigate(`/Patients/editdemographics?edit=true&id=${row._id}`);
   };
   
   const handleDemograficAllView = (row) => {
