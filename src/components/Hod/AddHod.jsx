@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HODAdd,HODGet, HODDelete, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
 import { Link, useSearchParams } from 'react-router-dom';
 export const AddHod = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams("edit");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
@@ -121,7 +121,7 @@ const dispatch = useDispatch();
         // dispatch(SETHODObj(null))
     } else {
         dispatch(HODAdd(obj));
-        // toast.success(" HOD Added Successfully ");
+        toast.success(" HOD Added Successfully ");
     }
   }
     
@@ -150,8 +150,8 @@ useEffect(() => {
 }, [hodObj]);
 
 useEffect(()=> {
-  console.log(searchParams.get("edit"), "searchParams.get('edit')")
-  if(!searchParams.get("edit") && !searchParams.get("edit") == "true"){
+  console.log(searchParams.get("edit"), "edit")
+  if(!searchParams.get("edit") || !searchParams.get("edit") == "true"){
     dispatch(SETHODObj(null))
   }
 }, [searchParams.get("edit")])
