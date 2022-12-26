@@ -10,10 +10,10 @@ export const toastError = (error) => {
   else if (typeof error == "string") toast.error(error);
   // alert(error)
   // alert("ERROR")
-  // else toast.error("ERROR");
+  else toast.error("ERROR");
 };
 export const toastSuccess = (message) => {
   // console.log(message);
-  // toast.success(message);
+  toast.success(message);
   // alert(message)
 };

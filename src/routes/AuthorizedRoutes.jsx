@@ -54,8 +54,11 @@ import { SubAdminListview } from "../components/SubAdmin/ListView.jsx";
 import { AdminProfile } from "../components/Profile.jsx";
 import Header from "../components/Layout/Header";
 import Sidebar from "../components/Layout/Sidebar";
+import { useSelector } from "react-redux";
+
 
 function AuthorizedRoutes() {
+  const role = useSelector((states)=> states.auth.role);
   return (
     <>
           <Header/>
@@ -63,7 +66,9 @@ function AuthorizedRoutes() {
               <div className="wrapper_body">
                 <Sidebar/>
                   <Routes>
-                      <Route path="/" exact element={<Appointment />}></Route>
+                    {(role == 'ADMIN')?
+                      <Route path="/" exact element={<Homegraph />}></Route> :
+                      <Route path="/" exact element={<Appointment />}></Route> }
                       <Route path="/listAppointment" exact element={<ListAppointment />}></Route>
                       <Route path="/department" exact element={<Departments />}></Route>
                       <Route path="/Hod/Hod" exact element={<Hod />}></Route>
