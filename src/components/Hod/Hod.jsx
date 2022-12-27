@@ -139,7 +139,7 @@ useEffect(() => {
                         <th scope="col">Name of Doctor</th>
                         <th scope="col">Disease</th>
                         <th scope="col">Phone No.</th>
-                        <th scope="col">Status</th>
+                        {/* <th scope="col">Status</th> */}
                         <th scope="col">Edit & Delete & View</th>
                       </tr>
                     </thead>
@@ -151,7 +151,7 @@ useEffect(() => {
                         <th>{item?.firstName}</th>
                         <td>{item?.disease}</td>
                         <td>{item?.phone}</td>
-                        <td><span className='status'> Active </span></td>
+                        {/* <td><span className='status'> Active </span></td> */}
                         <td>
                         <span className="editlist" style={{paddingLeft:16}}>
                           <FiEdit onClick={(e)=>{handleHodEdit(item)}} />

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BiUserPlus } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
-import { AiOutlineUnorderedList } from "react-icons/ai";
-import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
-import { HODAdd,HODGet, HODDelete, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
+import { SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
 import { Link } from 'react-router-dom';
 export const Profile = () => {
 
@@ -66,10 +63,8 @@ const dispatch = useDispatch();
 
     if (roleUser?._id) {
         dispatch(HODUpdate(roleUser._id, obj));
-        dispatch(SETHODObj(null))
-    } else {
-        dispatch(HODAdd(obj));
-    }
+        dispatch(SETHODObj(roleUser))
+    } 
 };
 
 useEffect(() => {
@@ -83,8 +78,8 @@ useEffect(() => {
         setState(roleUser.state);
         setCountry(roleUser.country);
         setCity(roleUser.city);
-        setPassword(roleUser.password);
-        setConPassword(roleUser.conPassword);
+        // setPassword(roleUser.password);
+        // setConPassword(roleUser.conPassword);
         setSecurityQuest(roleUser.securityQuest);
         setZipCode(roleUser.zipCode);
         setSecurityAns(roleUser.securityAns);
@@ -93,15 +88,6 @@ useEffect(() => {
         setDisease(roleUser.disease);
     }
 }, [hodObj]);
-
-const question = [
-    { value:"", label: "Please Select option" },
-    { value:"What's your pet name?", label:"What's your pet name?" },
-    { value:"What's your favourate food?", label:"What's your favourate food?" },
-    { value:"What's your mother maiden name?", label:"What's your mother maiden name?" },
-    { value:"What's your Favorate actor name?", label:"What's your Favorate actor name?" },
-    { value:"What's your nick name?", label:"What's your nick name?" },
-]
 
   return (
     <div className="content_wrapper">
@@ -129,11 +115,11 @@ const question = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name  {firstName}<span>*</span></label>
+                                    <label>First Name <span>*</span></label>
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>
-                                    <label>Company <span>*</span></label>
+                                    <label>Hospital/Clinic <span>*</span></label>
                                     <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
                                 </div>
                                 
@@ -149,10 +135,10 @@ const question = [
                                     <label>City <span>*</span></label>
                                     <input type="text" className='form-control' value={city} onChange={(e)=>{setCity(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Password <span>*</span></label>
                                     <input type="text" className='form-control' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-                                </div>
+                                </div> */}
                                 {/* <div className='from-group'>
                                     <label>Security Question <span>*</span></label>
                                     <select  className="form-control" value={securityQuest} onChange={(e)=>{setSecurityQuest(e.target.value)}}>
@@ -172,7 +158,7 @@ const question = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>Last Name<span>*</span></label>
+                                    <label>Last Name<span></span></label>
                                     <input type="text" className='form-control' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
@@ -191,10 +177,10 @@ const question = [
                                     <label>ZipCode<span>*</span></label>
                                     <input type="text" className='form-control' maxLength={6} value={zipCode} onChange={(e)=>{setZipCode(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Confirm Password<span>*</span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
-                                </div>
+                                </div> */}
                                 {/* <div className='from-group'>
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>

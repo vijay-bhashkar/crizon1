@@ -107,11 +107,8 @@ const dispatch = useDispatch();
 
     if (roleUser?._id) {
         dispatch(DOCTORUpdate(roleUser._id, obj));
-        dispatch(SETDOCTORObj(null))
-    } else {
-        dispatch(DOCTORAdd(obj));
-        dispatch(SETDOCTORObj(null))
-    }
+        dispatch(SETDOCTORObj(roleUser))
+    } 
 };
 
 useEffect(() => {
@@ -125,8 +122,8 @@ useEffect(() => {
         setState(roleUser.state);
         setCountry(roleUser.country);
         setCity(roleUser.city);
-        setPassword(roleUser.password);
-        setConPassword(roleUser.conPassword);
+        // setPassword(roleUser.password);
+        // setConPassword(roleUser.conPassword);
         setSecurityQuest(roleUser.securityQuest);
         setZipCode(roleUser.zipCode);
         setStatue(roleUser.statue);
@@ -199,10 +196,10 @@ const statues = [
                                     <label>City <span>*</span></label>
                                     <input type="text" className='form-control' value={city} onChange={(e)=>{setCity(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Password <span>*</span></label>
                                     <input type="text" className='form-control' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-                                </div>
+                                </div> */}
                                 {/* <div className='from-group'>
                                     <label>Security Question <span>*</span></label>
                                     <select  className="form-control" value={securityQuest} onChange={(e)=>{setSecurityQuest(e.target.value)}}>
@@ -211,20 +208,20 @@ const statues = [
                                         }
                                     </select>
                                 </div> */}
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Status<span></span></label>
                                     <select className="form-control" value={statue} onChange={(e)=>{setStatue(e.target.value)}}>
                                         { statues && statues.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>
-                                    {/* <Select options={statues} placeholder="Select" value={statue} onChange={(e)=>{setStatue(e.target.value)}}/> */}
-                                </div>
-                                {/* <div className='from-group'>
+                                    <Select options={statues} placeholder="Select" value={statue} onChange={(e)=>{setStatue(e.target.value)}}/>
+                                </div> */}
+                                <div className='from-group'>
                                     <label>Disease<span>*</span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{hadleDisease(e.target.value)}}>
                                     <option value=""> Please Select Disease</option>
                                     { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.disease}</option>) }
                                     </select>
-                                </div> */}
+                                </div>
                             
                             </div>
                         </div>
@@ -250,10 +247,10 @@ const statues = [
                                     <label>ZipCode<span>*</span></label>
                                     <input type="text" className='form-control' maxLength={6} value={zipCode} onChange={(e)=>{setZipCode(e.target.value)}}/>
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Confirm Password<span>*</span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
-                                </div>
+                                </div> */}
                                 {/* <div className='from-group'>
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>

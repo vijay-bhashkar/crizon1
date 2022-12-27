@@ -103,7 +103,7 @@ const handleCustomerView = (row) => {
               <th scope="col">Company</th>
               <th scope="col">Email Address</th>
               <th scope="col">Phone No.</th>
-              <th scope="col">Status</th>
+              {/* <th scope="col">Status</th> */}
               {(role == rolesObj.HOD)?
               <th scope="col">View</th>
               :
@@ -122,9 +122,9 @@ const handleCustomerView = (row) => {
               <td>{item.company}</td>
               <td>{item.email}</td>
               <td>{item.phone}</td>
-              <td>
+              {/* <td>
               <span className="active">{item.status}</span>
-              </td>
+              </td> */}
               {(role == rolesObj.HOD)?
               <td>
                 <span className="editlist">

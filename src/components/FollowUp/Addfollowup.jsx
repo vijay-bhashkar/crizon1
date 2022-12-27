@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { BiUserPlus } from "react-icons/bi";
-import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import Select from "react-select";
 import { Link } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux'; 
+import { useSearchParams } from 'react-router-dom';
 import { FOLLOWUPAdd, FOLLOWUPGet, SETFOLLOWUPObj, FOLLOWUPUpdate, FOLLOWUPDelete } from "../../redux/actions/FollowUp/FollowUp.actions";
 import { DEMOGRAFICGet } from "../../redux/actions/Demografic/Demografic.actions";
 export const Addfollowup = () => {
@@ -14,6 +12,7 @@ export const Addfollowup = () => {
         dispatch(DEMOGRAFICGet());
     }, []);
 
+    const [searchParams, setSearchParams] = useSearchParams("edit");
     const [patientId, setPatientId] = useState("");
     const [followupDate, setFollowupDate] = useState("");
     const [diseaseExtend, setDiseaseExtend] = useState("");
@@ -222,7 +221,6 @@ export const Addfollowup = () => {
         }
         if(followupObj?._id){
             dispatch(FOLLOWUPUpdate(followupObj._id, obj));
-            dispatch(SETFOLLOWUPObj(null));
             toast.success("Follow up updated")
         }else{
             dispatch(FOLLOWUPAdd(obj));
@@ -335,7 +333,14 @@ useEffect(()=>{
     setAdverseTofacitinib(followupObj?.adverseTofacitinib);
     setAdverseAza(followupObj?.adverseAza)
     }
-},[followupObj]);    
+},[followupObj]);  
+
+useEffect(()=> {
+    console.log(searchParams.get("edit"), "edit");
+    if(!searchParams.get("edit") || !searchParams.get("edit") == "true"){
+      dispatch(SETFOLLOWUPObj(null))
+    }
+  }, [searchParams.get("edit")])
 
     const options = [
         { value: "select", label: "Select" },
@@ -1294,9 +1299,9 @@ useEffect(()=>{
                 <div className='col-lg-12'>
                     <div className='subbtn text-center mt-4 mb-5'>
                         {(followupObj?._id)?
-                        <Link to="" className='btn btn-link' onClick={handleAddFollowUp}>Update</Link>
+                        <button to="" className='btn btn-link' onClick={handleAddFollowUp}>Update</button>
                         :
-                        <Link to="" className='btn btn-link' onClick={handleAddFollowUp}>Add Follow Up</Link>
+                        <button to="" className='btn btn-link' onClick={handleAddFollowUp}>Add Follow Up</button>
                         }
                     </div>
                 </div>

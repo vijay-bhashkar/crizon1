@@ -80,7 +80,7 @@ if(role == rolesObj.ADMIN){
             <ul>
               <li> <Link to="/Patients/PatientListView">List Of Patient </Link></li>
               <li><Link to="/Patients/Adddemographics">Add Patient</Link></li>
-              <li><Link to="/Patients/Addpatientdepression">Search Patient</Link></li>
+              <li><Link to="/Patients/Searchpatient">Search Patient</Link></li>
             </ul>
           </div>
         </div>
@@ -97,7 +97,7 @@ if(role == rolesObj.ADMIN){
             <ul>
               <li><Link to="/FollowUp/followupList"> List Followup </Link></li>
               <li><Link to="/FollowUp/Addfollowup">Add Followup</Link></li>
-              {/* <li><Link to="/FollowUp/Addpatientdepression">Search Patient</Link></li> */}
+              <li><Link to="/FollowUp/Addpatientdepression">Search Patient</Link></li>
             </ul>
           </div>
         </div>
@@ -130,13 +130,30 @@ if(role == rolesObj.HOD){
       <div className="accordion-button">
         {/* <h5><Link to="Hod/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
       </div>
+    
+<div class="accordion" id="accordionExample">
+<div class="accordion-item">
+        <h5 class="accordion-header" id="headingAppoint">
+          <span class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAppoint" aria-expanded="true" aria-controls="collapseAppoint"><BiUserPlus  className="iconaccrion" />
+            <span>Appointment </span>
+          </span>
+        </h5>
+        <div id="collapseAppoint" class="accordion-collapse collapse show"  aria-labelledby="headingAppoint" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul>
+              <li><Link to="/listAppointment" className=''> List Appointment </Link></li>
+              <li><Link to="/" className=''> Create Appointment</Link></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
     <div className="accordion-button">
       <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
     </div>
 <div className="accordion-button">
  <h5><Link  to="/Doctor/ListView"> <BiUserPlus className="iconaccrion" /> <span>  Doctors</span> </Link></h5>            
 </div>
-<div class="accordion" id="accordionExample">
 
  {/* <div class="accordion-item">
    <h5 class="accordion-header" id="headingOne">
@@ -230,9 +247,7 @@ if(role == rolesObj.DOCTOR){
       <div className="accordion-button">
         {/* <h5><Link to="/Doctor/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
       </div>
-      <div className="accordion-button">
-        <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
-      </div>
+      
     <div class="accordion" id="accordionExample">
     <div class="accordion-item">
         <h5 class="accordion-header" id="headingAppoint">
@@ -249,6 +264,10 @@ if(role == rolesObj.DOCTOR){
           </div>
         </div>
     </div>
+
+    <div className="accordion-button">
+        <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
+      </div>
      
       <div class="accordion-item">
         <h5 class="accordion-header" id="headingTwo">

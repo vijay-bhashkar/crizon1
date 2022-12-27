@@ -137,6 +137,10 @@ const navigate = useNavigate();
         hod,
         indiDisease
     };
+    if(password != conPassword){
+        toast.error("Password and Confirm Password Should Be Same");
+        return;
+    }
     if(password){
         obj.password = password;
         obj.conPassword = conPassword;

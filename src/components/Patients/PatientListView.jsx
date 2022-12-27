@@ -148,7 +148,7 @@ useEffect(()=>{
               <th scope="col">Parent Name</th>
               <th scope="col">Age </th>
               <th scope="col">Sex </th>
-              <th scope="col">Status</th>
+              {/* <th scope="col">Status</th> */}
               {(role == rolesObj.ADMIN || role == rolesObj.HOD || role == rolesObj.DOCTOR)?
               <th scope="col">Edit & Delete & View</th>
               :<th scope="col">View</th>}
@@ -165,9 +165,9 @@ useEffect(()=>{
               <td>{item.parentName}</td>
               <td>{item.age}</td>
               <td>{item.sex}</td>
-              <td>
+              {/* <td>
               <span className="active">{item.status}</span>
-              </td>
+              </td> */}
               {(role == rolesObj.ADMIN || role == rolesObj.HOD || role == rolesObj.DOCTOR)?
               <td>
                 <span className="editlist" style={{marginLeft:20}}>

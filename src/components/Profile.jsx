@@ -103,11 +103,8 @@ export const AdminProfile = () => {
 
         if (roleUser?._id) {
             dispatch(CUSTOMERUpdate(roleUser._id, obj));
-            dispatch(SETCUSTOMERObj(null))
-        } else {
-            dispatch(CUSTOMERAdd(obj));
-            dispatch(SETCUSTOMERObj(null))
-        }
+            dispatch(SETCUSTOMERObj(roleUser));
+        } 
     };
 
     useEffect(() => {
@@ -172,7 +169,7 @@ export const AdminProfile = () => {
                                 <div className='col-lg-6'>
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
-                                            <label>First Name  {firstName}<span>*</span></label>
+                                            <label>First Name <span>*</span></label>
                                             <input type="text" className='form-control' value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
@@ -205,12 +202,12 @@ export const AdminProfile = () => {
                                         }
                                     </select>
                                 </div> */}
-                                        <div className='from-group'>
+                                        {/* <div className='from-group'>
                                             <label>Status<span></span></label>
                                             <select className="form-control" value={statue} onChange={(e) => { setStatue(e.target.value) }}>
                                                 {statues && statues.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>
-                                        </div>
+                                        </div> */}
 
 
                                     </div>
@@ -218,7 +215,7 @@ export const AdminProfile = () => {
                                 <div className='col-lg-6'>
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
-                                            <label>Last Name<span>*</span></label>
+                                            <label>Last Name<span></span></label>
                                             <input type="text" className='form-control' value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>

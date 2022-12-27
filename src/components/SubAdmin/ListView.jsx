@@ -4,8 +4,8 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { SUBADMINGet, SUBADMINDelete, SETSUBADMINObj } from "../../redux/actions/SubAdmin/SubAdmin.actions";
-import { AiOutlineUnorderedList } from "react-icons/ai";
-// import Select from "react-select";
+import { GrView } from "react-icons/gr";
+
 import { Link ,useNavigate} from "react-router-dom";
 export const SubAdminListview = () => {
 
@@ -33,6 +33,11 @@ useEffect(() => {
   const handleSubAdminEdit = (row) => {
     dispatch(SETSUBADMINObj(row));
     navigate("/SubAdmin/AddSubAdmin");
+  };
+
+  const handleSubAdminView = (row) => {
+    dispatch(SETSUBADMINObj(row));
+    navigate("/SubAdmin/ViewSubAdmin");
   };
 
   const handleSubAdminDelete = (row) => {
@@ -68,8 +73,8 @@ useEffect(() => {
               <th scope="col">Name </th>
               <th scope="col">Email</th>
               <th scope="col">Role Address</th>
-              <th scope="col">Status</th>
-              <th scope="col">Edit & Delete</th>
+              {/* <th scope="col">Status</th> */}
+              <th scope="col">Edit & Delete & View</th>
             </tr>
           </thead>
           <tbody>
@@ -80,13 +85,16 @@ useEffect(() => {
               <th scope="row">{item.name}</th>
               <td>{item.email}</td>
               <td>{item.role}</td>
-              <td><span className="active">{item.status}</span></td>
+              {/* <td><span className="active">{item.status}</span></td> */}
               <td>
                 <span className="editlist">
                 <FiEdit onClick={(e)=>{handleSubAdminEdit(item)}} />
                 </span>{" "}
-                <span className="delete_list">
+                <span className="delete_list" style={{marginLeft:20}}>
                   <RiDeleteBin5Fill onClick={(e)=>{handleSubAdminDelete(item)}}/>
+                </span>
+                <span className="delete_list" style={{marginLeft:20}}>
+                  <GrView onClick={(e)=>{handleSubAdminView(item)}}/>
                 </span>
               </td>
             </tr>

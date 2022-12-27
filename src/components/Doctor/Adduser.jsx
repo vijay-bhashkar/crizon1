@@ -152,6 +152,10 @@ const dispatch = useDispatch();
         hod,
         disease
     };
+    if(password != conPassword){
+        toast.error("Password and Confirm Password Should Be Same");
+        return;
+    }
     if(password){
         obj.password = password;
         obj.conPassword = conPassword;

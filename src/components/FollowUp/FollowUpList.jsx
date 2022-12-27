@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
+import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { FOLLOWUPGet, FOLLOWUPDelete, SETFOLLOWUPObj } from "../../redux/actions/FollowUp/FollowUp.actions";
@@ -14,7 +15,8 @@ const navigate = useNavigate();
 const [followupMainArr, setFollowupMainArr] = useState([]);
 const [search, setSearch] = useState("");
 const followupArr = useSelector((states)=> states.followup.followups);
-
+const patientArr = useSelector((states)=> states.demografic.demografics);
+// console.log(patientArr ,"patientArr");
 const handleGet = () => {
   dispatch(FOLLOWUPGet());
 };
@@ -28,7 +30,14 @@ useEffect(() => {
       setFollowupMainArr(followupArr);
       }
     }, [followupArr])
-
+    
+    useEffect(()=>{
+      if(patientArr){
+        let patientName = patientArr.filter(el=> el._id === followupArr?.patientId);
+        console.log(patientName , "patientName");
+      }
+    }, [patientArr]);
+    
   useEffect(()=>{
     if(search){
       let followUpSearch =  followupMainArr.filter(el => `${el.patientId}`.toLowerCase().includes(`${search}`.toLowerCase()));
@@ -38,7 +47,12 @@ useEffect(() => {
 
   const handleFollowupEdit = (row) => {
     dispatch(SETFOLLOWUPObj(row));
-    navigate("/FollowUp/Addfollowup");
+    navigate(`/FollowUp/Addfollowup?edit=true&id=${row?._id}`);
+  };
+
+  const handleFollowupView = (row) => {
+    dispatch(SETFOLLOWUPObj(row));
+    navigate("/FollowUp/viewfollowup");
   };
   
   const handleFollowupDelete = (row) => {
@@ -84,8 +98,8 @@ useEffect(() => {
               <th scope="col">Disease Extend</th>
               <th scope="col">Stool Frequency</th>
               <th scope="col">Rectal Bleeding</th>
-              <th scope="col">Status</th>
-              <th scope="col">Edit & Delete</th> 
+              {/* <th scope="col">Status</th> */}
+              <th scope="col">Edit & Delete & View</th> 
             </tr>
           </thead>
           <tbody>
@@ -97,15 +111,16 @@ useEffect(() => {
               <td>{item.diseaseExtend}</td>
               <td>{item.stoolFreq}</td>
               <td>{item.rectalBleeding}</td>
-              <td>
-              <span className="active">{item.status}</span>
-              </td>
+              {/* <td><span className="active">{item.status}</span></td> */}
               <td>
                 <span className="editlist">
                   <FiEdit onClick={(e)=>{handleFollowupEdit(item)}} />
                 </span>{" "}
-                <span className="delete_list">
+                <span className="delete_list" style={{marginLeft:20}}>
                   <RiDeleteBin5Fill onClick={(e)=>{handleFollowupDelete(item)}}/>
+                </span>
+                <span className="delete_list" style={{marginLeft:20}}>
+                  <GrView onClick={(e)=>{handleFollowupView(item)}}/>
                 </span>
               </td>
             </tr>

@@ -22,6 +22,7 @@ import { ListView } from "../components/Doctor/ListView.jsx";
 import { ShowView } from "../components/Doctor/ShowView.jsx";
 import { DoctorProfile } from "../components/Doctor/Profile.jsx";
 
+import { Searchpatient } from "../components/Patients/Searchpatient.jsx";
 import { PatientListView } from "../components/Patients/PatientListView.jsx";
 import { Adddemographics } from "../components/Patients/Adddemographics.jsx";
 import { Editdemographics } from "../components/Patients/Editdemographics.jsx";
@@ -45,11 +46,14 @@ import { ViewInfection } from "../components/Patients/Show/ViewInfection.jsx";
 import { ViewDepression } from "../components/Patients/Show/ViewDepression.jsx";
 
 import { Addfollowup } from "../components/FollowUp/Addfollowup.jsx";
+import { Viewfollowup } from "../components/FollowUp/Viewfollowup.jsx";
 import { Addpatientdepression } from "../components/FollowUp/Addpatientdepression.jsx";
 import { FollowUpList } from "../components/FollowUp/FollowUpList.jsx";
 import { Homegraph } from "../components/Homegraph.jsx";
 import { Appointmentform } from "../components/Appointmentform.jsx";
+
 import { AddSubAdmin } from "../components/SubAdmin/AddSubAdmin.jsx";
+import { ViewSubAdmin } from "../components/SubAdmin/ViewSubAdmin.jsx";
 import { SubAdminListview } from "../components/SubAdmin/ListView.jsx";
 import { AdminProfile } from "../components/Profile.jsx";
 import Header from "../components/Layout/Header";
@@ -83,6 +87,7 @@ function AuthorizedRoutes() {
                       <Route path="/Doctor/ShowView" exact element={<ShowView />}></Route>
                       <Route path="/Doctor/Profile" exact element={<DoctorProfile/>}></Route>
 
+                      <Route path="/Patients/Searchpatient" exact element={<Searchpatient />}></Route>
                       <Route path="/Patients/PatientListView" exact element={<PatientListView />}></Route>
                       <Route path="/Patients/adddemographics" exact element={<Adddemographics />}></Route>
                       <Route path="/Patients/editdemographics" exact element={<Editdemographics />}></Route>
@@ -106,11 +111,14 @@ function AuthorizedRoutes() {
                       <Route path="/Patients/Viewdepression" exact element={<ViewDepression/>}></Route>
 
                       <Route path="/FollowUp/addfollowup" exact element={<Addfollowup />}></Route>
+                      <Route path="/FollowUp/viewfollowup" exact element={<Viewfollowup />}></Route>
                       <Route path="/FollowUp/addpatientdepression" exact element={<Addpatientdepression />}></Route>
                       <Route path="/FollowUp/followupList" exact element={<FollowUpList />}></Route>
                       <Route path="/homegraph" exact element={<Homegraph />}></Route>
                       <Route path="/appointmentform" exact element={<Appointmentform />}></Route>
+                      
                       <Route path="/subAdmin/addSubAdmin" exact element={<AddSubAdmin />}></Route>
+                      <Route path="/subAdmin/viewSubAdmin" exact element={<ViewSubAdmin />}></Route>
                       <Route path="/subAdmin/listView" exact element={<SubAdminListview />}></Route>
                       <Route path="/Profile" exact element={<AdminProfile />}></Route>
                       <Route path="/login" exact element={<Login />}></Route>

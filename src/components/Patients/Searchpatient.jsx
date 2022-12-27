@@ -8,11 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate} from "react-router-dom";
-import { DEMOGRAFICGet } from '../../redux/actions/Demografic/Demografic.actions';
-import { SETFOLLOWUPObj } from "../../redux/actions/FollowUp/FollowUp.actions";
+import { DEMOGRAFICGet, SETDEMOGRAFICObj } from "../../redux/actions/Demografic/Demografic.actions";
 
-
-export const Addpatientdepression = () => {
+export const Searchpatient = () => {
 
   const [patientName, setPatientName] = useState("");
   const [patientId, setPatientId] = useState("");
@@ -34,12 +32,12 @@ const navigate = useNavigate();
 const [displayProduct, setdisplayProduct] = useState([])
   const patientArr = useSelector((states) => states.demografic.demografics);
   const followupArr = useSelector((states)=> states.followup.followups);
-console.log(followupArr , "followupArr");
+console.log(displayProduct , "displayProduct");
   const dispatch = useDispatch();
 
   const handleFollowupView = (row)=>{
-      dispatch(SETFOLLOWUPObj(row));
-      navigate("/FollowUp/viewfollowup");
+      dispatch(SETDEMOGRAFICObj(row));
+      navigate("/Patients/Viewdemografics");
     };
 
     const onHandleFollowup = ()=>{
@@ -48,11 +46,31 @@ console.log(followupArr , "followupArr");
       if(`${patientName}`!= ''){
         searchPatientList  = patientArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${patientName}`.toLowerCase()));
       }
+      if(`${patientId}`!= ''){
+        searchPatientList  =  patientArr.filter(el => `${el.ccfId}`.toLowerCase().includes(`${patientId}`.toLowerCase()));
+      }
+      if(`${fatherName}`!= ''){
+        searchPatientList = patientArr.filter(el => `${el.parentName}`.toLowerCase().includes(`${fatherName}`.toLowerCase()));
+      }
+      if(`${sex}`!= ''){
+        searchPatientList  =  patientArr.filter(el => `${el.sex}`.toLowerCase().includes(`${sex}`.toLowerCase()));
+      }
+      if(`${diagnosisMonth}`!= ''){
+        searchPatientList = patientArr.filter(el => `${el.diagnosisMonth}`.toLowerCase().includes(`${diagnosisMonth}`.toLowerCase()));
+      }
+      if(`${diagnosisYear}`!= ''){
+        searchPatientList = patientArr.filter(el => `${el.diagnosisYear}`.toLowerCase().includes(`${diagnosisYear}`.toLowerCase()));
+      }
+      if(`${age}`!= ''){
+        searchPatientList = patientArr.filter(el => `${el.age}`.toLowerCase().includes(`${age}`.toLowerCase()));
+      }
+
 
 
       setdisplayProduct(searchPatientList);
-    // const patientAllId  =  patientArr.find(el => `${el.ccfId}`.toLowerCase().includes(`${patientId}`.toLowerCase()));
-    // const parentAllName = patientArr.find(el => `${el.parentName}`.toLowerCase().includes(`${fatherName}`.toLowerCase()));
+
+   
+    // const 
     // const allGender  =  patientArr.find(el => `${el.sex}`.toLowerCase().includes(`${sex}`.toLowerCase()));
     // const allAge  =  patientArr.filter(el => `${el.age}`.toLowerCase().includes(`${age}`.toLowerCase()));
     // const allDiagnosisYear = patientArr.filter(el => `${el.diagnosisYear}`.toLowerCase().includes(`${diagnosisYear}`.toLowerCase()));
@@ -172,18 +190,18 @@ console.log(followupArr , "followupArr");
                   </select>
                 </div>
               </div>
-              <div className='col-lg-6'>
+              {/* <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>City</label>
                   <input type="text" className='form-control' />
                 </div>
-              </div>
-              <div className='col-lg-6'>
+              </div> */}
+              {/* <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>State</label>
                   <input type="text" className='form-control' />
                 </div>
-              </div>
+              </div> */}
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Diagnosis Year</label>
@@ -202,23 +220,20 @@ console.log(followupArr , "followupArr");
             <div className='row mt-4'>
               <div className='col-lg-12'>
                 <div className='subbtn text-center'>
-                <button to="" className='btn btn-link' onClick={onHandleFollowup}>Search</button>
+                <button to="" className='btn btn-link ' onClick={onHandleFollowup}>Search</button>
                 </div>
                 </div>
-             </div>
-
-
-
-    <div>
-      <div className=" col-lg-12table_view_list">
+            </div>
+        <div>
+      <div className=" col-lg-12 table_view_list py-4">
         <table class="table">
           <thead style={{backgroundColor:"white"}}>
             <tr>
               <th scope="col" className="text-center">S.NO</th>
-              <th scope="col">Patient Id</th>
-              <th scope="col">Disease Extend</th>
-              <th scope="col">Stool Frequency</th>
-              <th scope="col">Rectal Bleeding</th>
+              <th scope="col">CCFId</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Parent Name</th>
+              <th scope="col">Age</th>
               <th scope="col">View</th> 
             </tr>
           </thead>
@@ -226,11 +241,11 @@ console.log(followupArr , "followupArr");
             {
               displayProduct && displayProduct.map((item,index)=>
             <tr style={{backgroundColor:"white"}}>
-              <th scope="row" className="text-center">{index+1}</th>
-              <td scope="row">{item._id}</td>
-              <td>{item.diseaseExtend}</td>
-              <td>{item.stoolFreq}</td>
-              <td>{item.rectalBleeding}</td>
+              <td scope="row" className="text-center">{index+1}</td>
+              <td scope="row">{item.ccfId}</td>
+              <td>{item.patientName}</td>
+              <td>{item.parentName}</td>
+              <td>{item.age}</td>
               <td>
                 <span className="delete_list" style={{marginLeft:20}}>
                 <GrView onClick={(e)=>{handleFollowupView(item)}}/>

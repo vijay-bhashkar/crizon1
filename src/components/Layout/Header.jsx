@@ -17,10 +17,6 @@ function Header() {
   console.log(role,"role role");
   useDispatch(loginUser());
 
-//  const handleProfile = () =>{
-//   navigate("/Profile");
-//  }
- 
   const handleLogout = ()=>{
   dispatch(logoutUser());
   navigate("/");

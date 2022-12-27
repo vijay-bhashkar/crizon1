@@ -181,7 +181,11 @@ const statues = [
           <div className="col-lg-4">
             <span style={{color:"white"}}>DOCTOR DETAILS</span>
           </div>
-          <div className="col-lg-4"></div>
+          <div className="col-lg-4 text-end">
+          <div className='btnlist'>
+              <span><Link to="/Doctor/ListView" class="btn btn-defalut btn-md"> <AiOutlineUnorderedList className="icon" /> View List</Link></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
