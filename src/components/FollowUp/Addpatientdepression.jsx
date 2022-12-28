@@ -15,27 +15,24 @@ import { SETFOLLOWUPObj } from "../../redux/actions/FollowUp/FollowUp.actions";
 export const Addpatientdepression = () => {
 
   const [patientName, setPatientName] = useState("");
-  const [patientId, setPatientId] = useState("");
-  const [fatherName, setFatherName] = useState("");
-  const [sex, setSex] = useState("");
-  const [age, setAge] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [diagnosisYear, setDiagnosisYear] = useState("");
-  const [diagnosisMonth, setDiagnosisMonth] = useState("");
-  const [manifestation, setManifestation] = useState("");
-  const [bmi, setBmi] = useState("");
-  const [pallor, setPallor] = useState("");
-  const [fistula, setFistula] = useState("");
+  const [rectalFreq, setRectalFreq] = useState("");
+  const [date, setDate] = useState("");
 
 const navigate = useNavigate();
 
-
 const [displayProduct, setdisplayProduct] = useState([])
-  const patientArr = useSelector((states) => states.demografic.demografics);
-  const followupArr = useSelector((states)=> states.followup.followups);
-console.log(followupArr , "followupArr");
-  const dispatch = useDispatch();
+const patientArr = useSelector((states) => states.demografic.demografics);
+const followupArr = useSelector((states)=> states.followup.followups);
+
+const dispatch = useDispatch();
+
+  const stoolFreqDrop = [
+    { value: "select", label: "Select" },
+    { value: "Normal no. of stools", label: "Normal no. of stools" },
+    { value: "1 to 2 stools more than normal", label: "1 to 2 stools more than normal" },
+    { value: "3 to 4 stools more than normal", label: "3 to 4 stools more than normal" },
+    { value: "5 or more stools more than normal", label: "5 or more stools more than normal" },
+];
 
   const handleFollowupView = (row)=>{
       dispatch(SETFOLLOWUPObj(row));
@@ -46,18 +43,18 @@ console.log(followupArr , "followupArr");
 
     let searchPatientList = [];
       if(`${patientName}`!= ''){
-        searchPatientList  = patientArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${patientName}`.toLowerCase()));
+        searchPatientList  = followupArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${patientName}`.toLowerCase()));
+      }
+      if(`${date}`!= ''){
+        searchPatientList = followupArr.filter(el => `${el.followupDate}`.toLowerCase().includes(`${date}`.toLowerCase()));
+      }
+      if(`${rectalFreq}`!= ''){
+        searchPatientList = followupArr.filter(el => `${el.stoolFreq}`.toLowerCase().includes(`${rectalFreq}`.toLowerCase()));
       }
 
-
+    console.log(searchPatientList , "searchPatientList");
       setdisplayProduct(searchPatientList);
-    // const patientAllId  =  patientArr.find(el => `${el.ccfId}`.toLowerCase().includes(`${patientId}`.toLowerCase()));
-    // const parentAllName = patientArr.find(el => `${el.parentName}`.toLowerCase().includes(`${fatherName}`.toLowerCase()));
-    // const allGender  =  patientArr.find(el => `${el.sex}`.toLowerCase().includes(`${sex}`.toLowerCase()));
-    // const allAge  =  patientArr.filter(el => `${el.age}`.toLowerCase().includes(`${age}`.toLowerCase()));
-    // const allDiagnosisYear = patientArr.filter(el => `${el.diagnosisYear}`.toLowerCase().includes(`${diagnosisYear}`.toLowerCase()));
-    // const allDiagnosisMonth = patientArr.filter(el => `${el.diagnosisYear}`.toLowerCase().includes(`${diagnosisYear}`.toLowerCase()));
-    // console.log(allDiagnosisYear,allAge,allGender,parentAllName,patientAllId,patientAllName );
+    
   }
 
 
@@ -69,39 +66,6 @@ console.log(followupArr , "followupArr");
   useEffect(() => {
     handleGet()
     }, []);
- 
-  const options = [
-        { value: "select", label: "Select" },
-        { value: "Yes", label: "Yes" },
-        { value: "No", label: "No" },
-      ];
-  const sexDrop = [
-        { value: "select", label:"Select" },
-        { value: "male", label:"Male" },
-        { value: "female", label:"Female" },
-    ];
-  const bmiDrop = [
-      { value: "select", label:"Select" },
-      { value: "<=27", label:"Less than equal to 27" },
-      { value: ">27", label:"Greater than 27" },
-  ]
-  let AgeArray = Array.from({length:100},(v,k)=>k+1)
-  
-  const months = [
-    { value: "select", label:"Select month" },
-    { value: "January", label:"January" },
-    { value: "February", label:"February" },
-    { value: "March", label:"March" },
-    { value: "April", label:"April" },
-    { value: "May", label:"May" },
-    { value: "June", label:"June" },
-    { value: "July", label:"July" },
-    { value: "August", label:"August" },
-    { value: "September", label:"September" },
-    { value: "October", label:"October" },
-    { value: "November", label:"November" },
-    { value: "December", label:"December" },
-  ]
 
   return (
     <div className="content_wrapper">
@@ -146,56 +110,16 @@ console.log(followupArr , "followupArr");
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Patient ID : </label>
-                  <input type="text" className='form-control' value={patientId} onChange={(el)=>{setPatientId(el.target.value)}}/>
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>Father/Husband's Name {fatherName}</label>
-                  <input type="text" className='form-control' value={fatherName} onChange={(el)=>{setFatherName(el.target.value)}}/>
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>Sex</label>
-                  <select className="form-control" value={sex} onChange={(el)=>{setSex(el.target.value)}}>
-                    { sexDrop && sexDrop.map((el)=><option value={el.value}>{el.label}</option> )}
+                  <label>Rectal Frequency: {rectalFreq}</label>
+                  <select className='form-control' value={rectalFreq} onChange={(el)=>{setRectalFreq(el.target.value)}}> 
+                    { stoolFreqDrop && stoolFreqDrop.map((el)=><option value={el.value}>{el.label}</option> )}
                   </select>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Age</label>
-                  <select className='form-control' value={age} onChange={(el)=>{setAge(el.target.value)}}>
-                    { AgeArray.map(item =><option value={item}>{item}</option>) }
-                  </select>
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>City</label>
-                  <input type="text" className='form-control' />
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>State</label>
-                  <input type="text" className='form-control' />
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>Diagnosis Year</label>
-                  <input type="number" className='form-control' value={diagnosisYear} onChange={(el)=>{setDiagnosisYear(el.target.value)}}/>
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>Diagnosis Month</label>
-                  <select className='form-control' value={diagnosisMonth} onChange={(el)=>{setDiagnosisMonth(el.target.value)}}>
-                    { months && months.map((el)=><option value={el.value}>{el.label}</option> )}
-                  </select>
+                  <label>Follow Date {date}</label>
+                    <input type="date" className='form-control' value={date} onChange={(el)=>{setDate(el.target.value)}}/>
                 </div>
               </div>
             </div>
@@ -210,27 +134,27 @@ console.log(followupArr , "followupArr");
 
 
     <div>
-      <div className=" col-lg-12table_view_list">
+      <div className=" col-lg-12table_view_list py-4">
         <table class="table">
           <thead style={{backgroundColor:"white"}}>
             <tr>
               <th scope="col" className="text-center">S.NO</th>
               <th scope="col">Patient Id</th>
-              <th scope="col">Disease Extend</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Followup date</th>
               <th scope="col">Stool Frequency</th>
-              <th scope="col">Rectal Bleeding</th>
               <th scope="col">View</th> 
             </tr>
           </thead>
           <tbody>
             {
               displayProduct && displayProduct.map((item,index)=>
-            <tr style={{backgroundColor:"white"}}>
+              <tr style={{backgroundColor:"white"}}>
               <th scope="row" className="text-center">{index+1}</th>
-              <td scope="row">{item._id}</td>
-              <td>{item.diseaseExtend}</td>
+              <td scope="row">{item.ccfIdName}</td>
+              <td>{item.patientName}</td>
+              <td>{item.followupDate}</td>
               <td>{item.stoolFreq}</td>
-              <td>{item.rectalBleeding}</td>
               <td>
                 <span className="delete_list" style={{marginLeft:20}}>
                 <GrView onClick={(e)=>{handleFollowupView(item)}}/>
@@ -239,59 +163,13 @@ console.log(followupArr , "followupArr");
             </tr>
             )}
           </tbody>
-        </table>
-      </div>
-    </div>
-
-
-             <div className='row mt-5'>
-                <div className='col-lg-12 heaind  text-center'>
-                    <h3>Search by Clinical Manifestations</h3>
-                </div>
-                <div className='col-lg-12'>
-                    <div className='from-group'>
-                        <label>Extraintestinal Manifestations</label>
-                        <Select options={options} placeholder="Select" />
-                    </div>
-                     <div className='subbtn text-center mt-4 mb-5'>
-                        <Link to="" className='btn btn-link'>Search</Link>
-                    </div>
-                    <div className='col-lg-12 heaind  text-center mt-4'>
-                        <h3>Search by Examination</h3>
-                    </div>
-                </div>
-             </div>
-             <div className='row'>
-                <div className='col-lg-6'>
-                    <div className='from-group'>
-                        <label>BMI</label>
-                        <Select options={bmiDrop} placeholder="Select" />
-                    </div>
-                </div>
-                <div className='col-lg-6'>
-                    <div className='from-group'>
-                        <label>Pallor</label>
-                        <Select options={options} placeholder="Select" />
-                    </div>
-                </div>
-                <div className='col-lg-6'>
-                    <div className='from-group'>
-                        <label>Perianal Fissure/Fistula/Abscess</label>
-                        <input type="text" className='form-control' />
-                    </div>
-                </div>
-             </div>
-             <div className='row'>
-                <div className='col-lg-12'>
-                    <div className='subbtn text-center mt-4 mb-5'>
-                        <Link to="" className='btn btn-link'>Search</Link>
-                    </div>
-                </div>
-             </div>
-          </div>
+         </table>
+        </div>
+       </div>
       </div>
      </div>
     </div>
-    </div>
+   </div>
+  </div>
   )
 }

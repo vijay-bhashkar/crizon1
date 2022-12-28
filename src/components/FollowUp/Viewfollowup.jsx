@@ -12,6 +12,8 @@ export const Viewfollowup = () => {
     }, []);
 
     const [patientId, setPatientId] = useState("");
+    const [patientName, setPatientName] = useState("");
+    const [ccfIdName, setCcfIdName] = useState("");
     const [followupDate, setFollowupDate] = useState("");
     const [diseaseExtend, setDiseaseExtend] = useState("");
     const [stoolFreq, setStoolFreq] = useState("");
@@ -115,19 +117,15 @@ export const Viewfollowup = () => {
     const dispatch = useDispatch();
     const followupObj = useSelector((states) => states.followup.followupObj);
     const patientArr = useSelector((states) => states.demografic.demografics);
-    console.log(patientArr , "patientArr");
-
-    useEffect(()=>{
-     let patientNames = patientArr.filter((el)=> el._id === patientId);
-     setPatientSetName(patientNames);
-    },[patientArr]) 
-    console.log(patientSetName, "patientSetName");
+    // console.log(patientArr , "patientArr");
 
 useEffect(()=>{
     if(followupObj){
 
     // console.log(followupObj?.patientId,"followupObj?.patientI")
     setPatientId(followupObj?.patientId);
+    setPatientName(followupObj?.patientName);
+    setCcfIdName(followupObj?.ccfIdName);
     setFollowupDate(followupObj?.followupDate);
     setDiseaseExtend(followupObj?.diseaseExtend);
     setStoolFreq(followupObj?.stoolFreq);
@@ -260,8 +258,8 @@ useEffect(()=>{
           <div className='row'>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label><b>Patient ID  : </b>{patientId}</label><br/>
-                  {/* <label><b>Patient Name  : </b>{patientSetName?.patientName}</label> */}
+                  <label><b>Patient ID  : </b>{ccfIdName}</label><br/>
+                  <label><b>Patient Name  : </b>{patientName}</label>
                 </div>
               </div>
               <div className='col-lg-6'>

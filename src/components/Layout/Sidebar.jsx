@@ -97,7 +97,7 @@ if(role == rolesObj.ADMIN){
             <ul>
               <li><Link to="/FollowUp/followupList"> List Followup </Link></li>
               <li><Link to="/FollowUp/Addfollowup">Add Followup</Link></li>
-              <li><Link to="/FollowUp/Addpatientdepression">Search Patient</Link></li>
+              <li><Link to="/FollowUp/Addpatientdepression">Search FollowUp</Link></li>
             </ul>
           </div>
         </div>

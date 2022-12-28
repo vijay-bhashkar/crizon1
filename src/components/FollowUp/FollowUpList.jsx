@@ -40,7 +40,7 @@ useEffect(() => {
     
   useEffect(()=>{
     if(search){
-      let followUpSearch =  followupMainArr.filter(el => `${el.patientId}`.toLowerCase().includes(`${search}`.toLowerCase()));
+      let followUpSearch =  followupMainArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${search}`.toLowerCase()));
       setFollowupMainArr(followUpSearch);
     }
   })
@@ -79,7 +79,7 @@ useEffect(() => {
               </div>
             </div>
             <div className="col-lg-4"> 
-            <input type="text" name="search" placeholder="Enter Patient's followup Id" className="form-control" value={search} onChange={(el)=>{setSearch(el.target.value)}}/>
+            <input type="text" name="search" placeholder="Enter Patient's Name " className="form-control" value={search} onChange={(el)=>{setSearch(el.target.value)}}/>
             </div>
             <div className="col-lg-4 text-end">
             <div className='btnlist'>
@@ -94,10 +94,11 @@ useEffect(() => {
           <thead>
             <tr>
               <th scope="col" className="text-center">S.NO</th>
-              <th scope="col">Patient Id</th>
+              <th scope="col"> CCF ID </th>
+              <th scope="col">Patient Name</th>
               <th scope="col">Disease Extend</th>
-              <th scope="col">Stool Frequency</th>
-              <th scope="col">Rectal Bleeding</th>
+              <th scope="col">Followup Date</th>
+              {/* <th scope="col">Rectal Bleeding</th> */}
               {/* <th scope="col">Status</th> */}
               <th scope="col">Edit & Delete & View</th> 
             </tr>
@@ -107,10 +108,11 @@ useEffect(() => {
           {
             followupMainArr && followupMainArr.map((item,index) => <tr>
               <th scope="row" className="text-center">{index+1}</th>
-              <th scope="row">{item.patientId}</th>
+              <th scope="row">{item.ccfIdName}</th>
+              <th scope="row">{item.patientName}</th>
               <td>{item.diseaseExtend}</td>
-              <td>{item.stoolFreq}</td>
-              <td>{item.rectalBleeding}</td>
+              <td>{item.followupDate}</td>
+              {/* <td>{item.rectalBleeding}</td> */}
               {/* <td><span className="active">{item.status}</span></td> */}
               <td>
                 <span className="editlist">

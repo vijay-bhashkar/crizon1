@@ -14,6 +14,8 @@ export const Addfollowup = () => {
 
     const [searchParams, setSearchParams] = useSearchParams("edit");
     const [patientId, setPatientId] = useState("");
+    const [patientName, setPatientName] = useState("");
+    const [ccfIdName, setCcfIdName] = useState("");
     const [followupDate, setFollowupDate] = useState("");
     const [diseaseExtend, setDiseaseExtend] = useState("");
     const [stoolFreq, setStoolFreq] = useState("");
@@ -120,6 +122,8 @@ export const Addfollowup = () => {
     const handleAddFollowUp = ()=>{
         let obj = {
             patientId,
+            patientName,
+            ccfIdName,
             followupDate,
             diseaseExtend,
             stoolFreq,
@@ -234,6 +238,8 @@ useEffect(()=>{
 
     // console.log(followupObj?.patientId,"followupObj?.patientI")
     setPatientId(followupObj?.patientId);
+    setPatientName(followupObj?.patientName);
+    setCcfIdName(followupObj?.ccfIdName);
     setFollowupDate(followupObj?.followupDate);
     setDiseaseExtend(followupObj?.diseaseExtend);
     setStoolFreq(followupObj?.stoolFreq);
@@ -341,6 +347,18 @@ useEffect(()=> {
       dispatch(SETFOLLOWUPObj(null))
     }
   }, [searchParams.get("edit")])
+ 
+   const handlePatient = (patientId)=>{
+    setPatientId(patientId)
+    if(patientId){
+        let patientNewName = patientArr.find(el=>el._id == patientId);
+        let namePatient = patientNewName?.patientName;
+        let ccfId = patientNewName?.ccfId;
+        setPatientName(namePatient);
+        setCcfIdName(ccfId);
+        // console.log(namePatient , "patientName");
+    }
+   }
 
     const options = [
         { value: "select", label: "Select" },
@@ -584,7 +602,7 @@ useEffect(()=> {
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Patient ID* </label>
-                  <select className='form-control' value={patientId} onChange={(e)=>{setPatientId(e.target.value)}}>
+                  <select className='form-control' value={patientId} onChange={(e)=>{handlePatient(e.target.value)}}>
                     <option value={"patient"}>Please Select Patient</option>
                     { patientArr && patientArr.map((el)=><option value={el._id}>{el.ccfId} &nbsp; {el.patientName}</option>) }
                   </select>
