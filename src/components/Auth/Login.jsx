@@ -44,7 +44,7 @@ function Login({ Unauth }) {
             {!Unauth && <h5 className="blue-1 mb-4">Login To Your Account</h5>}
             <form className="form row">
               <div className="col-12 mb-3">
-                <label>Enter Email Or Phone No</label>
+                <label>Enter Email </label>
                 <div className="form-input">
                   <input className="form-control" name="name" value={email} onChange={(event) => setEmail(event.target.value)} type="text" />
                 </div>
