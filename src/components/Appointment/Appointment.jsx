@@ -4,12 +4,14 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link, Navigate } from "react-router-dom";
+import moment from 'moment';
 import { useDispatch, useSelector } from "react-redux";
 import { DOCTORGet } from "../../redux/actions/Doctor/Doctor.actions";
 import { DEMOGRAFICGet } from "../../redux/actions/Demografic/Demografic.actions";
 import { APPOINTMENTAdd , APPOINTMENTUpdate, SETAPPOINTMENTObj, APPOINTMENTGet} from "../../redux/actions/Appointment/Appointment.actions";
 import { rolesObj } from "../../utils/roles";
 export const Appointment = () => {
+
   const diseaseDrop = [
     { value: "all", label: "Select Disease" },
     { value: "ulcerstive", label: "Ulcerative" },
@@ -26,13 +28,13 @@ export const Appointment = () => {
   // ];
 
   const bookdate = [
-    { date:  "2021-11-22", isactive: false },
-    { date:  "2021-11-22", isactive: false },
-    { date:  "2021-11-22", isactive: false },
-    { date:  "2021-11-22", isactive: false },
-    { date:  "2022-12-16", isactive: false },
+    { date:  "2021-11-17", isactive: false },
+    { date:  "2021-11-18", isactive: false },
+    { date:  "2021-11-19", isactive: false },
+    { date:  "2021-11-20", isactive: false },
     { date:  "2022-12-21", isactive: false },
     { date:  "2022-12-22", isactive: false },
+    { date:  "2022-12-23", isactive: false },
   ];
 
   const booktime = [
@@ -45,16 +47,6 @@ export const Appointment = () => {
     { time: "16:00", isactive: false },
     { time: "17:00", isactive: false },
     { time: "18:00", isactive: false },
-  ]
-
-  const bookAvailability = [
-    { value: "Available", isactive: false },
-    { value: "Available", isactive: false },
-    { value: "Available", isactive: false },
-    { value: "Available", isactive: false },
-    { value: "Available", isactive: false },
-    { value: "Available", isactive: false },
-    { value: "Available", isactive: false },
   ]
 
   const [selectedDate, setSelectedDate] = useState(null)
@@ -83,6 +75,19 @@ export const Appointment = () => {
     }
     dispatch(DOCTORGet());
     dispatch(DEMOGRAFICGet());
+
+    let query = '';
+    if(role == "DOCTOR" ){
+      var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+      var firstDay = new Date(y, m, 1);
+      var lastDay = new Date(y, m + 1, 0);
+      let docIID = roleUser?._id;
+       firstDay = moment(firstDay).format('YYYY-MM-DD');
+       lastDay = moment(lastDay).format('YYYY-MM-DD');
+      query += `startDate=${firstDay}&lastDate=${lastDay}&doctorId=${docIID}`
+      console.log(query);
+    }
+    dispatch(APPOINTMENTGet(query));
    
   };
 
@@ -94,7 +99,10 @@ export const Appointment = () => {
   const role = useSelector((states) => states.auth.role);
   const [doctorId, setDoctorId] = useState(roleUser?._id); 
   const [indivisualDoctor, setIndivisualDoctor] = useState("");
- 
+ console.log(appointArr , "appointArr");
+
+  const checkAvailability = appointArr.find(el=> el.availability == availability);
+console.log(checkAvailability, "checkAvailability");
   const handleSubmitAppointment = (date,time) => {
     let obj = {
       selectedTime:time,
@@ -213,7 +221,7 @@ useEffect(()=>{
                                 { timeArray && timeArray.map((el)=><tr><th>{el.time}</th></tr> )}
                               </table>
                           </div>
-                      {(indivisualDoctor)?
+                      {(appointArr?.booked)?
                       <table className="table paddibg0_table11 mb-0" >
                         <tbody className="overflow_text">
                         { timeArray && timeArray.map((el)=>{

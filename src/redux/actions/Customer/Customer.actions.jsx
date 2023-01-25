@@ -58,8 +58,6 @@ export const CUSTOMERGet = (formData) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_CUSTOMERS });
     let { data: response } = await getAllUsers(formData);
-    console.log(response);
-    console.log("aaaaaaaaaaaa");
     if (response) {
 
       dispatch({

@@ -16,13 +16,28 @@ if(role == rolesObj.ADMIN){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-        {/* <h5><Link to="/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
+        {/* <li><Link to="/Profile" class="dropdown-item" href="#">Profile</Link></li> */}
+        <h5><Link to="/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
       </div>
       <div className="accordion-button">
         <h5><Link to="/homegraph"> <BiUserPlus className="iconaccrion" /> <span>  Dashboard</span> </Link></h5>            
       </div>
-
     <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h5 class="accordion-header" id="disease">
+          <span class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDisease" aria-expanded="true" aria-controls="collapseDisease"><BiUserPlus  className="iconaccrion" />
+            <span>Diseases </span>
+          </span>
+        </h5>
+        <div id="collapseDisease" class="accordion-collapse collapse show"  aria-labelledby="disease" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul>
+              <li><Link to="/List-Disease"><span>List Diseases</span> </Link></li>
+              <li><Link to="/Add-Disease"><span>Add Diseases</span> </Link></li>
+            </ul>
+          </div>
+        </div>
+    </div>
     <div class="accordion-item">
         <h5 class="accordion-header" id="headingAppoint">
           <span class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAppoint" aria-expanded="true" aria-controls="collapseAppoint"><BiUserPlus  className="iconaccrion" />
@@ -72,7 +87,7 @@ if(role == rolesObj.ADMIN){
       <div class="accordion-item">
         <h5 class="accordion-header" id="headingTwo">
           <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#collapseTwo" aria-expanded="false"  aria-controls="collapseTwo"><BiUserPlus  className="iconaccrion" /> <span> Manage Patient </span>
+            data-bs-target="#collapseTwo" aria-expanded="false"  aria-controls="collapseTwo"><BiUserPlus  className="iconaccrion" /> <span> I.B.D Patient </span>
           </span>
         </h5>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -81,6 +96,23 @@ if(role == rolesObj.ADMIN){
               <li> <Link to="/Patients/PatientListView">List Of Patient </Link></li>
               <li><Link to="/Patients/Adddemographics">Add Patient</Link></li>
               <li><Link to="/Patients/Searchpatient">Search Patient</Link></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h5 class="accordion-header" id="headingThree">
+          <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#collapseThree" aria-expanded="false"  aria-controls="collapseThree"><BiUserPlus  className="iconaccrion" /> <span> LEVER Patient </span>
+          </span>
+        </h5>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <ul>
+              <li> <Link to="">List Of Patient </Link></li>
+              <li><Link to="/add-lever">Add Patient</Link></li>
+              <li><Link to="">Search Patient</Link></li>
             </ul>
           </div>
         </div>
@@ -119,6 +151,10 @@ if(role == rolesObj.ADMIN){
         </div>
       </div>
 
+      <div className="accordion-button">
+        <h5><Link to="/Medicalreport"> <BiUserPlus className="iconaccrion" /> <span>Patient Report</span> </Link></h5>            
+      </div>
+      
     </div>
   </div>
   )
@@ -128,7 +164,7 @@ if(role == rolesObj.HOD){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-        {/* <h5><Link to="Hod/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
+        <h5><Link to="/Hod/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
       </div>
     
 <div class="accordion" id="accordionExample">
@@ -245,7 +281,7 @@ if(role == rolesObj.DOCTOR){
   return (
     <div className="sidebar_wrapper fixed-sidebar">
       <div className="accordion-button">
-        {/* <h5><Link to="/Doctor/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>             */}
+        <h5><Link to="/Doctor/Profile"> <BiUserPlus className="iconaccrion" /> <span>  Profile</span> </Link></h5>            
       </div>
       
     <div class="accordion" id="accordionExample">

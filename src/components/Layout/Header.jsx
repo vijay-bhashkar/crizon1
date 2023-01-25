@@ -13,8 +13,7 @@ function Header() {
   const navigate = useNavigate();
   const roleUser = useSelector((states)=> states.auth.user.roleUser);
   const role = useSelector((states)=> states.auth.role);
-  console.log(roleUser,"auth ,auth");
-  console.log(role,"role role");
+  
   useDispatch(loginUser());
 
   const handleLogout = ()=>{
@@ -49,20 +48,10 @@ function Header() {
                 <div className="settingarea">
                 <div class="dropdown">
                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Setting
+                  Logout
                  </button>
-                  <ul class="dropdown-menu">
-                    {(role == rolesObj.DOCTOR)?
-                    <li><Link to="/Doctor/Profile" class="dropdown-item" href="#">Profile</Link></li>
-                    :""}
-                    {(role == rolesObj.HOD)?
-                    <li><Link to="/Hod/Profile" class="dropdown-item" href="#">Profile</Link></li>
-                    :""}
-                    {(role == rolesObj.ADMIN)?
-                    <li><Link to="/Profile" class="dropdown-item" href="#">Profile</Link></li>
-                    :""}
-                    <li><a class="dropdown-item"  onClick={handleLogout}>Logout</a></li>
-                    
+                  <ul class="dropdown-menu">          
+                    <li><button class="dropdown-item"  onClick={handleLogout}>Logout</button></li>
                   </ul>
                 </div>                
                 </div>

@@ -1,25 +1,71 @@
 import React from 'react'
-import Select from "react-select";
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { DEMOGRAFICGet } from "../redux/actions/Demografic/Demografic.actions";
+import { DOCTORGet } from "../redux/actions/Doctor/Doctor.actions";
+import { NUTRITIONGet } from "../redux/actions/Nutrition/Nutrition.actions";
+
 export const Medicalreport = () => {
-    const options = [
-        { value: "Secect Doctor", label: "Secect Doctor" },
-        { value: "Doctor strawberry", label: "Doctor Strawberry" },
-        { value: "Doctor vanilla", label: "Doctor Vanilla" },
-      ];
+
+const [patientId, setPatientId] = useState("");
+const [patientDetail, setPatientDetail] = useState("");
+const [doctorId, setDoctorId] = useState("");
+const [doctorName, setDoctorName] = useState("");
+const [height, setHeight] = useState("");
+const [weight, setWeight] = useState("");
+
+
+var date = new Date().getDate();
+var month = new Date().getMonth() + 1;
+var year = new Date().getFullYear();
+var fullDate = (date+'-'+month+'-'+year);
+
+  const disPatch = useDispatch();
+  useEffect(()=>{
+    disPatch(DEMOGRAFICGet());
+    disPatch(DOCTORGet());
+    disPatch(NUTRITIONGet());
+  },[]);
+
+const demograficArr = useSelector((states) => states.demografic.demografics);
+const doctorArr = useSelector((states) => states.doctor.doctors);
+const nutritionArr = useSelector((states) => states.nutrition.nutritions);
+
+const getPatients = (patientId)=>{
+  setPatientId(patientId);
+  if(patientId){
+    let setDetail = demograficArr.find(el=>el._id == patientId);
+    let setNutriDetail = nutritionArr.find(el=>el.patientId == patientId);
+    let weightDetail = setNutriDetail?.weight;
+    let heightDetail = setNutriDetail?.height;
+    setWeight(weightDetail);
+    setHeight(heightDetail);
+    setPatientDetail(setDetail);
+    setDoctorId(patientDetail?.doctor);
+    doctorNameGet();
+  }
+}
+
+const doctorNameGet = ()=>{
+  if(doctorId){
+  let doctorDetail = doctorArr.find(el=>el._id == doctorId);
+  let doctorFullName = doctorDetail?.firstName;
+  setDoctorName(doctorFullName);
+}
+};
+
   return (
     <div className="content_wrapper">
     <div className="contentwraper_header">
       <div className="container-fluid">
         <div className="row align-items-center">
           <div className="col-lg-4">
-            <div className="secound-header">
-              
-            </div>
+            <div className="secound-header"> </div>
           </div>
           <div className="col-lg-4">
             <h5 className="mb-0 text-center text-white">
-            Medical Report
+            Patient Medical Report
             </h5>
           </div>
           <div className="col-lg-4"></div>
@@ -31,11 +77,12 @@ export const Medicalreport = () => {
           <div className="row justify-content-center">
             <div className=""></div>
             <div className="col-lg-5">
-              <label>Medical Report</label>
-              <Select options={options} />
+              <label>Search Patient to Generate Report </label>
+              <select className='form-control' value={patientId} onChange={(el)=>{getPatients(el.target.value)}}>
+                { demograficArr && demograficArr.map((el)=><option value={el._id}>{el.patientName}</option> )}
+              </select>
             </div>
             <div className="col-lg-5">
-            
             </div>
           </div>
         </div>
@@ -44,7 +91,7 @@ export const Medicalreport = () => {
             <div className='row justify-content-center'>
               <div className='col-lg-10'>
                 <div className='heading-title text-center'>
-                  <h4>Mr. Abcd Name</h4>
+                  <h4>Mr. {patientDetail?.patientName}</h4>
                 </div>
               </div>
               <div className='col-lg-10'>
@@ -59,7 +106,7 @@ export const Medicalreport = () => {
                         <div className='addheading'>Patient Name :</div>
                         </div>
                         <div className='col-lg-6'>
-                          <div className='texting'>Vijay Bhaskar</div>
+                          <div className='texting'>{patientDetail?.patientName}</div>
                         </div>
                       </div>
                       <div className='row'>
@@ -67,7 +114,7 @@ export const Medicalreport = () => {
                         <div className='addheading'>Doctor Name :</div>
                         </div>
                         <div className='col-lg-6'>
-                        <div className='texting'>Yogesh Shakya</div>
+                        <div className='texting'>{doctorName}</div>
                         </div>
                       </div>
                       <div className='row'>
@@ -75,25 +122,25 @@ export const Medicalreport = () => {
                         <div className='addheading'>Mobile Number :</div>
                         </div>
                         <div className='col-lg-6'>
-                        <div className='texting'>+91 12345 58621</div>
+                        <div className='texting'>+91 {patientDetail?.phoneNo}</div>
                         </div>
                       </div>
                       <div className='row'>
                         <div className='col-lg-4'>
                         <div className='addheading'>Address :</div>
                         </div>
-                        <div className='col-lg-6'>
-                        <div className='texting'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div className='col-lg-6'>  
+                        <div className='texting'>{patientDetail?.addressLine}</div>
                         </div>
                       </div>
                     </div>
                     <div className='col-lg-6  patent-infolet'>
                     <div className='row'>
                         <div className='col-lg-4'>
-                        <div className='addheading'>DOB :</div>
+                        <div className='addheading'>Parent Name :</div>
                         </div>
                         <div className='col-lg-6'>
-                          <div className='texting'>01 jan 1995</div>
+                          <div className='texting'>{patientDetail?.parentName}</div>
                         </div>
                       </div>
                       <div className='row'>
@@ -101,7 +148,7 @@ export const Medicalreport = () => {
                         <div className='addheading'>Weight :</div>
                         </div>
                         <div className='col-lg-6'>
-                        <div className='texting'>70.25</div>
+                        <div className='texting'>{weight}  Kg</div>
                         </div>
                       </div>
                       <div className='row'>
@@ -109,7 +156,7 @@ export const Medicalreport = () => {
                         <div className='addheading'>Height :</div>
                         </div>
                         <div className='col-lg-6'>
-                        <div className='texting'>157</div>
+                        <div className='texting'>{height} cms</div>
                         </div>
                       </div>
                       <div className='row'>
@@ -117,7 +164,7 @@ export const Medicalreport = () => {
                         <div className='addheading'>Date :</div>
                         </div>
                         <div className='col-lg-7'>
-                        <div className='texting'>28 Sep 2022</div>
+                        <div className='texting'>{fullDate}</div>
                         </div>
                       </div>
                     </div>

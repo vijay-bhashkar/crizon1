@@ -4,6 +4,7 @@ import * as DEMOGRAFIC from "../../actions/Demografic/Demografic.actions";
 const initialState = {
   demografics: null,
   doctors: null,
+  diseases: null,
   demograficObj: null,
   loading: false,
   error: null,
@@ -43,6 +44,18 @@ export const demograficReducer = (state = initialState, action) => {
         error: null,
         demografics: action.payload.data,
       };
+    case DEMOGRAFIC.GET_ALL_DISEASE:
+        return {
+          ...state,
+          loading: true,
+        };
+    case DEMOGRAFIC.GET_ALL_DISEASE_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          error: null,
+          diseases: action.payload.data,
+        };
     case DEMOGRAFIC.GET_ALL_DEMOGRAFICS_FAIL:
       toastError(action.payload);
       return {

@@ -6,7 +6,7 @@ import Select from "react-select";
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { DEMOGRAFICAdd, DEMOGRAFICGet, SETDEMOGRAFICObj, DEMOGRAFICUpdate, GETALLDoctor } from "../../redux/actions/Demografic/Demografic.actions";
+import { DEMOGRAFICAdd, DEMOGRAFICGet, SETDEMOGRAFICObj, DEMOGRAFICUpdate, GETALLDoctor, GETALLDisease } from "../../redux/actions/Demografic/Demografic.actions";
 import { DOCTORGet } from '../../redux/actions/Doctor/Doctor.actions';
 // import { CUSTOMERGet } from '../../redux/actions/Customer/Customer.actions';
 import { rolesObj } from '../../utils/roles';
@@ -54,12 +54,11 @@ export const Adddemographics = () => {
             setDoctor(roleUser._id);
             setHod(roleUser.hod);
             setDisease(roleUser.disease);
-            console.log(roleUser._id, "aaa");
         }
 
         dispatch(DOCTORGet(query));
         dispatch(GETALLDoctor(query));
-        console.log(query , "query");
+        dispatch(GETALLDisease());
     }, []);
 
     useEffect(() => {
@@ -67,7 +66,7 @@ export const Adddemographics = () => {
     }, []);
 
     const demograficObj = useSelector((states) => states.demografic.demograficObj);
-    const diseaseRedux = useSelector((states) => states.hod.diseases);
+    const diseaseRedux = useSelector((states) => states.demografic.diseases);
     const hodRedux = useSelector((states) => states.hod.hods);
     const doctorRedux = useSelector((states) => states.demografic.doctors);
 
@@ -93,7 +92,6 @@ export const Adddemographics = () => {
         setDisease(diseaase)
         if (diseaase) {
             let diseaseDoctor = doctorRedux.filter(el => el.disease === diseaase);
-            console.log(diseaseDoctor, "disease doctor");
             setDoctorArr(diseaseDoctor)
         }
     }
@@ -110,10 +108,10 @@ export const Adddemographics = () => {
             toast.error("Patient Name is mandatory")
             return
         }if (parentName == "" || parentName == undefined) {
-            toast.error("Parent name is mandatory")
+            toast.error("Father/Husband name is mandatory")
             return
         }if (sex == "" || sex == undefined) {
-            toast.error("Gender name is mandatory")
+            toast.error("Gender is mandatory")
             return
         }if (`${phoneNo}`.length != 10){
             toast.error("Phone number should be 10 digit")
@@ -130,22 +128,24 @@ export const Adddemographics = () => {
         }if(password != conPassword){
             toast.error("Password and Confirm Password should be same")
         }
-        // if(disease =="" || disease == undefined){
-        //     toast.error("Please select Disease")
-        //     return
-        // }
-        // if(doctor == "" || doctor == undefined){
-        //     toast.error("Please select Doctor")
-        //     return
-        // }
+    //     if( role !=rolesObj.HOD && role != rolesObj.DOCTOR ){
+    //     if(disease =="" || disease == undefined){
+    //         toast.error("Please select Disease")
+    //         return
+    //     }
+    //     if(doctor == "" || doctor == undefined){
+    //         toast.error("Please select Doctor")
+    //         return
+    //     }
+    // }
         // if (role == rolesObj.DOCTOR) {
-        // console.log(role,"role",roleUser)
         // setDoctor(roleUser._id);   
         // }
         else{
             if (role == rolesObj.DOCTOR) {
-                console.log(role,"role",roleUser)
-                setDoctor(roleUser._id);   
+                setDoctor(roleUser._id); 
+                console.log(roleUser, "roleUser"); 
+                console.log(doctor , "doctor id "); 
                 }
         let obj = {
             ccfId,
@@ -181,6 +181,7 @@ export const Adddemographics = () => {
             // toast.success(" Demografic Added Successfully ");
         }
         navigate("/Patients/clinicalhistory");
+        // <Link to="/Patients/clinicalhistory"></Link>;
     }
     };
 
@@ -387,12 +388,12 @@ export const Adddemographics = () => {
                                             </select>
                                         </div>
                                         <div className='from-group'>
-                                            <label>Confirm Password. <span>*</span></label>
+                                            <label>Confirm Password <span>*</span></label>
                                             <input type="text" className='form-control' value={conPassword} onChange={(e) => { setConPassword(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Diagnosis Year<span>*</span></label>
-                                            <input type="text" className='form-control ' value={diagnosisYear} onChange={(e) => { setDiagnosisYear(e.target.value) }} />
+                                            <input maxLength={4} type="text" onkeypress="return [0-9.]+.test(event.key)" className='form-control ' value={diagnosisYear} onChange={(e) => { setDiagnosisYear(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Diagnosis Month<span>*</span></label>

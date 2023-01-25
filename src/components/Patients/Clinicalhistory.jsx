@@ -133,7 +133,7 @@ const [totalScore_2, setTotalScore_2] = useState("");
 
 const handleAddClinicalHistory = ()=>{
     if(patientId == ""){
-        toast.error("Please fill data")
+        toast.error("Please create patient or select patient ")
         return
     }if(diarrhoea == "" || diarrhoea == undefined){
         toast.error("Diarrhoea is mandatory")

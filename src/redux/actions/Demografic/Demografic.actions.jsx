@@ -1,4 +1,4 @@
-import { createDemografic, deleteDemografic, getAllDemografic, updateDemografic, getAllDoctor  } from "../../../services/Demografic.service";
+import { createDemografic, deleteDemografic, getAllDemografic, updateDemografic, getAllDoctor ,getAllDisease } from "../../../services/Demografic.service";
 
 export const DEMOGRAFIC_ADD = "DEMOGRAFIC_ADD";
 export const DEMOGRAFIC_ADD_SUCCESS = "DEMOGRAFIC_ADD_SUCCESS";
@@ -7,6 +7,10 @@ export const DEMOGRAFIC_ADD_FAIL = "DEMOGRAFIC_ADD_FAIL";
 export const GET_ALL_DOCTORS = "GET_ALL_DOCTORS";
 export const GET_ALL_DOCTORS_SUCCESS = "GET_ALL_DOCTORS_SUCCESS";
 export const DOCTORS_ADD_FAIL = "DOCTORS_ADD_FAIL";
+
+export const GET_ALL_DISEASE = "GET_ALL_DISEASE";
+export const GET_ALL_DISEASE_SUCCESS = "GET_ALL_DISEASE_SUCCESS";
+export const DISEASE_ADD_FAIL = "DISEASE_ADD_FAIL";
 
 export const GET_ALL_DEMOGRAFICS = "GET_ALL_DEMOGRAFICS";
 export const GET_ALL_DEMOGRAFICS_SUCCESS = "GET_ALL_DEMOGRAFICS_SUCCESS";
@@ -79,6 +83,24 @@ export const GETALLDoctor = (formData) => async (dispatch) => {
   } catch (err) {
     console.error(err);
     dispatch({ type: DOCTORS_ADD_FAIL, payload: err });
+  }
+};
+
+export const GETALLDisease = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ALL_DISEASE });
+    let { data: response } = await getAllDisease(formData);
+    console.log(response);
+    console.log("asdcsdc sdcasdcs");
+    if (response) {
+      dispatch({
+        type: GET_ALL_DISEASE_SUCCESS,
+        payload: { data: response.data, message: response.message },
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    dispatch({ type: DISEASE_ADD_FAIL, payload: err });
   }
 };
 

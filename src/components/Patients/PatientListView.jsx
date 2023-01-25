@@ -102,8 +102,8 @@ useEffect(()=>{
 
   const options = [
     { value: "all", label: "All" },
-    { value: "colitis", label: "colitis" },
-    { value: "ulcerstive", label: "ulcerstive" },
+    { value: "crohn's", label: "Crohn's" },
+    { value: "ulcerstive colitis", label: "Ulcerstive colitis" },
   ];
   
   return (

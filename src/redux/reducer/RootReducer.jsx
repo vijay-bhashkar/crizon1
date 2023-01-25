@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import { customerReducer } from "./Customer/Customer.reducer";
 import { authReducer } from "./auth/auth.reducer";
 import { demograficReducer } from "./Demografic/Demografic.reducer";
@@ -15,6 +14,7 @@ import { subAdminReducer } from "./SubAdmin/SubAdmin.reducer";
 import { doctorReducer } from "./Doctor/Doctor.reducer";
 import { followupReducer } from "./FollowUp/FollowUp.reducer";
 import { appointmentReducer } from "./Appointment/Appointment.reducer";
+import { diseaseReducer } from "./Disease/Disease.reducer";
 
 const RootReducer = combineReducers({
   auth: authReducer,
@@ -32,6 +32,7 @@ const RootReducer = combineReducers({
   doctor : doctorReducer,
   followup : followupReducer,
   appointment : appointmentReducer,
+  disease : diseaseReducer,
 });
 
 export default RootReducer;

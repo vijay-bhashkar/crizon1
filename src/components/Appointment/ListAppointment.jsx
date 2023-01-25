@@ -16,7 +16,7 @@ useEffect(() => {
   const diseaseArr = useSelector((states) => states.hod.diseases);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
   const role  =  useSelector((states)=> states.auth.role);
-// console.log(appointArr, "appoint ");
+console.log(appointArr, "appoint Arr");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,10 +37,10 @@ useEffect(() => {
       let docIID = roleUser?._id;
        firstDay = moment(firstDay).format('YYYY-MM-DD');
        lastDay = moment(lastDay).format('YYYY-MM-DD');
-      query += `startDate=${firstDay}lastDate=${lastDay}&doctorId=${docIID}`
+      query += `startDate=${firstDay}&lastDate=${lastDay}&doctorId=${docIID}`
+      console.log(query);
     }
     dispatch(APPOINTMENTGet(query));
-    console.log(query, "query");
   };
 
   useEffect(()=>{
@@ -129,7 +129,7 @@ useEffect(() => {
                     </thead>
                     <tbody>
                     {
-                      indivisualDoctor && indivisualDoctor.map((item,index) =>
+                      appointArr && appointArr.map((item,index) =>
                       <tr>
                         <th scope="row">{index+1}</th>
                         {/* <th>{item.patientName}</th> */}

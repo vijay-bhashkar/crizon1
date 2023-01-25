@@ -366,13 +366,13 @@ export const Nutritionalhistory = () => {
                 <div className="col-lg-4">
                   <div className="from-group">
                     <label>Height (in cms)</label>
-                    <input type="text" className="form-control" value={height} onChange={(e)=>{setHeight(e.target.value)}}/>
+                    <input type="number" className="form-control" value={height} onChange={(e)=>{setHeight(e.target.value)}}/>
                   </div>
                 </div>
                 <div className="col-lg-4">
                   <div className="from-group">
                     <label>Weight (in Kg)</label>
-                    <input type="text" className="form-control" value={weight} onChange={(e)=>{setWeight(e.target.value)}}/>
+                    <input type="number" className="form-control" value={weight} onChange={(e)=>{setWeight(e.target.value)}}/>
                   </div>
                 </div>
                 <div className="col-lg-4">

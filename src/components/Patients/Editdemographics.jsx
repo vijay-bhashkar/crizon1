@@ -106,7 +106,7 @@ const navigate = useNavigate();
         toast.error("Patient Name is required")
         return
     }if(parentName == "" || parentName == undefined){
-        toast.error("Parent Name is required")
+        toast.error("Father/Husband Name is required")
         return
     }if(email == "" || email == undefined){
         toast.error("Email is required")

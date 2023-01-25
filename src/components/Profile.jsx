@@ -36,7 +36,7 @@ export const AdminProfile = () => {
     const hodArrRedux = useSelector((states) => states.doctor.hods);
     const diseaseArrRedux = useSelector((states) => states.hod.diseases);
     const roleUser = useSelector((states) => states.auth.user.roleUser);
-    console.log(roleUser , "role user bhaiya");
+    
     useEffect(() => {
         dispatch(CUSTOMERGet());
     }, []);

@@ -56,6 +56,14 @@ import { AddSubAdmin } from "../components/SubAdmin/AddSubAdmin.jsx";
 import { ViewSubAdmin } from "../components/SubAdmin/ViewSubAdmin.jsx";
 import { SubAdminListview } from "../components/SubAdmin/ListView.jsx";
 import { AdminProfile } from "../components/Profile.jsx";
+
+import { Addlever } from "../components/Lever/Addlever.jsx";
+import { AddLeverHistory } from "../components/Lever/AddLeverHistory";
+import { EtiologicalWorkup } from "../components/Lever/EtiologicalWorkup";
+
+import { AddDiseases } from "../components/Diseases/AddDisease";
+import { ListDisease } from "../components/Diseases/ListDisease";
+
 import Header from "../components/Layout/Header";
 import Sidebar from "../components/Layout/Sidebar";
 import { useSelector } from "react-redux";
@@ -122,6 +130,15 @@ function AuthorizedRoutes() {
                       <Route path="/subAdmin/listView" exact element={<SubAdminListview />}></Route>
                       <Route path="/Profile" exact element={<AdminProfile />}></Route>
                       <Route path="/login" exact element={<Login />}></Route>
+
+                      <Route path="/add-lever" exact element={<Addlever />}></Route>
+                      <Route path="/add-lever-history" exact element={<AddLeverHistory />}></Route>
+                      <Route path="/etiological-work-up" exact element={<EtiologicalWorkup />}></Route>
+
+                      <Route path="/Add-Disease" exact element={<AddDiseases />}></Route>
+                      <Route path="/List-Disease" exact element={<ListDisease />}></Route>
+
+
                     </Routes>
               </div>
             </div>

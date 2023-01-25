@@ -29,9 +29,9 @@ export const AddHod = () => {
   const [diseaseArr, setDiseaseArr] = useState([]);
   const [obj, serObj] = useState([]);
 
-useEffect(() => {
+  useEffect(() => {
     dispatch(DISEASEGet());
-}, []);
+  }, []);
 
 const hodObj = useSelector((states) => states.hod.hodObj);
 const diseasesArrRedux = useSelector((states) => states.hod.diseases);
