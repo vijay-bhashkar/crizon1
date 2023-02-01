@@ -30,10 +30,11 @@ const [searchParams, setSearchParams] = useSearchParams("edit");
   const [securityAns, setSecurityAns] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [disease, setDisease]= useState("");
-  const [diseaseMainArr, setDiseaseMainArr] = useState([]);
-  const [hodArr, setHodArr] = useState([]);
-  const [diseaseArr, setDiseaseArr] = useState([]);
+  const [diseaseMainArr, setDiseaseMainArr] = useState("");
+  const [hodArr, setHodArr] = useState("");
+  const [diseaseArr, setDiseaseArr] = useState("");
   const [hod, sethod] = useState("");
+  const [service, setService] = useState("");
 
   const customerArr = useSelector((states) => states.doctor.doctors);
   const hodArrRedux = useSelector((states) => states.doctor.hods);
@@ -84,6 +85,16 @@ const hadleDisease = (diseaase)=> {
     setHodArr(diseaseHod)
     }
 }
+
+const onServiceFun = (disease)=>{
+    setService(disease);
+    if(disease){
+      let diseaseFilter = diseaseArrRedux.filter(el=>el.service === disease);
+      setDiseaseArr(diseaseFilter);
+      console.log(diseaseFilter, "asdfasdfasdf");
+    }
+    
+  }
 
 useEffect(()=> {
     console.log(searchParams.get("edit"), "edit")
@@ -150,7 +161,8 @@ const dispatch = useDispatch();
         statue,
         securityAns,
         hod,
-        disease
+        disease,
+        service
     };
     if(password != conPassword){
         toast.error("Password and Confirm Password Should Be Same");
@@ -190,6 +202,7 @@ useEffect(() => {
         setSecurityAns(customerObj?.securityAns);
         sethod(customerObj?.hod);
         setDisease(customerObj?.disease);
+        setService(customerObj?.service);
     }
 }, [customerObj]);
 
@@ -200,13 +213,16 @@ const question = [
     { value:"What's your birth city?", label:"What's your birth city?" },
     { value:"What's your nick name?", label:"What's your nick name?" },
 ]
-
-
 const statues = [
     { value:"Select", label:"Select" },
     { value:"disabled" , label:"disabled" },
     { value:"enabled" , label:"enabled" },
 ]
+const serviceDrop = [
+    { value:"ibd", label: "IBD" },
+    { value:"lever", label: "Lever" },
+]
+
   return (
     <div className="content_wrapper">
     <div className="contentwraper_header">
@@ -274,23 +290,29 @@ const statues = [
                                           question && question.map((el)=><option value={el.value}>{el.label}</option>)
                                         }
                                     </select>
-                                    {/* <Select options={question} placeholder="Select" value={securityQuest} onChange={(e)=>{securityQuest(e)}}/> */}
                                 </div>
-                                <div className='from-group'>
+                                {/* <div className='from-group'>
                                     <label>Status<span></span></label>
                                     <select className="form-control" value={statue} onChange={(e)=>{setStatue(e.target.value)}}>
                                         { statues && statues.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>
-                                    {/* <Select options={statues} placeholder="Select" value={statue} onChange={(e)=>{setStatue(e.target.value)}}/> */}
-                                </div>
+                                </div> */}
                                 <div className='from-group'>
-                                    <label>Disease<span>*</span></label>
-                                    <select className="form-control" value={disease} onChange={(e)=>{hadleDisease(e.target.value)}}>
-                                    
-                                        <option value=""> Please Select Disease</option>
-                                        { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.disease}</option>) }
+                                    <label>Service<span>*</span></label>
+                                    <select className="form-control" value={service} onChange={(e)=>{onServiceFun(e.target.value)}}>
+                                        <option>Please Select</option>
+                                        { serviceDrop && serviceDrop.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>
-                                    </div>
+                                </div>
+
+                                <div className='from-group'>
+                                    <label>H.O.D<span>*</span></label>
+                                    <select className="form-control" value={hod} onChange={(e)=>{sethod(e.target.value)}}>
+                                    <option value=""> Please Select Hod</option>
+                                        { hodArr && hodArr.map((el)=><option value={el._id}>{ el.firstName }</option>) }
+                                    </select>
+                                </div>
+                                
                             
                             </div>
                         </div>
@@ -325,28 +347,33 @@ const statues = [
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
                                 </div>
+                                
+                                
+
+                                <div className='from-group'>
+                                    <label>Disease<span>*</span></label>
+                                    <select className="form-control" value={disease} onChange={(e)=>{hadleDisease(e.target.value)}}>
+                                        <option value=""> Please Select Disease</option>
+                                        { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.disease}</option>) }
+                                    </select>
+                                </div>
+
                                 <div className='row'>
-                                    <div className='col-lg-6'>
+                                  <div className='col-lg-6'>
                                     <label>Verification Word*</label>
                                     <div className="input-group">
                                         <input type="text" className="form-control"  />
                                         <span class="input-group-text"><BiRefresh /></span>
                                     </div>
-                                    </div>
-                                    <div className='col-lg-6'>
-                                        <div className='from-group'>
-                                            <label>&nbsp;</label>
-                                            <input type="text" className='form-control '  />
-                                        </div>
-                                    </div>
+                                  </div>
+                                  <div className='col-lg-6'>
                                     <div className='from-group'>
-                                    <label>H.O.D<span>*</span></label>
-                                    <select className="form-control" value={hod} onChange={(e)=>{sethod(e.target.value)}}>
-                                    <option value=""> Please Select Hod</option>
-                                        { hodArr && hodArr.map((el)=><option value={el._id}>{ el.firstName }</option>) }
-                                    </select>
+                                        <label>&nbsp;</label>
+                                        <input type="text" className='form-control '  />
+                                    </div>
+                                  </div>
                                 </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -15,6 +15,9 @@ import { doctorReducer } from "./Doctor/Doctor.reducer";
 import { followupReducer } from "./FollowUp/FollowUp.reducer";
 import { appointmentReducer } from "./Appointment/Appointment.reducer";
 import { diseaseReducer } from "./Disease/Disease.reducer";
+import { leverPerDetailReducer } from "./LeverPerDetail/LeverPerDetail.reducer";
+import { leverHistoryReducer } from "./LeverHistory/LeverHistory.reducer";
+import { etiologicalReducer } from "./Etiological/Etiological.reducer";
 
 const RootReducer = combineReducers({
   auth: authReducer,
@@ -33,6 +36,9 @@ const RootReducer = combineReducers({
   followup : followupReducer,
   appointment : appointmentReducer,
   disease : diseaseReducer,
+  leverPerDetail : leverPerDetailReducer,
+  leverHistory : leverHistoryReducer,
+  etiological : etiologicalReducer,
 });
 
 export default RootReducer;

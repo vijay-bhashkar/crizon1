@@ -8,16 +8,16 @@ import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
 import toast from "react-hot-toast";
-import { HODGet, HODDelete, SETHODObj } from "../../redux/actions/Hod/Hod.actions";
+import { HODGet, HODDelete, SETHODObj, DISEASEGet} from "../../redux/actions/Hod/Hod.actions";
 export const Hod = () => {
 
 useEffect(() => {
-    handleGet()
+    handleGet();
   }, []);
 
   const hodArr = useSelector((states) => states.hod.hods);
   const diseaseArr = useSelector((states) => states.hod.diseases);
-
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,8 +27,13 @@ useEffect(() => {
   const [doctor , setDoctor] =  useState("");
   const [search , setSearch] =  useState("");
 
+  const [allDisease , setAllDisease] = useState("");
+  const [service, setService] = useState("");
+  const [finalDisease, setFinalDisease] = useState("");
+
   const handleGet = () => {
     dispatch(HODGet());
+    dispatch(DISEASEGet());
   };
  
   useEffect(() => {
@@ -39,7 +44,7 @@ useEffect(() => {
     }, [hodArr]);
 
     useEffect(() => {
-      if (search) {
+      if(search) {
       let filterAr = hodArr.filter(el => `${el.firstName}`.toLowerCase().includes(`${search}`.toLowerCase()));
       console.log(filterAr,"search")
         sethodDisplayArr(filterAr);
@@ -48,19 +53,34 @@ useEffect(() => {
 
 
     useEffect(() => {
-      if (diseaseArr?.length) {
+      if(diseaseArr?.length) {
         setDisease(diseaseArr);
         }
       }, [diseaseArr]);
 
     const hadleDisease = (disease) => {
+      setFinalDisease(disease);
+      console.log(disease, "ye kya hai");
       if (disease) {
         if(disease.value == 'all'){
           sethodDisplayArr(hodArr);
         } else {
-          let hodDisease = hodArr.filter(el => el.disease == disease.value);
-          // console.log(hodDisease, "disease doctor");
+          let hodDisease = hodArr.filter(el => el.disease == disease);
+          console.log(hodDisease , "hodDisease,hodDisease");
           sethodDisplayArr(hodDisease);
+        }
+      }
+    }
+
+    const handleService = (service)=>{
+      console.log("sdfsadf");
+      setService(service);
+        if(service){
+          if(service == 'all'){
+            sethodDisplayArr(hodArr);
+          }else{
+          const getDisease = diseaseArr.filter(el => el.service === service);
+          setAllDisease(getDisease);
         }
       }
     }
@@ -85,6 +105,12 @@ useEffect(() => {
     { value: "crohn's", label: "Crohn's" },
     { value: "ulcerstive colitis", label: "Ulcerstive colitis" },
   ];
+  const serviceDrop = [
+    { label: "All", value:"all" },
+    { label: "IBD", value:"ibd" },
+    { label: "LEVER", value:"lever" },
+  ]
+
   return (
     <div className="content_wrapper">
       <div className="contentwraper_header">
@@ -112,12 +138,21 @@ useEffect(() => {
         <div className="wrapper_contentbody">
           <div className="container-fluid">
             <div className="row justify-content-center">
-              <div className=""></div>
-              <div className="col-lg-5">
-                <label>DISEASES</label>
-                <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/>
+              <div className="col-lg-3">
+                <label>Service</label>
+                <select className='form-control' value={service} onChange={(e)=>{handleService(e.target.value)}}>
+                  { serviceDrop && serviceDrop.map((el)=><option value={el.value}>{el.label}</option>)}
+                </select>
               </div>
-              <div className="col-lg-4">
+              <div className="col-lg-3">
+                <label>DISEASES</label>
+                {/* <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/> */}
+                <select className='form-control' value={finalDisease} onChange={(e)=>{hadleDisease(e.target.value)}} >
+                  <option>Select Disease</option>
+                  { allDisease && allDisease.map((el)=><option value={el._id}>{el.disease}</option>)}
+                </select>
+              </div>
+              <div className="col-lg-3">
                 <label></label>
                 <input type="text" name="search" placeholder='Enter Hod Name' className='form-control' value={search} onChange={(el)=>{setSearch(el.target.value)}} />
               </div>

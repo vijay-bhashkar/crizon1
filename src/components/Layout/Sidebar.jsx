@@ -110,9 +110,9 @@ if(role == rolesObj.ADMIN){
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
          <div class="accordion-body">
             <ul>
-              <li> <Link to="">List Of Patient </Link></li>
+              <li> <Link to="/lever-list">List Of Patient </Link></li>
               <li><Link to="/add-lever">Add Patient</Link></li>
-              <li><Link to="">Search Patient</Link></li>
+              <li><Link to="/search-lever-patient">Search Patient</Link></li>
             </ul>
           </div>
         </div>

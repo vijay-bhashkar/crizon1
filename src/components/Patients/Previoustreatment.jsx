@@ -15,7 +15,7 @@ const navigate = useNavigate();
 
 useEffect(() => {
     if(patientId){
-  dispatch(PREVIOUSTREATMENTGet_BY_PATIENT_ID(patientId));
+        dispatch(PREVIOUSTREATMENTGet_BY_PATIENT_ID(patientId));
     }
 }, [patientId]);
 

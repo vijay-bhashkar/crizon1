@@ -43,6 +43,7 @@ export const Adddemographics = () => {
     const [diseaseArr, setDiseaseArr] = useState("");
     const [hodArr, setHodArr] = useState("");
     const [doctorArr, setDoctorArr] = useState("");
+    const [service, setService] = useState("");
 
     useEffect(() => {
         let query = "";
@@ -89,12 +90,25 @@ export const Adddemographics = () => {
     }, [doctorRedux]);
 
     const hadleDisease = (diseaase) => {
-        setDisease(diseaase)
+        setDisease(diseaase);
         if (diseaase) {
             let diseaseDoctor = doctorRedux.filter(el => el.disease === diseaase);
-            setDoctorArr(diseaseDoctor)
+            setDoctorArr(diseaseDoctor);
+            console.log(diseaseDoctor, "diseaseDoctor , diseaseDoctor");
         }
     }
+
+    const onServiceFun = (disease)=>{
+        setService(disease);
+        // setDoctor(disease);
+        if(disease){
+          let diseaseFilter = diseaseRedux.filter(el=>el.service === disease);
+          let doctorReduxArr  = doctorRedux.filter(el=>el.service === disease);
+          setDiseaseArr(diseaseFilter);
+          setDoctorArr(doctorReduxArr);
+          console.log(diseaseFilter, "diseaseFilter");
+        }
+      }
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -170,7 +184,8 @@ export const Adddemographics = () => {
             hod,
             password,
             conPassword,
-            indiDisease
+            indiDisease,
+            service
         };
         if (demograficObj?._id) {
             dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
@@ -210,6 +225,7 @@ export const Adddemographics = () => {
             setPassword(demograficObj?.password);
             setConPassword(demograficObj?.conPassword);
             setIndiDisease(demograficObj?.indiDisease);
+            setService(demograficObj?.service);
         }
     }, [demograficObj]);
 
@@ -273,6 +289,11 @@ export const Adddemographics = () => {
         { value: "December", label: "December" },
     ]
 
+    const serviceDrop = [
+        { value:"ibd", label: "IBD" },
+        { value:"lever", label: "Lever" },
+      ]
+
     return (
         <div className="content_wrapper">
             <div className="contentwraper_header">
@@ -309,7 +330,6 @@ export const Adddemographics = () => {
                     <li class="list-group-item"><Link >Treatment</Link> </li>
                     <li class="list-group-item"><Link >Infections</Link></li>
                     <li class="list-group-item"><Link >Depression</Link></li>
-
                 </ul>
             </div>
             <div className="wrapper_contentbody">
@@ -359,10 +379,11 @@ export const Adddemographics = () => {
                                             <div className='from-group'>
                                                 <label>Doctor <span>*</span></label>
                                                 <select className='form-control' value={doctor} onChange={(e) => {
-                                                    let selectedDoxtor = doctorArr.find(el => el._id == e.target.value)
+                                                    let selectedDoxtor = doctorArr.find(el => el._id == e.target.value);
+                                                    console.log(selectedDoxtor , "selectedDoxtor selectedDoxtor");
                                                     setDoctor(e.target.value);
                                                     setHod(selectedDoxtor?.hod);
-                                                    setDisease(selectedDoxtor?.disease);
+                                                    setDisease(selectedDoxtor?._id);
                                                 }}>
                                                     <option value="">Please Select</option>
                                                     {doctorArr && doctorArr.map((el) => <option value={el._id}>{el.firstName}</option>)}
@@ -401,16 +422,22 @@ export const Adddemographics = () => {
                                                 {months && months.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>
                                         </div>
+                                        <div className='from-group'>
+                                            <label>Service<span>*</span></label>
+                                            <select className="form-control" value={service} onChange={(e)=>{onServiceFun(e.target.value)}}>
+                                                <option>Please Select</option>
+                                                { serviceDrop && serviceDrop.map((el)=><option value={el.value}>{el.label}</option>) }
+                                            </select>
+                                        </div>
                                         {(role == rolesObj.ADMIN) ?
                                             <div className='from-group'>
                                                 <label>Disease <span>*</span></label>
-                                                <select className='form-control' value={disease} onChange={(e) => hadleDisease(e.target.value)}>
+                                                <select className='form-control' value={disease} onChange={(e) => setDisease(e.target.value)}>
                                                     <option value=""> Please Select Disease</option>
-                                                    {diseaseArr && diseaseArr.map((el) => <option value={el.disease}>{el.name}</option>)}
+                                                    {diseaseArr && diseaseArr.map((el) => <option value={el._id}>{el.disease}</option>)}
                                                 </select>
                                             </div>
-                                            : ""}
-
+                                        : ""}
                                     </div>
                                 </div>
                                 <div className='col-lg-12'>
@@ -430,11 +457,8 @@ export const Adddemographics = () => {
                                     <div className='from-group addlist-frm'>
                                         <label>Eduation of the Head</label>
                                         <select class="form-control" value={educationHead} onChange={(e) => { setEducationHead(e.target.value) }}>
-                                            {
-                                                education && education.map((el) => <option value={el.value}>{el.label}</option>)
-                                            }
+                                        { education && education.map((el) => <option value={el.value}>{el.label}</option>)} 
                                         </select>
-
                                     </div>
                                 </div>
                                 <div className='col-lg-4'>
@@ -449,9 +473,7 @@ export const Adddemographics = () => {
                                     <div className='from-group addlist-frm'>
                                         <label>Occupation of the Head</label>
                                         <select class="form-control" value={occupationHead} onChange={(e) => { setOccupationHead(e.target.value) }}>
-                                            {
-                                                occupation && occupation.map((el) => <option value={el.value}>{el.label}</option>)
-                                            }
+                                            { occupation && occupation.map((el) => <option value={el.value}>{el.label}</option>)}
                                         </select>
                                     </div>
                                 </div>

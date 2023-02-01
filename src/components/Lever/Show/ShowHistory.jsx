@@ -3,9 +3,9 @@ import { AiOutlineUnorderedList } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { LEVERHISTORYAdd, LEVERHISTORYGet, SETLEVERHISTORYObj, LEVHISGet_BY_PATIENT_ID, LEVERHISTORYUpdate } from "../../redux/actions/LeverHistory/LeverHistory.actions";
+import { LEVERHISTORYAdd, LEVERHISTORYGet, SETLEVERHISTORYObj, LEVHISGet_BY_PATIENT_ID, LEVERHISTORYUpdate } from "../../../redux/actions/LeverHistory/LeverHistory.actions";
 
-export const AddLeverHistory = () => {
+export const ShowHistory = () => {
 
     const leverPerDetailObj = useSelector((states) => states.leverPerDetail.leverPerDetailObj);
     const leverHistoryObj = useSelector((states) => states.leverHistory.leverHistoryobj);
@@ -17,7 +17,6 @@ export const AddLeverHistory = () => {
     ];
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const [patientId , setPatientId] = useState("");
     useEffect(() => {
@@ -60,51 +59,12 @@ export const AddLeverHistory = () => {
         }
       }, [searchParams.get("edit")]);
 
-    let onHandleSubmit = ()=>{
-        let obj = {
-            asymptomatic,
-            malaise,
-            fatigue,
-            ruqPain,
-            pruritus,
-            jaundice,
-            hepatitis,
-            recurrentFever,
-            priorSurgery,
-            giBleed,
-            antiviralTherapy,
-            drugUsed,
-            dentalExposure,
-            renalTx,
-            alcohol,
-            day,
-            week,
-            years,
-            familyHistory,
-            weight,
-            height,
-            bmi,
-            bloodPressure,
-            patientId
-        }
-        console.log(patientId, "patientId");
-        if(leverHistoryObj?._id){
-            dispatch(LEVERHISTORYUpdate(leverHistoryObj?._id , obj));
-            dispatch(SETLEVERHISTORYObj(null));
-            toast.success("Patient history Updated Successfully ");
-        }else{
-            dispatch(LEVERHISTORYAdd(obj));
-            toast.success("Patient history Added Successfully ");
-        }
-        navigate("/etiological-work-up");
-    };
-
      useEffect(()=>{
-        // dispatch(SETLEVERHISTORYObj({}));
+        dispatch(SETLEVERHISTORYObj({}));
         if(leverPerDetailObj){
             setPatientId(leverPerDetailObj?._id);
         }
-    },[leverPerDetailObj]);
+    },[]);
 
     useEffect(()=>{
         if(leverHistoryObj){
@@ -185,50 +145,38 @@ export const AddLeverHistory = () => {
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Asymptomatic </label>
-                                <select className='form-control' value={asymptomatic} onChange={(el)=>{setAsymptomatic(el.target.value)}}>
-                                   { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Asymptomatic  </b> :  {asymptomatic} </label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Malaise </label>
-                                <select className='form-control' value={malaise} onChange={(el)=>{setMalaise(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Malaise  </b> : {malaise} </label>
+                               
                             </div>
                         </div>
                         <div className='col-lg-4'>
                         <div className='from-group'>
-                                <label>Fatigue </label>
-                                <select className='form-control' value={fatigue} onChange={(el)=>{setFatigue(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Fatigue  </b> :  {fatigue}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                         <div className='from-group'>
-                                <label>RUQ pain </label>
-                                <select className='form-control' value={ruqPain} onChange={(el)=>{setRuqPain(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> RUQ pain  </b> : {ruqPain} </label>
+                               
                             </div>
                         </div>
                         <div className='col-lg-4'>
                         <div className='from-group'>
-                                <label>Pruritus </label>
-                                <select className='form-control' value={pruritus} onChange={(el)=>{setPruritus(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Pruritus  </b> :  {pruritus}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                         <div className='from-group'>
-                                <label>Jaundice </label>
-                                <select className='form-control' value={jaundice} onChange={(el)=>{setJaundice(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Jaundice  </b> :  {jaundice}</label>
+                                
                             </div>
                         </div>
                     </div>
@@ -240,66 +188,50 @@ export const AddLeverHistory = () => {
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Viral hepatitis </label>
-                                <select className='form-control' value={hepatitis} onChange={(el)=>{setHepatitis(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Viral hepatitis  </b> :  {hepatitis}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                         <div className='from-group'>
-                                <label>Recurrent fever </label>
-                                <select className='form-control' value={recurrentFever} onChange={(el)=>{setRecurrentFever(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Recurrent fever  </b> :  {recurrentFever}</label>
+                               
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Prior surgery/Blood transfusions</label>
-                                <select className='form-control' value={priorSurgery} onChange={(el)=>{setPriorSurgery(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Prior surgery/Blood transfusions </b> :  {priorSurgery}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>GI Bleed</label>
-                                <select className='form-control' value={giBleed} onChange={(el)=>{setGiBleed(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> GI Bleed </b> : {giBleed} </label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Antiviral therapy & duration</label>
-                                <select className='form-control' value={antiviralTherapy} onChange={(el)=>{setAntiviralTherapy(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Antiviral therapy & duration </b> :  {antiviralTherapy}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Drug used</label>
-                                <select className='form-control' value={drugUsed} onChange={(el)=>{setDrugUsed(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Drug used </b> :  {drugUsed}</label>
+                                
                             </div>
                         </div>  
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Dental exposure</label>
-                                <select className='form-control' value={dentalExposure} onChange={(el)=>{setDentalExposure(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Dental exposure </b> :  {dentalExposure}</label>
+                               
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Renal tx</label>
-                                <select className='form-control' value={renalTx} onChange={(el)=>{setRenalTx(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Renal tx </b> :  {renalTx}</label>
+                                
                             </div>
                         </div>
                     </div>
@@ -311,36 +243,32 @@ export const AddLeverHistory = () => {
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Alcohol </label>
-                                <select className='form-control' value={alcohol} onChange={(el)=>{setAlcohol(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Alcohol  </b> :  {alcohol}</label>
+                              
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Gm/day </label>
-                                <input type="text" className='form-control' value={day} onChange={(el)=>{setDay(el.target.value)}}/>
+                                <label><b> Gm/day  </b> : {day} </label>
+                              
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Days/Week </label>
-                                <input type="text" className='form-control' value={week} onChange={(el)=>{setWeek(el.target.value)}}/>
+                                <label><b> Days/Week  </b> : {week} </label>
+                               
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>No of yrs </label>
-                                <input type="text" className='form-control' value={years} onChange={(el)=>{setYears(el.target.value)}}/>
+                                <label><b> No of yrs  </b> :  {years}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Family History </label>
-                                <select className='form-control' value={familyHistory} onChange={(el)=>{setFamilyHistory(el.target.value)}}>
-                                { options && options.map((el)=> <option value={el.value}>{el.label}</option>)}
-                                </select>
+                                <label><b> Family History  </b> :  {familyHistory}</label>
+                            
                             </div>
                         </div>
                     </div>
@@ -352,36 +280,34 @@ export const AddLeverHistory = () => {
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Wt (Kg) </label>
-                                <input type="text" className='form-control' value={weight} onChange={(el)=>{setWeight(el.target.value)}}/>
+                                <label><b> Wt (Kg)  </b> :  {weight}</label>
+                                
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Ht (cm) </label>
-                                <input type="text" className='form-control' value={height} onChange={(el)=>{setHeight(el.target.value)}}/>
+                                <label><b> Ht (cm)  </b> :  {height}</label>
+                               
                             </div>
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>BMI (Kg/cm2) </label>
-                                <input type="text" className='form-control' value={bmi} onChange={(el)=>{setBmi(el.target.value)}}/>
+                                <label><b> BMI (Kg/cm2)  </b> :  {bmi}</label>
+                                
                             </div>
                         </div> 
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label> Blood Pressure </label>
-                                <input type="text" className='form-control' value={bloodPressure} onChange={(el)=>{setBloodPressure(el.target.value)}}/>
+                                <label><b>  Blood Pressure  </b> :  {bloodPressure}</label>
+                               
                             </div>
                         </div>
                     </div>                    
                     <div className='row mt-4'>
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
-                                { leverHistoryObj?
-                                <button className='btn btn-link' onClick={()=>{onHandleSubmit()}}>Update</button>:
-                                <button className='btn btn-link' onClick={()=>{onHandleSubmit()}}>Add</button> }
-                                {/* <Link to="../etiological-work-up" className='btn btn-link mx-4'>Next</Link> */}
+                                <Link to="/show-lever-patient" className='btn btn-link mx-4'>Previous</Link>
+                                <Link to="/show-lever-etiological" className='btn btn-link mx-4'>Next</Link>
                             </div>
                         </div>
                     </div>

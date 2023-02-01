@@ -19,9 +19,9 @@ export const Patientupcoming = () => {
             </div>
             <div className="col-lg-3">
             <div className="form-group has-search">
-                    <span className="fa fa-search form-control-feedback"></span>
-                    <input type="text" className="form-control" placeholder="Search" />
-                </div>
+              <span className="fa fa-search form-control-feedback"></span>
+              <input type="text" className="form-control" placeholder="Search" />
+            </div>
             </div>
           </div>
         </div>
@@ -35,15 +35,14 @@ export const Patientupcoming = () => {
                         <ul className="nav nav-pills mb-3 justify-content-center " id="pills-tab" role="tablist">
                             <span className='boder-cover d-flex'>
                             <li className="nav-item" role="presentation">
-                                <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">UpComing</button>
+                              <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">UpComing</button>
                             </li>
                             <li className="nav-item" role="presentation">
-                                <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Complete</button>
+                              <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Complete</button>
                             </li>
                             </span>
                         </ul>
                         </div>
-                       
                     </div>
                 </div>
 

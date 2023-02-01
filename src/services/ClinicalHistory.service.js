@@ -19,6 +19,7 @@ export const deleteClinic = (id) => {
 export const updateClinic = (formData, id) => {
     return axiosApiInstance.patch(`${serverUrl}/updateClinic/${id}`, formData);
 };
+
 export const getHistoryByPatientId = (id) => {
     return axiosApiInstance.get(`${serverUrl}/getByPatientId/${id}`);
 };

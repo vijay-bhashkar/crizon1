@@ -12,6 +12,7 @@ export const Clinicalhistory = () => {
 
 const [patientId, setPateintId] = useState("");
 const dispatch = useDispatch();
+
 useEffect(() => {
     if(patientId){
       dispatch(CLINICALHISTORYGet_BY_PATIENT_ID(patientId));
@@ -20,11 +21,10 @@ useEffect(() => {
 
 const cliHistoryObj = useSelector((states) => states.clinicalHistory.clinicalHistoriesObj);
 const demograficObj = useSelector((states) => states.demografic.demograficObj);
-// console.log(demograficObj,"demograficObj");
-// console.log(demograficObj?._id);
-const navigate = useNavigate();
-useEffect(() => {
 
+const navigate = useNavigate();
+
+useEffect(() => {
     dispatch(SETCLINICALHISTORYObj({}))
     if(demograficObj){
         setPateintId(demograficObj?._id)
@@ -246,11 +246,10 @@ generalBeing,
 manifestations,
 totalScore_2,
 }
-// console.log(obj);
-console.log(demograficObj?._id);
+
     if (cliHistoryObj?._id) {
       dispatch(CLINICALHISTORYUpdate(cliHistoryObj._id, obj));
-      dispatch(SETCLINICALHISTORYObj(null))
+      dispatch(SETCLINICALHISTORYObj(null));
       toast.success(" Clinical History Updated Successfully ");
     } else {
       dispatch(CLINICALHISTORYAdd(obj));

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HODAdd,HODGet, SETHODObj, HODUpdate, DISEASEGet } from "../../redux/actions/Hod/Hod.actions";
 import { Link, useSearchParams } from 'react-router-dom';
 export const AddHod = () => {
+  
   const [searchParams, setSearchParams] = useSearchParams("edit");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -28,19 +29,31 @@ export const AddHod = () => {
   const [disease, setDisease] = useState("");
   const [diseaseArr, setDiseaseArr] = useState([]);
   const [obj, serObj] = useState([]);
+  const [service, setService] = useState([]);
 
   useEffect(() => {
     dispatch(DISEASEGet());
   }, []);
 
 const hodObj = useSelector((states) => states.hod.hodObj);
+console.log(hodObj, "hodObj");
 const diseasesArrRedux = useSelector((states) => states.hod.diseases);
-// console.log(hodObj);
-useEffect(() => {
-    if(diseasesArrRedux){
-        setDiseaseArr(diseasesArrRedux);
-    }
-  }, [diseasesArrRedux]);
+// console.log(diseasesArrRedux, "diseasesArrReduxdiseasesArrRedux");
+// useEffect(() => {
+//   if(diseasesArrRedux){
+//     setDiseaseArr(diseasesArrRedux);
+//   }
+// }, [diseasesArrRedux]);
+
+const onServiceFun = (disease)=>{
+  setService(disease);
+  if(disease){
+    let diseaseFilter = diseasesArrRedux.filter(el=>el.service === disease);
+    setDiseaseArr(diseaseFilter);
+  }
+}
+
+
 
 const dispatch = useDispatch();
   const handleAddCustomer = () => {
@@ -89,7 +102,7 @@ const dispatch = useDispatch();
       return;
     }
     if (disease =="" || disease == undefined ) {
-        toast.error(" Disease is mandatory");
+      toast.error(" Disease is mandatory");
       return;
     }
     else{
@@ -108,7 +121,8 @@ const dispatch = useDispatch();
         securityAns,
         disease,
         verificationWord,
-        conVerification
+        conVerification,
+        service
     };
     if(password != conPassword){
       toast.error("Password and Confirm Password Should Be Same");
@@ -148,6 +162,7 @@ useEffect(() => {
         setSecurityAns(hodObj?.securityAns);
         setVerificationWord(hodObj?.verificationWord);
         setConVerification(hodObj?.specialization);
+        setService(hodObj?.service);
         setDisease(hodObj?.disease);
     }
 }, [hodObj]);
@@ -159,8 +174,6 @@ useEffect(()=> {
   }
 }, [searchParams.get("edit")])
 
-
-
 const question = [
     { value:"", label: "Please Select option" },
     { value:"What's your pet name?", label:"What's your pet name?" },
@@ -168,6 +181,11 @@ const question = [
     { value:"What's your mother maiden name?", label:"What's your mother maiden name?" },
     { value:"What's your birth city?", label:"What's your birth city?" },
     { value:"What's your nick name?", label:"What's your nick name?" },
+]
+
+const serviceDrop = [
+  { value:"ibd", label: "IBD" },
+  { value:"lever", label: "Lever" },
 ]
 
   return (
@@ -229,10 +247,17 @@ const question = [
                                     </select>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Disease<span>*</span></label>
+                                    <label>Service<span>*</span></label>
+                                    <select className="form-control" value={service} onChange={(e)=>{onServiceFun(e.target.value)}}>
+                                        <option>Please Select</option>
+                                        { serviceDrop && serviceDrop.map((el)=><option value={el.value}>{el.label}</option>) }
+                                    </select>
+                                </div>
+                                <div className='from-group'>
+                                    <label>Disease<span> *</span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
                                         <option>Please Select</option>
-                                        { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.name}</option>) }
+                                        { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.disease}</option>) }
                                     </select>
                                 </div>
                             </div>
@@ -244,19 +269,19 @@ const question = [
                                     <input type="text" className='form-control' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Position/Title<span>*</span></label>
+                                    <label>Position/Title<span> *</span></label>
                                     <input type="text" className='form-control' value={position} onChange={(e)=>{setPosition(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Phone<span>*</span></label>
+                                    <label>Phone<span> *</span></label>
                                     <input type="text" className='form-control' value={phone} maxLength={10} onChange={(e)=>{setPhone(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Confirm Password<span>*</span></label>
+                                    <label>Confirm Password<span> *</span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Country<span>*</span></label>
+                                    <label>Country<span> *</span></label>
                                     <input type="text" className='form-control' value={country} onChange={(e)=>{setCountry(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>

@@ -25,7 +25,7 @@ const navigate = useNavigate();
 
 useEffect(() => {
   if(patientId){
-dispatch(INFECTIONGet_BY_PATIENT_ID(patientId));
+    dispatch(INFECTIONGet_BY_PATIENT_ID(patientId));
   }
 }, [patientId]);
 

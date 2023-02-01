@@ -43,7 +43,7 @@ useEffect(() => {
 
 const depressionObj = useSelector((states) => states.depression.depressionObj);
 const demograficObj = useSelector((states) => states.demografic.demograficObj); 
-console.log(depressionObj,"dwdwe");
+console.log(demograficObj,"demograficObj");
 useEffect(() => {
   dispatch(SETDEPRESSIONObj({}))
   if(demograficObj){

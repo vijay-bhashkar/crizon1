@@ -18,6 +18,7 @@ export const AddDiseases = () => {
     const diseaseObj = useSelector((states)=> states.disease.diseaseObj);
 
     const serviceDrop = [
+        { label: "select service", value:"select service" },
         { label:"I.B.D" , value:"ibd" },
         { label:"Lever" , value:"lever" },
     ];
@@ -34,7 +35,7 @@ export const AddDiseases = () => {
         dispatch(DISEASEAdd(obj));
         toast.success("Disease Added successfully");
     }
-    }
+}
 
     useEffect(()=>{
         if(diseaseObj){

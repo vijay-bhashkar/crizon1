@@ -60,6 +60,12 @@ import { AdminProfile } from "../components/Profile.jsx";
 import { Addlever } from "../components/Lever/Addlever.jsx";
 import { AddLeverHistory } from "../components/Lever/AddLeverHistory";
 import { EtiologicalWorkup } from "../components/Lever/EtiologicalWorkup";
+import { LeverList } from "../components/Lever/LeverList";
+import { SearchLeverPatient } from "../components/Lever/SearchLeverPatient";
+
+import { ShowDetail } from "../components/Lever/Show/ShowDetail";
+import { ShowHistory } from "../components/Lever/Show/ShowHistory";
+import { ShowEtiological } from "../components/Lever/Show/ShowEtiological";
 
 import { AddDiseases } from "../components/Diseases/AddDisease";
 import { ListDisease } from "../components/Diseases/ListDisease";
@@ -134,6 +140,12 @@ function AuthorizedRoutes() {
                       <Route path="/add-lever" exact element={<Addlever />}></Route>
                       <Route path="/add-lever-history" exact element={<AddLeverHistory />}></Route>
                       <Route path="/etiological-work-up" exact element={<EtiologicalWorkup />}></Route>
+                      <Route path="/lever-list" exact element={<LeverList />}></Route>
+                      <Route path="/search-lever-patient" exact element={<SearchLeverPatient />}></Route>
+
+                      <Route path="/show-lever-patient" exact element={<ShowDetail />}></Route>
+                      <Route path="/show-lever-history" exact element={<ShowHistory />}></Route>
+                      <Route path="/show-lever-etiological" exact element={<ShowEtiological />}></Route>
 
                       <Route path="/Add-Disease" exact element={<AddDiseases />}></Route>
                       <Route path="/List-Disease" exact element={<ListDisease />}></Route>

@@ -90,8 +90,6 @@ export const GETALLDisease = (formData) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_DISEASE });
     let { data: response } = await getAllDisease(formData);
-    console.log(response);
-    console.log("asdcsdc sdcasdcs");
     if (response) {
       dispatch({
         type: GET_ALL_DISEASE_SUCCESS,

@@ -13,7 +13,7 @@ import { useSearchParams } from 'react-router-dom';
 // import { CUSTOMERGet } from '../../redux/actions/Customer/Customer.actions';
 export const Editdemographics = () => {
 
-    const [searchParams, setSearchParams] = useSearchParams("edit");
+const [searchParams, setSearchParams] = useSearchParams("edit");
 const [ccfId, setCcfId] = useState("");
 const [enrollDate, setEnrollDate] = useState("");
 const [patientName, setPatientName] = useState("");
@@ -43,7 +43,7 @@ const [hodArr, setHodArr] = useState("");
 const [doctorArr, setDoctorArr] = useState("");
 
 const roleUser = useSelector((states)=> states.auth.user.roleUser);
-// console.log(roleUser,"fffffffff");
+
 useEffect(() => {
   let query = "";
   if(role == rolesObj.HOD){

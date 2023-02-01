@@ -37,7 +37,7 @@ useEffect(()=>{
     console.log(filterAr);
     setCustomerMainArr(filterAr);
   }
-})
+},[search]);
 
  useEffect(() => {
   if (customerArr?.length) {

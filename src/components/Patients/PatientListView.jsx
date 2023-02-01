@@ -4,7 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { DEMOGRAFICGet, DEMOGRAFICDelete, SETDEMOGRAFICObj } from "../../redux/actions/Demografic/Demografic.actions";
+import { DEMOGRAFICGet, DEMOGRAFICDelete, SETDEMOGRAFICObj,GETALLDisease } from "../../redux/actions/Demografic/Demografic.actions";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
@@ -13,6 +13,8 @@ import Select from "react-select";
 export const PatientListView = () => {
 
 const demograficArr = useSelector((states) => states.demografic.demografics);
+const diseaseArr = useSelector((states) => states.demografic.diseases);
+console.log(diseaseArr , "diseaseArr diseaseArr");
 const role = useSelector((states)=> states.auth.role);
 const user = useSelector((states)=> states.auth.user);
 const roleUser = useSelector((states)=> states.auth.user.roleUser);
@@ -24,6 +26,9 @@ const dispatch = useDispatch();
 const navigate = useNavigate();
 
 const [demograficMainArr, setDemograficMainArr] = useState([]);
+const [service, setService] = useState("");
+const [finalDisease, setFinalDisease] = useState("");
+const [allDisease , setAllDisease] = useState("");
 
 const handleGet = () => {
   let query = "";
@@ -37,6 +42,7 @@ const handleGet = () => {
     query += `patient=${user?.roleUser?._id}`;
   }
   dispatch(DEMOGRAFICGet(query));
+  dispatch(GETALLDisease());
 };
 
 
@@ -84,13 +90,26 @@ useEffect(()=>{
   }
 
   const hadleDisease = (disease) => {
+    setFinalDisease(disease);
     if (disease) {
       if(disease.value == 'all'){
         setDemograficMainArr(demograficArr);
       } else {
-        let hodDisease = demograficArr.filter(el => el.disease == disease.value);
-        // console.log(hodDisease, "disease doctor");
+        let hodDisease = demograficArr.filter(el => el.disease == disease);
         setDemograficMainArr(hodDisease);
+      }
+    }
+  }
+
+  const handleService = (service)=>{
+    setService(service);
+    if(service){
+      if(service == 'all'){
+        setDemograficMainArr(demograficArr);
+      }else{
+        const serviceGet = diseaseArr.filter(el => el.service == service);
+        console.log(serviceGet , "serviceGet serviceGet");
+        setAllDisease(serviceGet);
       }
     }
   }
@@ -105,6 +124,12 @@ useEffect(()=>{
     { value: "crohn's", label: "Crohn's" },
     { value: "ulcerstive colitis", label: "Ulcerstive colitis" },
   ];
+
+  const serviceDrop = [
+    { label:"All", value:"all" },
+    { label:"IBD", value:"ibd" },
+    { label:"LEVER", value:"lever" },
+  ]
   
   return (
     <div className="content_wrapper">
@@ -128,10 +153,18 @@ useEffect(()=>{
       </div>
       <div className="container-fluid">
             <div className="row justify-content-center py-3">
-              <div className=""></div>
-              <div className="col-lg-5">
+              <div className="col-lg-4">
+              <label>Service</label>
+              <select className="form-control" value={service} onChange={(e)=>{handleService(e.target.value)}}>
+                { serviceDrop && serviceDrop.map((el)=><option  value={el.value}>{el.label}</option>) }
+              </select>
+              </div>
+              <div className="col-lg-4">
                 <label>Search by disease</label>
-                <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/>
+                {/* <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/> */}
+                <select className="form-control" value={finalDisease} onChange={(e)=>{hadleDisease(e.target.value)}}>
+                 { allDisease && allDisease.map((el)=><option value={el._id}>{el.disease}</option>)}
+                </select>
               </div>
               <div className="col-lg-4">
                 <label>Search by patient</label>
@@ -158,7 +191,7 @@ useEffect(()=>{
 
           {
             demograficMainArr && demograficMainArr.map((item,index) => <tr>
-              <th scope="row" className="text-center">
+              <th scope="row" key={index} className="text-center">
                 {index+1}
               </th>
               <th scope="row">{item.patientName}</th>

@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate} from "react-router-dom";
-import { DEMOGRAFICGet, SETDEMOGRAFICObj } from "../../redux/actions/Demografic/Demografic.actions";
+import { LEVERPERDETAILGet, SETLEVERPERDETAILObj } from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
 
-export const Searchpatient = () => {
+export const SearchLeverPatient = () => {
 
   const [patientName, setPatientName] = useState("");
   const [patientId, setPatientId] = useState("");
@@ -25,18 +25,18 @@ export const Searchpatient = () => {
   const [bmi, setBmi] = useState("");
   const [pallor, setPallor] = useState("");
   const [fistula, setFistula] = useState("");
+  const [contact, setContact] = useState("");
 
 const navigate = useNavigate();
 
-
 const [displayProduct, setdisplayProduct] = useState([])
-  const patientArr = useSelector((states) => states.demografic.demografics);
-  const followupArr = useSelector((states)=> states.followup.followups);
-console.log(displayProduct , "displayProduct");
+const patientArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
+const followupArr = useSelector((states)=> states.followup.followups);
+  console.log(patientArr ,"patientArr");
   const dispatch = useDispatch();
 
   const handleFollowupView = (row)=>{
-      dispatch(SETDEMOGRAFICObj(row));
+      dispatch(SETLEVERPERDETAILObj(row));
       navigate("/Patients/Viewdemografics");
     };
 
@@ -44,7 +44,7 @@ console.log(displayProduct , "displayProduct");
 
     let searchPatientList = [];
       if(`${patientName}`!= ''){
-        searchPatientList  = patientArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${patientName}`.toLowerCase()));
+        searchPatientList  = patientArr.filter(el => `${el.name}`.toLowerCase().includes(`${patientName}`.toLowerCase()));
       }
       if(`${patientId}`!= ''){
         searchPatientList  =  patientArr.filter(el => `${el.ccfId}`.toLowerCase().includes(`${patientId}`.toLowerCase()));
@@ -64,6 +64,9 @@ console.log(displayProduct , "displayProduct");
       if(`${age}`!= ''){
         searchPatientList = patientArr.filter(el => `${el.age}`.toLowerCase().includes(`${age}`.toLowerCase()));
       }
+      if(`${contact}`!= ''){
+        searchPatientList = patientArr.filter(el => `${el.contact}`.toLowerCase().includes(`${contact}`.toLowerCase()));
+      }
 
       setdisplayProduct(searchPatientList);
 
@@ -79,7 +82,7 @@ console.log(displayProduct , "displayProduct");
 
   const handleGet = () => {
     let query = "";
-    dispatch(DEMOGRAFICGet());
+    dispatch(LEVERPERDETAILGet());
   };
 
   useEffect(() => {
@@ -129,7 +132,7 @@ console.log(displayProduct , "displayProduct");
           </div>
           <div className="col-lg-4">
             <h5 className="mb-0 text-center text-white">
-              Patient (ULCERATIVE Colitis DISEASE)
+              Patient (Lever DISEASE)
             </h5>
           </div>
           <div className="col-lg-4 text-end">
@@ -162,18 +165,6 @@ console.log(displayProduct , "displayProduct");
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Patient ID : </label>
-                  <input type="text" className='form-control' value={patientId} onChange={(el)=>{setPatientId(el.target.value)}}/>
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>Father/Husband's Name {fatherName}</label>
-                  <input type="text" className='form-control' value={fatherName} onChange={(el)=>{setFatherName(el.target.value)}}/>
-                </div>
-              </div>
-              <div className='col-lg-6'>
-                <div className='from-group'>
                   <label>Sex</label>
                   <select className="form-control" value={sex} onChange={(el)=>{setSex(el.target.value)}}>
                     { sexDrop && sexDrop.map((el)=><option value={el.value}>{el.label}</option> )}
@@ -188,37 +179,35 @@ console.log(displayProduct , "displayProduct");
                   </select>
                 </div>
               </div>
+            
               {/* <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>City</label>
-                  <input type="text" className='form-control' />
-                </div>
-              </div> */}
-              {/* <div className='col-lg-6'>
-                <div className='from-group'>
-                  <label>State</label>
-                  <input type="text" className='form-control' />
-                </div>
-              </div> */}
-              <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Diagnosis Year</label>
                   <input type="number" className='form-control' value={diagnosisYear} onChange={(el)=>{setDiagnosisYear(el.target.value)}}/>
                 </div>
-              </div>
+              </div> */}
+
               <div className='col-lg-6'>
+                <div className='from-group'>
+                  <label>Contact </label>
+                  <input type="text" className='form-control' value={contact} onChange={(el)=>{setContact(el.target.value)}}/>
+                </div>
+              </div>
+
+              {/* <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Diagnosis Month</label>
                   <select className='form-control' value={diagnosisMonth} onChange={(el)=>{setDiagnosisMonth(el.target.value)}}>
                     { months && months.map((el)=><option value={el.value}>{el.label}</option> )}
                   </select>
                 </div>
-              </div>
+              </div> */}
+
             </div>
             <div className='row mt-4'>
               <div className='col-lg-12'>
                 <div className='subbtn text-center'>
-                <button to="" className='btn btn-link ' onClick={onHandleFollowup}>Search</button>
+                <button to="" className='btn btn-link ' onClick={()=>{onHandleFollowup()}}>Search</button>
                 </div>
                 </div>
             </div>
@@ -228,9 +217,9 @@ console.log(displayProduct , "displayProduct");
           <thead style={{backgroundColor:"white"}}>
             <tr>
               <th scope="col" className="text-center">S.NO</th>
-              <th scope="col">CCFId</th>
-              <th scope="col">Patient Name</th>
-              <th scope="col">Parent Name</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Gender</th>
               <th scope="col">Age</th>
               <th scope="col">View</th> 
             </tr>
@@ -240,9 +229,9 @@ console.log(displayProduct , "displayProduct");
               displayProduct && displayProduct.map((item,index)=>
             <tr style={{backgroundColor:"white"}}>
               <td scope="row" className="text-center">{index+1}</td>
-              <td scope="row">{item.ccfId}</td>
-              <td>{item.patientName}</td>
-              <td>{item.parentName}</td>
+              <td scope="row">{item.name}</td>
+              <td>{item.email}</td>
+              <td>{item.gender}</td>
               <td>{item.age}</td>
               <td>
                 <span className="delete_list" style={{marginLeft:20}}>
@@ -257,7 +246,7 @@ console.log(displayProduct , "displayProduct");
     </div>
 
 
-             <div className='row mt-5'>
+             {/* <div className='row mt-5'>
                 <div className='col-lg-12 heaind  text-center'>
                     <h3>Search by Clinical Manifestations</h3>
                 </div>
@@ -273,8 +262,8 @@ console.log(displayProduct , "displayProduct");
                         <h3>Search by Examination</h3>
                     </div>
                 </div>
-             </div>
-             <div className='row'>
+             </div> */}
+             {/* <div className='row'>
                 <div className='col-lg-6'>
                     <div className='from-group'>
                         <label>BMI</label>
@@ -300,7 +289,7 @@ console.log(displayProduct , "displayProduct");
                         <Link to="" className='btn btn-link'>Search</Link>
                     </div>
                 </div>
-             </div>
+             </div> */}
           </div>
       </div>
      </div>
