@@ -159,11 +159,12 @@ export const ViewNutrition = () => {
             <Link >Treatment</Link>{" "}
           </li>
           <li className="list-group-item">
-            <Link >Infections</Link>
-          </li>
-          <li className="list-group-item">
             <Link>Depression</Link>
           </li>
+          <li className="list-group-item">
+            <Link >Infections</Link>
+          </li>
+          
         </ul>
       </div>
       <div className="mt-5 mb-1">

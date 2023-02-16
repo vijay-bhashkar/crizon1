@@ -154,8 +154,9 @@ useEffect(() => {
             <li class="list-group-item"><Link >Nutritional History</Link> </li>
             <li class="list-group-item"><Link >Investigations</Link></li>
             <li class="list-group-item"><Link >Treatment</Link> </li>
-            <li class="list-group-item"><Link >Infections</Link></li>
             <li class="list-group-item"><Link >Depression</Link></li>
+            <li class="list-group-item"><Link >Infections</Link></li>
+            
         </ul>
     </div>
       <div className="wrapper_contentbody">

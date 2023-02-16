@@ -36,7 +36,7 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
   const [prednisolone, setPrednisolone] = useState("");
   const [infliximab, setInfliximab] = useState("");
   const [budesonide, setBudesonide] = useState("");
-  const [rectalSteroids, setRectalSteroids] = useState("");
+  const [rectalSteroids, setRectalSteroids] = useState("No");
   const [adalimunab, setAdalimunab] = useState("");
   const [vedolizumab, setVedolizumab] = useState("");
   const [cyclosporine, setCyclosporine] = useState("");
@@ -149,7 +149,6 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
 }, [treatmentObj]);
 
   const options = [
-    { value: "Select", label: "Select" },
     { value: "Yes", label: "Yes" },
     { value: "No", label: "No" },
   ];
@@ -174,6 +173,7 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
     {value:"125", label:"125"},
     {value:"150", label:"150"},
     {value:"175", label:"175"},
+    {value:"200", label:"200"},
   ]
   const mpDrop = [
     {value:"Select", label:"Select"},
@@ -258,8 +258,9 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
         <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
         <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
         <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+        {/* <li class="list-group-item"><Link to="/Patients/depression">Adverse Events to Drugs</Link></li> */}
         <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
-        <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>
+        
       </ul>
     </div>
   
@@ -339,7 +340,9 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
               <div className='col-lg-4'>
                 <div className='from-group'>
                   <label>Rectal Steroids</label>
-                  <input type="text" className='form-control' value={rectalSteroids} onChange={(e)=>{setRectalSteroids(e.target.value)}}/>
+                  <select className='form-control' value={rectalSteroids} onChange={(e)=>{setRectalSteroids(e.target.value)}}>
+                    { options && options.map((el)=><option value={el.value}>{el.label}</option>)}
+                  </select>
                 </div>
               </div>
               <div className='col-lg-4'>
@@ -354,10 +357,7 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
               <div className='col-lg-4'>
                 <div className='from-group'>
                   <label>Vedolizumab</label>
-                  <select className='form-control' value={vedolizumab} onChange={(e)=>{setVedolizumab(e.target.value)}}>
-                    { vedolizumanDrop && vedolizumanDrop.map((ek)=><option value={ek.value}>{ek.label}</option>) }
-                  </select>
-                  {/* <Select options={options} placeholder="No" /> */}
+                  <input type="text" className='form-control' value={vedolizumab} onChange={(e)=>{setVedolizumab(e.target.value)}} />
                 </div>
               </div>
               <div className='col-lg-4'>
@@ -392,11 +392,23 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
                   <label>Probiotics</label>
                   <input type="text" className='form-control' value={probiotics} onChange={(e)=>{setProbiotics(e.target.value)}}/>
                 </div>
-              </div>
+              </div>   
               <div className='col-lg-4'>
                 <div className='from-group'>
                   <label>Filgotinib</label>
                   <input type="text" className='form-control' value={filgotinib} onChange={(e)=>{setFilgotinib(e.target.value)}}/>
+                </div>
+              </div>
+              <div className='col-lg-4'>
+                <div className='from-group'>
+                  <label>FMT Capsule</label>
+                  <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-4'>
+                <div className='from-group'>
+                  <label>FMT</label>
+                  <input type="text" className='form-control' />
                 </div>
               </div>
               

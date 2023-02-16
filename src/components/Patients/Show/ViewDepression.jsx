@@ -123,11 +123,12 @@ useEffect(() =>{
           <Link >Treatment</Link>{" "}
         </li>
         <li className="list-group-item">
-          <Link >Infections</Link>
-        </li>
-        <li className="list-group-item">
           <Link >Depression</Link>
         </li>
+        <li className="list-group-item">
+          <Link >Infections</Link>
+        </li>
+        
       </ul>
     </div>
   

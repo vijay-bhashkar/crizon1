@@ -107,7 +107,7 @@ useEffect(() => {
     const [fmtEnd,   setFmtEnd] = useState("");
 
     const [other, setOther] = useState("");
-    const [asa, setAsa] = useState("");
+    // const [asa, setAsa] = useState("");
     const [preSurgery, setPreSurgery] = useState("");
     const [sergeryDate, setSergeryDate] = useState("");
     const [typeSurgery, setTypeSurgery] = useState("");
@@ -211,7 +211,7 @@ useEffect(() => {
             end: fmtEnd,
         },
         other,
-        asa,
+        // asa,
         preSurgery,
         sergeryDate,
         typeSurgery
@@ -304,7 +304,7 @@ useEffect(() => {
         setFmtEnd(preTreatObj?.fmt?.end);
 
         setOther(preTreatObj?.other);
-        setAsa(preTreatObj?.asa);
+        // setAsa(preTreatObj?.asa);
         setPreSurgery(preTreatObj?.preSurgery);
         setSergeryDate(preTreatObj?.sergeryDate);
         setTypeSurgery(preTreatObj?.typeSurgery);
@@ -356,8 +356,8 @@ useEffect(() => {
             <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
             <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
             <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+            {/* <li class="list-group-item"><Link to="/Patients/depression">Adverse Events to Drugs</Link></li> */}
             <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
-            <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>  
             </ul>
         </div>
         <div className='pading40'>
@@ -821,19 +821,15 @@ useEffect(() => {
                             {/* <Select options={options} placeholder="No" /> */}
                         </div>
                     </div>
-                    <div className='col-lg-5'>
+                    {/* <div className='col-lg-5'>
                     <div className='from-group'>
                             <label>5-ASA</label>
                             <select className='form-control' value={asa} onChange={(e)=>{setAsa(e.target.value)}}>
                                 { asaDrop && asaDrop.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                             </select>
-                            {/* <Select options={asaDrop} placeholder="Select"  /> */}
                         </div>
-                    </div>
-                </div>
-                <div className='row addlist-frm mt-3 justify-content-end'>
-                    <div className='col-lg-2'></div>
-                    <div className='col-lg-4 ps-5'>
+                    </div> */}
+                     <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label>Previous surgery</label>
                             <select className='form-control' value={preSurgery} onChange={(e)=>{setPreSurgery(e.target.value)}}>
@@ -842,14 +838,16 @@ useEffect(() => {
                             {/* <Select options={options} placeholder="No"  /> */}
                         </div>
                     </div>
-                    <div className='col-lg-3'>
+                </div>
+                <div className='row addlist-frm mt-1justify-content-end'>
+                    <div className='col-lg-2'></div>
+                    <div className='col-lg-5 ps-5'>
                         <div className='form-group'> 
-
                             <label>If Yes</label>
                             <input type="date" className='form-control' value={sergeryDate} onChange={(e)=>{setSergeryDate(e.target.value)}}/>
                         </div>
                     </div>
-                    <div className='col-lg-3'>
+                    <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label>Type of surgery</label>
                             <input type="text" className='form-control' value={typeSurgery} onChange={(e)=>{setTypeSurgery(e.target.value)}}/>

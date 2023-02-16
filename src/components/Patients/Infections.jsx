@@ -106,21 +106,20 @@ const options = [
     { value:"Select", label:"Select" },
     { value:"Conjunctivitis/Others", label:"Conjunctivitis/Others" },
     { value:"Ear Infections", label:"Ear Infections" },
+  ]
+  const skinDrop = [
+    { value:"Select", label:"Select" },
     { value:"Cellulitis", label:"Cellulitis" },
     { value:"Shingles", label:"Shingles" },
     { value:"Chicken Pox", label:"Chicken Pox" },
     { value:"Measles", label:"Measles" },
-  ]
-  const skinDrop = [
-    { value:"Select", label:"Select" },
+    { value:"Hand foot and mouth disease", label:"Hand foot and mouth disease" },
     { value:"Warts", label:"Warts" },
     { value:"Scabies", label:"Scabies" },
     { value:"Lice", label:"Lice" },
     { value:"Fungal infections", label:"Fungal infections" },
-    { value:"Chicken pox", label:"Chicken pox" },
-    { value:"Zoster (Shingles)", label:"Zoster (Shingles)" },
-    { value:"Hand foot and mouth disease", label:"Hand foot and mouth disease" },
   ]
+
   const tbDrop = [
     { value:"Select", label:"Select" },
     { value:"Pulmonary TB", label:"Pulmonary TB" },
@@ -129,6 +128,7 @@ const options = [
   const genitourineryDrop = [
     { value:"Select", label:"Select" },
     { value:"UTI", label:"UTI" },
+    { value:"Pyelonephritis", label:"Pyelonephritis" },
     { value:"Pyelitis", label:"Pyelitis" },
     { value:"Cystitis", label:"Cystitis" },
     { value:"Bacterial vaginosis", label:"Bacterial vaginosis" },
@@ -202,8 +202,8 @@ const options = [
             <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
             <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
             <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+            {/* <li class="list-group-item"><Link to="/Patients/depression">Adverse Events to Drugs</Link></li> */}
             <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
-            <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>
       </ul>
     </div>
   

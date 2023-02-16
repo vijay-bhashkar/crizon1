@@ -33,58 +33,58 @@ useEffect(() => {
 
 
 
-const [diarrhoea, setDiarrhoea] = useState("");
-const [nocurnalDiarrhoea, setNocurnalDiarrhoea] = useState("");
-const [bloodStools, setBloodStools] = useState("");
-const [urgency, setUrgency] = useState("");
-const [incontinence, setIncontinence] = useState("");
-const [tenesmus, setTenesmus] = useState("");
-const [painAbdomen, setPainAbdomen] = useState("");
-const [fever, setFever] = useState("");
-const [lossAppetite, setLossAppetite] = useState("");
-const [weightLoss, setWeightLoss] = useState("");
-const [fatigue, setFatigue] = useState("");
-const [clinicalOther, SetClinicalOther] = useState("");
-const [arthralgias, setArthralgias] = useState("");
-const [arthritis, setArthritis] = useState("");
-const [nephrolithiasis, setNephrolithiasis] = useState("");
-const [psc, setPsc] = useState("");
-const [ankylosing, setAnkylosing] = useState("");
-const [anemia, setAnemia] = useState("");
-const [erythema, setErythema] = useState("");
-const [pyoderma, setPyoderma] = useState("");
-const [episcleritis, setEpiscleritis] = useState("");
-const [osteoporosis, setOsteoporosis] = useState("");
-const [gallstones, setGallstones] = useState("");
-const [dvt, setDvt] = useState("");
-const [intestinalOther, setIntestinalOther] = useState("");
-const [tb, setTb] = useState("");
-const [varicella, setVaricella] = useState("");
-const [hbv, setHbv] = useState("");
-const [hcv, setHcv] = useState("");
-const [hiv, setHiv] = useState("");
-const [hospitalization, setHospitalization] = useState("");
-const [nsaidUse, setNsaidUse] = useState("");
-const [antibiotics, setAntibiotics] = useState("");
-const [diabetes, setDiabetes] = useState("");
-const [hypertension, setHypertension] = useState("");
-const [hypothyroidism, setHypothyroidism] = useState("");
-const [hyperthyroidism, setHyperthyroidism] = useState("");
-const [cad, setCad] = useState("");
-const [coad, setCoad] = useState("");
-const [cva, setCva] = useState("");
-const [ckd, setCkd] = useState("");
-const [cld, setCld] = useState("");
-const [surgery, setSurgery] = useState("");
+const [diarrhoea, setDiarrhoea] = useState("No");
+const [nocurnalDiarrhoea, setNocurnalDiarrhoea] = useState("No");
+const [bloodStools, setBloodStools] = useState("No");
+const [urgency, setUrgency] = useState("None");
+const [incontinence, setIncontinence] = useState("No");
+const [tenesmus, setTenesmus] = useState("No");
+const [painAbdomen, setPainAbdomen] = useState("No");
+const [fever, setFever] = useState("No");
+const [lossAppetite, setLossAppetite] = useState("No");
+const [weightLoss, setWeightLoss] = useState("No");
+const [fatigue, setFatigue] = useState("No");
+const [clinicalOther, SetClinicalOther] = useState("No");
+const [arthralgias, setArthralgias] = useState("No");
+const [arthritis, setArthritis] = useState("No");
+const [nephrolithiasis, setNephrolithiasis] = useState("No");
+const [psc, setPsc] = useState("No");
+const [ankylosing, setAnkylosing] = useState("No");
+const [anemia, setAnemia] = useState("No");
+const [erythema, setErythema] = useState("No");
+const [pyoderma, setPyoderma] = useState("No");
+const [episcleritis, setEpiscleritis] = useState("No");
+const [osteoporosis, setOsteoporosis] = useState("No");
+const [gallstones, setGallstones] = useState("No");
+const [dvt, setDvt] = useState("No");
+const [intestinalOther, setIntestinalOther] = useState("No");
+const [tb, setTb] = useState("No");
+const [varicella, setVaricella] = useState("No");
+const [hbv, setHbv] = useState("No");
+const [hcv, setHcv] = useState("No");
+const [hiv, setHiv] = useState("No");
+const [hospitalization, setHospitalization] = useState("No");
+const [nsaidUse, setNsaidUse] = useState("No");
+const [antibiotics, setAntibiotics] = useState("No");
+const [diabetes, setDiabetes] = useState("No");
+const [hypertension, setHypertension] = useState("No");
+const [hypothyroidism, setHypothyroidism] = useState("No");
+const [hyperthyroidism, setHyperthyroidism] = useState("No");
+const [cad, setCad] = useState("No");
+const [coad, setCoad] = useState("No");
+const [cva, setCva] = useState("No");
+const [ckd, setCkd] = useState("No");
+const [cld, setCld] = useState("No");
+const [surgery, setSurgery] = useState("No");
 const [morbiditiesOther, setMorbiditiesOther] = useState("");
-const [crohn, setCrohn] = useState("");
-const [ulcerative, setUlcerative] = useState("");
+const [crohn, setCrohn] = useState("No");
+const [ulcerative, setUlcerative] = useState("No");
 const [relationship, setRelationship] = useState("");
 const [relationship_2, setRelationship_2] = useState("");
-const [smoking, setSmoking] = useState("");
-const [ivdu, setIvdu] = useState("");
-const [opium, setOpium] = useState("");
-const [alcohol, setAlcohol] = useState("");
+const [smoking, setSmoking] = useState("No");
+const [ivdu, setIvdu] = useState("No");
+const [opium, setOpium] = useState("No");
+const [alcohol, setAlcohol] = useState("No");
 const [hbv_1, setHbv_1] = useState("");
 const [hbv_2, setHbv_2] = useState("");
 const [hbv_3, setHbv_3] = useState("");
@@ -112,6 +112,9 @@ const [dpt_3, setDpt_3] = useState("");
 const [hpv_1, setHpv_1] = useState("");
 const [hpv_2, setHpv_2] = useState("");
 const [hpv_3, setHpv_3] = useState("");
+const [hzv_1, setHzv_1] = useState("");
+const [hzv_2, setHzv_2] = useState("");
+const [hzv_3, setHzv_3] = useState("");
 const [diseaseExtent, setDiseaseExtent] = useState("");
 const [stoolFrequency, setStoolFrequency] = useState("");
 const [rectalBleeding, setRectalBleeding] = useState("");
@@ -130,6 +133,9 @@ const [bloodStool, setBloodStool] = useState("");
 const [generalBeing, setGeneralBeing] = useState("");
 const [manifestations, setManifestations] = useState("");
 const [totalScore_2, setTotalScore_2] = useState("");
+const [herpesZoster, setHerpesZoster] = useState("No");
+const [covid, setCovid] = useState("No");
+const [addictionOther, setAddictionOther] = useState("");
 
 const handleAddClinicalHistory = ()=>{
     if(patientId == ""){
@@ -362,7 +368,6 @@ totalScore_2,
     },[cliHistoryObj]);
 
     const options = [
-        { value:"select", label:"Select" },
         { value: "Yes", label: "Yes" },
         { value: "No", label: "No" },
       ];
@@ -380,7 +385,6 @@ totalScore_2,
     ]
 
     const smokings = [
-        { value:"select", label:"Select" },
         { value:"yes", label:"Yes" },
         { value:"no", label:"No" },
         { value:"reformed", label:"Reformed" }
@@ -516,8 +520,9 @@ totalScore_2,
             <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
             <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
             <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+            {/* <li class="list-group-item"><Link to="/Patients/depression">Adverse Events to Drugs</Link></li> */}
             <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
-            <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>
+            
         </ul>
     </div>
       <div className="wrapper_contentbody">
@@ -541,16 +546,14 @@ totalScore_2,
                                 <select className='form-control' value={diarrhoea} onChange={(e)=>{setDiarrhoea(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-4'>
                         <div className='from-group'>
-                                <label>Nocurnal Diarrhoea </label>
+                                <label>Nocturnal diarrhea </label>
                                 <select className='form-control' value={nocurnalDiarrhoea} onChange={(e)=>{setNocurnalDiarrhoea(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-4'>
@@ -637,10 +640,7 @@ totalScore_2,
                         <div className='col-lg-4'>
                             <div className='from-group'>
                                 <label>Other</label>
-                                <select className='form-control' value={clinicalOther} onChange={(e)=>{SetClinicalOther(e.target.value)}}>
-                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
-                                </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
+                                <input type="text" placeholder='Pleace Specify' className='form-control' value={clinicalOther} onChange={(e)=>{SetClinicalOther(e.target.value)}}/>
                             </div>
                         </div>
                     </div>
@@ -761,10 +761,7 @@ totalScore_2,
                         <div className='col-lg-4'>
                             <div className='from-group'>
                                 <label>Other</label>
-                                <select className='form-control' value={intestinalOther} onChange={(e)=>{setIntestinalOther(e.target.value)}}>
-                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
-                                </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
+                                <input type="text" placeholder='Please Specify' className='form-control' value={intestinalOther} onChange={(e)=>{setIntestinalOther(e.target.value)}} />
                             </div>
                         </div>
                     </div>
@@ -843,7 +840,22 @@ totalScore_2,
                                 <select className='form-control' value={antibiotics} onChange={(e)=>{setAntibiotics(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
+                            </div>
+                        </div>
+                        <div className='col-lg-4'>
+                            <div className='from-group'>
+                                <label>Herpes Zoster</label>
+                                <select className='form-control' value={herpesZoster} onChange={(e)=>{setHerpesZoster(e.target.value)}}>
+                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
+                                </select>
+                            </div>
+                        </div>
+                        <div className='col-lg-4'>
+                            <div className='from-group'>
+                                <label>COVID</label>
+                                <select className='form-control' value={covid} onChange={(e)=>{setCovid(e.target.value)}}>
+                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -976,7 +988,7 @@ totalScore_2,
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
-                                <label>Relationship</label>
+                                <label>Relationship (Crohn's)</label>
                                 <select className='form-control' value={relationship} onChange={(e)=>{setRelationship(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
@@ -985,7 +997,7 @@ totalScore_2,
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
-                                <label>Relationship </label>
+                                <label>Relationship (Ulcerative)</label>
                                 <select className='form-control' value={relationship_2} onChange={(e)=>{setRelationship_2(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
@@ -1033,7 +1045,12 @@ totalScore_2,
                                 <select className='form-control' value={alcohol} onChange={(e)=>{setAlcohol(e.target.value)}}>
                                     { smokings && smokings.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={smokings} placeholder="select"  /> */}
+                            </div>
+                        </div>
+                        <div className='col-lg-6'>
+                            <div className='from-group'>
+                                <label>Others </label>
+                                <input type="text" placeholder='Please Specify' className='form-control' value={addictionOther} onChange={(e)=>{setAddictionOther(e.target.value)}} />
                             </div>
                         </div>
                     </div>
@@ -1253,6 +1270,29 @@ totalScore_2,
                             <div className='from-group'>
                                 <label>Booster Dose</label>
                                 <input type="date" className='form-control' value={hpv_3} onChange={(e)=>{setHpv_3(e.target.value)}}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='row  smallheding justify-content-between align-items-center mt-5'>
+                        <div className='col-lg-1 text-end '>
+                            <h5 className='text-md'>HZV</h5>
+                        </div>
+                        <div className='col-lg-3'>
+                            <div className='from-group'>
+                                <label>Dose-1</label>
+                                <input type="date" className='form-control'value={hzv_1} onChange={(e)=>{setHzv_1(e.target.value)}} />
+                            </div>
+                        </div>
+                        <div className='col-lg-3'>
+                            <div className='from-group'>
+                                <label>Dose-2</label>
+                                <input type="date" className='form-control' value={hzv_2} onChange={(e)=>{setHzv_2(e.target.value)}}/>
+                            </div>
+                        </div>
+                        <div className='col-lg-3'>
+                            <div className='from-group'>
+                                <label>Booster Dose</label>
+                                <input type="date" className='form-control' value={hzv_3} onChange={(e)=>{setHzv_3(e.target.value)}}/>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
+// import XLSX from "xlsx";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICGet, DEMOGRAFICDelete, SETDEMOGRAFICObj,GETALLDisease } from "../../redux/actions/Demografic/Demografic.actions";
@@ -10,11 +11,14 @@ import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
 import Select from "react-select";
 
+
 export const PatientListView = () => {
+
+// const [sheetData, setSheetData] = useState("");
 
 const demograficArr = useSelector((states) => states.demografic.demografics);
 const diseaseArr = useSelector((states) => states.demografic.diseases);
-console.log(diseaseArr , "diseaseArr diseaseArr");
+// console.log(diseaseArr , "diseaseArr diseaseArr");
 const role = useSelector((states)=> states.auth.role);
 const user = useSelector((states)=> states.auth.user);
 const roleUser = useSelector((states)=> states.auth.user.roleUser);
@@ -43,6 +47,7 @@ const handleGet = () => {
   }
   dispatch(DEMOGRAFICGet(query));
   dispatch(GETALLDisease());
+  // setSheetData(demograficArr);
 };
 
 
@@ -101,6 +106,13 @@ useEffect(()=>{
     }
   }
 
+  // const onclickExport = ()=>{
+  //   var wb = XLSX.utils.book_new(),
+  //    wj = XLSX.utils.json_to_sheet(sheetData);
+  //    XLSX.utils.book_append_sheet(wb,wj,"myfile");
+  //    XLSX.writeFile(wb,"test.xlsx"); 
+  // }; 
+
   const handleService = (service)=>{
     setService(service);
     if(service){
@@ -108,7 +120,7 @@ useEffect(()=>{
         setDemograficMainArr(demograficArr);
       }else{
         const serviceGet = diseaseArr.filter(el => el.service == service);
-        console.log(serviceGet , "serviceGet serviceGet");
+        // console.log(serviceGet , "serviceGet serviceGet");
         setAllDisease(serviceGet);
       }
     }
@@ -153,6 +165,9 @@ useEffect(()=>{
       </div>
       <div className="container-fluid">
             <div className="row justify-content-center py-3">
+              {/* <div col={12} >
+                <button onClick={onclickExport}>Export</button>
+                </div> */}
               <div className="col-lg-4">
               <label>Service</label>
               <select className="form-control" value={service} onChange={(e)=>{handleService(e.target.value)}}>

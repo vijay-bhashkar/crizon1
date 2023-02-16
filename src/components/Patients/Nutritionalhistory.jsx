@@ -29,19 +29,19 @@ export const Nutritionalhistory = () => {
     }
   }, [demograficObj]);
 
-  const [numbness, setNumbness] = useState("");
-  const [tinglingSensation, setTinglingSensation] = useState("");
-  const [burning, setBurning] = useState("");
-  const [reducedsensation, setReducedsensation] = useState("");
-  const [imbalance, setImbalance] = useState("");
-  const [infertility, setInfertility] = useState("");
-  const [bonyPains, setBonyPains] = useState("");
-  const [disturbedSmell, setDisturbedSmell] = useState("");
-  const [poorwound, setPoorwound] = useState("");
-  const [nightBlindness, setNightBlindness] = useState("");
-  const [oralUlcers, setOralUlcers] = useState("");
-  const [bleedingTend, setBleedingTend] = useState("");
-  const [fatigue, setFatigue] = useState("");
+  const [numbness, setNumbness] = useState("No");
+  const [tinglingSensation, setTinglingSensation] = useState("No");
+  const [burning, setBurning] = useState("No");
+  const [reducedsensation, setReducedsensation] = useState("No");
+  const [imbalance, setImbalance] = useState("No");
+  const [infertility, setInfertility] = useState("No");
+  const [bonyPains, setBonyPains] = useState("No");
+  const [disturbedSmell, setDisturbedSmell] = useState("No");
+  const [poorwound, setPoorwound] = useState("No");
+  const [nightBlindness, setNightBlindness] = useState("No");
+  const [oralUlcers, setOralUlcers] = useState("No");
+  const [bleedingTend, setBleedingTend] = useState("No");
+  const [fatigue, setFatigue] = useState("No");
   const [dietPattern, setDietPattern] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -67,6 +67,7 @@ export const Nutritionalhistory = () => {
   const [ctSkeletal, setCtSkeletal] = useState("");
   const [mercuriStage, setMercuriStage] = useState("");
   const [meanAttenuation, setMeanAttenuation] = useState("");
+  const [tsf, setTsf] = useState("");
 
   const handleAddNutrition =()=>{
 
@@ -175,11 +176,11 @@ export const Nutritionalhistory = () => {
   },[nutritionObj]);
 
   const options = [
-    { value: "Select", label:"Select" },
     { value: "Yes", label: "Yes" },
     { value: "No", label: "No" },
   ];
-  const diet = [
+  const dietDrop = [
+    { value: "select", label: "Select"},
     { value: "Vegan", label: "Vegan"},
     { value: "Non-Vegetarian", label: "Non-Vegetarian"},
     { value: "Ovo-lacto vegetarian", label: "Ovo-lacto vegetarian"},
@@ -219,8 +220,8 @@ export const Nutritionalhistory = () => {
             <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
             <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
             <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+            {/* <li class="list-group-item"><Link to="/Patients/depression">Adverse Events to Drugs</Link></li> */}
             <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
-            <li class="list-group-item"><Link to="/Patients/depression">Depression</Link></li>
         </ul>
       </div>
       <div className="mt-5 mb-1">
@@ -359,7 +360,7 @@ export const Nutritionalhistory = () => {
                   <div className="from-group">
                     <label>Diet Pattern</label>
                     <select className="form-control" value={dietPattern} onChange={(e)=>{setDietPattern(e.target.value)}}>
-                      { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
+                      { dietDrop && dietDrop.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                     </select>
                   </div>
                 </div>
@@ -411,6 +412,12 @@ export const Nutritionalhistory = () => {
                     <input type="text" className="form-control" value={handGrip} onChange={(e)=>{setHandGrip(e.target.value)}}/>
                   </div>
                 </div>
+                <div className="col-lg-4">
+                  <div className="from-group">
+                    <label>TSF</label>
+                    <input type="text" className="form-control" value={tsf} onChange={(e)=>{setTsf(e.target.value)}}/>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -424,13 +431,13 @@ export const Nutritionalhistory = () => {
                     </div> 
                     <div className="col-lg-4">
                         <div className="from-group">
-                            <label>Triceps Skin fold Thickness</label>
+                            <label>SM Area</label>
                             <input type="text" className="form-control" value={tricepSkin} onChange={(e)=>{setTricepSkin(e.target.value)}}/>
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="from-group">
-                            <label>Total body fat percentage</label>
+                            <label>Body fat </label>
                             <input type="text" className="form-control" value={bodyFatPercent} onChange={(e)=>{setBodyFatPercent(e.target.value)}}/>
                         </div>
                     </div>
@@ -446,12 +453,12 @@ export const Nutritionalhistory = () => {
                             <input type="text" className="form-control" value={restingmetaboli} onChange={(e)=>{setRestingmetaboli(e.target.value)}}/>
                         </div>
                     </div>
-                    <div className="col-lg-4">
+                    {/* <div className="col-lg-4">
                         <div className="from-group">
                             <label>Body age</label>
                             <input type="text" className="form-control" value={bodyAge} onChange={(e)=>{setBodyAge(e.target.value)}}/>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="col-lg-4">
                         <div className="from-group">
                             <label>Subcutaneous fat (whole body )percentage</label>
@@ -503,7 +510,7 @@ export const Nutritionalhistory = () => {
                 </div>
             </div>
           </div>
-          <div className="row justify-content-center mt-4">
+          {/* <div className="row justify-content-center mt-4">
             <div className="col-lg-10">
                 <div className="row addlist-frm">
                     <div className="col-lg-12 mb-1">
@@ -531,7 +538,7 @@ export const Nutritionalhistory = () => {
                     </div> 
                 </div>
             </div>
-          </div>  
+          </div>   */}
           <div className='row mt-4'>
             <div className='col-lg-12'>
               <div className='subbtn text-center'>
