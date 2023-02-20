@@ -66,12 +66,14 @@ const [hiv, setHiv] = useState("No");
 const [hospitalization, setHospitalization] = useState("No");
 const [nsaidUse, setNsaidUse] = useState("No");
 const [antibiotics, setAntibiotics] = useState("No");
+const [herpesZoster, setHerpesZoster] = useState("No");
+const [covid, setCovid] = useState("No");
 const [diabetes, setDiabetes] = useState("No");
 const [hypertension, setHypertension] = useState("No");
 const [hypothyroidism, setHypothyroidism] = useState("No");
 const [hyperthyroidism, setHyperthyroidism] = useState("No");
 const [cad, setCad] = useState("No");
-const [coad, setCoad] = useState("No");
+const [coad, setCoad] = useState("No"); 
 const [cva, setCva] = useState("No");
 const [ckd, setCkd] = useState("No");
 const [cld, setCld] = useState("No");
@@ -79,12 +81,13 @@ const [surgery, setSurgery] = useState("No");
 const [morbiditiesOther, setMorbiditiesOther] = useState("");
 const [crohn, setCrohn] = useState("No");
 const [ulcerative, setUlcerative] = useState("No");
-const [relationship, setRelationship] = useState("");
-const [relationship_2, setRelationship_2] = useState("");
+const [relationshipCrohn, setRelationshipCrohn] = useState("");
+const [relationshipUlcerative, setRelationshipUlcerative] = useState("");
 const [smoking, setSmoking] = useState("No");
 const [ivdu, setIvdu] = useState("No");
 const [opium, setOpium] = useState("No");
 const [alcohol, setAlcohol] = useState("No");
+const [addictionOther, setAddictionOther] = useState("No");
 const [hbv_1, setHbv_1] = useState("");
 const [hbv_2, setHbv_2] = useState("");
 const [hbv_3, setHbv_3] = useState("");
@@ -133,9 +136,6 @@ const [bloodStool, setBloodStool] = useState("");
 const [generalBeing, setGeneralBeing] = useState("");
 const [manifestations, setManifestations] = useState("");
 const [totalScore_2, setTotalScore_2] = useState("");
-const [herpesZoster, setHerpesZoster] = useState("No");
-const [covid, setCovid] = useState("No");
-const [addictionOther, setAddictionOther] = useState("");
 
 const handleAddClinicalHistory = ()=>{
     if(patientId == ""){
@@ -153,106 +153,112 @@ const handleAddClinicalHistory = ()=>{
     }else{
 
 let obj = {
-patientId,
-diarrhoea,
-nocurnalDiarrhoea,
-bloodStools,
-urgency,
-incontinence,
-tenesmus,
-painAbdomen,
-fever,
-lossAppetite,
-weightLoss,
-fatigue,
-clinicalOther,
-arthralgias,
-arthritis,
-nephrolithiasis,
-psc,
-ankylosing,
-anemia,
-erythema,
-pyoderma,
-episcleritis,
-osteoporosis,
-gallstones,
-dvt,
-intestinalOther,
-tb,
-varicella,
-hbv,
-hcv,
-hiv,
-hospitalization,
-nsaidUse,
-antibiotics,
-diabetes,
-hypertension,
-hypothyroidism,
-hyperthyroidism,
-cad,
-coad,
-cva,
-ckd,
-cld,
-surgery,
-morbiditiesOther,
-crohn,
-ulcerative,
-relationship,
-relationship_2,
-smoking,
-ivdu,
-opium,
-alcohol,
-hbv_1,
-hbv_2,
-hbv_3,
-pneumococcal_1,
-pneumococcal_2,
-pneumococcal_3,
-influenza_1,
-influenza_2,
-influenza_3,
-mmr_1,
-mmr_2,
-mmr_3,
-bcg_1,
-bcg_2,
-bcg_3,
-vzv_1,
-vzv_2,
-vzv_3,
-hav_1,
-hav_2,
-hav_3,
-dpt_1,
-dpt_2,
-dpt_3,
-hpv_1,
-hpv_2,
-hpv_3,
-diseaseExtent,
-stoolFrequency,
-rectalBleeding,
-findEndoscopy,
-physicianGlobal,
-totaldisease,
-globalAssessment,
-vascularPattern,
-erosionUlcers,
-bleeding,
-totalScore,
-bowelFrequency,
-urgencyDefecation,
-bowelFrequency_2, 
-bloodStool,
-generalBeing,
-manifestations,
-totalScore_2,
+    patientId,
+    diarrhoea,
+    nocurnalDiarrhoea,
+    bloodStools,
+    urgency,
+    incontinence,
+    tenesmus,
+    painAbdomen,
+    fever,
+    lossAppetite,
+    weightLoss,
+    fatigue,
+    clinicalOther,
+    arthralgias,
+    arthritis,
+    nephrolithiasis,
+    psc,
+    ankylosing,
+    anemia,
+    erythema,
+    pyoderma,
+    episcleritis,
+    osteoporosis,
+    gallstones,
+    dvt,
+    intestinalOther,
+    tb,
+    varicella,
+    hbv,
+    hcv,
+    hiv,
+    hospitalization,
+    nsaidUse,
+    antibiotics,
+    herpesZoster,
+    covid,
+    diabetes,
+    hypertension,
+    hypothyroidism,
+    hyperthyroidism,
+    cad,
+    coad,
+    cva,
+    ckd,
+    cld,
+    surgery,
+    morbiditiesOther,
+    crohn,
+    ulcerative,
+    relationshipCrohn,
+    relationshipUlcerative,
+    smoking,
+    ivdu,
+    opium,
+    alcohol,
+    addictionOther,
+    hbv_1,
+    hbv_2,
+    hbv_3,
+    pneumococcal_1,
+    pneumococcal_2,
+    pneumococcal_3,
+    influenza_1,
+    influenza_2,
+    influenza_3,
+    mmr_1,
+    mmr_2,
+    mmr_3,
+    bcg_1,
+    bcg_2,
+    bcg_3,
+    vzv_1,
+    vzv_2,
+    vzv_3,
+    hav_1,
+    hav_2,
+    hav_3,
+    dpt_1,
+    dpt_2,
+    dpt_3,
+    hpv_1,
+    hpv_2,
+    hpv_3,
+    hzv_1,
+    hzv_2,
+    hzv_3,
+    diseaseExtent,
+    stoolFrequency,
+    rectalBleeding,
+    findEndoscopy,
+    physicianGlobal,
+    totaldisease,
+    globalAssessment,
+    vascularPattern,
+    erosionUlcers,
+    bleeding,
+    totalScore,
+    bowelFrequency,
+    urgencyDefecation,
+    bowelFrequency_2,
+    bloodStool,
+    generalBeing,
+    manifestations,
+    totalScore_2,
 }
-
+  console.log(obj, "rrrrrrrrr");
     if (cliHistoryObj?._id) {
       dispatch(CLINICALHISTORYUpdate(cliHistoryObj._id, obj));
       dispatch(SETCLINICALHISTORYObj(null));
@@ -300,6 +306,8 @@ totalScore_2,
             setHospitalization(cliHistoryObj?.hospitalization);
             setNsaidUse(cliHistoryObj?.nsaidUse);
             setAntibiotics(cliHistoryObj?.antibiotics);
+            setHerpesZoster(cliHistoryObj?.herpesZoster);
+            setCovid(cliHistoryObj?.covid);
             setDiabetes(cliHistoryObj?.diabetes);
             setHypertension(cliHistoryObj?.hypertension);
             setHypothyroidism(cliHistoryObj?.hypothyroidism);
@@ -313,12 +321,13 @@ totalScore_2,
             setMorbiditiesOther(cliHistoryObj?.morbiditiesOther);
             setCrohn(cliHistoryObj?.crohn);
             setUlcerative(cliHistoryObj?.ulcerative);
-            setRelationship(cliHistoryObj?.relationship);
-            setRelationship_2(cliHistoryObj?.relationship_2);
+            setRelationshipCrohn(cliHistoryObj?.relationshipCrohn);
+            setRelationshipUlcerative(cliHistoryObj?.relationshipUlcerative);
             setSmoking(cliHistoryObj?.smoking);
             setIvdu(cliHistoryObj?.ivdu);
             setOpium(cliHistoryObj?.opium);
             setAlcohol(cliHistoryObj?.alcohol);
+            setAddictionOther(cliHistoryObj?.addictionOther);
             setHbv_1(cliHistoryObj?.hbv_1);
             setHbv_2(cliHistoryObj?.hbv_2);
             setHbv_3(cliHistoryObj?.hbv_3);
@@ -346,6 +355,9 @@ totalScore_2,
             setHpv_1(cliHistoryObj?.hpv_1);
             setHpv_2(cliHistoryObj?.hpv_2);
             setHpv_3(cliHistoryObj?.hpv_3);
+            setHzv_1(cliHistoryObj?.hzv_1);
+            setHzv_2(cliHistoryObj?.hzv_2);
+            setHzv_3(cliHistoryObj?.hzv_3);
             setDiseaseExtent(cliHistoryObj?.diseaseExtent);
             setStoolFrequency(cliHistoryObj?.stoolFrequency);
             setRectalBleeding(cliHistoryObj?.rectalBleeding);
@@ -562,7 +574,6 @@ totalScore_2,
                                 <select className='form-control' value={bloodStools} onChange={(e)=>{setBloodStools(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-4'>
@@ -571,7 +582,6 @@ totalScore_2,
                                 <select className='form-control' value={urgency} onChange={(e)=>{setUrgency(e.target.value)}}>
                                     { urgrncy && urgrncy.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={urgrncy} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-4'>
@@ -580,7 +590,6 @@ totalScore_2,
                                 <select className='form-control' value={incontinence} onChange={(e)=>{setIncontinence(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-4'>
@@ -989,7 +998,7 @@ totalScore_2,
                         <div className='col-lg-6'>
                             <div className='from-group'>
                                 <label>Relationship (Crohn's)</label>
-                                <select className='form-control' value={relationship} onChange={(e)=>{setRelationship(e.target.value)}}>
+                                <select className='form-control' value={relationshipCrohn} onChange={(e)=>{setRelationshipCrohn(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
                                 {/* <Select options={relationships} placeholder="Select"  /> */}
@@ -998,7 +1007,7 @@ totalScore_2,
                         <div className='col-lg-6'>
                             <div className='from-group'>
                                 <label>Relationship (Ulcerative)</label>
-                                <select className='form-control' value={relationship_2} onChange={(e)=>{setRelationship_2(e.target.value)}}>
+                                <select className='form-control' value={relationshipUlcerative} onChange={(e)=>{setRelationshipUlcerative(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
                                 {/* <Select options={relationships} placeholder="Select"  /> */}

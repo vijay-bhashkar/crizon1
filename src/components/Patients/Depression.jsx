@@ -388,7 +388,7 @@ const tofacitinibDrop = [
               <div className='col-lg-12'>
                 <div className='subbtn text-center'>
                   <Link to="../Patients/infections" className='btn btn-link mx-4'>Previous</Link>
-                  <Link to="" className='btn btn-link' onClick={handleAddDepression}>Submit</Link>
+                  {/* <Link to="" className='btn btn-link' onClick={handleAddDepression}>Submit</Link> */}
                 </div>
               </div>
           </div>

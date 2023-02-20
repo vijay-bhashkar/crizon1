@@ -365,6 +365,24 @@ useEffect(()=> {
         { value: "Yes", label: "Yes" },
         { value: "No", label: "No" },
     ];
+
+    const replaceDrop = [
+        { value: "select", label: "Select" },
+        { value: "Poor compliance", label: "Poor compliance" },
+        { value: "Travel", label: "Travel" },
+        { value: "NSAIDs", label: "NSAIDs" },
+        { value: "Antibiotics", label: "Antibiotics" },
+        { value: "Alternative medicines", label: "Alternative medicines" },
+        { value: "Infections", label: "Infections" },
+        { value: "Diet indiscretions", label: "Diet indiscretions" },
+        { value: "Stress", label: "Stress" },
+        { value: "Unaccustomed exercise", label: "Unaccustomed exercise" },
+        { value: "Alcohol", label: "Alcohol" },
+        { value: "Smoking", label: "Smoking" },
+        { value: "Opium", label: "Opium" },
+        { value: "Others", label: "Others" },
+    ];
+
     const stoolFreqDrop = [
         { value: "select", label: "Select" },
         { value: "Normal no. of stools", label: "Normal no. of stools" },
@@ -610,13 +628,14 @@ useEffect(()=> {
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                  <label>Date of Followup*</label>
+                  <label>Date of Followup </label>
                   <input type="Date" className='form-control' value={followupDate} onChange={(e)=>{setFollowupDate(e.target.value)}}/>
                 </div>
               </div>
-              <div className='col-lg-6'>
+              <div className='col-lg-6'> 
                 <div className='from-group'>
-                  <h6 className='mt-4'>Mayo Scoring System For Assessment of Ulcerative Colitis Activity</h6>
+                <label>Partial Mayo Score </label>
+                  <input type="text" className='form-control' />
                 </div>
               </div>
               <div className='col-lg-6'>
@@ -627,38 +646,88 @@ useEffect(()=> {
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                    <label>Stool Frequency</label>
-                    <select className='form-control' value={stoolFreq} onChange={(el)=>{setStoolFreq(el.target.value)}}>
-                        {stoolFreqDrop && stoolFreqDrop.map((el)=><option value={el.value}>{el.label}</option>)}
-                    </select>
-                    {/* <Select options={stoolFreqDrop} placeholder="Select" /> */}
+                    <label>Total Mayo Score</label>
+                    <input type="text" className='form-control'/>
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
                     <label>Rectal Bleeding</label>
-                    <select className='form-control' value={rectalBleeding} onChange={(el)=>{setRectalBleeding(el.target.value)}}>
-                        {recBleedDrop && recBleedDrop.map((el)=><option value={el.value}>{el.label}</option>)}
-                    </select>
-                    {/* <Select options={recBleedDrop} placeholder="Select" /> */}
+                    <input type="text" className='form-control' />
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                    <label>Findings on Endoscopy</label>
-                    <select className='form-control' value={findEndoscope} onChange={(el)=>{setFindEndoscope(el.target.value)}}>
-                        {endoscopyDrop && endoscopyDrop.map((el)=><option value={el.value}>{el.label}</option>)}
-                    </select>
-                    {/* <Select options={endoscopyDrop} placeholder="Select" /> */}
+                    <label>Endo Mayo</label>
+                    <input type="text" className='form-control' />
                 </div>
               </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
-                    <label>Physician's Global Assessment</label>
-                    <select className='form-control' value={phyAssess1} onChange={(el)=>{setPhyAssess1(el.target.value)}}>
-                        {gloAccessDrop && gloAccessDrop.map((el)=><option value={el.value}>{el.label}</option>)}
+                    <label>SCCAI</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div> 
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>Nancy Index</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>Height</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>RHI</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>Weight</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>  
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>Geboe’s Score</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>  
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>BMI</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>Handgrip strength</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>MIRT</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>MUST</label>
+                    <input type="text" className='form-control' />
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                    <label>Reason for Replace</label>
+                    <select className='form-control'>
+                        { replaceDrop && replaceDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                     </select>
-                    {/* <Select options={gloAccessDrop} placeholder="Select" /> */}
                 </div>
               </div>
             </div>

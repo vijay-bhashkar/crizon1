@@ -99,8 +99,6 @@ useEffect(() => {
     const [tofacitinibStart,  setTofacitinibStart] = useState("");
     const [tofacitinibEnd,     setTofacitinibEnd] = useState("");
 
-
-
     const [fmtName,  setFmtName] = useState("");
     const [fmtPose,  setFmtPose] = useState("");
     const [fmtStart, setFmtStart] = useState("");
@@ -843,7 +841,7 @@ useEffect(() => {
                     <div className='col-lg-2'></div>
                     <div className='col-lg-5 ps-5'>
                         <div className='form-group'> 
-                            <label>If Yes</label>
+                            <label>If Yes ( Date )</label>
                             <input type="date" className='form-control' value={sergeryDate} onChange={(e)=>{setSergeryDate(e.target.value)}}/>
                         </div>
                     </div>

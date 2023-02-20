@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BiUserPlus } from "react-icons/bi";
-import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import Select from "react-select";
 import { Link , useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'; 
 import { INVESTIGATIONAdd, INVESTIGATIONGet, SETINVESTIGATIONObj, INVESTIGATIONUpdate, INVESTIGATIONDelete, INVESTIGATIONGet_BY_PATIENT_ID } from "../../redux/actions/Investigation/Investigation.actions";
@@ -32,62 +29,73 @@ useEffect(() => {
 
 const [hb, setHb] = useState("");
 const [hbsAg, setHbsAg] = useState("");
+const [pcv, setPcv] = useState("");
 const [mcv, setMcv] = useState("");
-const [hiv, setHiv] = useState("");
-const [tlc, setTlc] = useState("");
 const [antiHcv, setAntiHcv] = useState("");
+const [tlc, setTlc] = useState("");
+const [hiv, setHiv] = useState("");
+const [ebvVcaLgm, setEbvVcaLgm] = useState("");
 const [plt, setPlt] = useState("");
-const [ebVcaLgm, setEbVcaLgm] = useState("");
+const [ebvVcaLgg, setEbvVcaLgg] = useState("");
 const [esr, setEsr] = useState("");
-const [ebVcaLgg, setEbVcaLgg] = useState("");
-const [crpQuanti, setCrpQuanti] = useState("");
-const [ebvEbna, setEbvEbna] = useState("");
+const [ebvEbnaLgg, setEbvEbnaLgg] = useState("");
+const [crpQuantitative, setCrpQuantitative] = useState("");
 const [cmvLgm, setCmvLgm] = useState("");
-const [cmvLgg, setCmvLgg] = useState("");
 const [ast, setAst] = useState("");
-const [fecalCalpro, setFecalCalpro] = useState("");
+const [cmvLgg, setCmvLgg] = useState("");
 const [alt, setAlt] = useState("");
-const [stoolRoutine, setStoolRoutine] = useState("");
+const [fecalCalprotectin, setFecalCalprotectin] = useState("");
+const [pct, setPct] = useState("");
+const [ggt, setGgt] = useState("");
+const [cpk, setCpk] = useState("");
+const [totalProtien, setTotalProtien] = useState("");
+const [sodium, setSodium] = useState("");
+const [cholesterol, setCholesterol] = useState("");
+const [pottasium, setPottasium] = useState("");
+const [vldl, setVldl] = useState("");
+const [cmvIhc, setCmvIhc] = useState("");
+const [ldl, setLdl] = useState("");
+const [eberIsh, setEberIsh] = useState("");
+const [hdl, setHdl] = useState("");
+const [igra, setIgra] = useState("");
+const [triglycerides, setTriglycerides] = useState("");
 const [alp, setAlp] = useState("");
-const [stoolCulture, setStoolCulture] = useState("");
+const [stoolRoutine, setStoolRoutine] = useState("");
 const [albumin, setAlbumin] = useState("");
-const [stoolGdh, setStoolGdh] = useState("");
+const [stoolCulture, setStoolCulture] = useState("");
 const [iron, setIron] = useState("");
-const [stoolDiffToxin, setStoolDiffToxin] = useState("");
+const [stoolGdh, setStoolGdh] = useState("");
 const [tibc, setTibc] = useState("");
-const [stoolDiffPcr, setStoolDiffPcr] = useState("");
+const [stoolcDiffToxin, setStoolcDiffToxin] = useState("");
 const [ferritin, setFerritin] = useState("");
+const [stoolcDiffPcr, setStoolcDiffPcr] = useState("");
+const [calcium, setCalcium] = useState("");
 const [stoolBiofilm, setStoolBiofilm] = useState("");
-const [ca, setCa] = useState("");
-const [tpmp, setTpmp] = useState("");
-const [mg, setMg] = useState("");
+const [magnesium, setMagnesium] = useState("");
+const [tpmt, setTpmt] = useState("");
+const [vitamind, setVitamind] = useState("");
 const [ndut, setNdut] = useState("");
-const [vitad, setVitad] = useState("");
-const [tgn, setTgn] = useState("");
 const [rbs, setRbs] = useState("");
+const [tgn, setTgn] = useState("");
+const [ascaLgat, setAscaLgat] = useState("");
 const [mmpr, setMmpr] = useState("");
-const [ascaLga, setAscaLga] = useState("");
-const [chestXRay, setChestXRay] = useState("");
-const [askalgg, setAskalgg] = useState("");
-const [xRayAbdomen, setXRayAbdomen] = useState("");
-const [vitaminb12, setVitaminb12] = useState("");
-const [microbiota, setMicrobiota] = useState("");
-const [panca, setPanca] = useState("");
+const [ascaLgg, setAscaLgg] = useState("");
+const [vitaminB12, setVitaminB12] = useState("");
+const [pAnca, setPAnca] = useState("");
 const [folate, setFolate] = useState("");
 const [urea, setUrea] = useState("");
 const [vzvAntibody, setVzvAntibody] = useState("");
 const [creatinine, setCreatinine] = useState("");
+const [chestXray, setChestXray] = useState("");
+const [xrayAbdomen, setXrayAbdomen] = useState("");
 const [mantoux, setMantoux] = useState("");
+const [microbiota, setMicrobiota] = useState("");
 const [ctAbdomen, setCtAbdomen] = useState("");
-const [nancyIndex, setNancyIndex] = useState("");
 const [ctChest, setCtChest] = useState("");
-const [rhi, setRhi] = useState("");
 const [mriAbdomen, setMriAbdomen] = useState("");
-const [geboeScore, setGeboeScore] = useState("");
-const [simplifiedMARIA, setSimplifiedMARIA] = useState("");
-const [clermontScore, setClermontScore] = useState("");
-const [microbiota_2, setMicrobiota_2] = useState("");
-const [pcv, setPcv] = useState("");
+const [others, setOthers] = useState("");
+
+
 
 const handleAddInvestigation = ()=> {
 
@@ -105,61 +113,71 @@ const handleAddInvestigation = ()=> {
       patientId,
       hb,
       hbsAg,
+      pcv,
       mcv,
-      hiv,
-      tlc,
       antiHcv,
+      tlc,
+      hiv,
+      ebvVcaLgm,
       plt,
-      ebVcaLgm,
+      ebvVcaLgg,
       esr,
-      ebVcaLgg,
-      crpQuanti,
-      ebvEbna,
+      ebvEbnaLgg,
+      crpQuantitative,
       cmvLgm,
-      cmvLgg,
       ast,
-      fecalCalpro,
+      cmvLgg,
       alt,
-      stoolRoutine,
+      fecalCalprotectin,
+      pct,
+      ggt,
+      cpk,
+      totalProtien,
+      sodium,
+      cholesterol,
+      pottasium,
+      vldl,
+      cmvIhc,
+      ldl,
+      eberIsh,
+      hdl,
+      igra,
+      triglycerides,
       alp,
-      stoolCulture,
+      stoolRoutine,
       albumin,
-      stoolGdh,
+      stoolCulture,
       iron,
-      stoolDiffToxin,
+      stoolGdh,
       tibc,
-      stoolDiffPcr,
+      stoolcDiffToxin,
       ferritin,
+      stoolcDiffPcr,
+      calcium,
       stoolBiofilm,
-      ca,
-      tpmp,
-      mg, 
+      magnesium,
+      tpmt,
+      vitamind,
       ndut,
-      vitad,
-      tgn,
       rbs,
+      tgn,
+      ascaLgat,
       mmpr,
-      ascaLga,
-      chestXRay,
-      askalgg,
-      xRayAbdomen,
-      vitaminb12,
-      microbiota,
-      panca,
+      ascaLgg,
+      vitaminB12,
+      pAnca,
       folate,
       urea,
       vzvAntibody,
       creatinine,
+      chestXray,
+      xrayAbdomen,
       mantoux,
+      microbiota,
       ctAbdomen,
-      nancyIndex,
       ctChest,
-      rhi,
       mriAbdomen,
-      geboeScore,
-      simplifiedMARIA,
-      clermontScore,
-      microbiota_2,
+      others
     }
     if (investigationObj?._id) {
       dispatch(INVESTIGATIONUpdate(investigationObj._id, obj));
@@ -177,61 +195,71 @@ useEffect(()=>{
     if(investigationObj){
       setHb(investigationObj?.hb);
       setHbsAg(investigationObj?.hbsAg);
+      setPcv(investigationObj?.pcv);
       setMcv(investigationObj?.mcv);
-      setHiv(investigationObj?.hiv);
-      setTlc(investigationObj?.tlc);
       setAntiHcv(investigationObj?.antiHcv);
+      setTlc(investigationObj?.tlc);
+      setHiv(investigationObj?.hiv);
+      setEbvVcaLgm(investigationObj?.ebvVcaLgm);
       setPlt(investigationObj?.plt);
-      setEbVcaLgm(investigationObj?.ebVcaLgm);
+      setEbvVcaLgg(investigationObj?.ebvVcaLgg);
       setEsr(investigationObj?.esr);
-      setEbVcaLgg(investigationObj?.ebVcaLgg);
-      setCrpQuanti(investigationObj?.crpQuanti);
-      setEbvEbna(investigationObj?.ebvEbna);
+      setEbvEbnaLgg(investigationObj?.ebvEbnaLgg);
+      setCrpQuantitative(investigationObj?.crpQuantitative);
       setCmvLgm(investigationObj?.cmvLgm);
-      setCmvLgg(investigationObj?.cmvLgg);
       setAst(investigationObj?.ast);
-      setFecalCalpro(investigationObj?.fecalCalpro);
+      setCmvLgg(investigationObj?.cmvLgg);
       setAlt(investigationObj?.alt);
-      setStoolRoutine(investigationObj?.stoolRoutine);
-      setAlp(investigationObj?.alp);
-      setStoolCulture(investigationObj?.stoolCulture);
-      setAlbumin(investigationObj?.albumin);
-      setStoolGdh(investigationObj?.stoolGdh);
-      setIron(investigationObj?.iron);
-      setStoolDiffToxin(investigationObj?.stoolDiffToxin);
-      setTibc(investigationObj?.tibc);
-      setStoolDiffPcr(investigationObj?.stoolDiffPcr);
-      setFerritin(investigationObj?.ferritin);
-      setStoolBiofilm(investigationObj?.stoolBiofilm);
-      setCa(investigationObj?.ca);
-      setTpmp(investigationObj?.tpmp);
-      setMg(investigationObj?.mg);
-      setNdut(investigationObj?.ndut);
-      setVitad(investigationObj?.vitad);
-      setTgn(investigationObj?.tgn);
-      setRbs(investigationObj?.rbs);
-      setMmpr(investigationObj?.mmpr);
-      setAscaLga(investigationObj?.ascaLga);
-      setChestXRay(investigationObj?.chestXRay);
-      setAskalgg(investigationObj?.askalgg);
-      setXRayAbdomen(investigationObj?.xRayAbdomen);
-      setVitaminb12(investigationObj?.vitaminb12);
-      setMicrobiota(investigationObj?.microbiota);
-      setPanca(investigationObj?.panca);
-      setFolate(investigationObj?.folate);
-      setUrea(investigationObj?.urea);
-      setVzvAntibody(investigationObj?.vzvAntibody);
-      setCreatinine(investigationObj?.creatinine);
-      setMantoux(investigationObj?.mantoux);
-      setCtAbdomen(investigationObj?.ctAbdomen);
-      setNancyIndex(investigationObj?.nancyIndex);
-      setCtChest(investigationObj?.ctChest);
-      setRhi(investigationObj?.rhi);
-      setMriAbdomen(investigationObj?.mriAbdomen);
-      setGeboeScore(investigationObj?.geboeScore);
-      setSimplifiedMARIA(investigationObj?.simplifiedMARIA);
-      setClermontScore(investigationObj?.clermontScore);
-      setMicrobiota_2(investigationObj?.microbiota_2);
+      setFecalCalprotectin(investigationObj?.fecalCalprotectin);
+      setPct(investigationObj?.pct);
+      setGgt(investigationObj?.ggt);
+      setCpk(investigationObj?.cpk);
+      setTotalProtien(investigationObj?.totalProtien);
+      setSodium(investigationObj?.sodium);
+      setCholesterol(investigationObj?.cholesterol);
+      setPottasium(investigationObj?.pottasium);
+      setVldl(investigationObj?.vldl);
+      setCmvIhc(investigationObj?.cmvIhc);
+      setLdl(investigationObj?.hb);
+      setEberIsh(investigationObj?.hb);
+      setHdl(investigationObj?.hb);
+      setIgra(investigationObj?.hb);
+      setTriglycerides(investigationObj?.hb);
+      setAlp(investigationObj?.hb);
+      setStoolRoutine(investigationObj?.hb);
+      setAlbumin(investigationObj?.hb);
+      setStoolCulture(investigationObj?.hb);
+      setIron(investigationObj?.hb);
+      setStoolGdh(investigationObj?.hb);
+      setTibc(investigationObj?.hb);
+      setStoolcDiffToxin(investigationObj?.hb);
+      setFerritin(investigationObj?.hb);
+      setStoolcDiffPcr(investigationObj?.hb);
+      setCalcium(investigationObj?.hb);
+      setStoolBiofilm(investigationObj?.hb);
+      setMagnesium(investigationObj?.hb);
+      setTpmt(investigationObj?.hb);
+      setVitamind(investigationObj?.hb);
+      setNdut(investigationObj?.hb);
+      setRbs(investigationObj?.hb);
+      setTgn(investigationObj?.hb);
+      setAscaLgat(investigationObj?.hb);
+      setMmpr(investigationObj?.hb);
+      setAscaLgg(investigationObj?.hb);
+      setVitaminB12(investigationObj?.hb);
+      setPAnca(investigationObj?.hb);
+      setFolate(investigationObj?.hb);
+      setUrea(investigationObj?.hb);
+      setVzvAntibody(investigationObj?.hb);
+      setCreatinine(investigationObj?.hb);
+      setChestXray(investigationObj?.hb);
+      setXrayAbdomen(investigationObj?.hb);
+      setMantoux(investigationObj?.hb);
+      setMicrobiota(investigationObj?.hb);
+      setCtAbdomen(investigationObj?.hb);
+      setCtChest(investigationObj?.hb);
+      setMriAbdomen(investigationObj?.hb);
+      setOthers(investigationObj?.hb);
     }
 },[investigationObj]);
 

@@ -72,7 +72,7 @@ const handleAddInfection = () => {
       dispatch(INFECTIONAdd(obj));
       toast.success(" Infection Created Successfully ");
     }
-    navigate("/Patients/depression");
+    // navigate("/Patients/depression");
   }
 };
 

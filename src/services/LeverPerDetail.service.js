@@ -20,4 +20,7 @@ export const updateLeverDetail = (formData, id) => {
     return axiosApiInstance.patch(`${serverUrl}/updateleverPerDetail/${id}`, formData);
 };
 
+// export const downloadLeverExcel = (query) => {
+//     return axiosApiInstance.get(`${serverUrl}/downloadLeverData?${query}`);
+// }
 

@@ -63,8 +63,11 @@ const handleCustomerView = (row) => {
                 PATIENT LIST
               </h5>
             </div>
-            <div className="col-lg-3 ">
-          </div>
+            <div className="col-lg-3">
+            <div className='btnlist'>
+              <a href="http://localhost:4029/leverPerDetail/downloadLeverData" className="btn btn-defalut btn-md">Export Data</a>
+            </div>
+            </div>
             <div className="col-lg-2 ">
             <div className='btnlist'>
               <Link to="/add-lever" class="btn btn-defalut btn-md"> <BiUserPlus className="icon" /> Add Patient </Link>

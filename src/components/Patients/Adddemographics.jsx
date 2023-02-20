@@ -22,6 +22,7 @@ export const Adddemographics = () => {
     const [mrdNo, setMrdNo] = useState("");
     const [diagnosisYear, setDiagnosisYear] = useState("");
     const [phoneNo, setPhone] = useState("");
+    const [dob, setDob] = useState("");
     const [diagnosisMonth, setDiagnosisMonth] = useState("");
     const [addressLine, setAddressLine] = useState("");
     const [educationHead, setEducationHead] = useState("");
@@ -36,12 +37,11 @@ export const Adddemographics = () => {
     const [password, setPassword] = useState("");
     const [conPassword, setConPassword] = useState("");
     const [indiDisease, setIndiDisease] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("");
     const [bloodGroup, setBloodGroup] = useState("");
     const [district, setDistrict] = useState("");
     const [state, setState] = useState("");
-    const [residenceArea, setResidenceArea] = useState("");
-    const [onsetSymtomps, setOnsetSymtomps] = useState("");
+    const [areaOfResidence, setAreaOfResidence] = useState("");
+    const [yearOfOnset, setYearOfOnset] = useState("");
 
     const [diseaseArr, setDiseaseArr] = useState("");
     const [hodArr, setHodArr] = useState("");
@@ -174,6 +174,12 @@ export const Adddemographics = () => {
                 mrdNo,
                 diagnosisYear,
                 phoneNo,
+                dob,
+                bloodGroup,
+                district,
+                state,
+                areaOfResidence,
+                yearOfOnset,
                 diagnosisMonth,
                 addressLine,
                 educationHead,
@@ -182,13 +188,9 @@ export const Adddemographics = () => {
                 socioEconomy,
                 totalScore,
                 email,
-                doctor,
-                disease,
-                hod,
                 password,
                 conPassword,
                 indiDisease,
-                service
             };
             if (demograficObj?._id) {
                 dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
@@ -214,6 +216,12 @@ export const Adddemographics = () => {
             setMrdNo(demograficObj?.mrdNo);
             setDiagnosisYear(demograficObj?.diagnosisYear);
             setPhone(demograficObj?.phoneNo);
+            setDob(demograficObj?.dob);
+            setBloodGroup(demograficObj?.bloodGroup);
+            setDistrict(demograficObj?.district);
+            setState(demograficObj?.state);
+            setAreaOfResidence(demograficObj?.areaOfResidence);
+            setYearOfOnset(demograficObj?.yearOfOnset);
             setDiagnosisMonth(demograficObj?.diagnosisMonth);
             setAddressLine(demograficObj?.addressLine);
             setEducationHead(demograficObj?.educationHead);
@@ -228,7 +236,6 @@ export const Adddemographics = () => {
             setPassword(demograficObj?.password);
             setConPassword(demograficObj?.conPassword);
             setIndiDisease(demograficObj?.indiDisease);
-            setService(demograficObj?.service);
         }
     }, [demograficObj]);
 
@@ -386,7 +393,7 @@ export const Adddemographics = () => {
                                         </div>
                                         <div className='from-group'>
                                             <label>Year of onset of symptoms <span></span></label>
-                                            <input type="text" className='form-control ' value={onsetSymtomps} onChange={(e) => { setOnsetSymtomps(e.target.value) }} />
+                                            <input type="text" className='form-control ' value={yearOfOnset} onChange={(e) => { setYearOfOnset(e.target.value) }} />
                                         </div>
                                         {/* {(role == rolesObj.ADMIN || role == rolesObj.HOD) ?
                                             <div className='from-group'>
@@ -437,7 +444,7 @@ export const Adddemographics = () => {
                                         </div>
                                         <div className='from-group'>
                                             <label>Date Of Birth<span></span></label>
-                                            <input type="date" className='form-control' value={dateOfBirth} onChange={(e) => { setDateOfBirth(e.target.value) }} />
+                                            <input type="date" className='form-control' value={dob} onChange={(e) => { setDob(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>District<span></span></label>
@@ -445,7 +452,7 @@ export const Adddemographics = () => {
                                         </div>
                                         <div className='from-group'>
                                             <label>Area of residence </label>
-                                            <select className='form-control' value={residenceArea} onChange={(e) => { setResidenceArea(e.target.value) }}>
+                                            <select className='form-control' value={areaOfResidence} onChange={(e) => { setAreaOfResidence(e.target.value) }}>
                                                 <option>Select Area</option>
                                                 {residenceDrop && residenceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>

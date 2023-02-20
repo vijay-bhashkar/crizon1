@@ -152,7 +152,8 @@ useEffect(()=>{
             </div>
             <div className="col-lg-3"><span style={{color:"white"}}><h5>PATIENT'S LIST</h5></span></div>
             <div className="col-lg-3 ">
-            <div className='btnlist'>
+            <div className='btnlist'> 
+            <a href="http://localhost:4029/demografic/downloadAllPatient" class="btn btn-defalut btn-md text-right">Export Data</a>
             </div>
             </div>
             <div className="col-lg-2 text-end">
