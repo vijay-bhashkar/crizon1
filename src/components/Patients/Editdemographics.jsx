@@ -141,7 +141,13 @@ export const Editdemographics = () => {
                 doctor,
                 disease,
                 hod,
-                indiDisease
+                indiDisease,
+                dateOfBirth,
+                bloodGroup,
+                district,
+                state,
+                residenceArea,
+                onsetSymtomps
             };
             if (password != conPassword) {
                 toast.error("Password and Confirm Password Should Be Same");
@@ -185,6 +191,12 @@ export const Editdemographics = () => {
             // setPassword(demograficObj?.password);
             // setConPassword(demograficObj?.conPassword);
             setIndiDisease(demograficObj?.indiDisease);
+            setDateOfBirth(demograficObj?.dateOfBirth);
+            setBloodGroup(demograficObj?.bloodGroup);
+            setDistrict(demograficObj?.district);
+            setState(demograficObj?.state);
+            setResidenceArea(demograficObj?.residenceArea);
+            setOnsetSymtomps(demograficObj?.onsetSymtomps);
         }
     }, [demograficObj]);
 

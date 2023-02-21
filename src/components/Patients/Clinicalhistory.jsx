@@ -81,8 +81,8 @@ const [surgery, setSurgery] = useState("No");
 const [morbiditiesOther, setMorbiditiesOther] = useState("");
 const [crohn, setCrohn] = useState("No");
 const [ulcerative, setUlcerative] = useState("No");
-const [relationshipCrohn, setRelationshipCrohn] = useState("");
-const [relationshipUlcerative, setRelationshipUlcerative] = useState("");
+const [relationship, setRelationship] = useState("");
+const [relationship_2, setRelationship_2] = useState("");
 const [smoking, setSmoking] = useState("No");
 const [ivdu, setIvdu] = useState("No");
 const [opium, setOpium] = useState("No");
@@ -202,8 +202,8 @@ let obj = {
     morbiditiesOther,
     crohn,
     ulcerative,
-    relationshipCrohn,
-    relationshipUlcerative,
+    relationship,
+    relationship_2,
     smoking,
     ivdu,
     opium,
@@ -321,8 +321,8 @@ let obj = {
             setMorbiditiesOther(cliHistoryObj?.morbiditiesOther);
             setCrohn(cliHistoryObj?.crohn);
             setUlcerative(cliHistoryObj?.ulcerative);
-            setRelationshipCrohn(cliHistoryObj?.relationshipCrohn);
-            setRelationshipUlcerative(cliHistoryObj?.relationshipUlcerative);
+            setRelationship(cliHistoryObj?.relationship);
+            setRelationship_2(cliHistoryObj?.relationship_2);
             setSmoking(cliHistoryObj?.smoking);
             setIvdu(cliHistoryObj?.ivdu);
             setOpium(cliHistoryObj?.opium);
@@ -983,7 +983,6 @@ let obj = {
                                 <select className='form-control' value={crohn} onChange={(e)=>{setCrohn(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-6'>
@@ -992,25 +991,22 @@ let obj = {
                                 <select className='form-control' value={ulcerative} onChange={(e)=>{setUlcerative(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={options} placeholder="No"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
                                 <label>Relationship (Crohn's)</label>
-                                <select className='form-control' value={relationshipCrohn} onChange={(e)=>{setRelationshipCrohn(e.target.value)}}>
+                                <select className='form-control' value={relationship} onChange={(e)=>{setRelationship(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={relationships} placeholder="Select"  /> */}
                             </div>
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
                                 <label>Relationship (Ulcerative)</label>
-                                <select className='form-control' value={relationshipUlcerative} onChange={(e)=>{setRelationshipUlcerative(e.target.value)}}>
+                                <select className='form-control' value={relationship_2} onChange={(e)=>{setRelationship_2(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
-                                {/* <Select options={relationships} placeholder="Select"  /> */}
                             </div>
                         </div>
                     </div>

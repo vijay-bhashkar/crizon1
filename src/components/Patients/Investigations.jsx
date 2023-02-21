@@ -179,6 +179,8 @@ const handleAddInvestigation = ()=> {
       mriAbdomen,
       others
     }
+
+    console.log(obj , "investigation obj");
     if (investigationObj?._id) {
       dispatch(INVESTIGATIONUpdate(investigationObj._id, obj));
       dispatch(SETINVESTIGATIONObj(null))
@@ -220,46 +222,46 @@ useEffect(()=>{
       setPottasium(investigationObj?.pottasium);
       setVldl(investigationObj?.vldl);
       setCmvIhc(investigationObj?.cmvIhc);
-      setLdl(investigationObj?.hb);
-      setEberIsh(investigationObj?.hb);
-      setHdl(investigationObj?.hb);
-      setIgra(investigationObj?.hb);
-      setTriglycerides(investigationObj?.hb);
-      setAlp(investigationObj?.hb);
-      setStoolRoutine(investigationObj?.hb);
-      setAlbumin(investigationObj?.hb);
-      setStoolCulture(investigationObj?.hb);
-      setIron(investigationObj?.hb);
-      setStoolGdh(investigationObj?.hb);
-      setTibc(investigationObj?.hb);
-      setStoolcDiffToxin(investigationObj?.hb);
-      setFerritin(investigationObj?.hb);
-      setStoolcDiffPcr(investigationObj?.hb);
-      setCalcium(investigationObj?.hb);
-      setStoolBiofilm(investigationObj?.hb);
-      setMagnesium(investigationObj?.hb);
-      setTpmt(investigationObj?.hb);
-      setVitamind(investigationObj?.hb);
-      setNdut(investigationObj?.hb);
-      setRbs(investigationObj?.hb);
-      setTgn(investigationObj?.hb);
-      setAscaLgat(investigationObj?.hb);
-      setMmpr(investigationObj?.hb);
-      setAscaLgg(investigationObj?.hb);
-      setVitaminB12(investigationObj?.hb);
-      setPAnca(investigationObj?.hb);
-      setFolate(investigationObj?.hb);
-      setUrea(investigationObj?.hb);
-      setVzvAntibody(investigationObj?.hb);
-      setCreatinine(investigationObj?.hb);
-      setChestXray(investigationObj?.hb);
-      setXrayAbdomen(investigationObj?.hb);
-      setMantoux(investigationObj?.hb);
-      setMicrobiota(investigationObj?.hb);
-      setCtAbdomen(investigationObj?.hb);
-      setCtChest(investigationObj?.hb);
-      setMriAbdomen(investigationObj?.hb);
-      setOthers(investigationObj?.hb);
+      setLdl(investigationObj?.ldl);
+      setEberIsh(investigationObj?.eberIsh);
+      setHdl(investigationObj?.hdl);
+      setIgra(investigationObj?.igra);
+      setTriglycerides(investigationObj?.triglycerides);
+      setAlp(investigationObj?.alp);
+      setStoolRoutine(investigationObj?.stoolRoutine);
+      setAlbumin(investigationObj?.albumin);
+      setStoolCulture(investigationObj?.stoolCulture);
+      setIron(investigationObj?.iron);
+      setStoolGdh(investigationObj?.stoolGdh);
+      setTibc(investigationObj?.tibc);
+      setStoolcDiffToxin(investigationObj?.stoolcDiffToxin);
+      setFerritin(investigationObj?.ferritin);
+      setStoolcDiffPcr(investigationObj?.stoolcDiffPcr);
+      setCalcium(investigationObj?.calcium);
+      setStoolBiofilm(investigationObj?.stoolBiofilm);
+      setMagnesium(investigationObj?.magnesium);
+      setTpmt(investigationObj?.tpmt);
+      setVitamind(investigationObj?.vitamind);
+      setNdut(investigationObj?.ndut);
+      setRbs(investigationObj?.rbs);
+      setTgn(investigationObj?.tgn);
+      setAscaLgat(investigationObj?.ascaLgat);
+      setMmpr(investigationObj?.mmpr);
+      setAscaLgg(investigationObj?.ascaLgg);
+      setVitaminB12(investigationObj?.vitaminB12);
+      setPAnca(investigationObj?.pAnca);
+      setFolate(investigationObj?.folate);
+      setUrea(investigationObj?.urea);
+      setVzvAntibody(investigationObj?.vzvAntibody);
+      setCreatinine(investigationObj?.creatinine);
+      setChestXray(investigationObj?.chestXray);
+      setXrayAbdomen(investigationObj?.xrayAbdomen);
+      setMantoux(investigationObj?.mantoux);
+      setMicrobiota(investigationObj?.microbiota);
+      setCtAbdomen(investigationObj?.ctAbdomen);
+      setCtChest(investigationObj?.ctChest);
+      setMriAbdomen(investigationObj?.mriAbdomen);
+      setOthers(investigationObj?.others);
     }
 },[investigationObj]);
 
@@ -347,55 +349,55 @@ const options = [
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>TLC</label>
-                    <input type="text" className='form-control'/>
+                    <input type="text" className='form-control' value={tlc} onChange={(el)=>{setTlc(el.target.value)}} />
                   </div>
                 </div>
                 <div className='col-lg-4'>
-                  <div className='from-group'>
+                  <div className='from-group'>  
                     <label>HIV</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={hiv} onChange={(e)=>{setHiv(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>EBV-VCA IgM</label>
-                    <input type="text" className='form-control' value={ebVcaLgm} onChange={(e)=>{setEbVcaLgm(e.target.value)}}/>
+                    <input type="text" className='form-control' value={ebvVcaLgm} onChange={(e)=>{setEbvVcaLgm(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>PLT</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control'  value={plt} onChange={(e)=>{setPlt(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>EBV-VCA IgG</label>
-                    <input type="text" className='form-control' value={ebVcaLgg} onChange={(e)=>{setEbVcaLgg(e.target.value)}}/>
+                    <input type="text" className='form-control' value={ebvVcaLgg} onChange={(e)=>{setEbvVcaLgg(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
-                  <div className='from-group'>
+                  <div className='from-group'> 
                     <label>ESR</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={esr} onChange={(e)=>{setEsr(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>EBV-EBNA IgG</label>
-                    <input type="text" className='form-control' value={ebvEbna} onChange={(e)=>{setEbvEbna(e.target.value)}}/>
+                    <input type="text" className='form-control' value={ebvEbnaLgg} onChange={(e)=>{setEbvEbnaLgg(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label>CRP Quantitative</label>
-                    <input type="text" className='form-control' />
+                    <label>CRP Quantitative</label> 
+                    <input type="text" className='form-control' value={crpQuantitative} onChange={(e)=>{setCrpQuantitative(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label>CMV – IgM</label>
-                    <input type="text" className='form-control' />
+                    <label>CMV – IgM</label> 
+                    <input type="text" className='form-control' value={cmvLgm} onChange={(e)=>{setCmvLgm(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
@@ -406,8 +408,8 @@ const options = [
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label>CMV – IgG</label>
-                    <input type="text" className='form-control' />
+                    <label>CMV – IgG</label>  
+                    <input type="text" className='form-control' value={cmvLgg} onChange={(e)=>{setCmvLgg(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
@@ -418,302 +420,302 @@ const options = [
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label>Fecal Calprotectin</label>
-                    <input type="text" className='form-control' />
+                    <label>Fecal Calprotectin</label> 
+                    <input type="text" className='form-control' value={fecalCalprotectin} onChange={(e)=>{setFecalCalprotectin(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>PCT</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={pct} onChange={(el)=>{setPct(el.target.value)}} />
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>GGT</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ggt} onChange={(el)=>{setGgt(el.target.value)}} />
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>CPK</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={cpk} onChange={(el)=>{setCpk(el.target.value)}} />
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Total proteins</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={totalProtien} onChange={(el)=>{setTotalProtien(el.target.value)}} />
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Sodium</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={sodium} onChange={(el)=>{setSodium(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Cholesterol</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={cholesterol} onChange={(el)=>{setCholesterol(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Potassium</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={pottasium} onChange={(el)=>{setPottasium(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>VLDL</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={vldl} onChange={(el)=>{setVldl(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>CMV IHC</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={cmvIhc} onChange={(el)=>{setCmvIhc(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>LDL</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ldl} onChange={(el)=>{setLdl(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>EBER ISH</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={eberIsh} onChange={(el)=>{setEberIsh(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>HDL</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={hdl} onChange={(el)=>{setHdl(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>IGRA</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={igra} onChange={(el)=>{setIgra(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Triglycerides</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={triglycerides} onChange={(el)=>{setTriglycerides(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>ALP</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={alp} onChange={(el)=>{setAlp(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Stool Routine</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={stoolRoutine} onChange={(el)=>{setStoolRoutine(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Albumin</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={albumin} onChange={(el)=>{setAlbumin(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Stool Culture</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={stoolCulture} onChange={(el)=>{setStoolCulture(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Iron</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={iron} onChange={(el)=>{setIron(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Stool GDH</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={stoolGdh} onChange={(el)=>{setStoolGdh(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>TIBC</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={tibc} onChange={(el)=>{setTibc(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Stool C-diff Toxin A</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={stoolcDiffToxin} onChange={(el)=>{setStoolcDiffToxin(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Ferritin</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ferritin} onChange={(el)=>{setFerritin(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Stool C-diff PCR</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={stoolcDiffPcr} onChange={(el)=>{setStoolcDiffPcr(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Calcium</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={calcium} onChange={(el)=>{setCalcium(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Stool Biofilm</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={stoolBiofilm} onChange={(el)=>{setStoolBiofilm(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Magnesium</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={magnesium} onChange={(el)=>{setMagnesium(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>TPMT</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={tpmt} onChange={(el)=>{setTpmt(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Vitamin-D</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={vitamind} onChange={(el)=>{setVitamind(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>NDUT – 15 </label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ndut} onChange={(el)=>{setNdut(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>RBS</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={rbs} onChange={(el)=>{setRbs(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>6 – TGN</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={tgn} onChange={(el)=>{setTgn(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>ASCA IgAt</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ascaLgat} onChange={(el)=>{setAscaLgat(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>6 – MMPR</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={mmpr} onChange={(el)=>{setMmpr(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>ASCA IgG</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ascaLgg} onChange={(el)=>{setAscaLgg(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Vitamin B12</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={vitaminB12} onChange={(el)=>{setVitaminB12(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>P-ANCA</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={pAnca} onChange={(el)=>{setPAnca(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Folate</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={folate} onChange={(el)=>{setFolate(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Urea</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={urea} onChange={(el)=>{setUrea(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>VZV Antibody</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={vzvAntibody} onChange={(el)=>{setVzvAntibody(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Creatinine</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={creatinine} onChange={(el)=>{setCreatinine(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Chest X Ray</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={chestXray} onChange={(el)=>{setChestXray(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>X Ray abdomen</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={xrayAbdomen} onChange={(el)=>{setXrayAbdomen(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Mantoux</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={mantoux} onChange={(el)=>{setMantoux(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Microbiota</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={microbiota} onChange={(el)=>{setMicrobiota(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>CT Abdomen</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ctAbdomen} onChange={(el)=>{setCtAbdomen(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>CT Chest</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={ctChest} onChange={(el)=>{setCtChest(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>MRI Abdomen</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={mriAbdomen} onChange={(el)=>{setMriAbdomen(el.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Others</label>
-                    <input type="text" className='form-control' />
+                    <input type="text" className='form-control' value={others} onChange={(el)=>{setOthers(el.target.value)}}/>
                   </div>
                 </div>
               </div>

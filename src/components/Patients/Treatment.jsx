@@ -351,7 +351,6 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
                   <select className='form-control' value={adalimunab} onChange={(e)=>{setAdalimunab(e.target.value)}}>
                     { adlimunabDrop && adlimunabDrop.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                   </select>
-                  {/* <Select options={options} placeholder="No" /> */}
                 </div>
               </div>
               <div className='col-lg-4'>
@@ -378,7 +377,6 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
                   <select className='form-control' value={tofacitinib} onChange={(e)=>{setTofacitinib(e.target.value)}}>
                     { tofacitiDrop && tofacitiDrop.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                   </select>
-                  {/* <Select options={options} placeholder="No" /> */}
                 </div>
               </div>
               <div className='col-lg-4'>
@@ -455,12 +453,6 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
                         <input type="date" className='form-control' value={session_6} onChange={(e)=>{setSession_6(e.target.value)}}/>
                     </div>
               </div>
-              {/* <div className='col-lg-4'>
-                    <div className='from-group'>
-                        <label>Session 6</label>
-                        <input type="date" className='form-control' value={budesonide} onChange={(e)=>{setBudesonide(e.target.value)}}/>
-                    </div>
-              </div> */}
               <div className='col-lg-4'>
                     <div className='from-group'>
                         <label>Session 7</label>
