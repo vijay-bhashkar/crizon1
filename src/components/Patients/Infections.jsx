@@ -18,10 +18,10 @@ export const Infections = () => {
   const [specificToIbd, setSpecificToIbd] = useState("");
   const [neurological, setNeurological] = useState("");
   const [miscellaneous, setMiscellaneous] = useState("");
+  const [patientId, setPatientId] = useState("");
 
-const [patientId, setPatientId] = useState("");
-const dispatch = useDispatch();
-const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 useEffect(() => {
   if(patientId){

@@ -109,9 +109,9 @@ useEffect(() => {
             followupMainArr && followupMainArr.map((item,index) => <tr>
               <th scope="row" className="text-center">{index+1}</th>
               <th scope="row">{item.ccfIdName}</th>
-              <th scope="row">{item.patientName}</th>
+              <th scope="row">{item.patientId}</th>
               <td>{item.diseaseExtend}</td>
-              <td>{item.followupDate}</td>
+              <td>{item.followUpDate}</td>
               {/* <td>{item.rectalBleeding}</td> */}
               {/* <td><span className="active">{item.status}</span></td> */}
               <td>

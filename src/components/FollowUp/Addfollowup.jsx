@@ -14,11 +14,48 @@ export const Addfollowup = () => {
 
     const [searchParams, setSearchParams] = useSearchParams("edit");
     const [patientId, setPatientId] = useState("");
-    
-    
+    const [patientName, setPatientName] = useState("");
+    const [ccfIdName, setCcfIdName] = useState("");
 
+    const [followUpDate, setFollowUpDate] = useState("");
+    const [partialMayoScore, setPartialMayoScore] = useState("");
+    const [diseaseExtend, setDiseaseExtend] = useState("");
+    const [totalMayoScore, setTotalMayoScore] = useState("");
+    const [uceis, setUceis] = useState("");
+    const [endoMayo, setEndoMayo] = useState("");
+    const [sccai, setSccai] = useState("");
+    const [nancyIndex, setNancyIndex] = useState("");
+    const [height, setHeight] = useState("");
+    const [rhi, setRhi] = useState("");
+    const [weight, setWeight] = useState("");
+    const [geboeScore, setGeboeScore] = useState("");
+    const [bmi, setBmi] = useState("");
+    const [handgripStrength, setHandgripStrength] = useState("");
+    const [mirt, setMirt] = useState("");
+    const [must, setMust] = useState("");
+    const [reasonForReplace, setReasonForReplace] = useState("");
+    const [height_2, setHeight_2] = useState("");
+    const [weight_2, setWeight_2] = useState("");
+    const [bmi_2, setBmi_2] = useState("");
+    const [midarmCircumference, setMidarmCircumference] = useState("");
+    const [handgripStrength_2, setHandgripStrength_2] = useState("");
+    const [tsf, setTsf] = useState("");
+    const [mirt_2, setMirt_2] = useState("");
+    const [must_2, setMust_2] = useState("");
+    const [bodyFat, setBodyFat] = useState("");
+    const [visceralFat, setVisceralFat] = useState("");
+    const [resstingMetabolism, setResstingMetabolism] = useState("");
+    const [subcutaneousWholeBody, setSubcutaneousWholeBody] = useState("");
+    const [subcutaneousWholeTrunk, setSubcutaneousWholeTrunk] = useState("");
+    const [subcutaneousWholeArm, setSubcutaneousWholeArm] = useState("");
+    const [subcutaneousWholeLeg, setSubcutaneousWholeLeg] = useState("");
+    const [skeletalWholeBody, setSkeletalWholeBody] = useState("");
+    const [skeletalWholeTrunk, setSkeletalWholeTrunk] = useState("");
+    const [skeletalWholeArm, setSkeletalWholeArm] = useState("");
+    const [skeletalWholeLeg, setSkeletalWholeLeg] = useState("");
+    const [smArea, setSmArea] = useState("");
     const [hb, setHb] = useState("");
-    const [hbsAg, setHbsAg] = useState("");
+    const [hbsag, setHbsag] = useState("");
     const [pcv, setPcv] = useState("");
     const [mcv, setMcv] = useState("");
     const [antiHcv, setAntiHcv] = useState("");
@@ -34,14 +71,14 @@ export const Addfollowup = () => {
     const [ast, setAst] = useState("");
     const [cmvLgg, setCmvLgg] = useState("");
     const [alt, setAlt] = useState("");
-    const [fecalCalprotectin, setFecalCalprotectin] = useState("");
+    const [fecalCalprotactin, setFecalCalprotactin] = useState("");
     const [pct, setPct] = useState("");
     const [ggt, setGgt] = useState("");
     const [cpk, setCpk] = useState("");
     const [totalProtien, setTotalProtien] = useState("");
     const [sodium, setSodium] = useState("");
-    const [cholesterol, setCholesterol] = useState("");
-    const [pottasium, setPottasium] = useState("");
+    const [cholestrol, setCholestrol] = useState("");
+    const [potassium, setPotassium] = useState("");
     const [vldl, setVldl] = useState("");
     const [cmvIhc, setCmvIhc] = useState("");
     const [ldl, setLdl] = useState("");
@@ -56,21 +93,21 @@ export const Addfollowup = () => {
     const [iron, setIron] = useState("");
     const [stoolGdh, setStoolGdh] = useState("");
     const [tibc, setTibc] = useState("");
-    const [stoolcDiffToxin, setStoolcDiffToxin] = useState("");
+    const [stoolCdiffToxinA, setStoolCdiffToxinA] = useState("");
     const [ferritin, setFerritin] = useState("");
-    const [stoolcDiffPcr, setStoolcDiffPcr] = useState("");
+    const [stoolCdiffPcr, setStoolCdiffPcr] = useState("");
     const [calcium, setCalcium] = useState("");
     const [stoolBiofilm, setStoolBiofilm] = useState("");
     const [magnesium, setMagnesium] = useState("");
     const [tpmt, setTpmt] = useState("");
     const [vitamind, setVitamind] = useState("");
-    const [ndut, setNdut] = useState("");
+    const [ndut_15, setNdut_15] = useState("");
     const [rbs, setRbs] = useState("");
-    const [tgn, setTgn] = useState("");
+    const [tgn_6, setTgn_6] = useState("");
     const [ascaLgat, setAscaLgat] = useState("");
-    const [mmpr, setMmpr] = useState("");
+    const [mmpr_6, setMmpr_6] = useState("");
     const [ascaLgg, setAscaLgg] = useState("");
-    const [vitaminB12, setVitaminB12] = useState("");
+    const [vitaminb_12, setVitaminb_12] = useState("");
     const [pAnca, setPAnca] = useState("");
     const [folate, setFolate] = useState("");
     const [urea, setUrea] = useState("");
@@ -84,8 +121,43 @@ export const Addfollowup = () => {
     const [ctChest, setCtChest] = useState("");
     const [mriAbdomen, setMriAbdomen] = useState("");
     const [others, setOthers] = useState("");
-    const [rectalSteroids, setRectalSteroids] = useState("No");
-    const [specify, setSpecify] = useState("");
+    const [oral_5asa, setOral_5asa] = useState("");
+    const [rectal5Asa, setRectal5Asa] = useState("");
+    const [aza, setAza] = useState("");
+    const [mp_6, setMp_6] = useState("");
+    const [prednisolone, setPrednisolone] = useState("");
+    const [infliximab, setInfliximab] = useState("");
+    const [budesonide, setBudesonide] = useState("");
+    const [rectalSteroids, setRectalSteroids] = useState("");
+    const [adalimunab, setAdalimunab] = useState("");
+    const [vedolizumab, setVedolizumab] = useState("");
+    const [cyclosporine, setCyclosporine] = useState("");
+    const [ustekinumab, setUstekinumab] = useState("");
+    const [tofacitinib, setTofacitinib] = useState("");
+    const [tacrolimus, setTacrolimus] = useState("");
+    const [probiotics, setProbiotics] = useState("");
+    const [filgotinib, setFilgotinib] = useState("");
+    const [fmtCapsule, setFmtCapsule] = useState("");
+    const [fmt, setFmt] = useState("");
+    const [surgery, setSurgery] = useState("");
+    const [surgeryYes, setSurgeryYes] = useState("");
+    const [adverseAsa, setAdverseAsa] = useState("");
+    const [adverseAza, setAdverseAza] = useState("");
+    const [adverseInfliximab, setAdverseInfliximab] = useState("");
+    const [adverseSteroid, setAdverseSteroid] = useState("");
+    const [adverseTofacitinib, setAdverseTofacitinib] = useState("");
+    const [hospitalization, setHospitalization] = useState("");
+    const [reasonHospitalization, setReasonHospitalization] = useState("");
+    const [megacolon, setMegacolon] = useState("");
+    const [massiveHaemorrhage, setMassiveHaemorrhage] = useState("");
+    const [colorectalCancer, setColorectalCancer] = useState("");
+    const [perforation, setPerforation] = useState("");
+    const [toxicMegacolon, setToxicMegacolon] = useState("");
+    const [adverseOthers, setAdverseOthers] = useState("");
+    const [diseaseBehavior, setDiseaseBehavior] = useState("");
+    const [death, setDeath] = useState("");
+    const [dateOfDeath, setDateOfDeath] = useState("");
+    const [causeOfDeath, setCauseOfDeath] = useState("");
 
     const dispatch = useDispatch();
     const followupObj = useSelector((states) => states.followup.followupObj);
@@ -94,107 +166,149 @@ export const Addfollowup = () => {
     const handleAddFollowUp = () => {
         let obj = {
             patientId,
-            patientName,
-            ccfIdName,
-            followupDate,
+            followUpDate,
+            partialMayoScore,
             diseaseExtend,
-            stoolFreq,
-            rectalBleeding,
-            findEndoscope,
-            phyAssess1,
-            mayoScore1,
-            mayoScore2,
-            mayoScore3,
-            phyAssess2,
-            phyAssess3,
-            phyAssess4,
-            totalScore1,
-            bowelDay,
-            height,
-            bowelNight,
-            weight,
-            genwellBeing,
-            bmi,
-            urgencyDef,
-            handgrip,
-            bloodStool,
+            totalMayoScore,
+            uceis,
+            endoMayo,
+            sccai,
             nancyIndex,
-            extracolonic,
+            height,
             rhi,
-            totalScore2,
+            weight,
             geboeScore,
+            bmi,
+            handgripStrength,
             mirt,
             must,
-            tricepSkin,
-            totalBodyFat,
-            visceral,
-            restingMetabol,
-            bodyAge,
-            subcutWholebody,
-            subcutTrunk,
-            subcutArms,
-            subcutLegs,
-            skeltalWhole,
-            skeltalTrunk,
-            skeltalArms,
-            skeltalLegs,
-            midarmCircum,
-            skeltalMuscle,
-            mercuriStage,
-            meanAttenuation,
+            reasonForReplace,
+            height_2,
+            weight_2,
+            bmi_2,
+            midarmCircumference,
+            handgripStrength_2,
+            tsf,
+            mirt_2,
+            must_2,
+            bodyFat,
+            visceralFat,
+            resstingMetabolism,
+            subcutaneousWholeBody,
+            subcutaneousWholeTrunk,
+            subcutaneousWholeArm,
+            subcutaneousWholeLeg,
+            skeletalWholeBody,
+            skeletalWholeTrunk,
+            skeletalWholeArm,
+            skeletalWholeLeg,
+            smArea,
             hb,
-            tgn,
+            hbsag,
+            pcv,
             mcv,
-            mmpr,
+            antiHcv,
+            tlc,
+            hiv,
+            ebvVcaLgm,
             plt,
+            ebvVcaLgg,
+            esr,
+            ebvEbnaLgg,
+            crpQuantitative,
+            cmvLgm,
             ast,
-            // hscrp,
+            cmvLgg,
             alt,
-            albumin,
+            fecalCalprotactin,
+            pct,
+            ggt,
+            cpk,
+            totalProtien,
+            sodium,
+            cholestrol,
+            potassium,
+            vldl,
+            cmvIhc,
+            ldl,
+            eberIsh,
+            hdl,
+            igra,
+            triglycerides,
             alp,
-            // esp,
-            // stoolcdiff,
-            // fecalCalpro,
             stoolRoutine,
+            albumin,
+            stoolCulture,
+            iron,
+            stoolGdh,
+            tibc,
+            stoolCdiffToxinA,
             ferritin,
-            ebvca,
-            cmvIgm,
-            oralAsa,
-            adalimumab,
-            rectalAsa,
-            vedolizumab,
+            stoolCdiffPcr,
+            calcium,
+            stoolBiofilm,
+            magnesium,
+            tpmt,
+            vitamind,
+            ndut_15,
+            rbs,
+            tgn_6,
+            ascaLgat,
+            mmpr_6,
+            ascaLgg,
+            vitaminb_12,
+            pAnca,
+            folate,
+            urea,
+            vzvAntibody,
+            creatinine,
+            chestXray,
+            xrayAbdomen,
+            mantoux,
+            microbiota,
+            ctAbdomen,
+            ctChest,
+            mriAbdomen,
+            others,
+            oral_5asa,
+            rectal5Asa,
             aza,
-            // cycloporine,
-            mp,
-            ustekinumab,
+            mp_6,
             prednisolone,
-            tofacitinib,
+            infliximab,
             budesonide,
+            rectalSteroids,
+            adalimunab,
+            vedolizumab,
+            cyclosporine,
+            ustekinumab,
+            tofacitinib,
             tacrolimus,
-            rectalSteroid,
-            filgotinib,
-            // infliximab,
             probiotics,
-            session1,
-            session2,
-            session3,
-            session4,
-            session5,
-            session6,
-            session7,
-            session8,
-            session9,
-            session10,
-            session11,
-            session12,
+            filgotinib,
+            fmtCapsule,
+            fmt,
             surgery,
-            ifSurgery,
+            surgeryYes,
             adverseAsa,
-            adverseSteroids,
-            adverseInfliximab,
-            adverseTofacitinib,
             adverseAza,
-        }
+            adverseInfliximab,
+            adverseSteroid,
+            adverseTofacitinib,
+            hospitalization,
+            reasonHospitalization,
+            megacolon,
+            massiveHaemorrhage,
+            colorectalCancer,
+            perforation,
+            toxicMegacolon,
+            adverseOthers,
+            diseaseBehavior,
+            death,
+            dateOfDeath,
+            causeOfDeath,
+        };
+
         if (followupObj?._id) {
             dispatch(FOLLOWUPUpdate(followupObj._id, obj));
             toast.success("Follow up updated")
@@ -207,110 +321,148 @@ export const Addfollowup = () => {
 
     useEffect(() => {
         if (followupObj) {
-
-            // console.log(followupObj?.patientId,"followupObj?.patientI")
             setPatientId(followupObj?.patientId);
-            setPatientName(followupObj?.patientName);
-            setCcfIdName(followupObj?.ccfIdName);
-            setFollowupDate(followupObj?.followupDate);
+            setFollowUpDate(followupObj?.followUpDate);
+            setPartialMayoScore(followupObj?.partialMayoScore);
             setDiseaseExtend(followupObj?.diseaseExtend);
-            setStoolFreq(followupObj?.stoolFreq);
-            setRectalBleeding(followupObj?.rectalBleeding);
-            setFindEndoscope(followupObj?.findEndoscope);
-            setPhyAssess1(followupObj?.phyAssess1);
-            setMayoScore1(followupObj?.mayoScore1);
-            setMayoScore2(followupObj?.mayoScore2);
-            setMayoScore3(followupObj?.mayoScore3);
-            setPhyAssess2(followupObj?.phyAssess2);
-            setPhyAssess3(followupObj?.phyAssess3);
-            setPhyAssess4(followupObj?.phyAssess4);
-            setTotalScore1(followupObj?.totalScore1);
-            setBowelDay(followupObj?.bowelDay);
-            setHeight(followupObj?.height);
-            setBowelNight(followupObj?.bowelNight);
-            setWeight(followupObj?.weight);
-            setGenwellBeing(followupObj?.genwellBeing);
-            setBmi(followupObj?.bmi);
-            setUrgencyDef(followupObj?.urgencyDef);
-            setHandgrip(followupObj?.handgrip);
-            setBloodStool(followupObj?.bloodStool);
+            setTotalMayoScore(followupObj?.totalMayoScore);
+            setUceis(followupObj?.uceis);
+            setEndoMayo(followupObj?.endoMayo);
+            setSccai(followupObj?.sccai);
             setNancyIndex(followupObj?.nancyIndex);
-            setExtracolonic(followupObj?.extracolonic);
-            setRhi(followupObj?.rhi)
-            setTotalScore2(followupObj?.totalScore2);
+            setHeight(followupObj?.height);
+            setRhi(followupObj?.rhi);
+            setWeight(followupObj?.weight);
             setGeboeScore(followupObj?.geboeScore);
+            setBmi(followupObj?.bmi);
+            setHandgripStrength(followupObj?.handgripStrength);
             setMirt(followupObj?.mirt);
             setMust(followupObj?.must);
-            setTricepSkin(followupObj?.tricepSkin);
-            setTotalBodyFat(followupObj?.totalBodyFat);
-            setVisceral(followupObj?.visceral);
-            setRestingMetabol(followupObj?.restingMetabol);
-            setBodyAge(followupObj?.bodyAge);
-            setSubcutWholebody(followupObj?.subcutWholebody);
-            setSubcutTrunk(followupObj?.subcutTrunk);
-            setSubcutArms(followupObj?.subcutArms);
-            setSubcutLegs(followupObj?.subcutLegs);
-            setSkeltalWhole(followupObj?.skeltalWhole);
-            setSkeltalTrunk(followupObj?.skeltalTrunk);
-            setSkeltalArms(followupObj?.skeltalArms);
-            setSkeltalLegs(followupObj?.skeltalLegs);
-            setMidarmCircum(followupObj?.midarmCircum);
-            setSkeltalMuscle(followupObj?.skeltalMuscle);
-            setMercuriStage(followupObj?.mercuriStage);
-            setMeanAttenuation(followupObj?.meanAttenuation);
-            setHb(followupObj?.hb)
-            setTgn(followupObj?.tgn)
-            setMcv(followupObj?.mcv)
-            setMmpr(followupObj?.mmpr)
-            setPlt(followupObj?.plt)
-            setAst(followupObj?.ast)
-            // setHscrp(followupObj?.hscrp)
-            setAlt(followupObj?.alt)
-            setAlbumin(followupObj?.albumin)
-            setAlp(followupObj?.alp)
-            // setEsp(followupObj?.esp)
-            // setStoolcdiff(followupObj?.stoolcdiff);
-            // setFecalCalpro(followupObj?.fecalCalpro);
+            setReasonForReplace(followupObj?.reasonForReplace);
+            setHeight_2(followupObj?.height_2);
+            setWeight_2(followupObj?.weight_2);
+            setBmi_2(followupObj?.bmi_2);
+            setMidarmCircumference(followupObj?.midarmCircumference);
+            setHandgripStrength_2(followupObj?.handgripStrength_2);
+            setTsf(followupObj?.tsf);
+            setMirt_2(followupObj?.mirt_2);
+            setMust_2(followupObj?.must_2);
+            setBodyFat(followupObj?.bodyFat);
+            setVisceralFat(followupObj?.visceralFat);
+            setResstingMetabolism(followupObj?.resstingMetabolism);
+            setSubcutaneousWholeBody(followupObj?.subcutaneousWholeBody);
+            setSubcutaneousWholeTrunk(followupObj?.subcutaneousWholeTrunk);
+            setSubcutaneousWholeArm(followupObj?.subcutaneousWholeArm);
+            setSubcutaneousWholeLeg(followupObj?.subcutaneousWholeLeg);
+            setSkeletalWholeBody(followupObj?.skeletalWholeBody);
+            setSkeletalWholeTrunk(followupObj?.skeletalWholeTrunk);
+            setSkeletalWholeArm(followupObj?.skeletalWholeArm);
+            setSkeletalWholeLeg(followupObj?.skeletalWholeLeg);
+            setSmArea(followupObj?.smArea);
+            setHb(followupObj?.hb);
+            setHbsag(followupObj?.hbsag);
+            setPcv(followupObj?.pcv);
+            setMcv(followupObj?.mcv);
+            setAntiHcv(followupObj?.antiHcv);
+            setTlc(followupObj?.tlc);
+            setHiv(followupObj?.hiv);
+            setEbvVcaLgm(followupObj?.ebvVcaLgm);
+            setPlt(followupObj?.plt);
+            setEbvVcaLgg(followupObj?.ebvVcaLgg);
+            setEsr(followupObj?.esr);
+            setEbvEbnaLgg(followupObj?.ebvEbnaLgg);
+            setCrpQuantitative(followupObj?.crpQuantitative);
+            setCmvLgm(followupObj?.cmvLgm);
+            setAst(followupObj?.ast);
+            setCmvLgg(followupObj?.cmvLgg);
+            setAlt(followupObj?.alt);
+            setFecalCalprotactin(followupObj?.fecalCalprotactin);
+            setPct(followupObj?.pct);
+            setGgt(followupObj?.ggt);
+            setCpk(followupObj?.cpk);
+            setTotalProtien(followupObj?.totalProtien);
+            setSodium(followupObj?.sodium);
+            setCholestrol(followupObj?.cholestrol);
+            setPotassium(followupObj?.potassium);
+            setVldl(followupObj?.vldl);
+            setCmvIhc(followupObj?.cmvIhc);
+            setLdl(followupObj?.ldl);
+            setEberIsh(followupObj?.eberIsh);
+            setHdl(followupObj?.hdl);
+            setIgra(followupObj?.igra);
+            setTriglycerides(followupObj?.triglycerides);
+            setAlp(followupObj?.alp);
             setStoolRoutine(followupObj?.stoolRoutine);
+            setAlbumin(followupObj?.albumin);
+            setStoolCulture(followupObj?.stoolCulture);
+            setIron(followupObj?.iron);
+            setStoolGdh(followupObj?.stoolGdh);
+            setTibc(followupObj?.tibc);
+            setStoolCdiffToxinA(followupObj?.stoolCdiffToxinA);
             setFerritin(followupObj?.ferritin);
-            setEbvca(followupObj?.ebvca);
-            setCmvIgm(followupObj?.cmvIgm);
-            setOralAsa(followupObj?.oralAsa);
-            setAdalimumab(followupObj?.adalimumab);
-            setRectalAsa(followupObj?.rectalAsa);
-            setVedolizumab(followupObj?.vedolizumab);
+            setStoolCdiffPcr(followupObj?.stoolCdiffPcr);
+            setCalcium(followupObj?.calcium);
+            setStoolBiofilm(followupObj?.stoolBiofilm);
+            setMagnesium(followupObj?.magnesium);
+            setTpmt(followupObj?.tpmt);
+            setVitamind(followupObj?.vitamind);
+            setNdut_15(followupObj?.ndut_15);
+            setRbs(followupObj?.rbs);
+            setTgn_6(followupObj?.tgn_6);
+            setAscaLgat(followupObj?.ascaLgat);
+            setMmpr_6(followupObj?.mmpr_6);
+            setAscaLgg(followupObj?.ascaLgg);
+            setVitaminb_12(followupObj?.vitaminb_12);
+            setPAnca(followupObj?.pAnca);
+            setFolate(followupObj?.folate);
+            setUrea(followupObj?.urea);
+            setVzvAntibody(followupObj?.vzvAntibody);
+            setCreatinine(followupObj?.creatinine);
+            setChestXray(followupObj?.chestXray);
+            setXrayAbdomen(followupObj?.xrayAbdomen);
+            setMantoux(followupObj?.mantoux);
+            setMicrobiota(followupObj?.microbiota);
+            setCtAbdomen(followupObj?.ctAbdomen);
+            setCtChest(followupObj?.ctChest);
+            setMriAbdomen(followupObj?.mriAbdomen);
+            setOthers(followupObj?.others);
+            setOral_5asa(followupObj?.oral_5asa);
+            setRectal5Asa(followupObj?.rectal5Asa);
             setAza(followupObj?.aza);
-            setCycloporine(followupObj?.cycloporine);
-            setMp(followupObj?.mp);
-            setUstekinumab(followupObj?.ustekinumab);
+            setMp_6(followupObj?.mp_6);
             setPrednisolone(followupObj?.prednisolone);
-            setTofacitinib(followupObj?.tofacitinib);
-            setBudesonide(followupObj?.budesonide);
-            setTacrolimus(followupObj?.tacrolimus);
-            setRectalSteroid(followupObj?.rectalSteroid);
-            setFilgotinib(followupObj?.filgotinib);
             setInfliximab(followupObj?.infliximab);
+            setBudesonide(followupObj?.budesonide);
+            setRectalSteroids(followupObj?.rectalSteroids);
+            setAdalimunab(followupObj?.adalimunab);
+            setVedolizumab(followupObj?.vedolizumab);
+            setCyclosporine(followupObj?.cyclosporine);
+            setUstekinumab(followupObj?.ustekinumab);
+            setTofacitinib(followupObj?.tofacitinib);
+            setTacrolimus(followupObj?.tacrolimus);
             setProbiotics(followupObj?.probiotics);
-            setSession1(followupObj?.session1);
-            setSession2(followupObj?.session2);
-            setSession3(followupObj?.session3);
-            setSession4(followupObj?.session4);
-            setSession5(followupObj?.session5);
-            setSession6(followupObj?.session6);
-            setSession7(followupObj?.session7);
-            setSession8(followupObj?.session8);
-            setSession9(followupObj?.session9);
-            setSession10(followupObj?.session10);
-            setSession11(followupObj?.session11);
-            setSession12(followupObj?.session12);
+            setFilgotinib(followupObj?.filgotinib);
+            setFmtCapsule(followupObj?.fmtCapsule);
+            setFmt(followupObj?.fmt);
             setSurgery(followupObj?.surgery);
-            setIfSurgery(followupObj?.ifSurgery);
+            setSurgeryYes(followupObj?.surgeryYes);
             setAdverseAsa(followupObj?.adverseAsa);
-            setAdverseSteroids(followupObj?.adverseSteroids);
-            setAdverseInfliximab(followupObj?.adverseInfliximab);
-            setAdverseTofacitinib(followupObj?.adverseTofacitinib);
             setAdverseAza(followupObj?.adverseAza);
-
+            setAdverseInfliximab(followupObj?.adverseInfliximab);
+            setAdverseSteroid(followupObj?.adverseSteroid);
+            setAdverseTofacitinib(followupObj?.adverseTofacitinib);
+            setHospitalization(followupObj?.hospitalization);
+            setReasonHospitalization(followupObj?.reasonHospitalization);
+            setMegacolon(followupObj?.megacolon);
+            setMassiveHaemorrhage(followupObj?.massiveHaemorrhage);
+            setColorectalCancer(followupObj?.colorectalCancer);
+            setPerforation(followupObj?.perforation);
+            setToxicMegacolon(followupObj?.toxicMegacolon);
+            setAdverseOthers(followupObj?.adverseOthers);
+            setDiseaseBehavior(followupObj?.diseaseBehavior);
+            setDeath(followupObj?.death);
+            setDateOfDeath(followupObj?.dateOfDeath);
+            setCauseOfDeath(followupObj?.causeOfDeath);
         }
     }, [followupObj]);
 
@@ -329,15 +481,8 @@ export const Addfollowup = () => {
             let ccfId = patientNewName?.ccfId;
             setPatientName(namePatient);
             setCcfIdName(ccfId);
-            // console.log(namePatient , "patientName");
         }
     }
-
-    const options = [
-        { value: "select", label: "Select" },
-        { value: "Yes", label: "Yes" },
-        { value: "No", label: "No" },
-    ];
 
     const replaceDrop = [
         { value: "select", label: "Select" },
@@ -354,98 +499,6 @@ export const Addfollowup = () => {
         { value: "Smoking", label: "Smoking" },
         { value: "Opium", label: "Opium" },
         { value: "Others", label: "Others" },
-    ];
-
-    const stoolFreqDrop = [
-        { value: "select", label: "Select" },
-        { value: "Normal no. of stools", label: "Normal no. of stools" },
-        { value: "1 to 2 stools more than normal", label: "1 to 2 stools more than normal" },
-        { value: "3 to 4 stools more than normal", label: "3 to 4 stools more than normal" },
-        { value: "5 or more stools more than normal", label: "5 or more stools more than normal" },
-    ];
-    const recBleedDrop = [
-        { value: "select", label: "Select" },
-        { value: "No blood seen", label: "No blood seen" },
-        { value: "Streaks of blood with stool less than half the time", label: "Streaks of blood with stool less than half the time" },
-        { value: "Obvious blood with stool most of the time", label: "Obvious blood with stool most of the time" },
-        { value: "Blood alone passes", label: "Blood alone passes" },
-    ];
-    const endoscopyDrop = [
-        { value: "select", label: "Select" },
-        { value: "Normal or inactive disease", label: "Normal or inactive disease" },
-        { value: "Mild disease(erythema,decreased vascular pattern,friability", label: "Mild disease(erythema,decreased vascular pattern,friability)" },
-        { value: "Marked erythema,lack of vascular pattern,friability erosions", label: "Marked erythema,lack of vascular pattern,friability erosions)" },
-        { value: "Severe disease(Spontaneous bleeding,ulceration)", label: "Severe disease(Spontaneous bleeding,ulceration)" },
-    ];
-    const gloAccessDrop = [
-        { value: "select", label: "Select" },
-        { value: "Normal", label: "Normal" },
-        { value: "Mild disease", label: "Mild disease" },
-        { value: "Moderate disease", label: "Moderate disease" },
-        { value: "Severe disease", label: "Severe disease" },
-    ];
-    const vascularDrop = [
-        { value: "select", label: "Select" },
-        { value: "normal ", label: "Normal" },
-        { value: "Patchy obliteration", label: "Patchy obliteration" },
-        { value: "Obliterated", label: "Obliterated" },
-    ];
-    const bleedingDrop = [
-        { value: "select", label: "Select" },
-        { value: "None ", label: "None" },
-        { value: "Mucosal ", label: "Mucosal " },
-        { value: "Luminal mild ", label: "Luminal mild" },
-        { value: "Luminal moderate or severe", label: "Luminal moderate or severe" },
-    ];
-    const erosinsDrop = [
-        { value: "select", label: "Select" },
-        { value: "None", label: "None " },
-        { value: "Erosions", label: "Erosions" },
-        { value: "Superficial ulcer ", label: "Superficial ulcer" },
-        { value: "Deep ulcer", label: "Deep ulcer " },
-    ];
-    const bowldayDrop = [
-        { value: "select", label: "Select" },
-        { value: "1-3", label: "1-3 " },
-        { value: "4-7", label: "4-7 " },
-        { value: "7-9", label: "7-9 " },
-        { value: ">9", label: ">9 " },
-    ];
-    const bowlnightDrop = [
-        { value: "select", label: "Select" },
-        { value: "0", label: "0" },
-        { value: "1-3", label: "1-3 " },
-        { value: "4-6", label: "4-6 " },
-    ];
-    const wellBeingDrop = [
-        { value: "select", label: "Select" },
-        { value: "Very Well", label: "Very Well" },
-        { value: "Slightly Below Par", label: "Slightly Below Par " },
-        { value: "Poor", label: "Poor " },
-        { value: "Very Poor", label: "Very Poor " },
-        { value: "Terrible", label: "Terrible " },
-    ];
-    const urgencyDrop = [
-        { value: "select", label: "Select" },
-        { value: "none", label: "None" },
-        { value: "hurry", label: "Hurry" },
-        { value: "immediately", label: "Immediately " },
-        { value: "incontinence", label: "Incontinence" },
-    ];
-    const bloodStoolDrop = [
-        { value: "select", label: "Select" },
-        { value: "none", label: "None" },
-        { value: "hurry", label: "Trace" },
-        { value: "ocassionlly Frank", label: "Ocassionlly Frank" },
-        { value: "usually Frank", label: "Usually Frank" },
-    ];
-    const extracolonicDrop = [
-        { value: "select", label: "Select" },
-        { value: "Uvetis", label: "Uvetis" },
-        { value: "Trace", label: "Trace" },
-        { value: "Pyoderma Gangrenosum ", label: "Pyoderma Gangrenosum " },
-        { value: "erythema nodusum", label: "Erythema Nodusum " },
-        { value: "arthropathy", label: "Arthropathy " },
     ];
     const oralAsaDrop = [
         { value: "Select", label: "Select" },
@@ -503,6 +556,20 @@ export const Addfollowup = () => {
         { value: "5 mg/kg", label: "5 mg/kg" },
         { value: "10 mg/kg", label: "10 mg/kg" },
     ];
+    
+    const options = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ];
+    const optionDrop = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ];
+    const diseaseBehaviourDrop = [
+        { value: "select", label: "select" },
+        { value: "Steroid dependent", label: "Steroid dependent" },
+        { value: "Steroid refractory", label: "Steroid refractory" },
+    ];
     const adverseAsaDrop = [
         { value: "", label: "Select" },
         { value: "Paradoxical Diarrhea", label: "Paradoxical Diarrhea" },
@@ -557,75 +624,6 @@ export const Addfollowup = () => {
         { value: "Others", label: "Others" },
     ];
 
-    const optionDrop = [
-        { value: "Yes", label: "Yes" },
-        { value: "No", label: "No" },
-    ]
-
-    const diseaseBehaviourDrop = [
-        { value: "select", label: "select" },
-        { value: "Steroid dependent", label: "Steroid dependent" },
-        { value: "Steroid refractory", label: "Steroid refractory" },
-    ]
-
-    const asaDrop = [
-        { value: "Select", label: "Select" },
-        { value: "Paradoxical Diarrhea", label: "Paradoxical Diarrhea" },
-        { value: "AKI", label: "AKI" },
-        { value: "Pneumonitis", label: "Pneumonitis" },
-        { value: "Pancreatitis", label: "Pancreatitis" },
-        { value: "Male Infertility", label: "Male Infertility" },
-        { value: "Others", label: "Others" },
-    ]
-
-    const azaMpDrop = [
-        { value: "select", label: "select" },
-        { value: "Leucopenia", label: "Leucopenia" },
-        { value: "Hepatotoxicity", label: "Hepatotoxicity" },
-        { value: "Pancreatitis", label: "Pancreatitis" },
-        { value: "Alopecia", label: "Alopecia" },
-        { value: "Headache", label: "Headache" },
-        { value: "Lymphoma", label: "Lymphoma" },
-        { value: "Skin Cancer", label: "Skin Cancer" },
-        { value: "GI – Intolerance", label: "GI – Intolerance" },
-        { value: "Others", label: "Others" },
-    ]
-
-    const InfliximabDrop = [
-        { value: "select", label: "select" },
-        { value: "Infusion reaction", label: "Infusion reaction" },
-        { value: "TB", label: "TB" },
-        { value: "CCF", label: "CCF" },
-        { value: "Neurological disease", label: "Neurological disease" },
-        { value: "Infections", label: "Infections" },
-        { value: "Malignancies ", label: "Malignancies " },
-        { value: "Primary loss of response", label: "Primary loss of response" },
-        { value: "Secondary loss of response", label: "Secondary loss of response" },
-    ]
-
-    const steroidsDrop = [
-        { value: "select", label: "select" },
-        { value: "Weight gain", label: "Weight gain" },
-        { value: "Osteoporosis", label: "Osteoporosis" },
-        { value: "Hypokalemia", label: "Hypokalemia" },
-        { value: "Oral Candidiasis", label: "Oral Candidiasis" },
-        { value: "Other infection", label: "Other infection" },
-        { value: "High blood sugar", label: "High blood sugar" },
-        { value: "Hirsutism ", label: "Hirsutism " },
-        { value: "Depression", label: "Depression" },
-        { value: "Fatigue", label: "Fatigue" },
-        { value: "Striae", label: "Striae" },
-        { value: "Others", label: "Others" },
-    ]
-
-    //   const tofacitinibDrop = [
-    //     { value:"select", label:"select" },
-    //     { value:"Zoster", label:"Zoster" },
-    //     { value:"Cardiovascular Events", label:"Cardiovascular Events" },
-    //     { value:"Dyslipidemia", label:"Dyslipidemia" },
-    //     { value:"Others", label:"Others" },
-    //   ]
-
     return (
         <div className="content_wrapper">
             <div className="contentwraper_header">
@@ -663,7 +661,7 @@ export const Addfollowup = () => {
                                     <div className='from-group'>
                                         <label>Patient ID* </label>
                                         <select className='form-control' value={patientId} onChange={(e) => { handlePatient(e.target.value) }}>
-                                            <option value={"patient"}>Please Select Patient</option>
+                                            <option selected >Please Select Patient</option>
                                             {patientArr && patientArr.map((el) => <option value={el._id}>{el.ccfId} &nbsp; {el.patientName}</option>)}
                                         </select>
                                     </div>
@@ -671,13 +669,13 @@ export const Addfollowup = () => {
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Date of Followup </label>
-                                        <input type="Date" className='form-control' value={followupDate} onChange={(e) => { setFollowupDate(e.target.value) }} />
+                                        <input type="Date" className='form-control' value={followUpDate} onChange={(e) => { setFollowUpDate(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Partial Mayo Score </label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={partialMayoScore} onChange={(el)=>{setPartialMayoScore(el.target.value)}}/>
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
@@ -689,85 +687,85 @@ export const Addfollowup = () => {
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Total Mayo Score</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={totalMayoScore} onChange={(el)=>{setTotalMayoScore(el.target.value)}}/>
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>UCEIS</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={uceis} onChange={(el)=>{setUceis(el.target.value)}}/>
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Endo Mayo</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={endoMayo} onChange={(el)=>{setEndoMayo(el.target.value)}}/>
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>SCCAI</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={sccai} onChange={(el)=>{setSccai(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Nancy Index</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={nancyIndex} onChange={(el)=>{setNancyIndex(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Height</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={height} onChange={(el)=>{setHeight(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>RHI</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={rhi} onChange={(el)=>{setRhi(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Weight</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={weight} onChange={(el)=>{setWeight(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Geboe’s Score</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={geboeScore} onChange={(el)=>{setGeboeScore(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>BMI</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={bmi} onChange={(el)=>{setBmi(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Handgrip strength</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={handgripStrength} onChange={(el)=>{setHandgripStrength(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>MIRT</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={mirt} onChange={(el)=>{setMirt(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>MUST</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={must} onChange={(el)=>{setMust(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Reason for Replace</label>
-                                        <select className='form-control'>
+                                        <select className='form-control' value={reasonForReplace} onChange={(el)=>{setReasonForReplace(el.target.value)}}>
                                             {replaceDrop && replaceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                         </select>
                                     </div>
@@ -775,134 +773,133 @@ export const Addfollowup = () => {
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Height</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={height_2} onChange={(el)=>{setHeight_2(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Weight</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={weight_2} onChange={(el)=>{setWeight_2(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>BMI</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={bmi_2} onChange={(el)=>{setBmi_2(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Mid arm circumference</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={midarmCircumference} onChange={(el)=>{setMidarmCircumference(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Hand grip strength</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={handgripStrength_2} onChange={(el)=>{setHandgripStrength_2(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>TSF</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={tsf} onChange={(el)=>{setTsf(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>MIRT</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={mirt_2} onChange={(el)=>{setMirt_2(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>MUST</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={must_2} onChange={(el)=>{setMust_2(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Body Fat</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={bodyFat} onChange={(el)=>{setBodyFat(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Body Fat</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={uceis} onChange={(el)=>{setUceis(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Visceral Fat</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={visceralFat} onChange={(el)=>{setVisceralFat(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Resting Metabolism</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={resstingMetabolism} onChange={(el)=>{setResstingMetabolism(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Subcutaneous fat (whole body)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={subcutaneousWholeBody} onChange={(el)=>{setSubcutaneousWholeBody(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Subcutaneous fat (trunk)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={subcutaneousWholeTrunk} onChange={(el)=>{setSubcutaneousWholeTrunk(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Subcutaneous fat (arms)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={subcutaneousWholeArm} onChange={(el)=>{setSubcutaneousWholeArm(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Subcutaneous fat (legs)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={subcutaneousWholeLeg} onChange={(el)=>{setSubcutaneousWholeLeg(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Skeletal muscle (whole body)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={skeletalWholeBody} onChange={(el)=>{setSkeletalWholeBody(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Skeletal muscle (trunk)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={skeletalWholeTrunk} onChange={(el)=>{setSkeletalWholeTrunk(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Skeletal muscle (arms)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={skeletalWholeArm} onChange={(el)=>{setSkeletalWholeArm(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>Skeletal muscle (legs)</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={skeletalWholeLeg} onChange={(el)=>{setSkeletalWholeLeg(el.target.value)}} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
                                         <label>SM Area</label>
-                                        <input type="text" className='form-control' />
+                                        <input type="text" className='form-control' value={smArea} onChange={(el)=>{setSmArea(el.target.value)}} />
                                     </div>
                                 </div>
                             </div>
-
                             <div className="row">
-                                <div className="col-lg-12 heaind text-center">
-                                    <h3>Investigations</h3>
+                                <div className="col-lg-12 heaind text-center pt-3">
+                                    <h4>Investigations</h4>
                                 </div>
                             </div>
                             <div className='row justify-content-center addlist-frm mt-3'>
@@ -917,13 +914,13 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>HBsAg</label>
-                                                <input type="text" className='form-control' value={hbsAg} onChange={(e) => { setHbsAg(e.target.value) }} />
+                                                <input type="text" className='form-control' value={hbsag} onChange={(e) => { setHbsag(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>PCV</label>
-                                                <input type="text" className='form-control' value={pcv} onChange={(e) => { setPcv(e.target.value) }} />
+                                                <input type="text" className='form-control' value={pcv} onChange={(e) => {setPcv(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1013,7 +1010,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Fecal Calprotectin</label>
-                                                <input type="text" className='form-control' value={fecalCalprotectin} onChange={(e) => { setFecalCalprotectin(e.target.value) }} />
+                                                <input type="text" className='form-control' value={fecalCalprotactin} onChange={(e) => { setFecalCalprotactin(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1049,13 +1046,13 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Cholesterol</label>
-                                                <input type="text" className='form-control' value={cholesterol} onChange={(el) => { setCholesterol(el.target.value) }} />
+                                                <input type="text" className='form-control' value={cholestrol} onChange={(el) => { setCholestrol(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Potassium</label>
-                                                <input type="text" className='form-control' value={pottasium} onChange={(el) => { setPottasium(el.target.value) }} />
+                                                <input type="text" className='form-control' value={potassium} onChange={(el) => { setPotassium(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1145,7 +1142,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Stool C-diff Toxin A</label>
-                                                <input type="text" className='form-control' value={stoolcDiffToxin} onChange={(el) => { setStoolcDiffToxin(el.target.value) }} />
+                                                <input type="text" className='form-control' value={stoolCdiffToxinA} onChange={(el) => { setStoolCdiffToxinA(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1157,7 +1154,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Stool C-diff PCR</label>
-                                                <input type="text" className='form-control' value={stoolcDiffPcr} onChange={(el) => { setStoolcDiffPcr(el.target.value) }} />
+                                                <input type="text" className='form-control' value={stoolCdiffPcr} onChange={(el) => { setStoolCdiffPcr(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1192,8 +1189,8 @@ export const Addfollowup = () => {
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
-                                                <label>NDUT – 15 </label>
-                                                <input type="text" className='form-control' value={ndut} onChange={(el) => { setNdut(el.target.value) }} />
+                                                <label>NDUT - 15 </label>
+                                                <input type="text" className='form-control' value={ndut_15} onChange={(el) => { setNdut_15(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1204,8 +1201,8 @@ export const Addfollowup = () => {
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
-                                                <label>6 – TGN</label>
-                                                <input type="text" className='form-control' value={tgn} onChange={(el) => { setTgn(el.target.value) }} />
+                                                <label>6 - TGN</label>
+                                                <input type="text" className='form-control' value={tgn_6} onChange={(el) => { setTgn_6(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1217,7 +1214,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>6 – MMPR</label>
-                                                <input type="text" className='form-control' value={mmpr} onChange={(el) => { setMmpr(el.target.value) }} />
+                                                <input type="text" className='form-control' value={mmpr_6} onChange={(el) => { setMmpr_6(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1229,7 +1226,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Vitamin B12</label>
-                                                <input type="text" className='form-control' value={vitaminB12} onChange={(el) => { setVitaminB12(el.target.value) }} />
+                                                <input type="text" className='form-control' value={vitaminb_12} onChange={(el) => { setVitaminb_12(el.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
@@ -1315,8 +1312,8 @@ export const Addfollowup = () => {
                             </div>
 
                             <div className="row">
-                                <div className="col-lg-12 heaind text-center">
-                                    <h3>Treatment</h3>
+                                <div className="col-lg-12 heaind text-center pt-3">
+                                    <h4>Treatments</h4>
                                 </div>
                             </div>
                             <div className='row justify-content-center addlist-frm mt-3'>
@@ -1325,7 +1322,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Oral 5-ASA </label>
-                                                <select className='form-control' value={oralAsa} onChange={(e) => { setOralAsa(e.target.value) }}>
+                                                <select className='form-control' value={oral_5asa} onChange={(e) => { setOral_5asa(e.target.value) }}>
                                                     {oralAsaDrop && oralAsaDrop.map((ek) => <option value={ek.value}>{ek.label}</option>)}
                                                 </select>
                                             </div>
@@ -1333,8 +1330,8 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Rectal 5ASA</label>
-                                                <select className='form-control' value={rectalAsa} onChange={(e) => { setRectalAsa(e.target.value) }}>
-                                                    {rectalAsaDrop && rectalAsaDrop.map((ek) => <option value={ek.value}>{ek.label}</option>)}
+                                                <select className='form-control' value={rectal5Asa} onChange={(e) => { setRectal5Asa(e.target.value) }}>
+                                                    { rectalAsaDrop && rectalAsaDrop.map((ek) => <option value={ek.value}>{ek.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
@@ -1349,8 +1346,8 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>6-MP</label>
-                                                <select className='form-control' value={mp} onChange={(e) => { setMp(e.target.value) }}>
-                                                    {mpDrop && mpDrop.map((ek) => <option value={ek.value}>{ek.label}</option>)}
+                                                <select className='form-control' value={mp_6} onChange={(e) => { setMp_6(e.target.value) }}>
+                                                    { mpDrop && mpDrop.map((ek) => <option value={ek.value}>{ek.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
@@ -1389,7 +1386,7 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Adalimunab</label>
-                                                <select className='form-control'>
+                                                <select className='form-control' value={adalimunab} onChange={(el)=>{setAdalimunab(el.target.value)}}>
                                                     <option>Hello</option>
                                                 </select>
                                             </div>
@@ -1403,51 +1400,51 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Cyclosporine</label>
-                                                <input type="text" className='form-control' />
+                                                <input type="text" className='form-control' value={cyclosporine} onChange={(el)=>{setCyclosporine(el.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Ustekinumab</label>
-                                                <input type="text" className='form-control' value={ustekinumab} onChange={(e) => { setUstekinumab(e.target.value) }} />
+                                                <input type="text" className='form-control' value={ustekinumab} onChange={(e)=>{setUstekinumab(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Tofacitinib</label>
-                                                <select className='form-control' >
-                                                    <option></option>
+                                                <select className='form-control' value={tofacitinib} onChange={(el)=>{setTofacitinib(el.target.value)}}>
+                                                    { tofacitinibDrop && tofacitinibDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Tacrolimus</label>
-                                                <input type="text" className='form-control' value={tacrolimus} onChange={(e) => { setTacrolimus(e.target.value) }} />
+                                                <input type="text" className='form-control' value={tacrolimus} onChange={(e) => {setTacrolimus(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Probiotics</label>
-                                                <input type="text" className='form-control' value={probiotics} onChange={(e) => { setProbiotics(e.target.value) }} />
+                                                <input type="text" className='form-control' value={probiotics} onChange={(e) => {setProbiotics(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Filgotinib</label>
-                                                <input type="text" className='form-control' value={filgotinib} onChange={(e) => { setFilgotinib(e.target.value) }} />
+                                                <input type="text" className='form-control' value={filgotinib} onChange={(e) => {setFilgotinib(e.target.value) }} />
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>FMT Capsule</label>
-                                                <input type="text" className='form-control' />
+                                                <input type="text" className='form-control' value={fmtCapsule} onChange={(el)=>{setFmtCapsule(el.target.value)}}/>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>FMT</label>
-                                                <input type="text" className='form-control' />
+                                                <input type="text" className='form-control' value={fmt} onChange={(el)=>{setFmt(el.target.value)}} />
                                             </div>
                                         </div>
                                     </div>
@@ -1463,15 +1460,15 @@ export const Addfollowup = () => {
                                         <div className='col-lg-6'>
                                             <div className='from-group'>
                                                 <label>If Yes</label>
-                                                <input type="text" className='form-control' placeholder='Type of Sergery' value={specify} onChange={(e) => { setSpecify(e.target.value) }} />
+                                                <input type="text" className='form-control' placeholder='Type of Sergery' value={surgeryYes} onChange={(e) => { setSurgeryYes(e.target.value) }} />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-12 heaind text-center">
-                                    <h3>Adverse Events to Drugs</h3>
+                                <div className="col-lg-12 heaind text-center pt-3">
+                                    <h4>Adverse Events to Drugs</h4>
                                 </div>
                             </div>
                             <div className='row justify-content-center addlist-frm mt-3'>
@@ -1480,46 +1477,46 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>5-ASA </label>
-                                                <select className="form-control" >
-                                                    <option>hello</option>
+                                                <select className="form-control" value={adverseAsa} onChange={(el)=>{setAdverseAsa(el.target.value)}}>
+                                                    {adverseAsaDrop && adverseAsaDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>AZA/6-MP</label>
-                                                <select className="form-control">
-                                                    <option>hello</option>
+                                                <select className="form-control" value={adverseAza} onChange={(el)=>{setAdverseAza(el.target.value)}}>
+                                                    { adverseAzaDrop && adverseAzaDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Infliximab/ Adalimumab</label>
-                                                <select className="form-control" >
-                                                    <option>hello</option>
+                                                <select className="form-control" value={adverseInfliximab} onChange={(el)=>{setAdverseInfliximab(el.target.value)}}>
+                                                    { adverseInfliDrop && adverseInfliDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Steroids </label>
-                                                <select className="form-control" >
-                                                    <option>hello</option>
+                                                <select className="form-control" value={adverseSteroid} onChange={(el)=>{setAdverseSteroid(el.target.value)}}>
+                                                    { adverseSteroidDrop && adverseSteroidDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>Tofacitinib</label>
-                                                <select className="form-control" >
-                                                    <option>hello</option>
+                                                <select className="form-control" value={adverseTofacitinib} onChange={(el)=>{setAdverseTofacitinib(el.target.value)}}>
+                                                    { adverseTofacitDrop && adverseTofacitDrop.map((el)=><option value={el.value}>{el.label}</option>)}
                                                 </select>
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col-lg-12 heaind text-center pt-3">
-                                                <h4>Complications and Outcome</h4>
+                                            <div className="col-lg-12 heaind text-center">
+                                                <h3>Complications and Outcome</h3>
                                             </div>
                                             <div className='row'>
                                                 <div className="col-lg-12 heaind text-left">
@@ -1528,13 +1525,13 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-6'>
                                                     <div className='from-group'>
                                                         <label>Date of hospitalization </label>
-                                                        <input type="date" className='form-control' />
+                                                        <input type="date" className='form-control' value={hospitalization} onChange={(el)=>{setHospitalization(el.target.value)}} />
                                                     </div>
                                                 </div>
                                                 <div className='col-lg-6'>
                                                     <div className='from-group'>
                                                         <label>Reason of Hospitalization</label>
-                                                        <input type="text" placeholder='reason of hospitalization' className='form-control' />
+                                                        <input type="text" placeholder='reason of hospitalization' className='form-control' value={reasonHospitalization} onChange={(el)=>{setReasonHospitalization(el.target.value)}}/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1545,7 +1542,7 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Megacolon</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={megacolon} onChange={(el)=>{setMegacolon(el.target.value)}}>
                                                             {optionDrop && optionDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1553,7 +1550,7 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Massive haemorrhage</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={massiveHaemorrhage} onChange={(el)=>{setMassiveHaemorrhage(el.target.value)}}>
                                                             {optionDrop && optionDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1561,7 +1558,7 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Colorectal Cancer</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={colorectalCancer} onChange={(el)=>{setColorectalCancer(el.target.value)}}>
                                                             {optionDrop && optionDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1569,7 +1566,7 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Perforation</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={perforation} onChange={(el)=>{setPerforation(el.target.value)}}>
                                                             {optionDrop && optionDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1577,7 +1574,7 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Toxic Megacolon</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={toxicMegacolon} onChange={(el)=>{setToxicMegacolon(el.target.value)}}>
                                                             {optionDrop && optionDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1585,13 +1582,13 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Others</label>
-                                                        <input type="text" className='form-control' placeholder='Please Specify' />
+                                                        <input type="text" className='form-control' placeholder='Please Specify' value={adverseOthers} onChange={(el)=>{setAdverseOthers(el.target.value)}}/>
                                                     </div>
                                                 </div>
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Disease behavior</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={diseaseBehavior} onChange={(el)=>{setDiseaseBehavior(el.target.value)}}>
                                                             {diseaseBehaviourDrop && diseaseBehaviourDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1599,7 +1596,7 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Death</label>
-                                                        <select className='form-control'>
+                                                        <select className='form-control' value={death} onChange={(el)=>{setDeath(el.target.value)}}>
                                                             {optionDrop && optionDrop.map((el) => <option value={el.value}>{el.label}</option>)}
                                                         </select>
                                                     </div>
@@ -1607,27 +1604,25 @@ export const Addfollowup = () => {
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Date Of Death</label>
-                                                        <input type="date" className='form-control' />
+                                                        <input type="date" className='form-control' value={dateOfDeath} onChange={(el)=>{setDateOfDeath(el.target.value)}}/>
                                                     </div>
                                                 </div>
                                                 <div className='col-lg-4'>
                                                     <div className='from-group'>
                                                         <label>Cause Of Death</label>
-                                                        <input type="text" className='form-control' placeholder='Cause of death' />
+                                                        <input type="text" className='form-control' placeholder='Cause of death' value={causeOfDeath} onChange={(el)=>{setCauseOfDeath(el.target.value)}} />
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div className='row'>
                                 <div className='col-lg-12'>
                                     <div className='subbtn text-center mt-4 mb-5'>
                                         {(followupObj?._id) ?
-                                            <button to="" className='btn btn-link' onClick={handleAddFollowUp}>Update</button>
+                                            <button to="" className='btn btn-link' onClick={handleAddFollowUp}>Update Follow Up</button>
                                             :
                                             <button to="" className='btn btn-link' onClick={handleAddFollowUp}>Add Follow Up</button>
                                         }
