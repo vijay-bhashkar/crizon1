@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICGet, DEMOGRAFICDelete, SETDEMOGRAFICObj,GETALLDisease } from "../../redux/actions/Demografic/Demografic.actions";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
+import { url } from "../../services/url.service";
 
 export const PatientListView = () => {
 
@@ -141,7 +142,7 @@ useEffect(()=>{
             <div className="col-lg-3 text-end">
             <div className='btnlist'> 
             {(role == "ADMIN")? 
-            <a href="http://localhost:4029/demografic/downloadAllPatient" target="_blank" class="btn btn-defalut btn-md ">Export Data</a>
+            <a href={`${url}/demografic/downloadAllPatient`} target="_blank" class="btn btn-defalut btn-md ">Export Data</a>
             : "" }
             </div>
             </div>

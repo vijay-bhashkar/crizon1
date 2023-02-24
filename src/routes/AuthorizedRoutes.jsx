@@ -52,6 +52,11 @@ import { FollowUpList } from "../components/FollowUp/FollowUpList.jsx";
 import { Homegraph } from "../components/Homegraph.jsx";
 import { Appointmentform } from "../components/Appointmentform.jsx";
 
+import { AddLeverFollowUp } from "../components/LeverFollowUp/AddLeverFollowUp";
+import { AllLeverFollowUp } from "../components/LeverFollowUp/AllLeverFollowUp";
+import { SearchFollowUp } from "../components/LeverFollowUp/SearchFollowUp";
+import { ViewLeverFollowUp } from "../components/LeverFollowUp/ViewLeverFollowUp";
+
 import { AddSubAdmin } from "../components/SubAdmin/AddSubAdmin.jsx";
 import { ViewSubAdmin } from "../components/SubAdmin/ViewSubAdmin.jsx";
 import { SubAdminListview } from "../components/SubAdmin/ListView.jsx";
@@ -130,6 +135,11 @@ function AuthorizedRoutes() {
                       <Route path="/FollowUp/followupList" exact element={<FollowUpList />}></Route>
                       <Route path="/homegraph" exact element={<Homegraph />}></Route>
                       <Route path="/appointmentform" exact element={<Appointmentform />}></Route>
+
+                      <Route path="/LeverFollowUp/addfollowup" exact element={<AddLeverFollowUp />}></Route>
+                      <Route path="/LeverFollowUp/viewfollowup" exact element={<AllLeverFollowUp />}></Route>
+                      <Route path="/LeverFollowUp/searchFollowUp" exact element={<SearchFollowUp />}></Route>
+                      <Route path="/LeverFollowUp/followupList" exact element={<ViewLeverFollowUp />}></Route>
                       
                       <Route path="/subAdmin/addSubAdmin" exact element={<AddSubAdmin />}></Route>
                       <Route path="/subAdmin/viewSubAdmin" exact element={<ViewSubAdmin />}></Route>

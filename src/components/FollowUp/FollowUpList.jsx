@@ -73,9 +73,14 @@ useEffect(() => {
             <div className="col-lg-4"> 
             <input type="text" name="search" placeholder="Enter Patient's Name " className="form-control" value={search} onChange={(el)=>{setSearch(el.target.value)}}/>
             </div>
-            <div className="col-lg-4 text-end">
-            <div className='btnlist'>
+            <div className="col-lg-4 text-end display-flex"> 
+             <div className="row">
+            <div className='btnlist col-lg-6'>
+            <a href="http://localhost:4029/followUp/getFollowupExcel" class="btn btn-defalut btn-md">Export Follow Up</a>
+            </div>
+            <div className='btnlist col-lg-6'>
             <Link to="/FollowUp/Addfollowup" class="btn btn-defalut btn-md"> <BiUserPlus className="icon"/> Add Follow Up</Link>
+            </div>
             </div>
             </div>
           </div>

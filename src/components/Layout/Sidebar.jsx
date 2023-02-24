@@ -124,7 +124,7 @@ const Sidebar = () => {
           <div class="accordion-item">
             <h5 class="accordion-header" id="headingthree">
               <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsethree" aria-expanded="false" aria-controls="collapsethree"><BiUserPlus className="iconaccrion" /> <span> Manage Followup </span>
+                data-bs-target="#collapsethree" aria-expanded="false" aria-controls="collapsethree"><BiUserPlus className="iconaccrion" /> <span> I.B.D Followup </span>
               </span>
             </h5>
             <div id="collapsethree" class="accordion-collapse collapse" aria-labelledby="headingthree" data-bs-parent="#accordionExample">
@@ -133,6 +133,23 @@ const Sidebar = () => {
                   <li><Link to="/FollowUp/followupList"> List Followup </Link></li>
                   <li><Link to="/FollowUp/Addfollowup">Add Followup</Link></li>
                   <li><Link to="/FollowUp/Addpatientdepression">Search FollowUp</Link></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h5 class="accordion-header" id="headingfive">
+              <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive"><BiUserPlus className="iconaccrion" /> <span> LEVER Followup </span>
+              </span>
+            </h5>
+            <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li><Link to="/LeverFollowUp/viewfollowup"> List Followup </Link></li>
+                  <li><Link to="/LeverFollowUp/addfollowup">Add Followup</Link></li>
+                  <li><Link to="/LeverFollowUp/searchFollowUp">Search FollowUp</Link></li>
                 </ul>
               </div>
             </div>
@@ -153,7 +170,6 @@ const Sidebar = () => {
               </div>
             </div>
           </div>
-
           <div className="accordion-button">
             <h5><Link to="/Medicalreport"> <BiUserPlus className="iconaccrion" /> <span>Patient Report</span> </Link></h5>
           </div>
