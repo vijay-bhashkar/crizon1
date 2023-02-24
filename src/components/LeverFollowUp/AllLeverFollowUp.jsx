@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { LEVERPERDETAILGet, LEVERPERDETAILDelete, SETLEVERPERDETAILObj } from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
+import { url } from "../../services/url.service";
 export const AllLeverFollowUp = () => {
 
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ export const AllLeverFollowUp = () => {
             <div className="col-lg-3 text-end">
             <div className='btnlist'>
               {(role == "ADMIN") ?
-              <a href="http://localhost:4029/leverPerDetail/downloadLeverData" className="btn btn-defalut btn-md">Export Data</a>
+              <a href={`${url}/leverPerDetail/downloadLeverData`} className="btn btn-defalut btn-md">Export Data</a>
               : "" }
             </div>
             </div>

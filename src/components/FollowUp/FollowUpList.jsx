@@ -8,6 +8,7 @@ import { FOLLOWUPGet, FOLLOWUPDelete, SETFOLLOWUPObj } from "../../redux/actions
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link ,useNavigate} from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { url } from "../../services/url.service";
 export const FollowUpList = () => {
 
 const dispatch = useDispatch();
@@ -76,7 +77,7 @@ useEffect(() => {
             <div className="col-lg-4 text-end display-flex"> 
              <div className="row">
             <div className='btnlist col-lg-6'>
-            <a href="http://localhost:4029/followUp/getFollowupExcel" class="btn btn-defalut btn-md">Export Follow Up</a>
+            <a href={`${url}/followUp/getFollowupExcel`} class="btn btn-defalut btn-md">Export Follow Up</a>
             </div>
             <div className='btnlist col-lg-6'>
             <Link to="/FollowUp/Addfollowup" class="btn btn-defalut btn-md"> <BiUserPlus className="icon"/> Add Follow Up</Link>
