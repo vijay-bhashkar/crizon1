@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICAdd, DEMOGRAFICGet, SETDEMOGRAFICObj, DEMOGRAFICUpdate, GETALLDoctor, GETALLDisease } from "../../redux/actions/Demografic/Demografic.actions";
 import { DOCTORGet } from '../../redux/actions/Doctor/Doctor.actions';
-// import { CUSTOMERGet } from '../../redux/actions/Customer/Customer.actions';
 import { rolesObj } from '../../utils/roles';
 export const Adddemographics = () => {
 
@@ -42,11 +41,14 @@ export const Adddemographics = () => {
     const [state, setState] = useState("");
     const [areaOfResidence, setAreaOfResidence] = useState("");
     const [yearOfOnset, setYearOfOnset] = useState("");
+    const [hodId, setHodId] = useState("");
+    const [doctorId, setDoctorId] = useState("");
+    const [service, setService] = useState("");
 
     const [diseaseArr, setDiseaseArr] = useState("");
     const [hodArr, setHodArr] = useState("");
     const [doctorArr, setDoctorArr] = useState("");
-    const [service, setService] = useState("");
+    
 
     useEffect(() => {
         let query = "";
@@ -80,6 +82,21 @@ export const Adddemographics = () => {
         }
     }, [diseaseRedux]);
 
+    useEffect(()=>{
+    if(role == "HOD"){
+        if(roleUser){
+            setHodId(roleUser?._id); 
+            setService(roleUser?.service);
+        }
+    }else if(role == "DOCTOR"){
+        if(roleUser){
+            setDoctorId(roleUser?._id); 
+            setHodId(roleUser?.hod); 
+            setService(roleUser?.service);
+        }
+    }
+    }, [roleUser]);
+
     useEffect(() => {
         if (hodRedux) {
             setHodArr(hodRedux);
@@ -103,7 +120,6 @@ export const Adddemographics = () => {
 
     const onServiceFun = (disease) => {
         setService(disease);
-        // setDoctor(disease);
         if (disease) {
             let diseaseFilter = diseaseRedux.filter(el => el.service === disease);
             let doctorReduxArr = doctorRedux.filter(el => el.service === disease);
@@ -191,7 +207,12 @@ export const Adddemographics = () => {
                 password,
                 conPassword,
                 indiDisease,
+                hodId,
+                doctorId,
+                service
             };
+          console.log(obj , "object object");
+
             if (demograficObj?._id) {
                 dispatch(DEMOGRAFICUpdate(demograficObj._id, obj));
                 dispatch(SETDEMOGRAFICObj(null))

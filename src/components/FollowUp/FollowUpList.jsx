@@ -68,14 +68,6 @@ useEffect(() => {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="viewadduser">
-                <ul>
-                  <li>
-                  </li>
-                  {/* <li>
-                    <AiOutlineUnorderedList className="icon" />{" "}
-                    <span>Add User</span>
-                  </li> */}
-                </ul>
               </div>
             </div>
             <div className="col-lg-4"> 
@@ -94,8 +86,7 @@ useEffect(() => {
           <thead>
             <tr>
               <th scope="col" className="text-center">S.NO</th>
-              <th scope="col"> CCF ID </th>
-              <th scope="col">Patient Name</th>
+              <th scope="col">Patient FollowUp Id</th>
               <th scope="col">Disease Extend</th>
               <th scope="col">Followup Date</th>
               {/* <th scope="col">Rectal Bleeding</th> */}
@@ -108,7 +99,6 @@ useEffect(() => {
           {
             followupMainArr && followupMainArr.map((item,index) => <tr>
               <th scope="row" className="text-center">{index+1}</th>
-              <th scope="row">{item.ccfIdName}</th>
               <th scope="row">{item.patientId}</th>
               <td>{item.diseaseExtend}</td>
               <td>{item.followUpDate}</td>

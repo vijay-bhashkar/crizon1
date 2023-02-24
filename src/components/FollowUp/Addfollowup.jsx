@@ -944,7 +944,9 @@ export const Addfollowup = () => {
                                         <div className='col-lg-4'>
                                             <div className='from-group'>
                                                 <label>HIV</label>
-                                                <input type="text" className='form-control' value={hiv} onChange={(e) => { setHiv(e.target.value) }} />
+                                                <select className='form-control' value={hiv} onChange={(el)=>{setHiv(el.target.value)}}>
+                                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>)}
+                                                </select>
                                             </div>
                                         </div>
                                         <div className='col-lg-4'>

@@ -6,13 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { rolesObj } from '../../utils/roles';
 import { LEVERPERDETAILAdd, LEVERPERDETAILGet, SETLEVERPERDETAILObj, LEVERPERDETAILUpdate,} from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
 
-
 export const Addlever = () => {
 
     const role = useSelector((states) => states.auth.role);
     const user = useSelector((states) => states.auth.user);
     const roleUser = useSelector((states) => states.auth.user.roleUser);
-
+  
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -31,7 +30,9 @@ export const Addlever = () => {
     const [weight , setWeight] = useState("");
     const [bmi , setBmi] = useState("");
     const [address , setAddress] = useState("");
-
+    const [hodId, setHodId] = useState("");
+    const [doctorId, setDoctorId] = useState("");
+    const [service, setService] = useState("");
 
     const genderDrop = [
         { value: "select", label: "Select" },
@@ -50,7 +51,10 @@ export const Addlever = () => {
             height,
             weight,
             bmi,
-            address
+            address,
+            hodId,
+            service,
+            doctorId
         }
         if(password){
             obj.password = password;
@@ -65,6 +69,22 @@ export const Addlever = () => {
         }
         navigate("/add-lever-history");
     };
+    
+    useEffect(()=>{
+        if(role == "HOD"){
+            if(roleUser){
+                setHodId(roleUser?._id); 
+                setService(roleUser?.service);
+            }
+        }else if(role == "DOCTOR"){
+            if(roleUser){
+                setDoctorId(roleUser?._id); 
+                setHodId(roleUser?.hod); 
+                setService(roleUser?.service);
+            }
+        }
+    }, [roleUser]);
+
 
     useEffect(()=>{
         if(leverObj){
@@ -111,9 +131,9 @@ export const Addlever = () => {
             </div>
             <div className='listheader text-center'>
                 <ul class="list-group list-group-horizontal justify-content-center">
-                    <li class="list-group-item"><Link >Personal Detail</Link></li>
-                    <li class="list-group-item"><Link >History</Link></li>
-                    <li class="list-group-item"><Link >Etiological Work Up</Link></li>
+                    <li class="list-group-item"><Link to="/add-lever" >Personal Detail</Link></li>
+                    <li class="list-group-item"><Link to="/add-lever-history">History</Link></li>
+                    <li class="list-group-item"><Link to="/etiological-work-up">Etiological Work Up</Link></li>
                 </ul>
             </div>
             <div className="wrapper_contentbody">

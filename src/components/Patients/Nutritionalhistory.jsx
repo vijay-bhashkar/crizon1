@@ -102,6 +102,7 @@ export const Nutritionalhistory = () => {
       mirt,
       nrs2002,
       handGrip,
+      tsf,
       tricepSkin,
       bodyFatPercent,
       visceralFat,
@@ -172,6 +173,7 @@ export const Nutritionalhistory = () => {
       setCtSkeletal(nutritionObj?.ctSkeletal);
       setMercuriStage(nutritionObj?.mercuriStage);
       setMeanAttenuation(nutritionObj?.meanAttenuation);
+      setTsf(nutritionObj?.tsf);
     }
   },[nutritionObj]);
 
@@ -193,9 +195,7 @@ export const Nutritionalhistory = () => {
       <div className="contentwraper_header">
         <div className="container-fluid">
           <div className="row align-items-center">
-            <div className="col-lg-4">
-             
-            </div>
+            <div className="col-lg-4"></div>
             <div className="col-lg-4">
               <h5 className="mb-0 text-center text-white">
                 Patient (ULCERATIVE Colitis DISEASE)
@@ -214,14 +214,13 @@ export const Nutritionalhistory = () => {
       </div>
       <div className="listheader">
         <ul className="list-group list-group-horizontal">
-        <li class="list-group-item"><Link to="/Patients/editdemographics">Demographics</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Clinicalhistory">Clinical History</Link></li>
-            <li class="list-group-item"><Link to="/Patients/previoustreatment">Previous Treatment</Link></li>
-            <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
-            <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
-            <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
-            {/* <li class="list-group-item"><Link to="/Patients/depression">Adverse Events to Drugs</Link></li> */}
-            <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
+          <li class="list-group-item"><Link to="/Patients/editdemographics">Demographics</Link></li>
+          <li class="list-group-item"><Link to="/Patients/Clinicalhistory">Clinical History</Link></li>
+          <li class="list-group-item"><Link to="/Patients/previoustreatment">Previous Treatment</Link></li>
+          <li class="list-group-item"><Link to="/Patients/nutritionalhistory">Nutritional History</Link> </li>
+          <li class="list-group-item"><Link to="/Patients/investigations">Investigations</Link></li>
+          <li class="list-group-item"><Link to="/Patients/treatment">Treatment</Link> </li>
+          <li class="list-group-item"><Link to="/Patients/infections">Infections</Link></li>
         </ul>
       </div>
       <div className="mt-5 mb-1">

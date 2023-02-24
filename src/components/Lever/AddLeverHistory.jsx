@@ -163,9 +163,9 @@ export const AddLeverHistory = () => {
     </div>
     <div className='listheader'>
         <ul class="list-group list-group-horizontal justify-content-center">
-            <li class="list-group-item"><Link >Personal Detail</Link></li>
-            <li class="list-group-item"><Link >History</Link></li>
-            <li class="list-group-item"><Link >Etiological Work Up</Link></li>
+            <li class="list-group-item"><Link to="/add-lever" >Personal Detail</Link></li>
+            <li class="list-group-item"><Link to="/add-lever-history">History</Link></li>
+            <li class="list-group-item"><Link to="/etiological-work-up">Etiological Work Up</Link></li>
         </ul>
     </div>
       <div className="wrapper_contentbody">

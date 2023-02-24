@@ -108,7 +108,7 @@ useEffect(() => {
     const [fmtEnd,   setFmtEnd] = useState("");
 
     const [other, setOther] = useState("");
-    const [asa, setAsa] = useState("");
+    // const [asa, setAsa] = useState("");
     const [preSurgery, setPreSurgery] = useState("");
     const [sergeryDate, setSergeryDate] = useState("");
     const [typeSurgery, setTypeSurgery] = useState("");
@@ -191,7 +191,7 @@ useEffect(() => {
         setFmtEnd(moment(preTreatObj?.fmt?.end).format("YYYY-MM-DD"));
 
         setOther(preTreatObj?.other);
-        setAsa(preTreatObj?.asa);
+        // setAsa(preTreatObj?.asa);
         setPreSurgery(preTreatObj?.preSurgery);
         setSergeryDate(moment(preTreatObj?.sergeryDate).format("YYYY-MM-DD"));
         setTypeSurgery(preTreatObj?.typeSurgery);
@@ -219,18 +219,15 @@ useEffect(() => {
         </div>
         </div>
         <div className='listheader'>
-            <ul className="list-group list-group-horizontal">
-                <li className="list-group-item"><Link >Demographics</Link></li>
-                <li className="list-group-item"><Link >Clinical History</Link></li>
-                <li className="list-group-item"><Link >Previous Treatment</Link></li>
-                <li className="list-group-item"><Link >Nutritional History</Link> </li>
-                <li className="list-group-item"><Link >Investigations</Link></li>
-                <li className="list-group-item"><Link >Treatment</Link> </li>
-                <li className="list-group-item"><Link >Depression</Link></li>
-                <li className="list-group-item"><Link >Infections</Link></li>
-                
-                
-            </ul>
+        <ul className="list-group list-group-horizontal">
+            <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
+            <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
+            <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
+            <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
+            <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
+            <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
+            <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li> 
+        </ul>
         </div>
         <div className='pading40'>
             <div className='container'>
@@ -747,12 +744,11 @@ useEffect(() => {
                           
                         </div>
                     </div>
-                    <div className='col-lg-5'>
+                    {/* <div className='col-lg-5'>
                     <div className='from-group'>
-                            <label><b>5-ASA : </b> {asa}</label>
-                         
-                        </div>
+                        <label><b>5-ASA : </b> {asa}</label>
                     </div>
+                    </div> */}
                 </div>
                 <div className='row addlist-frm mt-3 justify-content-end'>
                     <div className='col-lg-2'></div>
@@ -769,7 +765,6 @@ useEffect(() => {
                     <div className='col-lg-3'>
                         <div className='form-group'>
                             <label><b>Type of surgery : </b> {typeSurgery}</label>
-        
                         </div>
                     </div>
                 </div>

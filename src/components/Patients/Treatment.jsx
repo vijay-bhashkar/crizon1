@@ -45,6 +45,8 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
   const [tacrolimus, setTacrolimus] = useState("");
   const [probiotics, setProbiotics] = useState("");
   const [filgotinib, setFilgotinib] = useState("");
+  const [fmtCapsule, setFmtCapsule] = useState("");
+  const [fmt, setFmt] = useState("");
   const [session_1, setSession_1] = useState("");
   const [session_2, setSession_2] = useState("");
   const [session_3, setSession_3] = useState("");
@@ -87,6 +89,8 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       tacrolimus,
       probiotics,
       filgotinib,
+      fmtCapsule,
+      fmt,
       session_1,
       session_2,
       session_3,
@@ -130,7 +134,9 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       setTofacitinib(treatmentObj?.tofacitinib);
       setTacrolimus(treatmentObj?.tacrolimus);
       setProbiotics(treatmentObj?.probiotics);
+      setFmtCapsule(treatmentObj?.fmtCapsule);
       setFilgotinib(treatmentObj?.filgotinib);
+      setFmt(treatmentObj?.fmt);
       setSession_1(treatmentObj?.session_1);
       setSession_2(treatmentObj?.session_2);
       setSession_3(treatmentObj?.session_3);
@@ -400,13 +406,13 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
               <div className='col-lg-4'>
                 <div className='from-group'>
                   <label>FMT Capsule</label>
-                  <input type="text" className='form-control' />
+                  <input type="text" className='form-control' value={fmtCapsule} onChange={(el)=>{setFmtCapsule(el.target.value)}}/>
                 </div>
               </div>
               <div className='col-lg-4'>
                 <div className='from-group'>
                   <label>FMT</label>
-                  <input type="text" className='form-control' />
+                  <input type="text" className='form-control' value={fmt} onChange={(el)=>{setFmt(el.target.value)}}/>
                 </div>
               </div>
               

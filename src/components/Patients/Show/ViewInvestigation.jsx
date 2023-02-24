@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { BiUserPlus } from "react-icons/bi";
-import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import Select from "react-select";
 import { Link , useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'; 
-import { SETINVESTIGATIONObj, INVESTIGATIONGet_BY_PATIENT_ID } from "../../../redux/actions/Investigation/Investigation.actions";
+import { INVESTIGATIONAdd, INVESTIGATIONGet, SETINVESTIGATIONObj, INVESTIGATIONUpdate, INVESTIGATIONDelete, INVESTIGATIONGet_BY_PATIENT_ID } from "../../../redux/actions/Investigation/Investigation.actions";
 import { toast } from 'react-hot-toast';
 export const ViewInvestigation = () => {
 
@@ -32,121 +29,141 @@ useEffect(() => {
 
 const [hb, setHb] = useState("");
 const [hbsAg, setHbsAg] = useState("");
+const [pcv, setPcv] = useState("");
 const [mcv, setMcv] = useState("");
-const [hiv, setHiv] = useState("");
-const [tlc, setTlc] = useState("");
 const [antiHcv, setAntiHcv] = useState("");
+const [tlc, setTlc] = useState("");
+const [hiv, setHiv] = useState("");
+const [ebvVcaLgm, setEbvVcaLgm] = useState("");
 const [plt, setPlt] = useState("");
-const [ebVcaLgm, setEbVcaLgm] = useState("");
+const [ebvVcaLgg, setEbvVcaLgg] = useState("");
 const [esr, setEsr] = useState("");
-const [ebVcaLgg, setEbVcaLgg] = useState("");
-const [crpQuanti, setCrpQuanti] = useState("");
-const [ebvEbna, setEbvEbna] = useState("");
+const [ebvEbnaLgg, setEbvEbnaLgg] = useState("");
+const [crpQuantitative, setCrpQuantitative] = useState("");
 const [cmvLgm, setCmvLgm] = useState("");
-const [cmvLgg, setCmvLgg] = useState("");
 const [ast, setAst] = useState("");
-const [fecalCalpro, setFecalCalpro] = useState("");
+const [cmvLgg, setCmvLgg] = useState("");
 const [alt, setAlt] = useState("");
-const [stoolRoutine, setStoolRoutine] = useState("");
+const [fecalCalprotectin, setFecalCalprotectin] = useState("");
+const [pct, setPct] = useState("");
+const [ggt, setGgt] = useState("");
+const [cpk, setCpk] = useState("");
+const [totalProtien, setTotalProtien] = useState("");
+const [sodium, setSodium] = useState("");
+const [cholesterol, setCholesterol] = useState("");
+const [pottasium, setPottasium] = useState("");
+const [vldl, setVldl] = useState("");
+const [cmvIhc, setCmvIhc] = useState("");
+const [ldl, setLdl] = useState("");
+const [eberIsh, setEberIsh] = useState("");
+const [hdl, setHdl] = useState("");
+const [igra, setIgra] = useState("");
+const [triglycerides, setTriglycerides] = useState("");
 const [alp, setAlp] = useState("");
-const [stoolCulture, setStoolCulture] = useState("");
+const [stoolRoutine, setStoolRoutine] = useState("");
 const [albumin, setAlbumin] = useState("");
-const [stoolGdh, setStoolGdh] = useState("");
+const [stoolCulture, setStoolCulture] = useState("");
 const [iron, setIron] = useState("");
-const [stoolDiffToxin, setStoolDiffToxin] = useState("");
+const [stoolGdh, setStoolGdh] = useState("");
 const [tibc, setTibc] = useState("");
-const [stoolDiffPcr, setStoolDiffPcr] = useState("");
+const [stoolcDiffToxin, setStoolcDiffToxin] = useState("");
 const [ferritin, setFerritin] = useState("");
+const [stoolcDiffPcr, setStoolcDiffPcr] = useState("");
+const [calcium, setCalcium] = useState("");
 const [stoolBiofilm, setStoolBiofilm] = useState("");
-const [ca, setCa] = useState("");
-const [tpmp, setTpmp] = useState("");
-const [mg, setMg] = useState("");
+const [magnesium, setMagnesium] = useState("");
+const [tpmt, setTpmt] = useState("");
+const [vitamind, setVitamind] = useState("");
 const [ndut, setNdut] = useState("");
-const [vitad, setVitad] = useState("");
-const [tgn, setTgn] = useState("");
 const [rbs, setRbs] = useState("");
+const [tgn, setTgn] = useState("");
+const [ascaLgat, setAscaLgat] = useState("");
 const [mmpr, setMmpr] = useState("");
-const [ascaLga, setAscaLga] = useState("");
-const [chestXRay, setChestXRay] = useState("");
-const [askalgg, setAskalgg] = useState("");
-const [xRayAbdomen, setXRayAbdomen] = useState("");
-const [vitaminb12, setVitaminb12] = useState("");
-const [microbiota, setMicrobiota] = useState("");
-const [panca, setPanca] = useState("");
+const [ascaLgg, setAscaLgg] = useState("");
+const [vitaminB12, setVitaminB12] = useState("");
+const [pAnca, setPAnca] = useState("");
 const [folate, setFolate] = useState("");
 const [urea, setUrea] = useState("");
 const [vzvAntibody, setVzvAntibody] = useState("");
 const [creatinine, setCreatinine] = useState("");
+const [chestXray, setChestXray] = useState("");
+const [xrayAbdomen, setXrayAbdomen] = useState("");
 const [mantoux, setMantoux] = useState("");
+const [microbiota, setMicrobiota] = useState("");
 const [ctAbdomen, setCtAbdomen] = useState("");
-const [nancyIndex, setNancyIndex] = useState("");
 const [ctChest, setCtChest] = useState("");
-const [rhi, setRhi] = useState("");
 const [mriAbdomen, setMriAbdomen] = useState("");
-const [geboeScore, setGeboeScore] = useState("");
-const [simplifiedMARIA, setSimplifiedMARIA] = useState("");
-const [clermontScore, setClermontScore] = useState("");
-const [microbiota_2, setMicrobiota_2] = useState("");
+const [others, setOthers] = useState("");
 
 useEffect(()=>{
     if(investigationObj){
       setHb(investigationObj?.hb);
       setHbsAg(investigationObj?.hbsAg);
+      setPcv(investigationObj?.pcv);
       setMcv(investigationObj?.mcv);
-      setHiv(investigationObj?.hiv);
-      setTlc(investigationObj?.tlc);
       setAntiHcv(investigationObj?.antiHcv);
+      setTlc(investigationObj?.tlc);
+      setHiv(investigationObj?.hiv);
+      setEbvVcaLgm(investigationObj?.ebvVcaLgm);
       setPlt(investigationObj?.plt);
-      setEbVcaLgm(investigationObj?.ebVcaLgm);
+      setEbvVcaLgg(investigationObj?.ebvVcaLgg);
       setEsr(investigationObj?.esr);
-      setEbVcaLgg(investigationObj?.ebVcaLgg);
-      setCrpQuanti(investigationObj?.crpQuanti);
-      setEbvEbna(investigationObj?.ebvEbna);
+      setEbvEbnaLgg(investigationObj?.ebvEbnaLgg);
+      setCrpQuantitative(investigationObj?.crpQuantitative);
       setCmvLgm(investigationObj?.cmvLgm);
-      setCmvLgg(investigationObj?.cmvLgg);
       setAst(investigationObj?.ast);
-      setFecalCalpro(investigationObj?.fecalCalpro);
+      setCmvLgg(investigationObj?.cmvLgg);
       setAlt(investigationObj?.alt);
-      setStoolRoutine(investigationObj?.stoolRoutine);
+      setFecalCalprotectin(investigationObj?.fecalCalprotectin);
+      setPct(investigationObj?.pct);
+      setGgt(investigationObj?.ggt);
+      setCpk(investigationObj?.cpk);
+      setTotalProtien(investigationObj?.totalProtien);
+      setSodium(investigationObj?.sodium);
+      setCholesterol(investigationObj?.cholesterol);
+      setPottasium(investigationObj?.pottasium);
+      setVldl(investigationObj?.vldl);
+      setCmvIhc(investigationObj?.cmvIhc);
+      setLdl(investigationObj?.ldl);
+      setEberIsh(investigationObj?.eberIsh);
+      setHdl(investigationObj?.hdl);
+      setIgra(investigationObj?.igra);
+      setTriglycerides(investigationObj?.triglycerides);
       setAlp(investigationObj?.alp);
-      setStoolCulture(investigationObj?.stoolCulture);
+      setStoolRoutine(investigationObj?.stoolRoutine);
       setAlbumin(investigationObj?.albumin);
-      setStoolGdh(investigationObj?.stoolGdh);
+      setStoolCulture(investigationObj?.stoolCulture);
       setIron(investigationObj?.iron);
-      setStoolDiffToxin(investigationObj?.stoolDiffToxin);
+      setStoolGdh(investigationObj?.stoolGdh);
       setTibc(investigationObj?.tibc);
-      setStoolDiffPcr(investigationObj?.stoolDiffPcr);
+      setStoolcDiffToxin(investigationObj?.stoolcDiffToxin);
       setFerritin(investigationObj?.ferritin);
+      setStoolcDiffPcr(investigationObj?.stoolcDiffPcr);
+      setCalcium(investigationObj?.calcium);
       setStoolBiofilm(investigationObj?.stoolBiofilm);
-      setCa(investigationObj?.ca);
-      setTpmp(investigationObj?.tpmp);
-      setMg(investigationObj?.mg);
+      setMagnesium(investigationObj?.magnesium);
+      setTpmt(investigationObj?.tpmt);
+      setVitamind(investigationObj?.vitamind);
       setNdut(investigationObj?.ndut);
-      setVitad(investigationObj?.vitad);
-      setTgn(investigationObj?.tgn);
       setRbs(investigationObj?.rbs);
+      setTgn(investigationObj?.tgn);
+      setAscaLgat(investigationObj?.ascaLgat);
       setMmpr(investigationObj?.mmpr);
-      setAscaLga(investigationObj?.ascaLga);
-      setChestXRay(investigationObj?.chestXRay);
-      setAskalgg(investigationObj?.askalgg);
-      setXRayAbdomen(investigationObj?.xRayAbdomen);
-      setVitaminb12(investigationObj?.vitaminb12);
-      setMicrobiota(investigationObj?.microbiota);
-      setPanca(investigationObj?.panca);
+      setAscaLgg(investigationObj?.ascaLgg);
+      setVitaminB12(investigationObj?.vitaminB12);
+      setPAnca(investigationObj?.pAnca);
       setFolate(investigationObj?.folate);
       setUrea(investigationObj?.urea);
       setVzvAntibody(investigationObj?.vzvAntibody);
       setCreatinine(investigationObj?.creatinine);
+      setChestXray(investigationObj?.chestXray);
+      setXrayAbdomen(investigationObj?.xrayAbdomen);
       setMantoux(investigationObj?.mantoux);
+      setMicrobiota(investigationObj?.microbiota);
       setCtAbdomen(investigationObj?.ctAbdomen);
-      setNancyIndex(investigationObj?.nancyIndex);
       setCtChest(investigationObj?.ctChest);
-      setRhi(investigationObj?.rhi);
       setMriAbdomen(investigationObj?.mriAbdomen);
-      setGeboeScore(investigationObj?.geboeScore);
-      setSimplifiedMARIA(investigationObj?.simplifiedMARIA);
-      setClermontScore(investigationObj?.clermontScore);
-      setMicrobiota_2(investigationObj?.microbiota_2);
+      setOthers(investigationObj?.others);
     }
 },[investigationObj]);
 
@@ -180,33 +197,13 @@ const options = [
       </div>
       <div className="listheader">
         <ul className="list-group list-group-horizontal">
-          <li className="list-group-item">
-            <Link >Demographics</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >Clinical History</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >Previous Treatment</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >
-              Nutritional History
-            </Link>{" "}
-          </li>
-          <li className="list-group-item">
-            <Link>Investigations</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >Treatment</Link>{" "}
-          </li>
-          <li className="list-group-item">
-            <Link>Depression</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >Infections</Link>
-          </li>
-          
+          <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
+          <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
+          <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
+          <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
+          <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
+          <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
+          <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
         </ul>
       </div>
     
@@ -214,7 +211,7 @@ const options = [
        <div className='container-fluid'>
        <div className="row">
             <div className="col-lg-12 heaind text-center">
-              <h3><b>Investigations </b></h3>
+              <h3>Investigations</h3>
             </div>
           </div>
         <div className='row justify-content-center addlist-frm mt-3'>
@@ -222,336 +219,410 @@ const options = [
               <div className='row'>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>HB :</b>  {hb}</label>                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>HBsAg :</b> {hbsAg}</label>                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>MCV :</b> {mcv}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>HIV :</b> {hiv}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>TLC :</b> {tlc}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>AntiHCV :</b> {antiHcv}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>PLT :</b> {plt}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>EBV-VCA IgM :</b> {ebVcaLgm}</label>
+                    <label><b>HB  : </b> {hb} </label>
                     
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>ESR :</b> {esr}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>EBV-VCA IgG :</b> {ebVcaLgg}</label>
+                    <label><b>HBsAg  : </b> {hbsAg}  </label>
                     
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>CRP Quantitative :</b> {crpQuanti}</label>
+                    <label><b>PCV : </b> {pcv}   </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>EBV-EBNA IgG :</b> {ebvEbna}</label>
+                    <label><b>MCV : </b> {mcv} </label>
+                  
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Anti HCV  : </b> {antiHcv}  </label>
                     
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>CMV-IgM :</b> {cmvLgm}</label>
-                   
+                    <label><b>TLC : </b> {tlc} </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>CMV-Ig G :</b> {cmvLgg}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>AST :</b> {ast}</label>
-              
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Fecal Calprotactin :</b> {fecalCalpro}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>ALT :</b> {alt}</label>
-                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Stool Routine :</b> {stoolRoutine}</label>                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>ALP :</b> {alp}</label>
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Stool Culture :</b> {stoolCulture}</label>
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Albumin :</b> {albumin}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Stool GDH :</b> {stoolGdh}</label>
-                   
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Iron :</b> {iron}</label>
-                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Stool-C-Diff-Toxin :</b> {stoolDiffToxin}</label>
-                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>TIBC :</b> {tibc} </label>
-                 
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>Stool-C-Diff-PCR :</b> {stoolDiffPcr}</label>
+                  <div className='from-group'>  
+                    <label><b>HIV  : </b> {hiv}  </label>
                     
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Ferritin :</b> {ferritin}</label>                 
+                    <label><b>EBV-VCA IgM  : </b> {ebvVcaLgm}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Stool Biofilm :</b> {stoolBiofilm}</label>                  
+                    <label><b>PLT : </b> {plt} </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Ca+ :</b> {ca}</label>
+                    <label><b>EBV-VCA IgG : </b> {ebvVcaLgg}  </label>
+                   
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'> 
+                    <label><b>ESR : </b> {esr}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>TPMT :</b> {tpmp}</label>
+                    <label><b>EBV-EBNA IgG  : </b> {ebvEbnaLgg}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Mg :</b> {mg}</label>
-                  
+                    <label><b>CRP Quantitative  : </b> {crpQuantitative} </label> 
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>NDUT-15 :</b> {ndut}</label>
+                    <label><b>CMV – IgM  : </b> {cmvLgm} </label> 
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>AST : </b> {ast} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>CMV – IgG : </b> {cmvLgg}  </label>  
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>ALT  : </b>{alt} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Fecal Calprotectin  : </b> {fecalCalprotectin}  </label> 
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>PCT : </b>  {pct} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>GGT  : </b> {ggt}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>CPK : </b> {cpk} </label>
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Total proteins : </b> {totalProtien} </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Vita-D :</b> {vitad}</label>
-             
+                    <label><b>Sodium  : </b>{sodium} </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>6-TGN :</b> {tgn}</label>
+                    <label><b>Cholesterol : </b> {cholesterol}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Potassium  : </b> {pottasium}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>VLDL  : </b> {vldl}  </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>RBS :</b> {rbs}</label>
-                
+                    <label><b>CMV IHC  : </b> {cmvIhc} </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>6-MMPR :</b> {mmpr}</label>
-                 
+                    <label><b>LDL  : </b> {ldl}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>ASCA IgA :</b> {ascaLga}</label>
-                 
+                    <label><b>EBER ISH  : </b> {eberIsh}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Chest X-ray :</b> {chestXRay}</label>
-             
+                    <label><b>HDL  : </b> {hdl}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>ASCA IgG :</b> {askalgg}</label>
-                  
+                    <label><b>IGRA  : </b> {igra}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>X-ray Abdomen :</b> {xRayAbdomen}</label>
-                  
+                    <label><b>Triglycerides  : </b> {triglycerides}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Vitamin B12 :</b> {vitaminb12}</label>
+                    <label><b>ALP  : </b> {alp}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Stool Routine  : </b>  {stoolRoutine} </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Microbiota :</b> {microbiota}</label>
-                  
-                  </div>
-                </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label><b>P-ANCA :</b> {panca}</label>
+                    <label><b>Albumin  </b> {albumin} </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Folate :</b> {folate}</label>
-                  
+                    <label><b>Stool Culture  : </b> {stoolCulture}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Urea :</b> {urea}</label>
-                  
+                    <label><b>Iron  : </b> {iron}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>VZV Antibody :</b> {vzvAntibody}</label>
-                  
+                    <label><b>Stool GDH  : </b>{stoolGdh}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Creatinine :</b> {creatinine}</label>
-                
+                    <label><b>TIBC  : </b> {tibc} </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Mantoux :</b> {mantoux}</label>
-                 
+                    <label><b>Stool C-diff Toxin A  : </b>  {stoolcDiffToxin}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>CT Abdomen :</b> {ctAbdomen}</label>
+                    <label><b>Ferritin  : </b> {ferritin}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Nancy Index :</b> {nancyIndex}</label>
+                    <label><b>Stool C-diff PCR  : </b> {stoolcDiffPcr} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Calcium  : </b> {calcium}  </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>CT Chest :</b> {ctChest}</label>
+                    <label><b>Stool Biofilm  : </b> {stoolBiofilm}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Magnesium  : </b> {magnesium} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>TPMT : </b> {tpmt}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Vitamin-D : </b> {vitamind} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>NDUT – 15  : </b> {ndut}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>RBS : </b> {rbs}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>6 – TGN  : </b> {tgn}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>ASCA IgAt  : </b> {ascaLgat}  </label>
                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>RHI :</b> {rhi}</label>               
+                    <label><b>6 – MMPR  : </b> {mmpr}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>MRI Abdomen :</b> {mriAbdomen}</label>               
+                    <label><b>ASCA IgG  : </b> {ascaLgg} </label>
+                   
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Geboe's Score :</b> {geboeScore}</label>
+                    <label><b>Vitamin B12  : </b> {vitaminB12}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Simplified MARIA score :</b> {simplifiedMARIA}</label>                  
+                    <label><b>P-ANCA : </b> {pAnca}  </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Clermont Score :</b> {clermontScore}</label>                   
+                    <label><b>Folate  : </b> {folate} </label>
+                    
                   </div>
                 </div>
                 <div className='col-lg-4'>
                   <div className='from-group'>
-                    <label><b>Microbiota :</b> {microbiota_2}</label>           
+                    <label><b>Urea  : </b> {urea}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>VZV Antibody  : </b> {vzvAntibody} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Creatinine  : </b> {creatinine} </label>
+                   
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Chest X Ray  : </b> {chestXray}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>X Ray abdomen  : </b> {xrayAbdomen} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Mantoux  : </b> {mantoux}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Microbiota  : </b> {microbiota} </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>CT Abdomen : </b>  {ctAbdomen}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>CT Chest  : </b> {ctChest} </label>
+                   
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>MRI Abdomen : </b>  {mriAbdomen}  </label>
+                    
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label><b>Others  : </b> {others}  </label>
                   </div>
                 </div>
               </div>
               <div className='row mt-4'>
                 <div className='col-lg-12'>
                     <div className='subbtn text-center'>
-                        <Link to="../Patients/Viewnutrition" className='btn btn-link mx-4'>Previous</Link>
-                        <Link to="../Patients/Viewtreatment" className='btn btn-link mx-4'>Next</Link>
+                      <Link to="/Patients/Viewnutrition" className='btn btn-link mx-4'>Previous</Link>
+                      <Link to="/Patients/Viewtreatment" className='btn btn-link mx-4'>Next</Link>
                     </div>
                 </div>
             </div>

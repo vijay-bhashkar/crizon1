@@ -37,7 +37,7 @@ const followupArr = useSelector((states)=> states.followup.followups);
 
   const handleFollowupView = (row)=>{
       dispatch(SETLEVERPERDETAILObj(row));
-      navigate("/Patients/Viewdemografics");
+      navigate("/show-lever-patient");
     };
 
     const onHandleFollowup = ()=>{

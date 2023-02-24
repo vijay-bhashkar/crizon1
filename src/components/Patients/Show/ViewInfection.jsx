@@ -79,33 +79,13 @@ useEffect(() =>{
     </div>
     <div className="listheader">
       <ul className="list-group list-group-horizontal">
-        <li className="list-group-item">
-          <Link >Demographics</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Clinical History</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Previous Treatment</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >
-            Nutritional History
-          </Link>{" "}
-        </li>
-        <li className="list-group-item">
-          <Link >Investigations</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Treatment</Link>{" "}
-        </li>
-        <li className="list-group-item">
-          <Link >Depression</Link>
-        </li>
-        <li className="list-group-item">
-          <Link>Infections</Link>
-        </li>
-        
+      <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
+        <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
+        <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
       </ul>
     </div>
   
@@ -178,7 +158,7 @@ useEffect(() =>{
               <div className='col-lg-12'>
                   <div className='subbtn text-center'>
                       <Link to="../Patients/Viewtreatment" className='btn btn-link mx-4'>Previous</Link>
-                      <Link to="../Patients/Viewdepression" className='btn btn-link mx-4'>Next</Link>
+                      {/* <Link to="../Patients/Viewdepression" className='btn btn-link mx-4'>Next</Link> */}
                   </div>
               </div>
           </div>

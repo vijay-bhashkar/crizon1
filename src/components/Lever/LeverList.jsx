@@ -16,6 +16,8 @@ export const LeverList = () => {
   const [leverData, setLeverData] = useState();
 
   const leverArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
+  const role = useSelector((states) => states.auth.role);
+  const roleUser = useSelector((states) => states.auth.user.roleUser);
 
   const handleGet = ()=>{
     dispatch(LEVERPERDETAILGet());
@@ -63,9 +65,11 @@ const handleCustomerView = (row) => {
                 PATIENT LIST
               </h5>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 text-end">
             <div className='btnlist'>
+              {(role == "ADMIN") ?
               <a href="http://localhost:4029/leverPerDetail/downloadLeverData" className="btn btn-defalut btn-md">Export Data</a>
+              : "" }
             </div>
             </div>
             <div className="col-lg-2 ">

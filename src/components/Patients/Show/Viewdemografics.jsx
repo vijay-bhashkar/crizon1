@@ -171,13 +171,13 @@ export const Viewdemografics = () => {
             </div>
             <div className='listheader'>
                 <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item"><Link to="">Demographics</Link></li>
-                    <li class="list-group-item"><Link to="">Clinical History</Link></li>
-                    <li class="list-group-item"><Link to="">Previous Treatment</Link></li>
-                    <li class="list-group-item"><Link to="">Nutritional History</Link> </li>
-                    <li class="list-group-item"><Link to="">Investigations</Link></li>
-                    <li class="list-group-item"><Link to="">Treatment</Link> </li>
-                    <li class="list-group-item"><Link to="">Infections</Link></li>
+                    <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
+                    <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
+                    <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
+                    <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
+                    <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
+                    <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
+                    <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
                 </ul>
             </div>
             <div className="wrapper_contentbody">
@@ -313,13 +313,13 @@ export const Viewdemografics = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className='row mt-4'>
+                            <div className='row mt-4'>
                                 <div className='col-lg-12'>
                                     <div className='subbtn text-center'>
-                                        <button className='btn btn-link' onClick={handleAddDemografic}>Next</button>
+                                    <Link to="/Patients/Viewclinicalhistory" className='btn btn-link mx-3'>Next</Link>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>

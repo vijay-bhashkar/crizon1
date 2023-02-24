@@ -258,7 +258,7 @@ let obj = {
     manifestations,
     totalScore_2,
 }
-  console.log(obj, "rrrrrrrrr");
+
     if (cliHistoryObj?._id) {
       dispatch(CLINICALHISTORYUpdate(cliHistoryObj._id, obj));
       dispatch(SETCLINICALHISTORYObj(null));
@@ -268,8 +268,8 @@ let obj = {
       toast.success(" Clinical History created Successfully ");
     }
       navigate("/Patients/previoustreatment");
-  }
-};
+    }
+  };
 
     useEffect(()=>{
         if(cliHistoryObj){

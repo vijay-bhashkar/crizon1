@@ -6,19 +6,13 @@ import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICGet, DEMOGRAFICDelete, SETDEMOGRAFICObj,GETALLDisease } from "../../redux/actions/Demografic/Demografic.actions";
-import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
-import Select from "react-select";
-
 
 export const PatientListView = () => {
 
-// const [sheetData, setSheetData] = useState("");
-
 const demograficArr = useSelector((states) => states.demografic.demografics);
 const diseaseArr = useSelector((states) => states.demografic.diseases);
-// console.log(diseaseArr , "diseaseArr diseaseArr");
 const role = useSelector((states)=> states.auth.role);
 const user = useSelector((states)=> states.auth.user);
 const roleUser = useSelector((states)=> states.auth.user.roleUser);
@@ -47,7 +41,6 @@ const handleGet = () => {
   }
   dispatch(DEMOGRAFICGet(query));
   dispatch(GETALLDisease());
-  // setSheetData(demograficArr);
 };
 
 
@@ -77,8 +70,8 @@ useEffect(()=>{
   
   const handleDemograficAllView = (row) => {
     dispatch(SETDEMOGRAFICObj(row));
-    navigate("/Patients/Viewdemografics");
-  };
+    navigate(`/Patients/Viewdemografics?edit=true&id=${row._id}`);
+  };   
 
   const handleDemograficDelete = (row) => {
     let query = "";
@@ -105,13 +98,6 @@ useEffect(()=>{
       }
     }
   }
-
-  // const onclickExport = ()=>{
-  //   var wb = XLSX.utils.book_new(),
-  //    wj = XLSX.utils.json_to_sheet(sheetData);
-  //    XLSX.utils.book_append_sheet(wb,wj,"myfile");
-  //    XLSX.writeFile(wb,"test.xlsx"); 
-  // }; 
 
   const handleService = (service)=>{
     setService(service);
@@ -151,11 +137,15 @@ useEffect(()=>{
           <div className="col-lg-4">
             </div>
             <div className="col-lg-3"><span style={{color:"white"}}><h5>PATIENT'S LIST</h5></span></div>
-            <div className="col-lg-3 ">
+            
+            <div className="col-lg-3 text-end">
             <div className='btnlist'> 
-            <a href="http://localhost:4029/demografic/downloadAllPatient" class="btn btn-defalut btn-md text-right">Export Data</a>
+            {(role == "ADMIN")? 
+            <a href="http://localhost:4029/demografic/downloadAllPatient" target="_blank" class="btn btn-defalut btn-md ">Export Data</a>
+            : "" }
             </div>
             </div>
+            
             <div className="col-lg-2 text-end">
             <div className='btnlist'>
               <Link to={"/Patients/Adddemographics"} class="btn btn-defalut btn-md"><BiUserPlus className="icon"/> Add Patient </Link>
@@ -166,9 +156,6 @@ useEffect(()=>{
       </div>
       <div className="container-fluid">
             <div className="row justify-content-center py-3">
-              {/* <div col={12} >
-                <button onClick={onclickExport}>Export</button>
-                </div> */}
               <div className="col-lg-4">
               <label>Service</label>
               <select className="form-control" value={service} onChange={(e)=>{handleService(e.target.value)}}>

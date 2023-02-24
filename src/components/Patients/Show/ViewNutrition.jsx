@@ -67,6 +67,7 @@ export const ViewNutrition = () => {
   const [ctSkeletal, setCtSkeletal] = useState("");
   const [mercuriStage, setMercuriStage] = useState("");
   const [meanAttenuation, setMeanAttenuation] = useState("");
+  const [tsf, setTsf] = useState("");
 
   useEffect(()=>{
     if(nutritionObj){
@@ -108,6 +109,7 @@ export const ViewNutrition = () => {
       setCtSkeletal(nutritionObj?.ctSkeletal);
       setMercuriStage(nutritionObj?.mercuriStage);
       setMeanAttenuation(nutritionObj?.meanAttenuation);
+      setTsf(nutritionObj?.tsf);
     }
   },[nutritionObj]);
 
@@ -138,33 +140,13 @@ export const ViewNutrition = () => {
       </div>
       <div className="listheader">
         <ul className="list-group list-group-horizontal">
-          <li className="list-group-item">
-            <Link>Demographics</Link>
-          </li>
-          <li className="list-group-item">
-            <Link>Clinical History</Link>
-          </li>
-          <li className="list-group-item">
-            <Link>Previous Treatment</Link>
-          </li>
-          <li className="list-group-item">
-            <Link>
-              Nutritional History
-            </Link>{" "}
-          </li>
-          <li className="list-group-item">
-            <Link >Investigations</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >Treatment</Link>{" "}
-          </li>
-          <li className="list-group-item">
-            <Link>Depression</Link>
-          </li>
-          <li className="list-group-item">
-            <Link >Infections</Link>
-          </li>
-          
+        <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
+        <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
+        <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
+        <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
         </ul>
       </div>
       <div className="mt-5 mb-1">
@@ -309,6 +291,11 @@ export const ViewNutrition = () => {
                  
                   </div>
                 </div>
+                <div className="col-lg-4">
+                  <div className="from-group">
+                    <label><b>TSF : </b>   {tsf} </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -317,112 +304,84 @@ export const ViewNutrition = () => {
                 <div className="row addlist-frm">
                     <div className="col-lg-12 mb-3">
                         <div className='clinical'>
-                            <h5><b>BODY COMPOSITION ANALYSIS : </b></h5>
+                            <h5>BODY COMPOSITION ANALYSIS</h5>
                         </div>
                     </div> 
                     <div className="col-lg-4">
                         <div className="from-group">
-                            <label><b>Triceps Skin fold Thickness : </b> {tricepSkin}</label>
-                      
+                            <label><b>SM Area : </b> {tricepSkin}   </label>
+                            
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="from-group">
-                            <label><b>Total body fat percentage : </b> {bodyFatPercent}</label>
+                            <label><b>Body fat  : </b> {bodyFatPercent} </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Visceral Fat  : </b> {visceralFat} </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Resting metabolism  : </b> {restingmetaboli}  </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Subcutaneous fat (whole body )percentage  : </b> {subcutaWholebody}  </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Subcutaneous fat percentage (trunk) : </b> {subcutaTrunk}  </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Subcutaneous fat percentage (arms)  : </b>{subcutaArms}   </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Subcutaneous fat percentage (legs)  : </b> {subcutaLegs} </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Skeletal muscles (whole body)  : </b> {skeMuscelBody} </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Skeletal muscle (trunk) : </b> {skeMuscelTrunk} </label>
+                            
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <div className="from-group">
+                            <label><b>Skeletal muscle (arms)  : </b>{skeMuscelArms} </label>
                            
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="from-group">
-                            <label><b>Visceral Fat : </b> {visceralFat}</label>
-                          
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Resting metabolism : </b> {restingmetaboli}</label>
-                      
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Body age : </b> {bodyAge}</label>
-                          
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Subcutaneous fat (whole body )percentage : </b> {subcutaWholebody}</label>
-                           
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Subcutaneous fat percentage (trunk) : </b> {subcutaTrunk}</label>
-                           
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Subcutaneous fat percentage (arms) : </b> {subcutaArms}</label>
-                         
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Subcutaneous fat percentage (legs) : </b> {subcutaLegs}</label>
-                          
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Skeletal muscles (whole body) : </b> {skeMuscelBody}</label>                        
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Skeletal muscle (trunk) : </b> {skeMuscelTrunk}</label>                          
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Skeletal muscle (arms) : </b> {skeMuscelArms}</label>                          
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Skeletal muscle (legs) : </b> {skeMuscelLegs}</label>                        
+                            <label><b>Skeletal muscle (legs)  : </b> {skeMuscelLegs}  </label>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
-          <div className="row justify-content-center mt-4">
-            <div className="col-lg-10">
-                <div className="row addlist-frm">
-                    <div className="col-lg-12 mb-1">
-                        <div className='clinical'>
-                            <h5><b>CT SMI</b></h5>
-                        </div>
-                    </div> 
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>CT skeletal muscle area : </b> {ctSkeletal}</label>                           
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Mercuri stage : </b> {mercuriStage}</label>                     
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="from-group">
-                            <label><b>Mean attenuation value : </b> {meanAttenuation}</label>                    
-                        </div>
-                    </div> 
-                </div>
-            </div>
-          </div>  
+          </div>      
           <div className='row mt-4'>
             <div className='col-lg-12'>
               <div className='subbtn text-center'>

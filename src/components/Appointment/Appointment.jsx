@@ -99,10 +99,9 @@ export const Appointment = () => {
   const role = useSelector((states) => states.auth.role);
   const [doctorId, setDoctorId] = useState(roleUser?._id); 
   const [indivisualDoctor, setIndivisualDoctor] = useState("");
- console.log(appointArr , "appointArr");
 
-  const checkAvailability = appointArr.find(el=> el.availability == availability);
-console.log(checkAvailability, "checkAvailability");
+ // const checkAvailability = appointArr.find(el=> el.availability == availability);
+
   const handleSubmitAppointment = (date,time) => {
     let obj = {
       selectedTime:time,
