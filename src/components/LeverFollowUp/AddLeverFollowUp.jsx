@@ -4,36 +4,24 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { rolesObj } from '../../utils/roles';
-// import { LEVERPERDETAILAdd, LEVERPERDETAILGet, SETLEVERPERDETAILObj, LEVERPERDETAILUpdate,} from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
+import { LEVERFOLLOWUPAdd, SETLEVERFOLLOWUPObj, LEVERFOLLOWUPUpdate } from "../../redux/actions/LeverFollowup/LeverFollowup.actions";
 
 export const AddLeverFollowUp = () => {
+    
+    const dispatch = useDispatch();
 
-    // const role = useSelector((states) => states.auth.role);
-    // const user = useSelector((states) => states.auth.user);
-    // const roleUser = useSelector((states) => states.auth.user.roleUser);
-
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
-
-    // const leverObj = useSelector((states)=> states.leverPerDetail.leverPerDetailObj);
+    const leverFolloObj = useSelector((states) =>states.leverFollowup.leverfollowupObj);
 
     const [searchParams, setSearchParams] = useSearchParams("edit");
     const [name, setName] = useState("");
     const [enrollDate, setEnrollDate] = useState("");
     const [email, setEmail] = useState("");
     const [contact, setContact] = useState("");
-    const [password, setPassword] = useState("");
-    const [conPassword, setConPassword] = useState("");
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
     const [height, setHeight] = useState("");
     const [weight, setWeight] = useState("");
     const [bmi, setBmi] = useState("");
-    const [address, setAddress] = useState("");
-    const [hodId, setHodId] = useState("");
-    const [doctorId, setDoctorId] = useState("");
-    const [service, setService] = useState("");
-
     const [asymptomatic, setAsymptomatic] = useState("");
     const [malaise, setMalaise] = useState("");
     const [fatigue, setFatigue] = useState("");
@@ -57,7 +45,6 @@ export const AddLeverFollowUp = () => {
     const [height_2, setHeight_2] = useState("");
     const [bmi_2, setBmi_2] = useState("");
     const [bloodPressure, setBloodPressure] = useState("");
-
     const [hbsag, setHbsag] = useState("");
     const [antiLgmHav, setAntiLgmHav] = useState("");
     const [antiLgmHev, setAntiLgmHev] = useState("");
@@ -117,6 +104,207 @@ export const AddLeverFollowUp = () => {
     const [ekpa, setEkpa] = useState("");
     const [hai, setHai] = useState("");
     const [stage, setStage] = useState("");
+  
+    const handleLeverFollowup = () =>{
+        let obj = {
+            name  , 
+            enrollDate ,
+            email ,
+            contact ,
+            age ,
+            gender ,
+            height ,
+            weight ,
+            bmi ,
+            asymptomatic ,
+            malaise ,
+            fatigue ,
+            ruqPain ,
+            pruritus ,
+            jaundice ,
+            hepatitis ,
+            recurrentFever ,
+            priorSurgery , 
+            giBleed ,
+            antiviralTherapy ,
+            drugUsed ,
+            dentalExposure ,
+            renalTx ,
+            alcohol ,
+            day ,
+            week ,
+            years ,
+            familyHistory ,
+            weight_2 ,
+            height_2 ,
+            bmi_2 ,
+            bloodPressure ,
+            hbsag ,
+            antiLgmHav ,
+            antiLgmHev ,
+            hbvDna ,
+            ana ,
+            ama ,
+            antiHcv ,
+            antiLkm ,
+            antiSma ,
+            hcvrna ,
+            tsh ,
+            bldSugarf ,
+            cerulopslamin ,
+            hiv ,
+            bldSugarpp ,
+            pt ,
+            pti ,
+            inr ,
+            hb ,
+            tlc ,
+            platelets ,
+            sbil ,
+            ast ,
+            alt ,
+            albumin ,
+            globulin ,
+            sap ,
+            ggt ,
+            bloodUrea ,
+            creatinine ,
+            ferritin ,
+            iron ,
+            tibc ,
+            copper ,
+            others ,
+            triglyceride ,
+            ldl ,
+            hdl ,
+            vldl ,
+            afp ,
+            endoscopy ,
+            usgAbdomen ,
+            fibroscan ,
+            biopsy ,
+            varices ,
+            grades ,
+            stomach ,
+            duodenum ,
+            liverSpan ,
+            steatosis ,
+            splenomegaly ,
+            collaterals ,
+            pvDiameter ,
+            ascites ,
+            sol ,
+            cap ,
+            ekpa ,
+            hai ,
+            stage ,
+        }
+        if(leverFolloObj?._id){
+            dispatch(LEVERFOLLOWUPUpdate(leverFolloObj?._id , obj ));
+            toast.success("Lever Followup Updated")
+        }else{
+            dispatch(LEVERFOLLOWUPAdd(obj));
+            toast.success("Lever FollowUp Added ");
+        }
+        
+    }
+
+
+    useEffect(()=>{
+        if(leverFolloObj){
+            setName(leverFolloObj?.name);
+            setEnrollDate(leverFolloObj?.enrollDate);
+            setEmail(leverFolloObj?.email);
+            setContact(leverFolloObj?.contact);
+            setAge(leverFolloObj?.age);
+            setGender(leverFolloObj?.gender);
+            setHeight(leverFolloObj?.height);
+            setWeight(leverFolloObj?.weight);
+            setBmi(leverFolloObj?.bmi);
+            setAsymptomatic(leverFolloObj?.asymptomatic);
+            setMalaise(leverFolloObj?.malaise);
+            setFatigue(leverFolloObj?.fatigue);
+            setRuqPain(leverFolloObj?.ruqPain);
+            setPruritus(leverFolloObj?.pruritus);
+            setJaundice(leverFolloObj?.jaundice);
+            setHepatitis(leverFolloObj?.hepatitis);
+            setRecurrentFever(leverFolloObj?.recurrentFever);
+            setPriorSurgery(leverFolloObj?.priorSurgery);
+            setGiBleed(leverFolloObj?.giBleed);
+            setAntiviralTherapy(leverFolloObj?.antiviralTherapy);
+            setDrugUsed(leverFolloObj?.drugUsed) ;
+            setDentalExposure(leverFolloObj?.dentalExposure) ;
+            setRenalTx(leverFolloObj?.renalTx) ; 
+            setAlcohol(leverFolloObj?.alcohol) ;
+            setDay(leverFolloObj?.day) ;
+            setWeek(leverFolloObj?.week) ;
+            setYears(leverFolloObj?.years) ;
+            setFamilyHistory(leverFolloObj?.familyHistory) ;
+            setWeight_2(leverFolloObj?.weight_2) ;
+            setHeight_2(leverFolloObj?.height_2) ;
+            setBmi_2(leverFolloObj?.bmi_2) ;
+            setBloodPressure(leverFolloObj?.bloodPressure) ;
+            setHbsag(leverFolloObj?.hbsag) ;
+            setAntiLgmHav(leverFolloObj?.antiLgmHav) ;
+            setAntiLgmHev(leverFolloObj?.antiLgmHev) ;
+            setHbvDna(leverFolloObj?.hbvDna) ;
+            setAna(leverFolloObj?.ana) ; 
+            setAma(leverFolloObj?.ama) ;
+            setAntiHcv(leverFolloObj?.antiHcv) ;
+            setAntiLkm(leverFolloObj?.antiLkm) ;
+            setAntiSma(leverFolloObj?.antiSma) ;
+            setHcvrna(leverFolloObj?.hcvrna) ;
+            setTsh(leverFolloObj?.tsh) ;
+            setBldSugarf(leverFolloObj?.bldSugarf) ;
+            setCerulopslamin(leverFolloObj?.cerulopslamin) ;
+            setHiv(leverFolloObj?.hiv) ;
+            setBldSugarpp(leverFolloObj?.bldSugarpp) ;
+            setPt(leverFolloObj?.pt) ;
+            setPti(leverFolloObj?.pti) ;
+            setInr(leverFolloObj?.inr) ;
+            setHb(leverFolloObj?.hb) ;
+            setTlc(leverFolloObj?.tlc) ;
+            setPlatelets(leverFolloObj?.platelets) ;
+            setSbil(leverFolloObj?.sbil) ;
+            setAst(leverFolloObj?.ast) ;
+            setAlt(leverFolloObj?.alt) ;
+            setAlbumin(leverFolloObj?.albumin) ;
+            setGlobulin(leverFolloObj?.globulin) ;
+            setSap(leverFolloObj?.sap) ;
+            setGgt(leverFolloObj?.ggt) ;
+            setBloodUrea(leverFolloObj?.bloodUrea) ;
+            setCreatinine(leverFolloObj?.creatinine) ;
+            setFerritin(leverFolloObj?.ferritin) ;
+            setIron(leverFolloObj?.iron) ;
+            setTibc(leverFolloObj?.tibc) ;
+            setCopper(leverFolloObj?.copper) ;
+            setOthers(leverFolloObj?.others) ;
+            setTriglyceride(leverFolloObj?.triglyceride) ;
+            setLdl(leverFolloObj?.ldl) ;
+            setHdl(leverFolloObj?.hdl) ;
+            setVldl(leverFolloObj?.vldl) ;
+            setAfp(leverFolloObj?.afp) ;
+            setEndoscopy(leverFolloObj?.endoscopy) ;
+            setUsgAbdomen(leverFolloObj?.usgAbdomen) ;
+            setFibroscan(leverFolloObj?.fibroscan) ;
+            setBiopsy(leverFolloObj?.biopsy) ;
+            setVarices(leverFolloObj?.varices) ;
+            setGrades(leverFolloObj?.grades) ;
+            setStomach(leverFolloObj?.stomach) ;
+            setDuodenum(leverFolloObj?.duodenum) ;
+            setLiverSpan(leverFolloObj?.liverSpan) ;
+            setSteatosis(leverFolloObj?.steatosis) ;
+            setSplenomegaly(leverFolloObj?.splenomegaly) ;
+            setCollaterals(leverFolloObj?.collaterals) ;
+            setPvDiameter(leverFolloObj?.pvDiameter) ;
+            setAscites(leverFolloObj?.ascites) ;
+            setSol(leverFolloObj?.sol) ;
+            setCap(leverFolloObj?.cap) ;
+            setEkpa(leverFolloObj?.ekpa) ;
+            setHai(leverFolloObj?.hai) ;
+            setStage(leverFolloObj?.stage) ;
+        }
+    },[leverFolloObj]);
 
     const genderDrop = [
         { value: "select", label: "Select" },
@@ -153,7 +341,7 @@ export const AddLeverFollowUp = () => {
                         </div>
                         <div className="col-lg-4 text-end">
                             <div className='btnlist'>
-                                <Link to="/lever-list" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+                                <Link to="/LeverFollowUp/viewfollowup" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
                             </div>
                         </div>
                     </div>
@@ -404,19 +592,19 @@ export const AddLeverFollowUp = () => {
                                     <div className='col-lg-4'>
                                         <div className='from-group'>
                                             <label>Wt (Kg) </label>
-                                            <input type="text" className='form-control' value={weight} onChange={(el) => { setWeight(el.target.value) }} />
+                                            <input type="text" className='form-control' value={weight_2} onChange={(el) => { setWeight_2(el.target.value) }} />
                                         </div>
                                     </div>
                                     <div className='col-lg-4'>
                                         <div className='from-group'>
                                             <label>Ht (cm) </label>
-                                            <input type="text" className='form-control' value={height} onChange={(el) => { setHeight(el.target.value) }} />
+                                            <input type="text" className='form-control' value={height_2} onChange={(el) => { setHeight_2(el.target.value) }} />
                                         </div>
                                     </div>
                                     <div className='col-lg-4'>
                                         <div className='from-group'>
                                             <label>BMI (Kg/cm2) </label>
-                                            <input type="text" className='form-control' value={bmi} onChange={(el) => { setBmi(el.target.value) }} />
+                                            <input type="text" className='form-control' value={bmi_2} onChange={(el) => { setBmi_2(el.target.value) }} />
                                         </div>
                                     </div>
                                     <div className='col-lg-4'>
@@ -814,9 +1002,15 @@ export const AddLeverFollowUp = () => {
                         </div>
                         <div className='row mt-4'>
                         <div className='col-lg-12'>
+                            {(leverFolloObj?._id)?
                             <div className='subbtn text-center'>
-                                <button className='btn btn-link' >Add Follow Up</button>
+                                <button className='btn btn-link' onClick={handleLeverFollowup} >Update Follow Up</button>
                             </div>
+                           :
+                            <div className='subbtn text-center'>
+                                <button className='btn btn-link' onClick={handleLeverFollowup} >Add Follow Up</button>
+                            </div>
+                            }
                         </div>
                     </div>
                     </div>

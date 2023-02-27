@@ -5,7 +5,7 @@ import { GrView } from "react-icons/gr";
 import { toast } from "react-hot-toast";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-// import { LEVERPERDETAILGet, LEVERPERDETAILDelete, SETLEVERPERDETAILObj } from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
+import { LEVERFOLLOWUPGet, SETLEVERFOLLOWUPObj, LEVERFOLLOWUPDelete } from "../../redux/actions/LeverFollowup/LeverFollowup.actions";
 import { Link ,useNavigate} from "react-router-dom";
 import { rolesObj } from "../../utils/roles";
 import { url } from "../../services/url.service";
@@ -14,41 +14,41 @@ export const AllLeverFollowUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [leverData, setLeverData] = useState();
+  const [setLeverData, setLeverFollowData] = useState();
 
-  const leverArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
+  const leverFollowArr = useSelector((states) => states.leverFollowup.leverfollowups);
   const role = useSelector((states) => states.auth.role);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
 
-//   const handleGet = ()=>{
-//     dispatch(LEVERPERDETAILGet());
-//   }
+  const handleGet = ()=>{
+    dispatch(LEVERFOLLOWUPGet());
+  }
 
-//   useEffect(() => { 
-//     handleGet();
-//   }, []);
+  useEffect(() => { 
+    handleGet();
+  }, []);
 
-//   useEffect(()=>{
-//     if(leverArr){
-//       setLeverData(leverArr);
-//     }
-//   },[leverArr]);
+  useEffect(()=>{
+    if(leverFollowArr){
+      setLeverFollowData(leverFollowArr);
+    }
+  },[leverFollowArr]);
 
-//   const handleCustomerEdit = (row) => {
-//     dispatch(SETLEVERPERDETAILObj(row));
-//     navigate(`/add-lever?edit=true&id=${row._id}`);
-//   };
+  const handleLeverEdit = (row) => {
+    dispatch(SETLEVERFOLLOWUPObj(row));
+    navigate("/LeverFollowUp/addfollowup");
+  };
   
-//   const handleCustomerDelete = (row) => {
-//     dispatch(LEVERPERDETAILDelete(row._id))
-//     dispatch(SETLEVERPERDETAILObj(null))
-//     toast.success("Patient deleted successfully");
-// };
+  const handleLeverDelete = (row) => {
+    dispatch(LEVERFOLLOWUPDelete(row._id))
+    dispatch(SETLEVERFOLLOWUPObj(null))
+    toast.success("FollowUp deleted successfully");
+};
 
-// const handleCustomerView = (row) => {
-//   dispatch(SETLEVERPERDETAILObj(row));
-//   navigate(`/show-lever-patient?edit=true&id=${row._id}`);
-// };
+const handleLeverView = (row) => {
+  dispatch(SETLEVERFOLLOWUPObj(row));
+  navigate("/LeverFollowUp/followupList");
+};
 
   return (
     <div className="content_wrapper">
@@ -69,13 +69,13 @@ export const AllLeverFollowUp = () => {
             <div className="col-lg-3 text-end">
             <div className='btnlist'>
               {(role == "ADMIN") ?
-              <a href={`${url}/leverPerDetail/downloadLeverData`} className="btn btn-defalut btn-md">Export Data</a>
-              : "" }
-            </div>
+              <a href={`${url}/leverFollowup/downloadLeverFollowupExcel`} className="btn btn-defalut btn-md">Export Data</a>
+              : "" }  
+            </div> 
             </div>
             <div className="col-lg-2 ">
             <div className='btnlist'>
-              <Link to="/add-lever" class="btn btn-defalut btn-md"> <BiUserPlus className="icon" /> Add Patient </Link>
+              <Link to="/LeverFollowUp/addfollowup" class="btn btn-defalut btn-md"> <BiUserPlus className="icon" /> Add FollowUp </Link>
             </div>
             </div>
           </div>
@@ -88,30 +88,30 @@ export const AllLeverFollowUp = () => {
               <th scope="col" className="text-center">S.NO</th>
               <th scope="col">Name of Patient</th>
               <th scope="col">Email</th>
-              <th scope="col">Gender</th>
+              <th scope="col">FollowUp Date</th>
               <th scope="col">Phone No.</th>            
               <th scope="col">Edit &nbsp; Delete &nbsp;View</th> 
             </tr>
           </thead>
           <tbody>
-            { leverData && leverData.map((item,index)=>(
+            { setLeverData && setLeverData.map((item,index)=>(
             <tr key={index}>
               <th scope="row" className="text-center">
                 {index+1}
               </th>
               <th scope="row">{item.name}</th>
-              <td>sdfsdfsd</td>
-              <td>adfsdfd</td>
-              <td>asfdsfd</td>
+              <td>{item.email}</td>
+              <td>{item.enrollDate}</td>
+              <td>{item.contact}</td>
               <td>
                 <span className="editlist">
-                  <FiEdit  />
+                  <FiEdit  onClick={(el)=>{handleLeverEdit(item)}}/>
                 </span>{" "}&nbsp;&nbsp;
                 <span className="delete_list">
-                <RiDeleteBin5Fill  />
+                  <RiDeleteBin5Fill onClick={(el)=>{handleLeverDelete(item)}}/>
                 </span>
                 <span className="editlist" style={{marginLeft:30}}>
-                <GrView />
+                  <GrView onClick={(el)=>{handleLeverView(item)}}/>
                 </span>{" "}
               </td>
             </tr>
