@@ -58,11 +58,10 @@ export const DOCTORGet = (formData) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_DOCTORS });
     let { data: response } = await getAllDoctors(formData);
-    console.log(response);
     if (response) {
       dispatch({
         type: GET_ALL_DOCTORS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total },
       });
     }
   } catch (err) {

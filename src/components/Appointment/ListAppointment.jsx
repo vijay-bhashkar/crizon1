@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { AiFillSchedule } from "react-icons/ai";
 import { BiUserPlus } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
@@ -12,11 +13,12 @@ useEffect(() => {
     handleGet()
   }, []);
 
+  const diseaseArr = useSelector((states) => states.disease.diseases);
   const appointArr = useSelector((states) => states.appointment.appointments);
-  const diseaseArr = useSelector((states) => states.hod.diseases);
+  // const diseaseArr = useSelector((states) => states.hod.diseases);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
   const role  =  useSelector((states)=> states.auth.role);
-console.log(appointArr, "appoint Arr");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -38,16 +40,15 @@ console.log(appointArr, "appoint Arr");
        firstDay = moment(firstDay).format('YYYY-MM-DD');
        lastDay = moment(lastDay).format('YYYY-MM-DD');
       query += `startDate=${firstDay}&lastDate=${lastDay}&doctorId=${docIID}`
-      console.log(query);
     }
     dispatch(APPOINTMENTGet(query));
   };
 
-  useEffect(()=>{
-    // const allIndivisualData = appointArr.filter(el=>el.doctorId == doctorId);
-      // setIndivisualDoctor(allIndivisualData);
-      // console.log(allIndivisualData , "all Indivisual Data");
-  },[appointArr]);
+  // useEffect(()=>{
+  //   const allIndivisualData = appointArr.filter(el=>el.doctorId == doctorId);
+  //     setIndivisualDoctor(allIndivisualData);
+  //     console.log(allIndivisualData , "all Indivisual Data");
+  // },[appointArr]);
  
   useEffect(() => {
     if (appointArr?.length) {
@@ -70,7 +71,12 @@ console.log(appointArr, "appoint Arr");
     const handleAppointDelete = (row) => {
       dispatch(APPOINTMENTDelete(row._id))
       dispatch(SETAPPOINTMENTObj(null))
-  }
+    }
+
+    const handleAppointSchedule = (row)=>{
+      dispatch(SETAPPOINTMENTObj(row));
+      navigate(`/appointmentform/${row.doctorFinalName}`);
+    }
 
   const options = [
     { value: "all", label: "All" },
@@ -94,7 +100,7 @@ console.log(appointArr, "appoint Arr");
             <div className="col-lg-4 text-end">
             <div className='viewadduser btnlist'>
             <div className='btnlist'>
-              <Link to="/" class="btn btn-defalut btn-md"><BiUserPlus className='icon'/> Add Appointment</Link>
+              <Link to="/appointmentform/64071d7b2caa35805f872d8b" class="btn btn-defalut btn-md"><BiUserPlus className='icon'/> Add Appointment</Link>
             </div>
            </div>
           </div>
@@ -120,11 +126,13 @@ console.log(appointArr, "appoint Arr");
                     <thead>
                       <tr>
                         <th scope="col">S.No.</th>
-                        {/* <th scope="col">Patient Name</th> */}
                         <th scope="col">Time</th>
                         <th scope="col">Date </th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Patient </th>
+                        <th scope="col">Doctor</th>
+                        <th scope="col">Availability</th>
                         <th scope="col">Edit & Delete</th>
+                        <th scope="col">Get Schedule</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -132,9 +140,10 @@ console.log(appointArr, "appoint Arr");
                       appointArr && appointArr.map((item,index) =>
                       <tr>
                         <th scope="row">{index+1}</th>
-                        {/* <th>{item.patientName}</th> */}
                         <td>{item.selectedTime}</td>
                         <td>{item.selectedDate}</td>
+                        <td><span className='status'>{item.patientName}</span></td>
+                        <td><span className='status'>{item.doctorFinalName}</span></td>
                         <td><span className='status'>{item.availability}</span></td>
                         <td>
                         <span className="editlist" style={{paddingLeft:16}}>
@@ -143,6 +152,14 @@ console.log(appointArr, "appoint Arr");
                         <span className="delete_list" style={{paddingLeft:16}}>
                          <RiDeleteBin5Fill onClick={(e)=>{handleAppointDelete(item)}}/>
                         </span>
+                        </td>
+                        <td>
+                        <span className="editlist" style={{paddingLeft:16}}>
+                         <Link to={"/appointmentform"}>
+                         <AiFillSchedule/>
+                          </Link> 
+                        </span>{" "}
+                        
                         </td>
                       </tr>
                     )}

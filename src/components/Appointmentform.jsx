@@ -114,7 +114,7 @@ export const Appointmentform = () => {
     let doctorName = doctorArr.find(el => el._id == doctor);
     setDoctorName(doctorName?.firstName);
     setSelectedTime(time);
-    setSelectedDate(date);
+    setSelectedDate(new Date(date));
     setDoctorFinalName(doctorName._id);
     console.log(doctorName , "doctor name");
   }
@@ -281,13 +281,12 @@ export const Appointmentform = () => {
                      { dateArray.map((date) =><td className="available" onClick={()=>{handleDoctor(date.date, el.time )}}>Available</td> )}
                      </tr> )})}
                      </tbody>
-                   </table>
-                     
+                     </table>
                       </div>
                       </div>
                       </div>
                       </div>
-                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -324,7 +323,7 @@ export const Appointmentform = () => {
               <input type="text" className="form-control" placeholder="Enter Time" value={selectedTime}/><br/>
               <input type="text" className="form-control" placeholder="Enter doctor" value={doctorName} />
               <div className="mt-3 btn_modal_submit">
-               <button type="button" class="btn btn-primary btn-block" data-bs-dismiss="modal" onClick={handleAppointment} style={{width:'100%'}}>Submit</button>
+               <button type="button" class="btn btn-primary btn-block" data-bs-dismiss="modal" onClick={()=>{handleAppointment()}} style={{width:'100%'}}>Submit</button>
               </div>
               </div>
               </Modal>

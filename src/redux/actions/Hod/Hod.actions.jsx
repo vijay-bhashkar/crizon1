@@ -54,7 +54,7 @@ export const HODGet = (formData) => async (dispatch) => {
     if (response) {
       dispatch({
         type: GET_ALL_HODS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total },
       });
     }
   } catch (err) {

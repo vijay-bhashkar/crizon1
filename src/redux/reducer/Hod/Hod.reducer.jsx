@@ -7,6 +7,7 @@ const initialState = {
   hodObj: null,
   loading: false,
   error: null,
+  total: null,
 };
 
 export const hodReducer = (state = initialState, action) => {
@@ -42,6 +43,7 @@ export const hodReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         hods: action.payload.data,
+        total: action.payload.total,
       };
 
    

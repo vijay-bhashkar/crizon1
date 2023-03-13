@@ -12,8 +12,6 @@ const Sidebar = () => {
   const role = useSelector((states) => states.auth.role);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
 
-  console.log(auth , "auth auth auth");
-
   useDispatch(loginUser());
   if (role == rolesObj.ADMIN) {
     return (
@@ -330,58 +328,6 @@ const Sidebar = () => {
         <div className="accordion-button">
           <h5><Link to="/Patients/PatientListView"> <BiUserPlus className="iconaccrion" /> <span>  View Detail</span> </Link></h5>
         </div>
-        {/* <div class="accordion" id="accordionExample">
-
-      <div class="accordion-item">
-        <h5 class="accordion-header" id="headingTwo">
-          <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#collapseTwo" aria-expanded="false"  aria-controls="collapseTwo"><BiUserPlus  className="iconaccrion" /> <span> View </span>
-          </span>
-        </h5>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-         <div class="accordion-body">
-            <ul>
-              <li><Link to="/Patients/Adddemographics">Add Patient</Link></li> 
-              <li> <Link to="/Patients/PatientListView"> View Detail </Link></li>
-              <li><Link to="/Patients/patientAppointment">Book Appointment</Link></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item">
-        <h5 class="accordion-header" id="headingthree">
-          <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#collapsethree" aria-expanded="false"  aria-controls="collapsethree"><BiUserPlus  className="iconaccrion" /> <span> Manage Follwoup </span>
-          </span>
-        </h5>
-        <div id="collapsethree" class="accordion-collapse collapse" aria-labelledby="headingthree" data-bs-parent="#accordionExample">
-         <div class="accordion-body">
-            <ul>
-              <li><Link to="/Addfollowup">Add Follwup</Link></li>
-              <li> <Link to="/ListView"> List Follwup </Link></li>
-              <li><Link to="/Addpatientdepression">Search Patient</Link></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      /* <div class="accordion-item">
-        <h5 class="accordion-header" id="headingsubAdmin">
-          <span class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesubAdmin" aria-expanded="true" aria-controls="collapsesubAdmin"><BiUserPlus  className="iconaccrion" />
-            <span>Manage Subadmin </span>
-          </span>
-        </h5>
-        <div id="collapsesubAdmin" class="accordion-collapse collapse show"  aria-labelledby="headingsubAdmin" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <ul>
-              <li> <Link to="/SubAdmin/AddSubAdmin" className=''> Create Sub Admin</Link></li>
-              <li> <Link to="/SubAdmin/ListView" className=''> List Sub Admin </Link></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div> */}
       </div>
     )
   }

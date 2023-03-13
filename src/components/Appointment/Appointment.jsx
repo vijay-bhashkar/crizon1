@@ -88,9 +88,10 @@ export const Appointment = () => {
       console.log(query);
     }
     dispatch(APPOINTMENTGet(query));
-   
   };
 
+  const diseaseArr = useSelector((states) => states.disease.diseases);
+  console.log(diseaseArr, "disease Array");
   const doctorArr = useSelector((states) => states.doctor.doctors);
   const appointObj = useSelector((states) => states.appointment.appointmentObj);
   const appointArr = useSelector((states) => states.appointment.appointments);

@@ -67,6 +67,7 @@ import { AddLeverHistory } from "../components/Lever/AddLeverHistory";
 import { EtiologicalWorkup } from "../components/Lever/EtiologicalWorkup";
 import { LeverList } from "../components/Lever/LeverList";
 import { SearchLeverPatient } from "../components/Lever/SearchLeverPatient";
+import { LeverPerPerson } from "../components/Lever/LeverPerPerson";
 
 import { ShowDetail } from "../components/Lever/Show/ShowDetail";
 import { ShowHistory } from "../components/Lever/Show/ShowHistory";
@@ -152,6 +153,7 @@ function AuthorizedRoutes() {
                       <Route path="/etiological-work-up" exact element={<EtiologicalWorkup />}></Route>
                       <Route path="/lever-list" exact element={<LeverList />}></Route>
                       <Route path="/search-lever-patient" exact element={<SearchLeverPatient />}></Route>
+                      <Route path="/lever-per-person/:id" exact element={<LeverPerPerson />}></Route>
 
                       <Route path="/show-lever-patient" exact element={<ShowDetail />}></Route>
                       <Route path="/show-lever-history" exact element={<ShowHistory />}></Route>

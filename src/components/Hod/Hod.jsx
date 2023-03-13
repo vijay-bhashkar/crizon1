@@ -16,6 +16,7 @@ useEffect(() => {
   }, []);
 
   const hodArr = useSelector((states) => states.hod.hods);
+  const totalHod = useSelector((states) => states.hod.total);
   const diseaseArr = useSelector((states) => states.hod.diseases);
  
   const dispatch = useDispatch();
@@ -26,19 +27,34 @@ useEffect(() => {
   const [disease , setDisease] =  useState("");
   const [doctor , setDoctor] =  useState("");
   const [search , setSearch] =  useState("");
+  const [limit , setLimit] = useState(2);
+  const [page , setPage] = useState(1);
+  const [total , setTotal] = useState(0);
+  let [totalPages , setTotalPages] = useState([]);
 
   const [allDisease , setAllDisease] = useState("");
   const [service, setService] = useState("");
   const [finalDisease, setFinalDisease] = useState("");
 
   const handleGet = () => {
-    dispatch(HODGet());
+    let query = "";
+      query += `limit=${limit}&page=${page}`;
+    dispatch(HODGet(query));
     dispatch(DISEASEGet());
   };
+
+  const handlePaginate = ()=>{
+    let query = "";
+    query += `limit=${limit}&page=${page}`;
+    dispatch(HODGet(query));
+  }
  
   useEffect(() => {
     if (hodArr?.length) {
       sethodMainArr(hodArr);
+      setTotal(totalHod);
+      let totalPages = totalHod/limit;
+      setTotalPages(Array(totalPages).fill(0).map((_,i)=>i));
       sethodDisplayArr(hodArr);
       }
     }, [hodArr]);
@@ -208,30 +224,20 @@ useEffect(() => {
             </div>
             <div className='container-fluid mt-5'>
               <div className='row justify-content-center'>
-                  <div className='col-lg-10'>
-                    <div className=' text-center'>
-                      <Link to="/Patientupcoming" className='nxt-btn'>Next</Link>
-                    </div>
-                  </div>
-                  <div className='col-lg-10 mt-5 text-center'>
+                  <div className='col-lg-10 text-center'>
                   <nav aria-label="Page navigation paginationnum example ">
                       <ul className="pagination justify-content-center text-center">
                         <li className="page-item">
                           <a className="page-link" href="#" aria-label="Previous">
                           <i className="fa fa-chevron-left" aria-hidden="true"></i>
                           </a>
-                        </li>
-                        <li className="page-item"><a className="page-link active"  href="#">1</a></li>
-                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                        <li className="page-item"><a className="page-link" href="#">4</a></li>
-                        <li className="page-item"><a className="page-link" href="#">5</a></li>
-                        <li className="page-item">
-                          <a className="page-link" href="#" aria-label="Next">
-                          <i className="fa fa-chevron-right" aria-hidden="true"></i>
-
-                          </a>
-                        </li>
+                      </li>
+                        { totalPages && totalPages.map((el)=><li className="page-item" onClick={(el)=>{handlePaginate()}}><a className="page-link active">{el+1}</a></li>)}
+                      <li className="page-item">
+                        <a className="page-link" href="#" aria-label="Next">
+                        <i className="fa fa-chevron-right" aria-hidden="true"></i>
+                        </a>
+                      </li>
                       </ul>
                     </nav>
                   </div>

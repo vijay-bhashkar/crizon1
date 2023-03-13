@@ -18,11 +18,24 @@ export const LeverList = () => {
 
   const leverArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
   const role = useSelector((states) => states.auth.role);
+  const user = useSelector((states)=> states.auth.user);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
 
-  const handleGet = ()=>{
-    dispatch(LEVERPERDETAILGet());
-  }
+  const handleGet = () => {
+    let query = "";
+    if(role == rolesObj.HOD){
+      query += `hod=${user?.roleUser?._id}`;
+    }
+    if(role == rolesObj.DOCTOR){
+      query += `doctor=${user?.roleUser?._id}`;
+    }
+    if(role == rolesObj.PATIENT){
+      query += `patient=${user?.roleUser?._id}`;
+    }
+    console.log(query, "query query");
+    dispatch(LEVERPERDETAILGet(query));
+    // dispatch(GETALLDisease());
+  };
 
   useEffect(() => { 
     handleGet();
