@@ -243,6 +243,7 @@ export const Editdemographics = () => {
         { value: "select", label: "Select" },
         { value: "Male", label: "Male" },
         { value: "Female", label: "Female" },
+        { value: "Other", label: "Other" },
     ]
 
     let AgeArray = Array.from({ length: 100 }, (v, k) => k + 1)
@@ -382,7 +383,7 @@ export const Editdemographics = () => {
                                             <input type="text" className='form-control ' value={parentName} onChange={(e) => { setParentName(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
-                                            <label>Sex<span>*</span></label>
+                                            <label>Gender<span>*</span></label>
                                             <select class="form-control" value={sex} onChange={(e) => { setSex(e.target.value) }}>
                                                 {gender && gender.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>

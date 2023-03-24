@@ -153,6 +153,7 @@ const options = [
     { value:"Select", label:"Select" },
     { value:"C. diff Infection", label:"C. diff Infection" },
     { value:"CMV", label:"CMV" },
+    { value:"EBV ", label:"EBV (Epstein–Barr virus ) " },
   ]
   const neurologicalDrop = [
     { value:"Select", label:"Select" },
