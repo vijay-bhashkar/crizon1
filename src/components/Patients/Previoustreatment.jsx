@@ -104,6 +104,11 @@ useEffect(() => {
     const [fmtStart, setFmtStart] = useState("");
     const [fmtEnd,   setFmtEnd] = useState("");
 
+    const [surgSpecify, setSurgSpecify] = useState("");
+    const [reasonSurgery, setReasonSurgery] = useState("");
+    const [treathold, setTreathold] = useState("");
+    const [diseaseComp, setDiseaseComp] = useState("");
+
     const [other, setOther] = useState("");
     // const [asa, setAsa] = useState("");
     const [preSurgery, setPreSurgery] = useState("");
@@ -209,7 +214,10 @@ useEffect(() => {
             end: fmtEnd,
         },
         other,
-        // asa,
+        surgSpecify,
+        reasonSurgery,
+        typeSurgery,
+        diseaseComp,
         preSurgery,
         sergeryDate,
         typeSurgery
@@ -306,6 +314,11 @@ useEffect(() => {
         setPreSurgery(preTreatObj?.preSurgery);
         setSergeryDate(preTreatObj?.sergeryDate);
         setTypeSurgery(preTreatObj?.typeSurgery);
+
+        setSurgSpecify(preTreatObj?.surgSpecify);
+        setReasonSurgery(preTreatObj?.reasonSurgery);
+        setTreathold(preTreatObj?.treathold);
+        setDiseaseComp(preTreatObj?.diseaseComp);
     }
    },[preTreatObj]);
 
@@ -378,10 +391,10 @@ useEffect(() => {
                     <h6>Dose</h6>
                     </div>
                     <div className='col'>
-                    <h6>Date Of Start</h6>
+                    <h6>Start Date</h6>
                     </div>
                     <div className='col'>
-                    <h6>Date Of End</h6>
+                    <h6>End Date</h6>
                     </div>
                 </div>
             </div>
@@ -808,41 +821,48 @@ useEffect(() => {
                     </div>
                 </div>
 
-                <div className='row addlist-frm mt-3'>
+                <div className='row addlist-frm mt-1'>
                     <div className='col-lg-2'></div>
+                    <div className='col-lg-5 ps-5'>
+                        <div className='from-group'>
+                            <label className='mt-3'>Reason Of Treatment Withhold</label>
+                            < input type="text" className='form-control' value={treathold} onChange={(e)=>{setTreathold(e.target.value)}} />
+                        </div>
+                    </div>
+                     <div className='col-lg-5 ps-5'>
+                        <div className='form-group'>
+                            <label className='mt-3'>Reason of Surgery</label>
+                            <select className='form-control' value={reasonSurgery} onChange={(e)=>{setReasonSurgery(e.target.value)}}>
+                                { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className='row addlist-frm mt-1'>
+                    <div className='col-lg-2'></div>
+                    <div className='col-lg-5 ps-5'>
+                        <div className='form-group'>
+                            <label>If Yes ( Please Specify ) </label>
+                            <input type="text" className='form-control' value={surgSpecify} onChange={(e)=>{setSurgSpecify(e.target.value)}} />
+                        </div>
+                    </div>
                     <div className='col-lg-5 ps-5'>
                         <div className='from-group'>
                             <label>Other</label>
                             <select className='form-control' value={other} onChange={(e)=>{setOther(e.target.value)}}>
                                 { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                             </select>
-                            {/* <Select options={options} placeholder="No" /> */}
                         </div>
                     </div>
-                    {/* <div className='col-lg-5'>
-                    <div className='from-group'>
-                            <label>5-ASA</label>
-                            <select className='form-control' value={asa} onChange={(e)=>{setAsa(e.target.value)}}>
-                                { asaDrop && asaDrop.map((ek)=><option value={ek.value}>{ek.label}</option>) }
-                            </select>
-                        </div>
-                    </div> */}
+                </div>
+                <div className='row addlist-frm mt-1'>
+                    <div className='col-lg-2'></div>
                      <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label>Previous surgery</label>
                             <select className='form-control' value={preSurgery} onChange={(e)=>{setPreSurgery(e.target.value)}}>
                                 { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                             </select>
-                            {/* <Select options={options} placeholder="No"  /> */}
-                        </div>
-                    </div>
-                </div>
-                <div className='row addlist-frm mt-1justify-content-end'>
-                    <div className='col-lg-2'></div>
-                    <div className='col-lg-5 ps-5'>
-                        <div className='form-group'> 
-                            <label>If Yes ( Date )</label>
-                            <input type="date" className='form-control' value={sergeryDate} onChange={(e)=>{setSergeryDate(e.target.value)}}/>
                         </div>
                     </div>
                     <div className='col-lg-5 ps-5'>
@@ -851,6 +871,22 @@ useEffect(() => {
                             <input type="text" className='form-control' value={typeSurgery} onChange={(e)=>{setTypeSurgery(e.target.value)}}/>
                         </div>
                     </div>
+                </div>
+                <div className='row addlist-frm mt-1justify-content-end'>
+                    <div className='col-lg-2'></div>
+                    <div className='col-lg-5 ps-5'>
+                        <div className='form-group'> 
+                            <label className='pt-2'>If Yes ( Date )</label>
+                            <input type="date" className='form-control' value={sergeryDate} onChange={(e)=>{setSergeryDate(e.target.value)}}/>
+                        </div>
+                    </div>
+                    <div className='col-lg-5 ps-5'>
+                        <div className='form-group'> 
+                            <label className='pt-2'>Disease Complications</label>
+                            <input type="text" className='form-control' value={diseaseComp} onChange={(e)=>{setDiseaseComp(e.target.value)}}/>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div className='row mt-4'>
                         <div className='col-lg-12'>

@@ -31,6 +31,24 @@ useEffect(() => {
     }
   }, [demograficObj]);
 
+useEffect(()=>{
+    let uceisScore = parseInt(vascularPattern)+parseInt(erosionUlcers)+parseInt(bleeding);
+    if(uceisScore <= 1){
+        setTotalScore("Remission");
+    }else if(uceisScore > 1 && uceisScore < 5){
+        setTotalScore("Mild");
+    }else if(uceisScore > 4 && uceisScore < 7){
+        setTotalScore("Moderate");
+    }else if(uceisScore > 6 && uceisScore < 9){
+        setTotalScore("Severe");
+    }
+})
+
+useEffect(()=>{
+    let stoolFrequ = parseInt(stoolFrequency)+parseInt(rectalBleeding)+parseInt(findEndoscopy)+parseInt(physicianGlobal);
+    console.log(stoolFrequ);
+})
+
 
 
 const [diarrhoea, setDiarrhoea] = useState("No");
@@ -136,6 +154,8 @@ const [bloodStool, setBloodStool] = useState("");
 const [generalBeing, setGeneralBeing] = useState("");
 const [manifestations, setManifestations] = useState("");
 const [totalScore_2, setTotalScore_2] = useState("");
+const [malignancy, setMalignancy] = useState("");
+const [malispecify, setMalispecify] = useState("");
 
 const handleAddClinicalHistory = ()=>{
     if(patientId == ""){
@@ -257,6 +277,8 @@ let obj = {
     generalBeing,
     manifestations,
     totalScore_2,
+    malignancy,
+    malispecify,
 }
 
     if (cliHistoryObj?._id) {
@@ -376,6 +398,8 @@ let obj = {
             setGeneralBeing(cliHistoryObj?.generalBeing);
             setManifestations(cliHistoryObj?.manifestations);
             setTotalScore_2(cliHistoryObj?.totalScore_2);
+            setMalignancy(cliHistoryObj?.malignancy);
+            setMalispecify(cliHistoryObj?.malispecify);
         }
     },[cliHistoryObj]);
 
@@ -404,56 +428,56 @@ let obj = {
 
     const stool = [
         { value:"select", label:"Select" },
-        { value:"0", label:"Normal no. of stools" },
-        { value:"1 to 2 stools more than normal", label:"1 to 2 stools more than normal" },
-        { value:"3 to 4 stools more than normal", label:"3 to 4 stools more than normal" },
-        { value:"5 or more stools more than normal", label:"5 or more stools more than normal" },
+        { value: 0 , label:"Normal no. of stools" },
+        { value: 1 , label:"1 to 2 stools more than normal" },
+        { value: 2 , label:"3 to 4 stools more than normal" },
+        { value: 3 , label:"5 or more stools more than normal" },
     ]
 
     const rectal = [
         { value:"select", label:"Select" },
-        { value:"0", label:"No blood seen" },
-        { value:"Streaks of blood with stool less than half the time", label:"Streaks of blood with stool less than half the time" },
-        { value:"Obvious blood with stool most of the time", label:"Obvious blood with stool most of the time" },
-        { value:"Blood alone passes", label:"Blood alone passes" },
+        { value: 0 , label:"No blood seen" },
+        { value: 1 , label:"Streaks of blood with stool less than half the time" },
+        { value: 2 , label:"Obvious blood with stool most of the time" },
+        { value: 3 , label:"Blood alone passes" },
     ] 
 
     const endoscopy = [
         { value:"select", label:"Select" },
-        { value:"0", label:"Normal or inactive disease"},
-        { value:"Mild disease(erythema,decreased vascular pattern,friability)", label:"Mild disease(erythema,decreased vascular pattern,friability)"},
-        { value:"Marked erythema,lack of vascular pattern,friability erosions)", label:"Marked erythema,lack of vascular pattern,friability erosions)"},
-        { value:"Severe disease(Spontaneous bleeding,ulceration)", label:"Severe disease(Spontaneous bleeding,ulceration)"},
+        { value: 0 , label:"Normal or inactive disease"},
+        { value: 1 , label:"Mild disease(erythema,decreased vascular pattern,friability)"},
+        { value: 2 , label:"Marked erythema,lack of vascular pattern,friability erosions)"},
+        { value: 3 , label:"Severe disease(Spontaneous bleeding,ulceration)"},
     ]
 
     const physician = [
         { value:"select", label:"Select" },
-        { value:"Normal", label:"Normal"},
-        { value:"Mild disease", label:"Mild disease"},
-        { value:"Moderate disease", label:"Moderate disease"},
-        { value:"Severe disease", label:"Severe disease"},
+        { value: 0 , label:"Normal"},
+        { value: 1 , label:"Mild disease"},
+        { value: 2 , label:"Moderate disease"},
+        { value: 3 , label:"Severe disease"},
     ]
 
     const ucies = [
         { value:"select", label:"Select" },
-        { value:"Normal ", label:"Normal " },
-        { value:"Patchy obliteration ", label:"Patchy obliteration " },
-        { value:"Obliterated ", label:"Obliterated " }, 
+        { value: 0 , label:"Normal " },
+        { value: 1 , label:"Patchy obliteration " },
+        { value: 2 , label:"Obliterated " }, 
     ]
 
     const erosins = [
         { value:"select", label:"Select" },
-        { value:"None ", label:"None " },
-        { value:"Erosions ", label:"Erosions " },
-        { value:"Superficial ulcer ", label:"Superficial ulcer " },
-        { value:"Deep ulcer ", label:"Deep ulcer " },
+        { value: 0, label:"None" },
+        { value: 1, label:"Erosions" },
+        { value: 2, label:"Superficial ulcer" },
+        { value: 3, label:"Deep ulcer" },
     ]
     const blood = [
         { value:"select", label:"Select" },
-        { value:"None ", label:"None " },
-        { value:"Mucosal ", label:"Mucosal " },
-        { value:"Luminal mild ", label:"Luminal mild " },
-        { value:"Luminal moderate or severe ", label:"Luminal moderate or severe " },
+        { value: 0, label:"None " },
+        { value: 1, label:"Mucosal " },
+        { value: 2, label:"Luminal mild " },
+        { value: 3, label:"Luminal moderate or severe " },
     ]
     const bowlDay = [
         { value:"select", label:"Select" },
@@ -985,6 +1009,15 @@ let obj = {
                                 </select>
                             </div>
                         </div>
+                        
+                        <div className='col-lg-6'>
+                            <div className='from-group'>
+                                <label>Relationship (Crohn's)</label>
+                                <select className='form-control' value={relationship} onChange={(e)=>{setRelationship(e.target.value)}}>
+                                    { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
+                                </select>
+                            </div>
+                        </div>
                         <div className='col-lg-6'>
                         <div className='from-group'>
                                 <label>Ulcerative Colitis (UC)</label>
@@ -995,18 +1028,24 @@ let obj = {
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
-                                <label>Relationship (Crohn's)</label>
-                                <select className='form-control' value={relationship} onChange={(e)=>{setRelationship(e.target.value)}}>
+                                <label>Relationship (Ulcerative)</label>
+                                <select className='form-control' value={relationship_2} onChange={(e)=>{setRelationship_2(e.target.value)}}>
                                     { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
                             </div>
                         </div>
                         <div className='col-lg-6'>
-                            <div className='from-group'>
-                                <label>Relationship (Ulcerative)</label>
-                                <select className='form-control' value={relationship_2} onChange={(e)=>{setRelationship_2(e.target.value)}}>
-                                    { relationships && relationships.map((el)=><option value={el.value}>{el.label}</option>) }
+                        <div className='from-group'>
+                                <label>Malignancy</label>
+                                <select className='form-control' value={malignancy} onChange={(e)=>{setMalignancy(e.target.value)}}>
+                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
+                            </div>
+                        </div>
+                        <div className='col-lg-6'>
+                            <div className='from-group'>
+                                <label>If Yes ( Specify )</label>
+                                <input type="text" className='form-control' value={malispecify} onChange={(e)=>{setMalispecify(e.target.value)}} />
                             </div>
                         </div>
                     </div>
@@ -1367,12 +1406,12 @@ let obj = {
                                 <input type="text" className='form-control' value={totaldisease} onChange={(e)=>{setTotaldisease(e.target.value)}}/>
                             </div>
                         </div>
-                        <div className='col-lg-6'>
+                        {/* <div className='col-lg-6'>
                         <div className='from-group'>
                                 <label>Physician's Global Assessment</label>
                                 <input type="text" className='form-control' value={globalAssessment} onChange={(e)=>{setGLobalAssessment(e.target.value)}}/>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className='row darkinput addlist-frm addlist-frm mt-4'>
                         <div className='col-lg-12 mb-1'>
@@ -1410,10 +1449,10 @@ let obj = {
                         <div className='col-lg-6'>
                             <div className='from-group'>
                                 <label>Total score</label>
-                                <select className='form-control' value={totalScore} onChange={(e)=>{setTotalScore(e.target.value)}}>
+                                {/* <select className='form-control' value={totalScore} onChange={(e)=>{setTotalScore(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
-                                </select>
-                                {/* <input type="text" className='form-control' /> */}
+                                </select> */}
+                                <input type="text" className='form-control' value={totalScore} onChange={(e)=>{setTotalScore(e.target.value)}} />
                             </div>
                         </div>
                     </div>

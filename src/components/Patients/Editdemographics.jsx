@@ -16,6 +16,9 @@ export const Editdemographics = () => {
     const [searchParams, setSearchParams] = useSearchParams("edit");
     const [ccfId, setCcfId] = useState("");
     const [enrollDate, setEnrollDate] = useState("");
+    const [dischargeDate, setDischargeDate] = useState("");
+    const [totalDay, setTotalDay] = useState("");
+    const [patientFrom, setPatientFrom] = useState("");
     const [patientName, setPatientName] = useState("");
     const [parentName, setParentName] = useState("");
     const [age, setAge] = useState("");
@@ -67,6 +70,16 @@ export const Editdemographics = () => {
         dispatch(DOCTORGet(query));
         dispatch(GETALLDoctor(query));
     }, []);
+
+    useEffect(()=> {
+        if(dischargeDate && enrollDate){
+            let startDate = new Date( dischargeDate );
+            let endDate = new Date( enrollDate );
+            let timeDiff = (startDate - endDate);
+            const dayDiff = timeDiff/(1000*3600*24);
+            setTotalDay(dayDiff);
+        }
+    })
 
     const role = useSelector((states) => states.auth.role);
     const user = useSelector((states) => states.auth.user);
@@ -123,6 +136,8 @@ export const Editdemographics = () => {
             let obj = {
                 ccfId,
                 enrollDate,
+                dischargeDate,
+                totalDay,
                 patientName,
                 parentName,
                 age,
@@ -170,6 +185,9 @@ export const Editdemographics = () => {
         if (demograficObj) {
             setCcfId(demograficObj?.ccfId);
             setEnrollDate(demograficObj?.enrollDate);
+            setDischargeDate(demograficObj?.dischargeDate);
+            setTotalDay(demograficObj?.totalDay);
+            setPatientFrom(demograficObj?.patientFrom);
             setPatientName(demograficObj?.patientName);
             setParentName(demograficObj?.parentName);
             setAge(demograficObj?.age);
@@ -267,6 +285,11 @@ export const Editdemographics = () => {
     const residenceDrop = [
         { value: "Urban", label: "Urban" },
         { value: "Rural", label: "Rural" },
+    ]
+
+    const patientDrop = [
+        { value: "Indor", label: "Indor" },
+        { value: "Outdor", label: "Outdor" }
     ]
 
     return (
@@ -375,8 +398,22 @@ export const Editdemographics = () => {
                                 <div className='col-lg-6'>
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
-                                            <label>Date of Enrollment<span></span></label>
+                                            <label>Date of Admission<span></span></label>
                                             <input type="date" className='form-control ' value={enrollDate} onChange={(e) => { setEnrollDate(e.target.value) }} />
+                                        </div>
+                                        <div className='from-group'>
+                                            <label>Date of Discharge<span></span></label>
+                                            <input type="date" className='form-control ' value={dischargeDate} onChange={(e) => { setDischargeDate(e.target.value) }} />
+                                        </div>
+                                        <div className='from-group'>
+                                            <label>Total No of Days<span></span></label>
+                                            <input type="string" className='form-control ' value={totalDay} onChange={(e) => { setTotalDay(e.target.value) }} />
+                                        </div>
+                                        <div className='from-group'>
+                                            <label>Patient From<span></span></label>
+                                            <select class="form-control" value={patientFrom} onChange={(e) => { setPatientFrom(e.target.value) }}>
+                                                {patientDrop && patientDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+                                            </select>
                                         </div>
                                         <div className='from-group'>
                                             <label>Father/Husband’s Name<span></span></label>

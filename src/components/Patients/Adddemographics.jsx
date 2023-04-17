@@ -14,6 +14,9 @@ export const Adddemographics = () => {
 
     const [ccfId, setCcfId] = useState("");
     const [enrollDate, setEnrollDate] = useState("");
+    const [dischargeDate, setDischargeDate] = useState("");
+    const [totalDay, setTotalDay] = useState("");
+    const [patientFrom, setPatientFrom] = useState("");
     const [patientName, setPatientName] = useState("");
     const [parentName, setParentName] = useState("");
     const [age, setAge] = useState("");
@@ -48,7 +51,6 @@ export const Adddemographics = () => {
     const [diseaseArr, setDiseaseArr] = useState("");
     const [hodArr, setHodArr] = useState("");
     const [doctorArr, setDoctorArr] = useState("");
-    
 
     useEffect(() => {
         let query = "";
@@ -66,6 +68,16 @@ export const Adddemographics = () => {
         dispatch(GETALLDoctor(query));
         dispatch(GETALLDisease());
     }, []);
+
+    useEffect(()=> {
+        if(dischargeDate && enrollDate){
+            let startDate = new Date( dischargeDate );
+            let endDate = new Date( enrollDate );
+            let timeDiff = (startDate - endDate);
+            const dayDiff = timeDiff/(1000*3600*24);
+            setTotalDay(dayDiff);
+        }
+    })
 
     useEffect(() => {
         dispatch(SETDEMOGRAFICObj());
@@ -103,6 +115,26 @@ export const Adddemographics = () => {
         }
     }, [hodRedux]);
 
+    useEffect(()=>{
+        let kuppuScore = parseInt(educationHead) + parseInt(monthlyIncome) + parseInt(occupationHead) ;
+        if( kuppuScore > 26 && kuppuScore < 29){
+            setTotalScore(kuppuScore);
+            setSocioEconomy("Upper (I)");
+        }else if( kuppuScore>16 && kuppuScore < 25){
+            setTotalScore(kuppuScore);
+            setSocioEconomy("Upper Middle (II)");
+        }else if( kuppuScore > 11 && kuppuScore < 15){
+            setTotalScore(kuppuScore);
+            setSocioEconomy("Lower Middle (III)");
+        }else if( kuppuScore > 5 && kuppuScore < 10){
+            setTotalScore(kuppuScore);
+            setSocioEconomy("Upper Lower (IV)");
+        }else if(kuppuScore < 5){
+            setTotalScore(kuppuScore);
+            setSocioEconomy("Lower (V)");
+        }
+    });
+
     useEffect(() => {
         if (doctorRedux) {
             setDoctorArr(doctorRedux);
@@ -134,19 +166,10 @@ export const Adddemographics = () => {
 
     const handleAddDemografic = () => {
 
-        if (ccfId == "" || ccfId == undefined) {
-            toast.error("CCF ID is mandatory")
-            return
-        } if (patientName == "" || patientName == undefined) {
+        if (patientName == "" || patientName == undefined) {
             toast.error("Patient Name is mandatory")
             return
-        } if (parentName == "" || parentName == undefined) {
-            toast.error("Father/Husband name is mandatory")
-            return
-        } if (sex == "" || sex == undefined) {
-            toast.error("Gender is mandatory")
-            return
-        } if (`${phoneNo}`.length != 10) {
+        }   if (`${phoneNo}`.length != 10) {
             toast.error("Phone number should be 10 digit")
             return
         } if (email == "" || email == undefined) {
@@ -183,6 +206,8 @@ export const Adddemographics = () => {
             let obj = {
                 ccfId,
                 enrollDate,
+                dischargeDate,
+                totalDay,
                 patientName,
                 parentName,
                 age,
@@ -230,6 +255,9 @@ export const Adddemographics = () => {
         if (demograficObj) {
             setCcfId(demograficObj?.ccfId);
             setEnrollDate(demograficObj?.enrollDate);
+            setDischargeDate(demograficObj?.dischargeDate);
+            setTotalDay(demograficObj?.totalDay);
+            setPatientFrom(demograficObj?.patientFrom);
             setPatientName(demograficObj?.patientName);
             setParentName(demograficObj?.parentName);
             setAge(demograficObj?.age);
@@ -261,35 +289,39 @@ export const Adddemographics = () => {
     }, [demograficObj]);
 
     const education = [
-        { value: "0", label: "Select Education Score" },
-        { value: "Profession or Honours 7", label: "Profession or Honours" },
-        { value: "Graduate or Post Graduate 6", label: "Graduate" },
-        { value: "Intermediate or Post High School Diploma 5", label: "Intermediate/Diploma" },
-        { value: "High School Certificate 4 ", label: "High School Certificate " },
-        { value: "Middle School Certificate 3 ", label: "Middle School Certificate " },
-        { value: "Primary School Certificate 2", label: " Primary School Certificate" },
-        { value: "Illiterate 1", label: "Illiterate " },
+        { value: 0, label: "Select Education Score" },
+        { value: 7, label: "Profession or Honours" },
+        { value: 6, label: "Graduate" },
+        { value: 5, label: "Intermediate/Diploma" },
+        { value: 4, label: "High School Certificate " },
+        { value: 3, label: "Middle School Certificate " },
+        { value: 2, label: " Primary School Certificate" },
+        { value: 1, label: "Illiterate " },
     ];
 
     const income = [
         { value: "0", label: "Select Monthly Family Income" },
-        { value: "27,654-46,089  3", label: "27,654-46,089" },
-        { value: "9,232-27,648", label: "9,232-27,648" },
-        { value: "≤9,226", label: "≤9,226" },
+        { value: 12, label: "≥184,376" },
+        { value: 10, label: "92,191-184,370" },
+        { value: 6, label: "68,967-92,185" },
+        { value: 4, label: "46,095-68,961" },
+        { value: 3, label: "27,654-46,089" },
+        { value: 2, label: "9,232-27,648" },
+        { value: 1, label: "≤9,226" },
     ];
 
     const occupation = [
         { value: "0", label: "Select Occupation Score.. " },
-        { value: "Legislators, Senior Officials & Managers 10", label: "Legislators, Senior Officials & Managers" },
-        { value: "Professionals 9", label: "Professionals" },
-        { value: "Technicians and Associate Professionals 8", label: "Technicians and Associate Professionals " },
-        { value: "Clerks  7", label: "Clerks" },
-        { value: "Skilled Workers and Shop & Market Sales Workers 6", label: "Skilled Workers and Shop & Market Sales Workers" },
-        { value: "Skilled Agricultural & Fishery Workers 5", label: "Skilled Agricultural & Fishery Workers " },
-        { value: "Craft & Related Trade Workers 4", label: "Craft & Related Trade Workers" },
-        { value: "Plant & Machine Operators and Assemblers 3", label: "Plant & Machine Operators and Assemblers" },
-        { value: "Elementary Occupation 2 ", label: "ElemElementary Occupationen " },
-        { value: "Unemployed 1", label: "Unemployed " },
+        { value: 10, label: "Legislators, Senior Officials & Managers" },
+        { value: 9, label: "Professionals" },
+        { value: 8, label: "Technicians and Associate Professionals " },
+        { value: 7, label: "Clerks" },
+        { value: 6, label: "Skilled Workers and Shop & Market Sales Workers" },
+        { value: 5, label: "Skilled Agricultural & Fishery Workers " },
+        { value: 4, label: "Craft & Related Trade Workers" },
+        { value: 3, label: "Plant & Machine Operators and Assemblers" },
+        { value: 2, label: "ElemElementary Occupationen " },
+        { value: 1, label: "Unemployed " },
     ];
 
     const gender = [
@@ -319,6 +351,11 @@ export const Adddemographics = () => {
     const residenceDrop = [
         { value: "Urban", label: "Urban" },
         { value: "Rural", label: "Rural" },
+    ]
+
+    const patientDrop = [
+        { value: "Indor", label: "Indor" },
+        { value: "Outdor", label: "Outdor" }
     ]
 
 
@@ -376,7 +413,7 @@ export const Adddemographics = () => {
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
                                             <label>CCF ID <span></span></label>
-                                            <input type="text" className='form-control' value={ccfId} onChange={(e) => { setCcfId(e.target.value) }} />
+                                            <input type="text" className='form-control' readOnly value={ccfId} onChange={(e) => { setCcfId(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Name <span></span></label>
@@ -416,6 +453,13 @@ export const Adddemographics = () => {
                                             <label>Year of onset of symptoms <span></span></label>
                                             <input type="text" className='form-control ' value={yearOfOnset} onChange={(e) => { setYearOfOnset(e.target.value) }} />
                                         </div>
+                                        <div className='from-group'>
+                                            <label>Area of residence </label>
+                                            <select className='form-control' value={areaOfResidence} onChange={(e) => { setAreaOfResidence(e.target.value) }}>
+                                                <option>Select Area</option>
+                                                {residenceDrop && residenceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+                                            </select>
+                                        </div>
                                         {/* {(role == rolesObj.ADMIN || role == rolesObj.HOD) ?
                                             <div className='from-group'>
                                                 <label>Doctor <span>*</span></label>
@@ -436,8 +480,22 @@ export const Adddemographics = () => {
                                 <div className='col-lg-6'>
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
-                                            <label>Date of Enrollment<span></span></label>
+                                            <label>Date of Admission<span></span></label>
                                             <input type="date" className='form-control ' value={enrollDate} onChange={(e) => { setEnrollDate(e.target.value) }} />
+                                        </div>
+                                        <div className='from-group'>
+                                            <label>Date of Discharge<span></span></label>
+                                            <input type="date" className='form-control ' value={dischargeDate} onChange={(e) => { setDischargeDate(e.target.value) }} />
+                                        </div>
+                                        <div className='from-group'>
+                                            <label>Total No of Days<span></span></label>
+                                            <input type="string" className='form-control ' value={totalDay} onChange={(e) => { setTotalDay(e.target.value) }} />
+                                        </div>
+                                        <div className='from-group'>
+                                            <label>Patient From<span></span></label>
+                                            <select class="form-control" value={patientFrom} onChange={(e) => { setPatientFrom(e.target.value) }}>
+                                                {patientDrop && patientDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+                                            </select>
                                         </div>
                                         <div className='from-group'>
                                             <label>Father/Husband’s Name<span></span></label>
@@ -471,13 +529,7 @@ export const Adddemographics = () => {
                                             <label>District<span></span></label>
                                             <input type="text" className='form-control' value={district} onChange={(e) => { setDistrict(e.target.value) }} />
                                         </div>
-                                        <div className='from-group'>
-                                            <label>Area of residence </label>
-                                            <select className='form-control' value={areaOfResidence} onChange={(e) => { setAreaOfResidence(e.target.value) }}>
-                                                <option>Select Area</option>
-                                                {residenceDrop && residenceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
-                                            </select>
-                                        </div>
+                                        
                                         {/* <div className='from-group'>
                                             <label>Service<span>*</span></label>
                                             <select className="form-control" value={service} onChange={(e)=>{onServiceFun(e.target.value)}}>
@@ -536,13 +588,13 @@ export const Adddemographics = () => {
                                 <div className='col-lg-6 addlist-frm mt-4'>
                                     <div className='from-group'>
                                         <label>Socioeconomic Class<span>*</span></label>
-                                        <input type="text" className='form-control ' value={socioEconomy} onChange={(e) => { setSocioEconomy(e.target.value) }} />
+                                        <input type="text" className='form-control' readOnly value={socioEconomy} onChange={(e) => { setSocioEconomy(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6 addlist-frm mt-4'>
                                     <div className='from-group'>
                                         <label>Total Score<span>*</span></label>
-                                        <input type="text" className='form-control ' value={totalScore} onChange={(e) => { setTotalScore(e.target.value) }} />
+                                        <input type="text" className='form-control' readOnly value={totalScore} onChange={(e) => { setTotalScore(e.target.value) }} />
                                     </div>
                                 </div>
                             </div>
