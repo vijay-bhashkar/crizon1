@@ -39,6 +39,8 @@ export const DEMOGRAFICAdd = (formData) => async (dispatch) => {
     console.log(response);
     if (response) {
       dispatch(SETDEMOGRAFICObj(response.data))
+      localStorage.setItem('items', JSON.stringify(response.data));
+
       dispatch({
         type: DEMOGRAFIC_ADD_SUCCESS,
         payload: response.message,

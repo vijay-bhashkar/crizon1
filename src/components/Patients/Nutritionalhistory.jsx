@@ -126,7 +126,8 @@ export const Nutritionalhistory = () => {
         toast.success(" Nutrition Updated Successfully ");
     } else {
       console.log(obj);
-      dispatch(NUTRITIONAdd(obj));
+      dispatch(NUTRITIONAdd(obj)); 
+      localStorage.setItem('nutriHisItems', JSON.stringify(obj));
       toast.success(" Nutrition Created Successfully ");
     }
     navigate("/Patients/investigations");

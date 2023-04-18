@@ -47,6 +47,9 @@ useEffect(()=>{
 useEffect(()=>{
     let stoolFrequ = parseInt(stoolFrequency)+parseInt(rectalBleeding)+parseInt(findEndoscopy)+parseInt(physicianGlobal);
     console.log(stoolFrequ);
+    if(stoolFrequ ){
+        setTotaldisease(stoolFrequ);
+    }
 })
 
 
@@ -281,12 +284,14 @@ let obj = {
     malispecify,
 }
 
+
     if (cliHistoryObj?._id) {
       dispatch(CLINICALHISTORYUpdate(cliHistoryObj._id, obj));
       dispatch(SETCLINICALHISTORYObj(null));
       toast.success(" Clinical History Updated Successfully ");
     } else {
       dispatch(CLINICALHISTORYAdd(obj));
+      localStorage.setItem('clinicHisItems', JSON.stringify(obj));
       toast.success(" Clinical History created Successfully ");
     }
       navigate("/Patients/previoustreatment");

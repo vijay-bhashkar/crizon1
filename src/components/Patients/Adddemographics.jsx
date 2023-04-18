@@ -146,7 +146,6 @@ export const Adddemographics = () => {
         if (diseaase) {
             let diseaseDoctor = doctorRedux.filter(el => el.disease === diseaase);
             setDoctorArr(diseaseDoctor);
-            console.log(diseaseDoctor, "diseaseDoctor , diseaseDoctor");
         }
     }
 
@@ -157,7 +156,6 @@ export const Adddemographics = () => {
             let doctorReduxArr = doctorRedux.filter(el => el.service === disease);
             setDiseaseArr(diseaseFilter);
             setDoctorArr(doctorReduxArr);
-            console.log(diseaseFilter, "diseaseFilter");
         }
     }
 
@@ -200,8 +198,6 @@ export const Adddemographics = () => {
         else {
             if (role == rolesObj.DOCTOR) {
                 setDoctor(roleUser._id);
-                console.log(roleUser, "roleUser");
-                console.log(doctor, "doctor id ");
             }
             let obj = {
                 ccfId,

@@ -112,6 +112,8 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       dispatch(SETTREATMENTObj(null))
     }else{
       dispatch(TREATMENTAdd(obj));
+      localStorage.setItem('treatmentItems', JSON.stringify(obj));
+
     }
       navigate("/Patients/infections");
   }

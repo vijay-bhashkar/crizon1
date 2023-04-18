@@ -187,6 +187,7 @@ const handleAddInvestigation = ()=> {
       toast.success(" Investigation Updated Successfully ");
     }else{
       dispatch(INVESTIGATIONAdd(obj));
+      localStorage.setItem('investigationItems', JSON.stringify(obj));
       toast.success(" Investigation Created Successfully ");
     }
       navigate("/Patients/treatment");

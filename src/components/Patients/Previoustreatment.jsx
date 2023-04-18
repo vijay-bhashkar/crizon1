@@ -227,6 +227,7 @@ useEffect(() => {
         dispatch(SETPREVIOUSTREATMENTObj(null))
     } else {
     dispatch(PREVIOUSTREATMENTAdd(obj));
+    localStorage.setItem('previousTreatItems', JSON.stringify(obj));
     }
     navigate("/Patients/nutritionalhistory");
 }
