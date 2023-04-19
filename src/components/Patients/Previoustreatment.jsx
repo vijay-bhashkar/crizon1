@@ -108,6 +108,7 @@ useEffect(() => {
     const [reasonSurgery, setReasonSurgery] = useState("");
     const [treathold, setTreathold] = useState("");
     const [diseaseComp, setDiseaseComp] = useState("");
+    const [indicaSurgery, setIndicaSurgery] = useState("");
 
     const [other, setOther] = useState("");
     // const [asa, setAsa] = useState("");
@@ -171,12 +172,12 @@ useEffect(() => {
             start:mpStart,
             end: mpEnd,
         },
-        tg:{
-            name:tgName,
-            dose:tgDose,
-            start:tgStart,
-            end: tgEnd,
-        },
+        // tg:{
+        //     name:tgName,
+        //     dose:tgDose,
+        //     start:tgStart,
+        //     end: tgEnd,
+        // },
         infliximab:{
             name:infliximabName,
             dose:infliximabDose,
@@ -220,7 +221,7 @@ useEffect(() => {
         diseaseComp,
         preSurgery,
         sergeryDate,
-        typeSurgery
+        indicaSurgery
     }
     if (preTreatObj?._id) {
         dispatch(PREVIOUSTREATMENTUpdate(preTreatObj._id, obj));
@@ -275,10 +276,10 @@ useEffect(() => {
         setMpStart(preTreatObj?.mp?.start);
         setMpEnd(preTreatObj?.mp?.end);
 
-        setTgName(preTreatObj?.tg?.name);
-        setTgDose(preTreatObj?.tg?.dose);
-        setTgStart(preTreatObj?.tg?.start);
-        setTgEnd(preTreatObj?.tg?.end);
+        // setTgName(preTreatObj?.tg?.name);
+        // setTgDose(preTreatObj?.tg?.dose);
+        // setTgStart(preTreatObj?.tg?.start);
+        // setTgEnd(preTreatObj?.tg?.end);
 
         setInfliximabName(preTreatObj?.infliximab?.name);
         setInfliximabDose(preTreatObj?.infliximab?.dose);
@@ -320,6 +321,7 @@ useEffect(() => {
         setReasonSurgery(preTreatObj?.reasonSurgery);
         setTreathold(preTreatObj?.treathold);
         setDiseaseComp(preTreatObj?.diseaseComp);
+        setIndicaSurgery(preTreatObj?.indicaSurgery);
     }
    },[preTreatObj]);
 
@@ -340,12 +342,6 @@ useEffect(() => {
         <div className="container-fluid">
             <div className="row align-items-center">
             <div className="col-lg-4">
-            {/* <div className='viewadduser'>
-                <ul >
-                    <li><BiUserPlus className='icon' /> <span>Add User</span></li>
-                    <li><AiOutlineUnorderedList className='icon' /> <span>Add User</span></li>
-                </ul>
-            </div> */}
             </div>
             <div className="col-lg-4">
             <h5 className="mb-0 text-center text-white">
@@ -626,7 +622,7 @@ useEffect(() => {
                     </div>
                 </div>
 
-                <div className='row addlist-frm align-items-center mt-2'>
+                {/* <div className='row addlist-frm align-items-center mt-2'>
                     <div className='col'>
                         <div>
                             <h3>6-TG</h3>
@@ -652,7 +648,7 @@ useEffect(() => {
                         <input type="date" className='form-control' value={tgEnd} onChange={(e)=>{setTgEnd(e.target.value)}}/>
                     </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='row addlist-frm align-items-center mt-2'>
                     <div className='col'>
@@ -827,13 +823,13 @@ useEffect(() => {
                     <div className='col-lg-5 ps-5'>
                         <div className='from-group'>
                             <label className='mt-3'>Reason Of Treatment Withhold</label>
-                            < input type="text" className='form-control' value={treathold} onChange={(e)=>{setTreathold(e.target.value)}} />
+                            < input type="text" className='form-control mt-1' value={treathold} onChange={(e)=>{setTreathold(e.target.value)}} />
                         </div>
                     </div>
                      <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label className='mt-3'>Reason of Surgery</label>
-                            <select className='form-control' value={reasonSurgery} onChange={(e)=>{setReasonSurgery(e.target.value)}}>
+                            <select className='form-control mt-1' value={reasonSurgery} onChange={(e)=>{setReasonSurgery(e.target.value)}}>
                                 { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                             </select>
                         </div>
@@ -844,13 +840,13 @@ useEffect(() => {
                     <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label>If Yes ( Please Specify ) </label>
-                            <input type="text" className='form-control' value={surgSpecify} onChange={(e)=>{setSurgSpecify(e.target.value)}} />
+                            <input type="text" className='form-control mt-1' value={surgSpecify} onChange={(e)=>{setSurgSpecify(e.target.value)}} />
                         </div>
                     </div>
                     <div className='col-lg-5 ps-5'>
                         <div className='from-group'>
                             <label>Other</label>
-                            <select className='form-control' value={other} onChange={(e)=>{setOther(e.target.value)}}>
+                            <select className='form-control mt-1' value={other} onChange={(e)=>{setOther(e.target.value)}}>
                                 { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                             </select>
                         </div>
@@ -861,7 +857,7 @@ useEffect(() => {
                      <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label>Previous surgery</label>
-                            <select className='form-control' value={preSurgery} onChange={(e)=>{setPreSurgery(e.target.value)}}>
+                            <select className='form-control mt-1' value={preSurgery} onChange={(e)=>{setPreSurgery(e.target.value)}}>
                                 { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                             </select>
                         </div>
@@ -869,7 +865,7 @@ useEffect(() => {
                     <div className='col-lg-5 ps-5'>
                         <div className='form-group'>
                             <label>Type of surgery</label>
-                            <input type="text" className='form-control' value={typeSurgery} onChange={(e)=>{setTypeSurgery(e.target.value)}}/>
+                            <input type="text" className='form-control mt-1' value={typeSurgery} onChange={(e)=>{setTypeSurgery(e.target.value)}}/>
                         </div>
                     </div>
                 </div>
@@ -878,25 +874,33 @@ useEffect(() => {
                     <div className='col-lg-5 ps-5'>
                         <div className='form-group'> 
                             <label className='pt-2'>If Yes ( Date )</label>
-                            <input type="date" className='form-control' value={sergeryDate} onChange={(e)=>{setSergeryDate(e.target.value)}}/>
+                            <input type="date" className='form-control mt-1' value={sergeryDate} onChange={(e)=>{setSergeryDate(e.target.value)}}/>
                         </div>
                     </div>
                     <div className='col-lg-5 ps-5'>
                         <div className='form-group'> 
                             <label className='pt-2'>Disease Complications</label>
-                            <input type="text" className='form-control' value={diseaseComp} onChange={(e)=>{setDiseaseComp(e.target.value)}}/>
+                            <input type="text" className='form-control mt-1' value={diseaseComp} onChange={(e)=>{setDiseaseComp(e.target.value)}}/>
                         </div>
                     </div>
-                    
+                </div>
+                <div className='row addlist-frm mt-1justify-content-end'>
+                <div className='col-lg-2'></div>
+                    <div className='col-lg-5 ps-5'>
+                        <div className='form-group'> 
+                            <label className='pt-2'>Indication of Surgery</label>
+                            <input type="text" className='form-control mt-1' value={indicaSurgery} onChange={(e)=>{setIndicaSurgery(e.target.value)}}/>
+                        </div>
+                    </div>
                 </div>
                 <div className='row mt-4'>
-                        <div className='col-lg-12'>
-                            <div className='subbtn text-center'>
-                                <Link to="../Patients/clinicalhistory" className='btn btn-link mx-4'>Previous</Link>
-                                <button className='btn btn-link' onClick={handleAddPreTreat}>Next</button>
-                            </div>
+                    <div className='col-lg-12'>
+                        <div className='subbtn text-center'>
+                        <Link to="../Patients/clinicalhistory" className='btn btn-link mx-4'>Previous</Link>
+                        <button className='btn btn-link' onClick={handleAddPreTreat}>Next</button>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
   </div>

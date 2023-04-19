@@ -338,7 +338,7 @@ export const Editdemographics = () => {
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
                                             <label>CCF ID <span></span></label>
-                                            <input type="text" className='form-control' value={ccfId} onChange={(e) => { setCcfId(e.target.value) }} />
+                                            <input type="text" className='form-control' readOnly value={ccfId} onChange={(e) => { setCcfId(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Name <span></span></label>
@@ -378,6 +378,13 @@ export const Editdemographics = () => {
                                             <label>Year of onset of symptoms <span></span></label>
                                             <input type="text" className='form-control ' value={onsetSymtomps} onChange={(e) => { setOnsetSymtomps(e.target.value) }} />
                                         </div>
+                                        <div className='from-group'>
+                                            <label>Area of residence </label>
+                                            <select className='form-control' value={residenceArea} onChange={(e) => { setResidenceArea(e.target.value) }}>
+                                                <option>Select Area</option>
+                                                {residenceDrop && residenceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+                                            </select>
+                                        </div>
 
                                         {/* {(role == rolesObj.ADMIN || role == rolesObj.HOD)?
                                 <div className='from-group'>
@@ -409,11 +416,10 @@ export const Editdemographics = () => {
                                             <label>Total No of Days<span></span></label>
                                             <input type="string" className='form-control ' value={totalDay} onChange={(e) => { setTotalDay(e.target.value) }} />
                                         </div>
+                                        
                                         <div className='from-group'>
-                                            <label>Patient From<span></span></label>
-                                            <select class="form-control" value={patientFrom} onChange={(e) => { setPatientFrom(e.target.value) }}>
-                                                {patientDrop && patientDrop.map((el) => <option value={el.value}>{el.label}</option>)}
-                                            </select>
+                                            <label>Confirm Password. <span>*</span></label>
+                                            <input type="text" className='form-control' value={conPassword} onChange={(e) => { setConPassword(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Father/Husband’s Name<span></span></label>
@@ -425,9 +431,12 @@ export const Editdemographics = () => {
                                                 {gender && gender.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>
                                         </div>
+                                        
                                         <div className='from-group'>
-                                            <label>Confirm Password. <span>*</span></label>
-                                            <input type="text" className='form-control' value={conPassword} onChange={(e) => { setConPassword(e.target.value) }} />
+                                            <label>Patient From<span></span></label>
+                                            <select class="form-control" value={patientFrom} onChange={(e) => { setPatientFrom(e.target.value) }}>
+                                                {patientDrop && patientDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+                                            </select>
                                         </div>
 
                                         <div className='from-group'>
@@ -449,13 +458,7 @@ export const Editdemographics = () => {
                                             <label>District<span></span></label>
                                             <input type="text" className='form-control' value={district} onChange={(e) => { setDistrict(e.target.value) }} />
                                         </div>
-                                        <div className='from-group'>
-                                            <label>Area of residence </label>
-                                            <select className='form-control' value={residenceArea} onChange={(e) => { setResidenceArea(e.target.value) }}>
-                                                <option>Select Area</option>
-                                                {residenceDrop && residenceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
-                                            </select>
-                                        </div>
+                                        
                                         {/* {(role == rolesObj.ADMIN) ?
                                             <div className='from-group'>
                                                 <label>Disease <span>*</span></label>

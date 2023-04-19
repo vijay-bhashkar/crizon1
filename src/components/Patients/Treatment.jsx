@@ -61,6 +61,9 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
   const [session_12, setSession_12] = useState("");
   const [surgery, setSurgery] = useState("");
   const [specify, setSpecify] = useState("");
+  const [death, setDeath] = useState("");
+  const [deathSpecify, setDeathSpecify] = useState("");
+  const [ebv, setEbv] = useState("");
 
   const handleAddTreatment = ()=>{
 
@@ -105,6 +108,9 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       session_12,
       surgery,
       specify,
+      death,
+      deathSpecify,
+      ebv,
     }
     console.log(obj);
     if (treatmentObj?._id) {
@@ -153,6 +159,9 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       setSession_12(treatmentObj?.session_12);
       setSurgery(treatmentObj?.surgery);
       setSpecify(treatmentObj?.specify);
+      setDeath(treatmentObj?.death);
+      setDeathSpecify(treatmentObj?.deathSpecify);
+      setEbv(treatmentObj?.ebv);
     }
 }, [treatmentObj]);
 
@@ -498,20 +507,46 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
                     </div>
               </div>
             </div>
-            <div className='row'>
+            <div className='row mt-4'>
+              <div className='col-lg-12 mb-1'>
+                <div className='clinical'>
+                  <h5>Surgery Outcome</h5>
+                </div>
+              </div>
               <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>Surgery</label>
                     <select className='form-control' value={surgery} onChange={(e)=>{setSurgery(e.target.value)}}>
                     { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                     </select>
-                    {/* <Select options={options} placeholder="No" /> */}
                 </div>
               </div>
                 <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>If Yes</label>
                   <input type="text" className='form-control' placeholder='Type of Sergery' value={specify} onChange={(e)=>{setSpecify(e.target.value)}}/>
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                  <label>Death</label>
+                    <select className='form-control' value={death} onChange={(e)=>{setDeath(e.target.value)}}>
+                    { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
+                    </select>
+                </div>
+              </div>
+                <div className='col-lg-6'>
+                <div className='from-group'>
+                  <label>If Yes</label>
+                  <input type="text" className='form-control' placeholder='Specify' value={deathSpecify} onChange={(e)=>{setDeathSpecify(e.target.value)}}/>
+                </div>
+              </div>
+              <div className='col-lg-6'>
+                <div className='from-group'>
+                  <label>EBV</label>
+                    <select className='form-control' value={ebv} onChange={(e)=>{setEbv(e.target.value)}}>
+                    { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
+                    </select>
                 </div>
               </div>
             </div>

@@ -260,7 +260,7 @@ useEffect(()=>{
 
        {(leverMainArr)?
        <div className="table_view_list">
-       <table class="table">
+       {/* <table class="table">
          <thead>
            <tr>
              <th scope="col" className="text-center">S.NO</th>
@@ -290,7 +290,7 @@ useEffect(()=>{
            )
          }
          </tbody>
-       </table>
+       </table> */}
      </div>
        :""}
 

@@ -159,6 +159,8 @@ const [manifestations, setManifestations] = useState("");
 const [totalScore_2, setTotalScore_2] = useState("");
 const [malignancy, setMalignancy] = useState("");
 const [malispecify, setMalispecify] = useState("");
+const [crc, setCrc] = useState("");
+const [crcSpecify, setCrcSpecify] = useState("");
 
 const handleAddClinicalHistory = ()=>{
     if(patientId == ""){
@@ -282,8 +284,9 @@ let obj = {
     totalScore_2,
     malignancy,
     malispecify,
+    crc,
+    crcSpecify,
 }
-
 
     if (cliHistoryObj?._id) {
       dispatch(CLINICALHISTORYUpdate(cliHistoryObj._id, obj));
@@ -405,6 +408,8 @@ let obj = {
             setTotalScore_2(cliHistoryObj?.totalScore_2);
             setMalignancy(cliHistoryObj?.malignancy);
             setMalispecify(cliHistoryObj?.malispecify);
+            setCrc(cliHistoryObj?.crc);
+            setCrcSpecify(cliHistoryObj?.crcSpecify);
         }
     },[cliHistoryObj]);
 
@@ -1051,6 +1056,20 @@ let obj = {
                             <div className='from-group'>
                                 <label>If Yes ( Specify )</label>
                                 <input type="text" className='form-control' value={malispecify} onChange={(e)=>{setMalispecify(e.target.value)}} />
+                            </div>
+                        </div>
+                        <div className='col-lg-6'>
+                        <div className='from-group'>
+                                <label>CRC</label>
+                                <select className='form-control' value={crc} onChange={(e)=>{setCrc(e.target.value)}}>
+                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
+                                </select>
+                            </div>
+                        </div>
+                        <div className='col-lg-6'>
+                            <div className='from-group'>
+                                <label>If Yes ( Specify )</label>
+                                <input type="text" className='form-control' value={crcSpecify} onChange={(e)=>{setCrcSpecify(e.target.value)}} />
                             </div>
                         </div>
                     </div>

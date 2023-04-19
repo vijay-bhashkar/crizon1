@@ -324,6 +324,7 @@ export const Adddemographics = () => {
         { value: "select", label: "Select" },
         { value: "Male", label: "Male" },
         { value: "Female", label: "Female" },
+        { value: "Other", label: "Other" },
     ]
 
     let AgeArray = Array.from({ length: 100 }, (v, k) => k + 1)
@@ -487,11 +488,10 @@ export const Adddemographics = () => {
                                             <label>Total No of Days<span></span></label>
                                             <input type="string" className='form-control ' value={totalDay} onChange={(e) => { setTotalDay(e.target.value) }} />
                                         </div>
+                                        
                                         <div className='from-group'>
-                                            <label>Patient From<span></span></label>
-                                            <select class="form-control" value={patientFrom} onChange={(e) => { setPatientFrom(e.target.value) }}>
-                                                {patientDrop && patientDrop.map((el) => <option value={el.value}>{el.label}</option>)}
-                                            </select>
+                                            <label>Confirm Password <span></span></label>
+                                            <input type="text" className='form-control' value={conPassword} onChange={(e) => { setConPassword(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Father/Husband’s Name<span></span></label>
@@ -503,10 +503,14 @@ export const Adddemographics = () => {
                                                 {gender && gender.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>
                                         </div>
+                                        
                                         <div className='from-group'>
-                                            <label>Confirm Password <span></span></label>
-                                            <input type="text" className='form-control' value={conPassword} onChange={(e) => { setConPassword(e.target.value) }} />
+                                            <label>Patient From<span></span></label>
+                                            <select class="form-control" value={patientFrom} onChange={(e) => { setPatientFrom(e.target.value) }}>
+                                                {patientDrop && patientDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+                                            </select>
                                         </div>
+
                                         <div className='from-group'>
                                             <label>Email. <span></span></label>
                                             <input type="email" className='form-control' value={email} onChange={(e) => { setEmail(e.target.value) }} />

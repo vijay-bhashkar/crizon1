@@ -5,12 +5,21 @@ import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { rolesObj } from '../../utils/roles';
 import { LEVERFOLLOWUPAdd, SETLEVERFOLLOWUPObj, LEVERFOLLOWUPUpdate } from "../../redux/actions/LeverFollowup/LeverFollowup.actions";
+import { LEVERPERDETAILGet } from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
 
 export const AddLeverFollowUp = () => {
     
     const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(LEVERPERDETAILGet());
+    },[])
 
-    const leverFolloObj = useSelector((states) =>states.leverFollowup.leverfollowupObj);
+    const leverFolloObj = useSelector((states) => states.leverFollowup.leverfollowupObj);
+    const leverPatientList = useSelector((states) => states.leverPerDetail.leverPerDetails);
+
+    const selectPatient = ()=>{
+
+    }
 
     const [searchParams, setSearchParams] = useSearchParams("edit");
     const [name, setName] = useState("");
@@ -310,6 +319,7 @@ export const AddLeverFollowUp = () => {
         { value: "select", label: "Select" },
         { value: "Male", label: "Male" },
         { value: "Female", label: "Female" },
+        { value: "Other", label: "Other" },
     ]
     const options = [
         { value: "select", label: "Select" },
@@ -362,11 +372,14 @@ export const AddLeverFollowUp = () => {
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
                                             <label>Name <span>*</span></label>
-                                            <input type="text" className='form-control' value={name} onChange={(el) => { setName(el.target.value) }} />
+                                            {/* <input type="text" className='form-control'  onChange={(el) => { setName(el.target.value) }} /> */}
+                                            <select className='form-control' value={name} onChange={(el) => {setName(el.target.value) }}>
+                                                {leverPatientList && leverPatientList.map((el)=><option value={el._id}>{el.name}</option>)}
+                                            </select>
                                         </div>
                                         <div className='from-group'>
                                             <label>Email<span>*</span></label>
-                                            <input type="text" className='form-control' value={email} onChange={(el) => { setEmail(el.target.value) }} />
+                                            <input type="email" className='form-control' value={email} onChange={(el) => { setEmail(el.target.value) }} />
                                         </div>
 
                                         <div className='from-group'>
