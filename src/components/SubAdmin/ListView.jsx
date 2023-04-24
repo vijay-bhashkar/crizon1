@@ -103,6 +103,29 @@ useEffect(() => {
           </tbody>
         </table>
       </div>
+      <div className='container-fluid my-5'>
+        <div className='row justify-content-center'>
+          <div className='col-lg-10 text-center'>
+            <nav aria-label="Page navigation paginationnum example ">
+              <ul className="pagination justify-content-center text-center">
+                <li className="page-item">
+                  <a className="page-link" href="#" aria-label="Previous">
+                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li className="page-item" ><a className="page-link active">1</a></li>
+                <li className="page-item" ><a className="page-link">2</a></li>
+                <li className="page-item" ><a className="page-link">3</a></li>
+                <li className="page-item">
+                  <a className="page-link" href="#" aria-label="Next">
+                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

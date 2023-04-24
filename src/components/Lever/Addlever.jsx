@@ -38,6 +38,7 @@ export const Addlever = () => {
         { value: "select", label: "Select" },
         { value: "Male", label: "Male" },
         { value: "Female", label: "Female" },
+        { value: "Other", label: "Other" },
     ]
 
     const onHandleSubmit = ()=>{

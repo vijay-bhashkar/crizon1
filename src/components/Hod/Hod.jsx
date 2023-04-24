@@ -27,7 +27,7 @@ useEffect(() => {
   const [disease , setDisease] =  useState("");
   const [doctor , setDoctor] =  useState("");
   const [search , setSearch] =  useState("");
-  const [limit , setLimit] = useState(2);
+  const [limit , setLimit] = useState(3);
   const [page , setPage] = useState(1);
   const [total , setTotal] = useState(0);
   let [totalPages , setTotalPages] = useState([]);
@@ -47,6 +47,7 @@ useEffect(() => {
     let query = "";
     query += `limit=${limit}&page=${page}`;
     dispatch(HODGet(query));
+    console.log(query, "aqaqaqaqaqaqaqaqaqaaqaaaa");
   }
  
   useEffect(() => {

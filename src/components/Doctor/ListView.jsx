@@ -166,8 +166,8 @@ const handleCustomerView = (row) => {
           }
           </tbody>
         </table>
-      </div>
-      <div className='container-fluid mt-5'>
+      
+      <div className='container-fluid my-5'>
         <div className='row justify-content-center'>
           <div className='col-lg-10 text-center'>
             <nav aria-label="Page navigation paginationnum example ">
@@ -187,6 +187,7 @@ const handleCustomerView = (row) => {
             </nav>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

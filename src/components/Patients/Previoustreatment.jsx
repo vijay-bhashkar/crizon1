@@ -221,7 +221,8 @@ useEffect(() => {
         diseaseComp,
         preSurgery,
         sergeryDate,
-        indicaSurgery
+        indicaSurgery,
+        treathold
     }
     if (preTreatObj?._id) {
         dispatch(PREVIOUSTREATMENTUpdate(preTreatObj._id, obj));

@@ -45,7 +45,7 @@ export const Editdemographics = () => {
     const [district, setDistrict] = useState("");
     const [state, setState] = useState("");
     const [residenceArea, setResidenceArea] = useState("");
-    const [onsetSymtomps, setOnsetSymtomps] = useState("");
+    const [yearOfOnset, setYearOfOnset] = useState("");
 
     const [diseaseArr, setDiseaseArr] = useState("");
     const [hodArr, setHodArr] = useState("");
@@ -162,7 +162,7 @@ export const Editdemographics = () => {
                 district,
                 state,
                 residenceArea,
-                onsetSymtomps
+                yearOfOnset
             };
             if (password != conPassword) {
                 toast.error("Password and Confirm Password Should Be Same");
@@ -214,7 +214,7 @@ export const Editdemographics = () => {
             setDistrict(demograficObj?.district);
             setState(demograficObj?.state);
             setResidenceArea(demograficObj?.residenceArea);
-            setOnsetSymtomps(demograficObj?.onsetSymtomps);
+            setYearOfOnset(demograficObj?.yearOfOnset);
         }
     }, [demograficObj]);
 
@@ -376,7 +376,7 @@ export const Editdemographics = () => {
                                         </div>
                                         <div className='from-group'>
                                             <label>Year of onset of symptoms <span></span></label>
-                                            <input type="text" className='form-control ' value={onsetSymtomps} onChange={(e) => { setOnsetSymtomps(e.target.value) }} />
+                                            <input type="text" className='form-control ' value={yearOfOnset} onChange={(e) => { setYearOfOnset(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
                                             <label>Area of residence </label>
