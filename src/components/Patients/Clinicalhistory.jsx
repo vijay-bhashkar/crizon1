@@ -46,9 +46,15 @@ useEffect(()=>{
 
 useEffect(()=>{
     let stoolFrequ = parseInt(stoolFrequency)+parseInt(rectalBleeding)+parseInt(findEndoscopy)+parseInt(physicianGlobal);
-    console.log(stoolFrequ);
     if(stoolFrequ ){
         setTotaldisease(stoolFrequ);
+    }
+})
+
+useEffect(()=>{
+    let sccaiFreq = parseInt(bowelFrequency)+parseInt(urgencyDefecation)+parseInt(bowelFrequency_2)+parseInt(bloodStool)+parseInt(generalBeing)+parseInt(manifestations);
+    if(sccaiFreq){
+        setTotalScore_2(sccaiFreq);
     }
 })
 
@@ -491,24 +497,24 @@ let obj = {
     ]
     const bowlDay = [
         { value:"select", label:"Select" },
-        { value:"1-3 ", label:"1-3 " },
-        { value:"4-7 ", label:"4-7 " },
-        { value:"7-9 ", label:"7-9 " },
-        { value:" >9 ", label:" >9 " },
+        { value:0 , label:"0-3 " },
+        { value:1, label:"4-6 " },
+        { value:2, label:"7-9 " },
+        { value:3, label:" >9 " },
     ]
     const bowlNight = [
         { value:"select", label:"Select" },
-        { value:"0 ", label:"0 " },
-        { value:"1-3 ", label:"1-3 " },
-        { value:"4-6 ", label:"4-6 " },
+        { value:0, label:"0" },
+        { value:1, label:"1-3 " },
+        { value:2, label:"4-6 " },
     ]
     const wellBeing = [
         { value:"select", label:"Select" },
-        { value:"Very Well", label:"Very Well" },
-        { value:"Slightly Below Par ", label:"Slightly Below Par " },
-        { value:"Poor ", label:"Poor " },
-        { value:"Very Poor ", label:"Very Poor " },
-        { value:"Terrible ", label:"Terrible " },
+        { value:0, label:"Very Well" },
+        { value:1, label:"Slightly Below Par " },
+        { value:2, label:"Poor " },
+        { value:3, label:"Very Poor " },
+        { value:4, label:"Terrible " },
     ]
     const urgrncy = [
         { value:"select", label:"Select" },
@@ -519,17 +525,26 @@ let obj = {
     ]
     const stoolBlood = [
         { value:"select", label:"Select" },
-        { value:"None ", label:"None " },
-        { value:"Trace ", label:"Trace " },
-        { value:"Ocassionlly Frank ", label:"Ocassionlly Frank " },
-        { value:"Usually Frank ", label:"Usually Frank " },
+        { value:0, label:"None " },
+        { value:1, label:"Trace " },
+        { value:2, label:"Ocassionlly Frank " },
+        { value:3, label:"Usually Frank " },
     ]
     const manifest = [
         { value:"select", label:"Select" },
-        { value:"Uvetis ", label:"Uvetis " },
-        { value:"Pyoderma Gangrenosum ", label:"Pyoderma Gangrenosum " },
-        { value:"Erythema Nodusum ", label:"Erythema Nodusum " },
-        { value:"Arthropathy ", label:"Arthropathy " },
+        { value:0, label:"No features" },
+        { value:1, label:"1 features " },
+        { value:2, label:"2 features " },
+        { value:3, label:"3 features" },
+        { value:4, label:"4 features" },
+        { value:5, label:"5 features" },
+    ]
+    const urgencyOfDefection = [
+        { value:"Select", label:"Select"},
+        { value:0, label:"No Urgency"},
+        { value:1, label:"Hurry"},
+        { value:2, label:"Immediately"},
+        { value:3, label:"Incontinence"},
     ]
 
   return (
@@ -1499,7 +1514,7 @@ let obj = {
                             <div className='from-group'>
                                 <label>Urgency Of Defecation</label>
                                 <select className='form-control' value={urgencyDefecation} onChange={(e)=>{setUrgencyDefecation(e.target.value)}}>
-                                    { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
+                                    { urgencyOfDefection && urgencyOfDefection.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
                                 {/* <Select options={options} placeholder="No"  /> */}
                             </div>
