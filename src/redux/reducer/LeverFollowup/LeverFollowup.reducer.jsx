@@ -8,6 +8,8 @@ const initialState = {
   leverfollowupObj: null,
   loading: false,
   error: null,
+  total: null,
+  paginateData: null,
 };
 
 export const leverFollowupReducer = (state = initialState, action) => {
@@ -43,6 +45,8 @@ export const leverFollowupReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         leverfollowups: action.payload.data,
+        total: action.payload.total,
+        paginateData: action.paginateObject,
       };
     case LEVERFOLLOWUP.GET_ALL_LEVERFOLLOWUPS_FAIL:
       toastError(action.payload);

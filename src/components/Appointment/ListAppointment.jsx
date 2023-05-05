@@ -3,6 +3,7 @@ import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { AiFillSchedule } from "react-icons/ai";
 import { BiUserPlus } from "react-icons/bi";
+import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
 import { APPOINTMENTGet, SETAPPOINTMENTObj, APPOINTMENTDelete } from "../../redux/actions/Appointment/Appointment.actions";
@@ -15,10 +16,12 @@ useEffect(() => {
 
   const diseaseArr = useSelector((states) => states.disease.diseases);
   const appointArr = useSelector((states) => states.appointment.appointments);
+  const totalAppoint = useSelector((states) => states.appointment.total);
+  const totalpage = useSelector((states) => states.appointment.totalPages);
   // const diseaseArr = useSelector((states) => states.hod.diseases);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
   const role  =  useSelector((states)=> states.auth.role);
-
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,6 +32,10 @@ useEffect(() => {
   const [search , setSearch] =  useState("");
   const [doctorId, setDoctorId] = useState(roleUser?._id); 
   const [indivisualDoctor, setIndivisualDoctor] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+  const [total, setTotal] = useState();
+  const [totalPages, setTotalPages] = useState();
 
   const handleGet = () => {
     let query = '';
@@ -41,6 +48,7 @@ useEffect(() => {
        lastDay = moment(lastDay).format('YYYY-MM-DD');
       query += `startDate=${firstDay}&lastDate=${lastDay}&doctorId=${docIID}`
     }
+    query+= `limit=${limit}&page=${page}`;
     dispatch(APPOINTMENTGet(query));
   };
 
@@ -51,10 +59,14 @@ useEffect(() => {
   // },[appointArr]);
  
   useEffect(() => {
-    if (appointArr?.length) {
+    if(appointArr?.length) {
       sethodMainArr(appointArr);
       setAppointDisplayArr(appointArr);
       }
+    if(totalAppoint && totalAppoint){
+      setTotalPages(totalpage);
+      // setTotal(totalpage);
+    }
     }, [appointArr]);
 
     useEffect(() => {
@@ -62,6 +74,13 @@ useEffect(() => {
         setDisease(diseaseArr);
         }
       }, [diseaseArr]);
+
+      useEffect(() => {
+        console.log(page)
+        if(page){
+          handleGet();
+        }
+      }, [page])
 
     const handleAppointEdit = (row) => {
       dispatch(SETAPPOINTMENTObj(row));
@@ -168,36 +187,24 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <div className='container-fluid mt-5'>
-              <div className='row justify-content-center'>
-                  <div className='col-lg-10'>
-                    <div className=' text-center'>
-                      <Link to="/Patientupcoming" className='nxt-btn'>Next</Link>
-                    </div>
-                  </div>
-                  <div className='col-lg-10 mt-5 text-center'>
-                  <nav aria-label="Page navigation paginationnum example ">
-                      <ul className="pagination justify-content-center text-center">
-                        <li className="page-item">
-                          <a className="page-link" href="#" aria-label="Previous">
-                          <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                          </a>
-                        </li>
-                        <li className="page-item"><a className="page-link active"  href="#">1</a></li>
-                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                        <li className="page-item"><a className="page-link" href="#">4</a></li>
-                        <li className="page-item"><a className="page-link" href="#">5</a></li>
-                        <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                        <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                        </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-              </div>
-            </div>
+            <div className='container-fluid my-5'>
+        <div className='row justify-content-center'>
+          <div className='col-lg-10 text-center'>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={totalPages}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
+          </div>
+        </div>
+      </div>
           </div>
       </div>
     </div>

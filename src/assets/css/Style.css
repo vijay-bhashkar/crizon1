@@ -778,3 +778,41 @@ td.listdate {
 .table_flex {
     display: flex;
 }
+.pagination_list li{
+    list-style: none;
+}
+.pagination_list{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.pagination_list .previous a{
+    text-decoration: none;
+    background-color: #141b4c;
+    padding: 10px 14px;
+    color: #fff;
+    width: 108px;
+    line-height: 18px;
+    border-radius: 5px;
+    height: 38px;
+}
+.pagination_list .next a{
+    text-decoration: none;
+    background-color: #141b4c;
+    padding: 10px 14px;
+    color: #fff;
+    width: 108px;
+    line-height: 18px;
+    border-radius: 5px;
+    height: 38px;
+}
+.pagination_list li a{
+    background-color: #4256d0;
+    padding: 13px;
+    border-radius: 64px;
+    width: 39px;
+    height: 39px;
+    color: #fff !important;
+    display: block;
+    line-height: 15px;
+}

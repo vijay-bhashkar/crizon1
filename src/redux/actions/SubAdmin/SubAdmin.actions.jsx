@@ -50,7 +50,7 @@ export const SUBADMINGet = (formData) => async (dispatch) => {
 
       dispatch({
         type: GET_ALL_SUBADMINS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total, totalPages: response.totalPages },
       });
     }
   } catch (err) {

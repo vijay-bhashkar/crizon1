@@ -4,6 +4,7 @@ import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { BiUserPlus } from "react-icons/bi";
+import ReactPaginate from 'react-paginate';
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { Link ,useNavigate} from 'react-router-dom';
@@ -27,11 +28,10 @@ useEffect(() => {
   const [disease , setDisease] =  useState("");
   const [doctor , setDoctor] =  useState("");
   const [search , setSearch] =  useState("");
-  const [limit , setLimit] = useState(3);
+  const [limit , setLimit] = useState(5);
   const [page , setPage] = useState(1);
   const [total , setTotal] = useState(0);
-  let [totalPages , setTotalPages] = useState([]);
-
+  const [totalPages , setTotalPages] = useState([]);
   const [allDisease , setAllDisease] = useState("");
   const [service, setService] = useState("");
   const [finalDisease, setFinalDisease] = useState("");
@@ -43,19 +43,19 @@ useEffect(() => {
     dispatch(DISEASEGet());
   };
 
-  const handlePaginate = ()=>{
-    let query = "";
-    query += `limit=${limit}&page=${page}`;
-    dispatch(HODGet(query));
-    console.log(query, "aqaqaqaqaqaqaqaqaqaaqaaaa");
-  }
- 
+  useEffect(() => {
+    console.log(page)
+    if(page){
+      handleGet();
+    }
+  }, [page])
+  
   useEffect(() => {
     if (hodArr?.length) {
       sethodMainArr(hodArr);
-      setTotal(totalHod);
-      let totalPages = totalHod/limit;
-      setTotalPages(Array(totalPages).fill(0).map((_,i)=>i));
+      setTotal(totalHod);  
+      let totalPages = Math.ceil(totalHod/limit);
+      setTotalPages(totalPages);
       sethodDisplayArr(hodArr);
       }
     }, [hodArr]);
@@ -83,7 +83,6 @@ useEffect(() => {
           sethodDisplayArr(hodArr);
         } else {
           let hodDisease = hodArr.filter(el => el.disease == disease);
-          console.log(hodDisease , "hodDisease,hodDisease");
           sethodDisplayArr(hodDisease);
         }
       }
@@ -191,7 +190,6 @@ useEffect(() => {
                         <th scope="col">Name of Doctor</th>
                         <th scope="col">Disease</th>
                         <th scope="col">Phone No.</th>
-                        {/* <th scope="col">Status</th> */}
                         <th scope="col">Edit & Delete & View</th>
                       </tr>
                     </thead>
@@ -203,7 +201,6 @@ useEffect(() => {
                         <th>{item?.firstName}</th>
                         <td>{item?.disease}</td>
                         <td>{item?.phone}</td>
-                        {/* <td><span className='status'> Active </span></td> */}
                         <td>
                         <span className="editlist" style={{paddingLeft:16}}>
                           <FiEdit onClick={(e)=>{handleHodEdit(item)}} />
@@ -223,27 +220,24 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <div className='container-fluid mt-5'>
-              <div className='row justify-content-center'>
-                  <div className='col-lg-10 text-center'>
-                  <nav aria-label="Page navigation paginationnum example ">
-                      <ul className="pagination justify-content-center text-center">
-                        <li className="page-item">
-                          <a className="page-link" href="#" aria-label="Previous">
-                          <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                          </a>
-                      </li>
-                        { totalPages && totalPages.map((el)=><li className="page-item" onClick={(el)=>{handlePaginate()}}><a className="page-link active">{el+1}</a></li>)}
-                      <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                        <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      </ul>
-                    </nav>
-                  </div>
-              </div>
-            </div>
+        <div className='container-fluid my-5'>
+        <div className='row justify-content-center'>
+          <div className='col-lg-10 text-center'>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={totalPages}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
+          </div>
+        </div>
+      </div>
 
           </div>
       </div>

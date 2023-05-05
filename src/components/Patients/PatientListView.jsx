@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
+import ReactPaginate from 'react-paginate';
 // import XLSX from "xlsx";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,23 +15,29 @@ import { url } from "../../services/url.service";
 export const PatientListView = () => {
 
   const demograficArr = useSelector((states) => states.demografic.demografics);
+  const paginatedObject = useSelector((states) => states.demografic.paginatedData);
   const diseaseArr = useSelector((states) => states.demografic.diseases);
   const role = useSelector((states) => states.auth.role);
   const user = useSelector((states) => states.auth.user);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
   const hodArr = useSelector((states) => states.hod.hods);
   const leverPerDetailArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
+  // const totalIbd = useSelector((states) => states.demografic.total);
 
   const [search, setSearch] = useState("");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [hodMainArr, sethodMainArr] = useState([]);
   const [demograficMainArr, setDemograficMainArr] = useState([]);
   const [service, setService] = useState("");
   const [finalDisease, setFinalDisease] = useState("");
   const [allDisease, setAllDisease] = useState("");
   const [leverMainArr, setLeverMainArr] = useState("");
+  const [limit, setLimit] = useState(5);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState("");
 
   const handleGet = () => {
     let query = "";
@@ -53,9 +60,28 @@ export const PatientListView = () => {
       dispatch(LEVERPERDETAILGet(leverQuery));
     }
 
+    query += `limit=${limit}&page=${page}`;
+    dispatch(DEMOGRAFICGet(query));
     dispatch(GETALLDisease());
   };
 
+  useEffect(() => {
+    if (page) {
+      handleGet();
+    }
+  }, [page])
+
+  useEffect(() => {
+    if (demograficArr?.length) {
+      sethodMainArr(demograficArr);
+      setDemograficMainArr(demograficArr);
+    }
+
+    if (paginatedObject && paginatedObject) {
+      setTotal(paginatedObject?.totalPages);
+      setTotalPages(paginatedObject?.totalPages);
+    }
+  }, [demograficArr]);
 
   useEffect(() => {
     dispatch(SETDEMOGRAFICObj({}))
@@ -65,7 +91,6 @@ export const PatientListView = () => {
   useEffect(() => {
     if (search) {
       let patientArr = demograficArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${search}`.toLowerCase()));
-      console.log(patientArr);
       setDemograficMainArr(patientArr);
     }
   })
@@ -130,7 +155,6 @@ export const PatientListView = () => {
         setDemograficMainArr(demograficArr);
       } else {
         const serviceGet = diseaseArr.filter(el => el.service == service);
-        // console.log(serviceGet , "serviceGet serviceGet");
         setAllDisease(serviceGet);
       }
     }
@@ -140,12 +164,6 @@ export const PatientListView = () => {
     dispatch(SETDEMOGRAFICObj(row));
     navigate("/Patients/ShowpatientDetail/" + row?._id);
   };
-
-  const options = [
-    { value: "all", label: "All" },
-    { value: "crohn's", label: "Crohn's" },
-    { value: "ulcerstive colitis", label: "Ulcerstive colitis" },
-  ];
 
   const serviceDrop = [
     { label: "All", value: "all" },
@@ -206,7 +224,7 @@ export const PatientListView = () => {
 
       <div className="table_view_list">
         <table class="table">
-          {(demograficMainArr?.length) ?
+          {(demograficMainArr && demograficMainArr?.length) ?
             <thead>
               <tr>
                 <th scope="col" className="text-center">S.NO</th>
@@ -214,7 +232,6 @@ export const PatientListView = () => {
                 <th scope="col">Parent Name</th>
                 <th scope="col">Age </th>
                 <th scope="col">Sex </th>
-                {/* <th scope="col">Status</th> */}
                 {(role == rolesObj.ADMIN || role == rolesObj.HOD || role == rolesObj.DOCTOR) ?
                   <th scope="col">Edit & Delete & View</th>
                   : <th scope="col">View</th>}
@@ -222,18 +239,16 @@ export const PatientListView = () => {
             </thead>
             : ""}
           <tbody>
+            {console.log(demograficMainArr, "==demograficMainArr==")}
             {
               demograficMainArr && demograficMainArr.map((item, index) => <tr>
                 <th scope="row" key={index} className="text-center">
                   {index + 1}
                 </th>
-                <th scope="row">{item.patientName}</th>
-                <td>{item.parentName}</td>
-                <td>{item.age}</td>
-                <td>{item.sex}</td>
-                {/* <td>
-              <span className="active">{item.status}</span>
-              </td> */}
+                <th scope="row">{item?.patientName}</th>
+                <td>{item?.parentName}</td>
+                <td>{item?.age}</td>
+                <td>{item?.sex}</td>
                 {(role == rolesObj.ADMIN || role == rolesObj.HOD || role == rolesObj.DOCTOR) ?
                   <td>
                     <span className="editlist" style={{ marginLeft: 20 }}>
@@ -296,23 +311,18 @@ export const PatientListView = () => {
       <div className='container-fluid my-5'>
         <div className='row justify-content-center'>
           <div className='col-lg-10 text-center'>
-            <nav aria-label="Page navigation paginationnum example ">
-              <ul className="pagination justify-content-center text-center">
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous">
-                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="page-item" ><a className="page-link active">1</a></li>
-                <li className="page-item" ><a className="page-link">2</a></li>
-                <li className="page-item" ><a className="page-link">3</a></li>
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Next">
-                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={total}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
           </div>
         </div>
       </div>

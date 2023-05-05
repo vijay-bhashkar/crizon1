@@ -24,8 +24,8 @@ export const AddHod = () => {
   const [securityQuest, setSecurityQuest] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [securityAns, setSecurityAns] = useState("");
-  const [verificationWord, setVerificationWord] = useState("");
-  const [conVerification, setConVerification] = useState("");
+  // const [verificationWord, setVerificationWord] = useState("");
+  // const [conVerification, setConVerification] = useState("");
   const [disease, setDisease] = useState("");
   const [diseaseArr, setDiseaseArr] = useState([]);
   const [obj, serObj] = useState([]);
@@ -120,8 +120,8 @@ const dispatch = useDispatch();
         zipCode,
         securityAns,
         disease,
-        verificationWord,
-        conVerification,
+        // verificationWord,
+        // conVerification,
         service
     };
     if(password != conPassword){
@@ -160,8 +160,8 @@ useEffect(() => {
         setSecurityQuest(hodObj?.securityQuest);
         setZipCode(hodObj?.zipCode);
         setSecurityAns(hodObj?.securityAns);
-        setVerificationWord(hodObj?.verificationWord);
-        setConVerification(hodObj?.specialization);
+        // setVerificationWord(hodObj?.verificationWord);
+        // setConVerification(hodObj?.specialization);
         setService(hodObj?.service);
         setDisease(hodObj?.disease);
     }
@@ -253,13 +253,7 @@ const serviceDrop = [
                                         { serviceDrop && serviceDrop.map((el)=><option value={el.value}>{el.label}</option>) }
                                     </select>
                                 </div>
-                                <div className='from-group'>
-                                    <label>Disease<span> *</span></label>
-                                    <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
-                                        <option>Please Select</option>
-                                        { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.disease}</option>) }
-                                    </select>
-                                </div>
+                                
                             </div>
                         </div>
                         <div className='col-lg-6'>
@@ -293,7 +287,14 @@ const serviceDrop = [
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
                                 </div>
-                                <div className='row'>
+                                <div className='from-group'>
+                                    <label>Disease<span> *</span></label>
+                                    <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
+                                        <option>Please Select</option>
+                                        { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.disease}</option>) }
+                                    </select>
+                                </div>
+                                {/* <div className='row'>
                                     <div className='col-lg-6'>
                                     <label>Verification Word*</label>
                                     <div className="input-group">
@@ -307,7 +308,7 @@ const serviceDrop = [
                                             <input type="text" className='form-control' value={conVerification} onChange={(e)=>{setConVerification(e.target.value)}}/>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

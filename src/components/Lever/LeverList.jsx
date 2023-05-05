@@ -3,6 +3,7 @@ import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 import { toast } from "react-hot-toast";
+import ReactPaginate from 'react-paginate';
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { LEVERPERDETAILGet, LEVERPERDETAILDelete, SETLEVERPERDETAILObj } from "../../redux/actions/LeverPerDetail/LeverPerDetail.actions";
@@ -15,8 +16,13 @@ export const LeverList = () => {
   const navigate = useNavigate();
 
   const [leverData, setLeverData] = useState();
+  const [limit, setLimit] = useState(5);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState("");
 
   const leverArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
+  const paginatedObject = useSelector((states) => states.leverPerDetail.paginatedData);
   const role = useSelector((states) => states.auth.role);
   const user = useSelector((states)=> states.auth.user);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
@@ -32,10 +38,29 @@ export const LeverList = () => {
     if(role == rolesObj.PATIENT){
       query += `patient=${user?.roleUser?._id}`;
     }
-    console.log(query, "query query");
+
+    query += `limit=${limit}&page=${page}`;
     dispatch(LEVERPERDETAILGet(query));
     // dispatch(GETALLDisease());
   };
+
+  useEffect(() => {
+    if (page) {
+      handleGet();
+    }
+  }, [page])
+
+  useEffect(() => {
+    console.log(leverArr, "==leverArr-----")
+    if (leverArr?.length) {
+      setLeverData(leverArr);
+    }
+
+    if (paginatedObject && paginatedObject) {
+      setTotal(paginatedObject?.totalPages);
+      setTotalPages(paginatedObject?.totalPages);
+    }
+  }, [leverArr]);
 
   useEffect(() => { 
     handleGet();
@@ -137,23 +162,18 @@ const handleCustomerView = (row) => {
       <div className='container-fluid my-5'>
         <div className='row justify-content-center'>
           <div className='col-lg-10 text-center'>
-            <nav aria-label="Page navigation paginationnum example ">
-              <ul className="pagination justify-content-center text-center">
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous">
-                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="page-item" ><a className="page-link active">1</a></li>
-                <li className="page-item" ><a className="page-link">2</a></li>
-                <li className="page-item" ><a className="page-link">3</a></li>
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Next">
-                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={total}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
           </div>
         </div>
       </div>

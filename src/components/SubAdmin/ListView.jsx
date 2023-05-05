@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from "react-redux";
 import { SUBADMINGet, SUBADMINDelete, SETSUBADMINObj } from "../../redux/actions/SubAdmin/SubAdmin.actions";
 import { GrView } from "react-icons/gr";
@@ -10,13 +11,22 @@ import { Link ,useNavigate} from "react-router-dom";
 export const SubAdminListview = () => {
 
 const subAdminArr = useSelector((states) => states.subAdmin.subAdmins);
+const totalSubadmin = useSelector((states) => states.subAdmin.total);
+const totalpage = useSelector((states) => states.subAdmin.totalPages);
 console.log(subAdminArr);
 
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const [customerMainArr, setCustomerMainArr] = useState([]);
+const [page, setPage] = useState(1);
+const [limit, setLimit] = useState(5);
+const [total, setTotal] = useState();
+const [totalPages, setTotalPages] = useState();
+
 const handleGet = () => {
-  dispatch(SUBADMINGet());
+  let query = "";
+  query+= `limit=${limit}&page=${page}`;
+  dispatch(SUBADMINGet(query));
 };
 
 useEffect(() => {
@@ -28,7 +38,16 @@ useEffect(() => {
   if (subAdminArr?.length) {
     setCustomerMainArr(subAdminArr);
     }
+    if(totalSubadmin && totalSubadmin){
+      setTotalPages(totalpage)
+    }
   }, [subAdminArr]);
+
+  useEffect(() => {
+    if (page) {
+      handleGet();
+    }
+  }, [page])
 
   const handleSubAdminEdit = (row) => {
     dispatch(SETSUBADMINObj(row));
@@ -106,23 +125,18 @@ useEffect(() => {
       <div className='container-fluid my-5'>
         <div className='row justify-content-center'>
           <div className='col-lg-10 text-center'>
-            <nav aria-label="Page navigation paginationnum example ">
-              <ul className="pagination justify-content-center text-center">
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous">
-                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="page-item" ><a className="page-link active">1</a></li>
-                <li className="page-item" ><a className="page-link">2</a></li>
-                <li className="page-item" ><a className="page-link">3</a></li>
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Next">
-                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={totalPages}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
           </div>
         </div>
       </div>

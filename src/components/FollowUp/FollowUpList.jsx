@@ -3,6 +3,7 @@ import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from "react-redux";
 import { FOLLOWUPGet, FOLLOWUPDelete, SETFOLLOWUPObj } from "../../redux/actions/FollowUp/FollowUp.actions";
 import { AiOutlineUnorderedList } from "react-icons/ai";
@@ -15,16 +16,42 @@ const dispatch = useDispatch();
 const navigate = useNavigate();
 const [followupMainArr, setFollowupMainArr] = useState([]);
 const [search, setSearch] = useState("");
+const [page, setPage] = useState(1);
+const [limit, setLimit] = useState(5);
+const [total, setTotal] = useState();
+const [totalPages, setTotalPages] = useState();
+
 const followupArr = useSelector((states)=> states.followup.followups);
+const paginateObj = useSelector((states)=> states.followup.paginatedData);
 const patientArr = useSelector((states)=> states.demografic.demografics);
+
 // console.log(patientArr ,"patientArr");
 const handleGet = () => {
-  dispatch(FOLLOWUPGet());
+  let query = {};
+  query =  `limit=${limit}&page=${page}`;
+  dispatch(FOLLOWUPGet(query));
 };
 
 useEffect(() => {
   handleGet()
   }, []);
+
+  useEffect(() => {
+    if (page) {
+      handleGet();
+    }
+  }, [page])
+
+useEffect(()=>{
+  if (followupArr?.length) {
+    setFollowupMainArr(followupArr);
+  }
+
+  if(paginateObj && paginateObj){
+    setTotal(paginateObj?.totalPages);
+    setTotalPages(paginateObj?.totalPages);
+  }
+},[paginateObj])
 
   useEffect(() => {
     if (followupArr?.length) {
@@ -95,8 +122,6 @@ useEffect(() => {
               <th scope="col">Patient FollowUp Id</th>
               <th scope="col">Disease Extend</th>
               <th scope="col">Followup Date</th>
-              {/* <th scope="col">Rectal Bleeding</th> */}
-              {/* <th scope="col">Status</th> */}
               <th scope="col">Edit & Delete & View</th> 
             </tr>
           </thead>
@@ -108,8 +133,6 @@ useEffect(() => {
               <th scope="row">{item.patientId}</th>
               <td>{item.diseaseExtend}</td>
               <td>{item.followUpDate}</td>
-              {/* <td>{item.rectalBleeding}</td> */}
-              {/* <td><span className="active">{item.status}</span></td> */}
               <td>
                 <span className="editlist">
                   <FiEdit onClick={(e)=>{handleFollowupEdit(item)}} />
@@ -130,23 +153,18 @@ useEffect(() => {
       <div className='container-fluid my-5'>
         <div className='row justify-content-center'>
           <div className='col-lg-10 text-center'>
-            <nav aria-label="Page navigation paginationnum example ">
-              <ul className="pagination justify-content-center text-center">
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous">
-                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="page-item" ><a className="page-link active">1</a></li>
-                <li className="page-item" ><a className="page-link">2</a></li>
-                <li className="page-item" ><a className="page-link">3</a></li>
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Next">
-                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={total}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
           </div>
         </div>
       </div>

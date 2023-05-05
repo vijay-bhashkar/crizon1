@@ -58,12 +58,16 @@ export const LEVERFOLLOWUPGet = (formData) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_LEVERFOLLOWUPS });
     let { data: response } = await getLeverFollowUp(formData);
-    console.log(response);
-    console.log("aaaa");
     if (response) {
       dispatch({
         type: GET_ALL_LEVERFOLLOWUPS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total },
+        paginateObject: {
+          page: response?.page,
+          limit: response?.limit,
+          total: response.total,
+          totalPages: response.totalPages
+        }
       });
     }
   } catch (err) {

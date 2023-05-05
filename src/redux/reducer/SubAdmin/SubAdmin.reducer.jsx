@@ -6,6 +6,8 @@ const initialState = {
   subAdminsObj: null,
   loading: false,
   error: null,
+  total: null,
+  totalPages: null,
 };
 
 export const subAdminReducer = (state = initialState, action) => {
@@ -41,6 +43,8 @@ export const subAdminReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         subAdmins: action.payload.data,
+        total: action.payload.total,
+        totalPages: action.payload.totalPages,
       };
     case SUBADMIN.GET_ALL_SUBADMINS_FAIL:
       toastError(action.payload);

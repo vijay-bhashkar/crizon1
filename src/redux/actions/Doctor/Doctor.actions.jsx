@@ -61,7 +61,7 @@ export const DOCTORGet = (formData) => async (dispatch) => {
     if (response) {
       dispatch({
         type: GET_ALL_DOCTORS_SUCCESS,
-        payload: { data: response.data, message: response.message, total:response.total },
+        payload: { data: response.data, message: response.message, total: response.total, totalPages: response.totalPages },
       });
     }
   } catch (err) {

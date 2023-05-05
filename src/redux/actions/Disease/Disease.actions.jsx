@@ -55,7 +55,7 @@ export const DISEASEGet = (formData) => async (dispatch) => {
     if (response) {
       dispatch({
         type: GET_ALL_DISEASES_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total: response.total, totalpages: response.totalpages },
       });
     }
   } catch (err) {

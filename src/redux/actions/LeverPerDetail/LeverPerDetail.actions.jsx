@@ -50,7 +50,13 @@ export const LEVERPERDETAILGet = (formData) => async (dispatch) => {
 
       dispatch({
         type: GET_ALL_LEVERPERDETAILS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total },
+        paginatedObj:{
+          page:response?.page,
+          perPage:response?.perPage,
+          total:response?.total,
+          totalPages:response?.totalPages,
+        }
       });
     }
   } catch (err) {

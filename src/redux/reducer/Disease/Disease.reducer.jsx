@@ -7,6 +7,8 @@ const initialState = {
   diseaseObj: null,
   loading: false,
   error: null,
+  total: null,
+  totalpages: null
 };
 
 export const diseaseReducer = (state = initialState, action) => {
@@ -42,6 +44,7 @@ export const diseaseReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         diseases: action.payload.data,
+        total : action.payload.total,
       };
     case DISEASE.GET_ALL_DISEASES_FAIL:
       // toastError(action.payload);

@@ -348,8 +348,6 @@ const serviceDrop = [
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
                                 </div>
                                 
-                                
-
                                 <div className='from-group'>
                                     <label>Disease<span>*</span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{hadleDisease(e.target.value)}}>
@@ -358,7 +356,7 @@ const serviceDrop = [
                                     </select>
                                 </div>
 
-                                <div className='row'>
+                                {/* <div className='row'>
                                   <div className='col-lg-6'>
                                     <label>Verification Word*</label>
                                     <div className="input-group">
@@ -372,7 +370,7 @@ const serviceDrop = [
                                         <input type="text" className='form-control '  />
                                     </div>
                                   </div>
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>

@@ -7,7 +7,9 @@ const initialState = {
   diseases: null,
   demograficObj: null,
   loading: false,
+  total: null,
   error: null,
+  paginatedData:null
 };
 
 export const demograficReducer = (state = initialState, action) => {
@@ -43,6 +45,8 @@ export const demograficReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         demografics: action.payload.data,
+        paginatedData:action?.paginatedObj,
+        total: action.payload.total,
       };
     case DEMOGRAFIC.GET_ALL_DISEASE:
         return {

@@ -63,7 +63,13 @@ export const FOLLOWUPGet = (formData) => async (dispatch) => {
     if (response) {
       dispatch({
         type: GET_ALL_FOLLOWUPS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total },
+        paginatedObj : {
+          page: response?.page,
+          limit: response?.limit,
+          totalPages: response?.totalPages,
+          total: response?.total
+        }
       });
     }
   } catch (err) {

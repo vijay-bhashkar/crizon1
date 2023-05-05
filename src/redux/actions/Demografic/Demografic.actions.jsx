@@ -57,10 +57,15 @@ export const DEMOGRAFICGet = (formData) => async (dispatch) => {
     dispatch({ type: GET_ALL_DEMOGRAFICS });
     let { data: response } = await getAllDemografic(formData);
     if (response) {
-
       dispatch({
         type: GET_ALL_DEMOGRAFICS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total: response.total },
+        paginatedObj:{
+          page:response?.page,
+          perPage:response?.perPage,
+          total:response?.total,
+          totalPages:response?.totalPages,
+        }
       });
     }
   } catch (err) {

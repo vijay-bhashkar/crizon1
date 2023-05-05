@@ -3,6 +3,7 @@ import { BiUserPlus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 import { toast } from "react-hot-toast";
+import ReactPaginate from 'react-paginate';
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { LEVERFOLLOWUPGet, SETLEVERFOLLOWUPObj, LEVERFOLLOWUPDelete } from "../../redux/actions/LeverFollowup/LeverFollowup.actions";
@@ -15,13 +16,20 @@ export const AllLeverFollowUp = () => {
   const navigate = useNavigate();
 
   const [setLeverData, setLeverFollowData] = useState();
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+  const [total, setTotal] = useState();
+  const [totallimit, setTotallimit] = useState();
 
   const leverFollowArr = useSelector((states) => states.leverFollowup.leverfollowups);
+  const paginateObj = useSelector((states) => states.leverFollowup.paginateData);
   const role = useSelector((states) => states.auth.role);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
 
   const handleGet = ()=>{
-    dispatch(LEVERFOLLOWUPGet());
+    let query = {};
+    query = `limit=${limit}&page=${page}`;
+    dispatch(LEVERFOLLOWUPGet(query));
   }
 
   useEffect(() => { 
@@ -32,7 +40,17 @@ export const AllLeverFollowUp = () => {
     if(leverFollowArr){
       setLeverFollowData(leverFollowArr);
     }
+    if(paginateObj && paginateObj){
+      setTotallimit(paginateObj?.totalPages)
+      setTotal(paginateObj?.totalPages)
+    }
   },[leverFollowArr]);
+
+  useEffect(() => {
+    if (page) {
+      handleGet();
+    }
+  }, [page])
 
   const handleLeverEdit = (row) => {
     dispatch(SETLEVERFOLLOWUPObj(row));
@@ -122,23 +140,18 @@ const handleLeverView = (row) => {
       <div className='container-fluid my-5'>
         <div className='row justify-content-center'>
           <div className='col-lg-10 text-center'>
-            <nav aria-label="Page navigation paginationnum example ">
-              <ul className="pagination justify-content-center text-center">
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous">
-                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="page-item" ><a className="page-link active">1</a></li>
-                <li className="page-item" ><a className="page-link">2</a></li>
-                <li className="page-item" ><a className="page-link">3</a></li>
-                <li className="page-item">
-                  <a className="page-link" href="#" aria-label="Next">
-                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="Next"
+              onPageChange={(e) => {
+                setPage(e.selected + 1);
+              }}
+              pageRangeDisplayed={2}
+              className='pagination_list'
+              pageCount={total}
+              previousLabel="Previous"
+              renderOnZeroPageCount={null}
+            />
           </div>
         </div>
       </div>

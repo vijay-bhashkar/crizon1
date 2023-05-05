@@ -6,6 +6,8 @@ const initialState = {
   appointmentObj: null,
   loading: false,
   error: null,
+  total: null,
+  totalPages: null,
 };
 
 export const appointmentReducer = (state = initialState, action) => {
@@ -41,6 +43,8 @@ export const appointmentReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         appointments: action.payload.data,
+        total: action.payload.total,
+        totalPages: action.payload.totalPages,
       };
     case APPOINTMENT.GET_ALL_APPOINTMENTS_FAIL:
       toastError(action.payload);

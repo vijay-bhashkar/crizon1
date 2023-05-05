@@ -58,11 +58,11 @@ export const APPOINTMENTGet = (formData) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_APPOINTMENTS });
     let { data: response } = await getAllAppointment(formData);
-    console.log(response);
+   
     if (response) {
       dispatch({
         type: GET_ALL_APPOINTMENTS_SUCCESS,
-        payload: { data: response.data, message: response.message },
+        payload: { data: response.data, message: response.message, total:response.total, totalPages:response.totalPages },
       });
     }
   } catch (err) {

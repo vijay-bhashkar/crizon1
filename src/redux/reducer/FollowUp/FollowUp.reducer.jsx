@@ -8,6 +8,8 @@ const initialState = {
   followupObj: null,
   loading: false,
   error: null,
+  paginatedData: null,
+  total: null
 };
 
 export const followupReducer = (state = initialState, action) => {
@@ -43,6 +45,8 @@ export const followupReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         followups: action.payload.data,
+        total: action.payload.total,
+        paginatedData: action?.paginatedObj
       };
     case FOLLOWUP.GET_ALL_FOLLOWUPS_FAIL:
       toastError(action.payload);

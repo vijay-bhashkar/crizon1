@@ -6,6 +6,8 @@ const initialState = {
   leverPerDetailObj: null,
   loading: false,
   error: null,
+  paginatedData:null,
+  total: null
 };
 
 export const leverPerDetailReducer = (state = initialState, action) => {
@@ -41,6 +43,8 @@ export const leverPerDetailReducer = (state = initialState, action) => {
         loading: false,
         error: null,
         leverPerDetails: action.payload.data,
+        paginatedData:action?.paginatedObj,
+        total: action.payload.total,
       };
     case LEVERPERDETAIL.GET_ALL_LEVERPERDETAILS_FAIL:
       toastError(action.payload);
