@@ -60,6 +60,7 @@ export const AllLeverFollowUp = () => {
   const handleLeverDelete = (row) => {
     dispatch(LEVERFOLLOWUPDelete(row._id))
     dispatch(SETLEVERFOLLOWUPObj(null))
+    handleGet();
     toast.success("FollowUp deleted successfully");
 };
 

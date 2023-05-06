@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from "react-redux";
 import { SUBADMINGet, SUBADMINDelete, SETSUBADMINObj } from "../../redux/actions/SubAdmin/SubAdmin.actions";
 import { GrView } from "react-icons/gr";
-
+import { toast } from 'react-hot-toast';
 import { Link ,useNavigate} from "react-router-dom";
 export const SubAdminListview = () => {
 
@@ -30,7 +30,7 @@ const handleGet = () => {
 };
 
 useEffect(() => {
-  handleGet()
+  handleGet();
   }, []);
 
 
@@ -62,6 +62,8 @@ useEffect(() => {
   const handleSubAdminDelete = (row) => {
     dispatch(SUBADMINDelete(row._id))
     dispatch(SETSUBADMINObj(null))
+    handleGet();
+    toast.success("Subadmin Deleted Successfully ");
 }
 
 

@@ -127,7 +127,7 @@ export const HODDelete = (id) => async (dispatch) => {
         type: DELETE_HOD_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(HODGet());
+      // dispatch(HODGet());
     }
   } catch (err) {
     // console.error(err);

@@ -28,7 +28,7 @@ export const NUTRITIONAdd = (formData) => async (dispatch) => {
   try {
     dispatch({ type: NUTRITION_ADD });
     let { data: response } = await createNutrition(formData);
-    console.log(response);
+    // console.log(response);
     if (response) {
        dispatch(NUTRITIONGet())
       dispatch({

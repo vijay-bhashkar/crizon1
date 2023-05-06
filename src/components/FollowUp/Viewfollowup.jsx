@@ -17,6 +17,7 @@ export const Viewfollowup = () => {
     const [patientName, setPatientName] = useState("");
     const [ccfIdName, setCcfIdName] = useState("");
 
+    const [namePatient, setNamePatient] = useState("");
     const [followUpDate, setFollowUpDate] = useState("");
     const [partialMayoScore, setPartialMayoScore] = useState("");
     const [diseaseExtend, setDiseaseExtend] = useState("");
@@ -166,6 +167,7 @@ export const Viewfollowup = () => {
     useEffect(() => {
         if (followupObj) {
             setPatientId(followupObj?.patientId);
+            setNamePatient(followupObj?.namePatient);
             setFollowUpDate(followupObj?.followUpDate);
             setPartialMayoScore(followupObj?.partialMayoScore);
             setDiseaseExtend(followupObj?.diseaseExtend);
@@ -363,7 +365,7 @@ export const Viewfollowup = () => {
                             <div className='row'>
                                 <div className='col-lg-6'>
                                     <div className='from-group'>
-                                        <label><b> Patient ID*  : </b>{patientId}</label>
+                                        <label><b> Patient Name  : </b>{namePatient}</label>
                                     </div>
                                 </div>
                                 <div className='col-lg-6'>

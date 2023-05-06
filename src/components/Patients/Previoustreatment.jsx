@@ -227,8 +227,10 @@ useEffect(() => {
     if (preTreatObj?._id) {
         dispatch(PREVIOUSTREATMENTUpdate(preTreatObj._id, obj));
         dispatch(SETPREVIOUSTREATMENTObj(null))
+        toast.success("Previous Treatment Updated Successfully ");
     } else {
     dispatch(PREVIOUSTREATMENTAdd(obj));
+    toast.success(" Previous Treatment Added Successfully ");
     localStorage.setItem('previousTreatItems', JSON.stringify(obj));
     }
     navigate("/Patients/nutritionalhistory");

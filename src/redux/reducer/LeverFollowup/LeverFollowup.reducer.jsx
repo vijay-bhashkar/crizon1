@@ -20,7 +20,7 @@ export const leverFollowupReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERFOLLOWUP.LEVERFOLLOWUP_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -62,7 +62,7 @@ export const leverFollowupReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERFOLLOWUP.DELETE_LEVERFOLLOWUP_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -82,7 +82,7 @@ export const leverFollowupReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERFOLLOWUP.UPDATE_LEVERFOLLOWUP_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

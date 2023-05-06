@@ -86,6 +86,7 @@ useEffect(()=>{
   const handleFollowupDelete = (row) => {
     dispatch(FOLLOWUPDelete(row._id))
     dispatch(SETFOLLOWUPObj(null))
+    handleGet();
     toast.success("Follow up deleted");
 };
 
@@ -119,7 +120,7 @@ useEffect(()=>{
           <thead>
             <tr>
               <th scope="col" className="text-center">S.NO</th>
-              <th scope="col">Patient FollowUp Id</th>
+              <th scope="col">Patient FollowUp Name</th>
               <th scope="col">Disease Extend</th>
               <th scope="col">Followup Date</th>
               <th scope="col">Edit & Delete & View</th> 
@@ -130,7 +131,7 @@ useEffect(()=>{
           {
             followupMainArr && followupMainArr.map((item,index) => <tr>
               <th scope="row" className="text-center">{index+1}</th>
-              <th scope="row">{item.patientId}</th>
+              <th scope="row">{item.namePatient}</th>
               <td>{item.diseaseExtend}</td>
               <td>{item.followUpDate}</td>
               <td>

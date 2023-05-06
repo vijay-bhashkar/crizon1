@@ -113,7 +113,7 @@ export const LEVERPERDETAILDelete = (id) => async (dispatch) => {
         type: DELETE_LEVERPERDETAIL_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(LEVERPERDETAILGet());
+      // dispatch(LEVERPERDETAILGet());
     }
   } catch (err) {
     console.error(err);

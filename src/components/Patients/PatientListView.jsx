@@ -43,24 +43,19 @@ export const PatientListView = () => {
     let query = "";
     if (role == rolesObj.HOD) {
       query += `hod=${user?.roleUser?._id}`;
-      dispatch(DEMOGRAFICGet(query));
     }
     if (role == rolesObj.DOCTOR) {
       query += `doctorId=${user?.roleUser?._id}`;
-      dispatch(DEMOGRAFICGet(query));
     }
     if (role == rolesObj.PATIENT) {
       query += `patient=${user?.roleUser?._id}`;
-      dispatch(DEMOGRAFICGet(query));
     }
 
-    let leverQuery = "";
     if (role == rolesObj.PATIENT) {
-      leverQuery += `patientId=${user?.roleUser?._id}`;
-      dispatch(LEVERPERDETAILGet(leverQuery));
+      query += `&patientId=${user?.roleUser?._id}`;
     }
 
-    query += `limit=${limit}&page=${page}`;
+    query += `&limit=${limit}&page=${page}`;
     dispatch(DEMOGRAFICGet(query));
     dispatch(GETALLDisease());
   };
@@ -85,21 +80,24 @@ export const PatientListView = () => {
 
   useEffect(() => {
     dispatch(SETDEMOGRAFICObj({}))
-    handleGet()
+    // handleGet()
   }, []);
 
   useEffect(() => {
-    if (search) {
+    if(search) {
       let patientArr = demograficArr.filter(el => `${el.patientName}`.toLowerCase().includes(`${search}`.toLowerCase()));
       setDemograficMainArr(patientArr);
+    } else {
+      setDemograficMainArr(demograficArr);
+
     }
-  })
+  },[search])
 
   useEffect(() => {
     if (leverPerDetailArr?.length) {
       setLeverMainArr(leverPerDetailArr);
     }
-  })
+  },[])
 
   useEffect(() => {
     if (demograficArr?.length) {
@@ -202,17 +200,16 @@ export const PatientListView = () => {
         {(role != "PATIENT") ?
           <div className="row justify-content-center py-3">
             <div className="col-lg-4">
-              <label>Service</label>
+              {/* <label>Service</label>
               <select className="form-control" value={service} onChange={(e) => { handleService(e.target.value) }}>
                 {serviceDrop && serviceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
-              </select>
+              </select> */}
             </div>
             <div className="col-lg-4">
-              <label>Search by disease</label>
-              {/* <Select options={options} placeholder="Select Disease" onChange={hadleDisease}/> */}
+              {/* <label>Search by disease</label>
               <select className="form-control" value={finalDisease} onChange={(e) => { hadleDisease(e.target.value) }}>
                 {allDisease && allDisease.map((el) => <option value={el._id}>{el.disease}</option>)}
-              </select>
+              </select> */}
             </div>
             <div className="col-lg-4">
               <label>Search by patient</label>
@@ -239,7 +236,6 @@ export const PatientListView = () => {
             </thead>
             : ""}
           <tbody>
-            {console.log(demograficMainArr, "==demograficMainArr==")}
             {
               demograficMainArr && demograficMainArr.map((item, index) => <tr>
                 <th scope="row" key={index} className="text-center">

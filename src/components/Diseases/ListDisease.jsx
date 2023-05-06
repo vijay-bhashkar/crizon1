@@ -64,6 +64,7 @@ export const ListDisease = () =>{
 
   const handleDelete = (row)=>{
     dispatch(DISEASEDelete(row._id));
+    handleGet();
     toast.success("Disease deleted successfully");
   }
 

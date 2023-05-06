@@ -20,7 +20,7 @@ export const followupReducer = (state = initialState, action) => {
         loading: true,
       };
     case FOLLOWUP.FOLLOWUP_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -62,7 +62,7 @@ export const followupReducer = (state = initialState, action) => {
         loading: true,
       };
     case FOLLOWUP.DELETE_FOLLOWUP_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -82,7 +82,7 @@ export const followupReducer = (state = initialState, action) => {
         loading: true,
       };
     case FOLLOWUP.UPDATE_FOLLOWUP_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

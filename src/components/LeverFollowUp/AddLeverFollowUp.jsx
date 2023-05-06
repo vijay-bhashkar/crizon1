@@ -17,11 +17,8 @@ export const AddLeverFollowUp = () => {
     const leverFolloObj = useSelector((states) => states.leverFollowup.leverfollowupObj);
     const leverPatientList = useSelector((states) => states.leverPerDetail.leverPerDetails);
 
-    const selectPatient = ()=>{
-
-    }
-
     const [searchParams, setSearchParams] = useSearchParams("edit");
+    const [patientId, setPatientId] = useState("");
     const [name, setName] = useState("");
     const [enrollDate, setEnrollDate] = useState("");
     const [email, setEmail] = useState("");
@@ -113,10 +110,21 @@ export const AddLeverFollowUp = () => {
     const [ekpa, setEkpa] = useState("");
     const [hai, setHai] = useState("");
     const [stage, setStage] = useState("");
+
+    const setPatientData = (patientId)=>{
+        setPatientId(patientId);
+        console.log(patientId , "patientId")
+        if(patientId && patientId){
+            let patientName = leverPatientList.find(el => el._id == patientId)
+            setName(patientName?.name);
+            console.log(name , "name")
+        }
+    }
   
     const handleLeverFollowup = () =>{
         let obj = {
             name  , 
+            patientId,
             enrollDate ,
             email ,
             contact ,
@@ -373,7 +381,7 @@ export const AddLeverFollowUp = () => {
                                         <div className='from-group'>
                                             <label>Name <span>*</span></label>
                                             {/* <input type="text" className='form-control'  onChange={(el) => { setName(el.target.value) }} /> */}
-                                            <select className='form-control' value={name} onChange={(el) => {setName(el.target.value) }}>
+                                            <select className='form-control' value={patientId} onChange={(el) => {setPatientData(el.target.value) }}>
                                                 {leverPatientList && leverPatientList.map((el)=><option value={el._id}>{el.name}</option>)}
                                             </select>
                                         </div>

@@ -14,6 +14,7 @@ export const Addfollowup = () => {
 
     const [searchParams, setSearchParams] = useSearchParams("edit");
     const [patientId, setPatientId] = useState("");
+    const [namePatient, setNamePatient] = useState("");
     const [patientName, setPatientName] = useState("");
     const [ccfIdName, setCcfIdName] = useState("");
 
@@ -166,6 +167,7 @@ export const Addfollowup = () => {
     const handleAddFollowUp = () => {
         let obj = {
             patientId,
+            namePatient,
             followUpDate,
             partialMayoScore,
             diseaseExtend,
@@ -479,7 +481,7 @@ export const Addfollowup = () => {
             let patientNewName = patientArr.find(el => el._id == patientId);
             let namePatient = patientNewName?.patientName;
             let ccfId = patientNewName?.ccfId;
-            setPatientName(namePatient);
+            setNamePatient(namePatient);
             setCcfIdName(ccfId);
         }
     }

@@ -112,7 +112,7 @@ export const DISEASEDelete = (id) => async (dispatch) => {
         type: DELETE_DISEASE_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(DISEASEGet());
+      // dispatch(DISEASEGet());
     }
   } catch (err) {
     console.error(err);

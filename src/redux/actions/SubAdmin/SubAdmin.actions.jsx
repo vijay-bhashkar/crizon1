@@ -107,7 +107,7 @@ export const SUBADMINDelete = (id) => async (dispatch) => {
         type: DELETE_SUBADMIN_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(SUBADMINGet());
+      // dispatch(SUBADMINGet());
     }
   } catch (err) {
     console.error(err);

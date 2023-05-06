@@ -58,8 +58,6 @@ export const FOLLOWUPGet = (formData) => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_FOLLOWUPS });
     let { data: response } = await getAllFollowUp(formData);
-    console.log(response);
-    console.log("aaaa");
     if (response) {
       dispatch({
         type: GET_ALL_FOLLOWUPS_SUCCESS,
@@ -142,7 +140,7 @@ export const FOLLOWUPDelete = (id) => async (dispatch) => {
         type: DELETE_FOLLOWUP_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(FOLLOWUPGet());
+      // dispatch(FOLLOWUPGet());
     }
   } catch (err) {
     console.error(err);

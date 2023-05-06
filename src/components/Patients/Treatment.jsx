@@ -115,9 +115,11 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
     console.log(obj);
     if (treatmentObj?._id) {
       dispatch(TREATMENTUpdate(treatmentObj._id, obj));
+      toast.success(" Treatment Updated Successfully ");
       dispatch(SETTREATMENTObj(null))
     }else{
       dispatch(TREATMENTAdd(obj));
+      toast.success(" Treatment Added Successfully ");
       localStorage.setItem('treatmentItems', JSON.stringify(obj));
 
     }

@@ -5,8 +5,8 @@ import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
 
 import { useDispatch, useSelector } from "react-redux";
-// import { CUSTOMERAdd,CUSTOMERGet, SETCUSTOMERObj, CUSTOMERUpdate, DISEASEGet, HODGet, ALLDISEASEGet  } from "../../redux/actions/Customer/Customer.actions";
 import { DOCTORGet, DOCTORDelete, SETDOCTORObj } from "../../redux/actions/Doctor/Doctor.actions";
+import { DISEASEGet } from "../../redux/actions/Disease/Disease.actions";
 import { Link } from 'react-router-dom';
 export const ShowView = () => {
 
@@ -31,27 +31,11 @@ export const ShowView = () => {
   const [hodArr, setHodArr] = useState([]);
   const [diseaseArr, setDiseaseArr] = useState([]);
   const [hod, sethod] = useState("");
-
+  const [diseaseName, setDiseaseName] = useState("")
+  
   const customerArr = useSelector((states) => states.doctor.doctors);
-  console.log(customerArr,"hhhhh");
   const hodArrRedux = useSelector((states) => states.customer.hods);
   const diseaseArrRedux = useSelector((states) => states.hod.diseases);
-
-// useEffect(() => {
-//     dispatch(DISEASEGet());
-// }, []);
-
-// useEffect(() => {
-//     dispatch(ALLDISEASEGet());
-// }, []);
-
-// useEffect(() => {
-//     dispatch(HODGet());
-// }, []);
-
-// const handleGet = () => {
-//     dispatch(DISEASEGet());
-// };
 
 useEffect(() => {
     if(hodArrRedux){
@@ -59,20 +43,25 @@ useEffect(() => {
     }
   }, [hodArrRedux]);
 
+  useEffect(() => {
+    dispatch(DISEASEGet());
+}, []);
+
 useEffect(() => {
     if(diseaseArrRedux){
         setDiseaseArr(diseaseArrRedux);
     }
+    if(disease){
+        let diseaseName = diseaseArrRedux.find(el => el._id === disease);
+        setDiseaseName(diseaseName.disease);
+        console.log(diseaseName, "diseaseNamediseaseName");
+    }
   }, [diseaseArrRedux]);
 
-// useEffect(() => {
-//     handleGet()
-// }, []);
 
 useEffect(() => {
     if (customerArr?.length) {
         setDiseaseMainArr(customerArr);
-    //  console.log(customerArr);
       }
     }, [customerArr]);
 
@@ -80,7 +69,6 @@ const hadleDisease = (diseaase)=> {
     setDisease(diseaase)
     if(diseaase){
     let diseaseHod = hodArrRedux.filter(el=>el.disease === diseaase);
-    // console.log()
     setHodArr(diseaseHod)
     }
 }
@@ -88,48 +76,7 @@ const hadleDisease = (diseaase)=> {
 const customerObj = useSelector((states) => states.doctor.doctorObj);
 // console.log(customerObj);
 const dispatch = useDispatch();
-  const handleAddCustomer = () => {
-
-    if(!firstName){
-        alert("First Name is required")
-        return
-    }
-    if(!email){
-        alert("Email is required")
-        return
-    }
-    if(!phone){
-        alert("Phone is required")
-        return
-    }
-
-    let obj = {
-        firstName,
-        lastName,
-        company,
-        position,
-        email,
-        phone,
-        state,
-        country,
-        city,
-        password,
-        conPassword,
-        securityQuest,
-        zipCode,
-        statue,
-        securityAns,
-        hod,
-        disease
-    };
-
-    // if (customerObj?._id) {
-    //     dispatch(CUSTOMERUpdate(customerObj._id, obj));
-    //     dispatch(SETCUSTOMERObj(null))
-    // } else {
-    //     dispatch(CUSTOMERAdd(obj));
-    // }
-};
+  
 
 useEffect(() => {
     if (customerObj) {
@@ -147,7 +94,6 @@ useEffect(() => {
         setConPassword(customerObj?.conPassword);
         setSecurityQuest(customerObj?.securityQuest);
         setZipCode(customerObj?.zipCode);
-        setStatue(customerObj?.statue);
         setSecurityAns(customerObj?.securityAns);
         sethod(customerObj?.hod);
         setDisease(customerObj?.disease);
@@ -211,17 +157,7 @@ const statues = [
                                 <div className='from-group'>
                                     <label><b>City :</b> <span>{city}</span></label>
                                 </div>
-                                {/* <div className='from-group'>
-                                    <label>Password : <span>{password}</span></label>
-                                </div> */}
-                                <div className='from-group'>
-                                    <label><b>Status :</b> <span>{statue}</span></label>
-                                </div>
-                                {/* <div className='row'>        
-                                    <div className='from-group'>
-                                    <label><b>H.O.D :</b> <span>{hod}</span></label>
-                                </div>
-                                </div> */}
+                                
                                 <div className='from-group'>
                                     <label><b>Security Question :</b> <span>{securityQuest}</span></label>
                                 </div>
@@ -249,7 +185,7 @@ const statues = [
                                 </div> */}
                                 
                                 <div className='from-group'>
-                                    <label><b>Disease :</b> <span>{disease}</span></label>
+                                    <label><b>Disease :</b> <span>{diseaseName}</span></label>
                                 </div>
                                 <div className='from-group'>
                                     <label><b>Answer :</b> <span>{securityAns}</span></label>

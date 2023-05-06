@@ -16,7 +16,7 @@ export const etiologicalReducer = (state = initialState, action) => {
         loading: true,
       };
     case ETIOLOGICAL.ETIOLOGICAL_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -56,7 +56,7 @@ export const etiologicalReducer = (state = initialState, action) => {
         loading: true,
       };
     case ETIOLOGICAL.DELETE_ETIOLOGICAL_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -76,7 +76,7 @@ export const etiologicalReducer = (state = initialState, action) => {
         loading: true,
       };
     case ETIOLOGICAL.UPDATE_ETIOLOGICAL_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

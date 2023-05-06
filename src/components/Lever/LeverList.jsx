@@ -20,13 +20,14 @@ export const LeverList = () => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState("");
+  const [search, setSearch] = useState("");
 
   const leverArr = useSelector((states) => states.leverPerDetail.leverPerDetails);
   const paginatedObject = useSelector((states) => states.leverPerDetail.paginatedData);
   const role = useSelector((states) => states.auth.role);
   const user = useSelector((states)=> states.auth.user);
   const roleUser = useSelector((states) => states.auth.user.roleUser);
-
+ 
   const handleGet = () => {
     let query = "";
     if(role == rolesObj.HOD){
@@ -63,8 +64,13 @@ export const LeverList = () => {
   }, [leverArr]);
 
   useEffect(() => { 
-    handleGet();
-  }, []);
+    if(search) {
+      let patientArr = leverArr.filter(el => `${el.name}`.toLowerCase().includes(`${search}`.toLowerCase()));
+      setLeverData(patientArr);
+    }else{
+      setLeverData(leverArr);
+    }
+  }, [search]);
 
   useEffect(()=>{
     if(leverArr){
@@ -80,6 +86,7 @@ export const LeverList = () => {
   const handleCustomerDelete = (row) => {
     dispatch(LEVERPERDETAILDelete(row._id))
     dispatch(SETLEVERPERDETAILObj(null))
+    handleGet();
     toast.success("Patient deleted successfully");
 };
 
@@ -118,6 +125,28 @@ const handleCustomerView = (row) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="container-fluid">
+        {(role != "PATIENT") ?
+          <div className="row justify-content-center py-3">
+            <div className="col-lg-4">
+              {/* <label>Service</label>
+              <select className="form-control" value={service} onChange={(e) => { handleService(e.target.value) }}>
+                {serviceDrop && serviceDrop.map((el) => <option value={el.value}>{el.label}</option>)}
+              </select> */}
+            </div>
+            <div className="col-lg-4">
+              {/* <label>Search by disease</label>
+              <select className="form-control" value={finalDisease} onChange={(e) => { hadleDisease(e.target.value) }}>
+                {allDisease && allDisease.map((el) => <option value={el._id}>{el.disease}</option>)}
+              </select> */}
+            </div>
+            <div className="col-lg-4">
+              <label>Search by patient</label>
+              <input type="text" name="search" placeholder='Enter Patient Name' className='form-control' value={search} onChange={(el) => { setSearch(el.target.value) }} />
+            </div>
+          </div>
+          : ""}
       </div>
       <div className="table_view_list">
         <table class="table">

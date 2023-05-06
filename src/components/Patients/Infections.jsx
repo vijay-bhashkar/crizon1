@@ -71,7 +71,7 @@ const handleAddInfection = () => {
     }else {
       dispatch(INFECTIONAdd(obj));
       localStorage.setItem('infectionItems', JSON.stringify(obj));
-      toast.success(" Infection Created Successfully ");
+      toast.success(" Infection Added Successfully ");
     }
     // navigate("/Patients/depression");
   }

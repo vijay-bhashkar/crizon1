@@ -18,7 +18,7 @@ export const leverPerDetailReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERPERDETAIL.LEVERPERDETAIL_ADD_SUCCESS:
-      toastSuccess(action.payload);
+     // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -60,7 +60,7 @@ export const leverPerDetailReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERPERDETAIL.DELETE_LEVERPERDETAIL_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      //toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -80,7 +80,7 @@ export const leverPerDetailReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERPERDETAIL.UPDATE_LEVERPERDETAIL_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+     // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

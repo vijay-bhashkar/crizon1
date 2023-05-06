@@ -108,6 +108,7 @@ useEffect(() => {
   
     const handleHodDelete = (row) => {
       dispatch(HODDelete(row._id))
+      handleGet();
       toast.success("Hod deleted successfully");
       dispatch(SETHODObj(null))
   }

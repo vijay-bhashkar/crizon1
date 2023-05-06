@@ -74,6 +74,7 @@ useEffect(()=>{
   
   const handleCustomerDelete = (row) => {
     dispatch(DOCTORDelete(row._id))
+    handleGet();
     dispatch(SETDOCTORObj(null))
     toast.success("Doctor deleted successfully");
 };

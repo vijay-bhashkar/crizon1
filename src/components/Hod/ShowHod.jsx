@@ -22,11 +22,10 @@ export const ShowHod = () => {
   const [securityQuest, setSecurityQuest] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [securityAns, setSecurityAns] = useState("");
-  const [verificationWord, setVerificationWord] = useState("");
-  const [conVerification, setConVerification] = useState("");
   const [disease, setDisease] = useState("");
   const [diseaseArr, setDiseaseArr] = useState([]);
   const [obj, serObj] = useState([]);
+  const [diseaseName, setDiseaseName] = useState("")
 
 useEffect(() => {
     dispatch(DISEASEGet());
@@ -34,10 +33,14 @@ useEffect(() => {
 
 const hodObj = useSelector((states) => states.hod.hodObj);
 const diseasesArrRedux = useSelector((states) => states.hod.diseases);
-console.log(hodObj);
+ console.log(diseasesArrRedux , "diseasesArrRedux");
 useEffect(() => {
     if(diseasesArrRedux){
         setDiseaseArr(diseasesArrRedux);
+    }
+    if(disease){
+        let diseaseName = diseasesArrRedux.find(el => el._id === disease);
+        setDiseaseName(diseaseName.disease);
     }
   }, [diseasesArrRedux]);
 
@@ -59,8 +62,6 @@ useEffect(() => {
         setSecurityQuest(hodObj?.securityQuest);
         setZipCode(hodObj?.zipCode);
         setSecurityAns(hodObj?.securityAns);
-        setVerificationWord(hodObj?.verificationWord);
-        setConVerification(hodObj?.specialization);
         setDisease(hodObj?.disease);
     }
 }, [hodObj]);
@@ -111,7 +112,7 @@ useEffect(() => {
                                     <label><b>Security Question : </b><span>{securityQuest}</span></label>                                  
                                 </div>
                                 <div className='from-group'>
-                                    <label><b>Disease : </b><span>{disease}</span></label>                                   
+                                    <label><b>Disease : </b><span>{diseaseName}</span></label>                                   
                                 </div>
                             </div>
                         </div>

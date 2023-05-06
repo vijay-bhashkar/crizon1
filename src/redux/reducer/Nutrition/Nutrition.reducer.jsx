@@ -16,7 +16,7 @@ export const nutritionReducer = (state = initialState, action) => {
         loading: true,
       };
     case NUTRITION.NUTRITION_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -56,7 +56,7 @@ export const nutritionReducer = (state = initialState, action) => {
         loading: true,
       };
     case NUTRITION.DELETE_NUTRITION_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -76,7 +76,7 @@ export const nutritionReducer = (state = initialState, action) => {
         loading: true,
       };
     case NUTRITION.UPDATE_NUTRITION_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

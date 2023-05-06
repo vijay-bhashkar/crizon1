@@ -3,7 +3,7 @@ import { BiUserPlus } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
-
+import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from "react-redux";
 import { SUBADMINAdd,SUBADMINGet, SETSUBADMINObj, SUBADMINUpdate, } from "../../redux/actions/SubAdmin/SubAdmin.actions";
 import { Link } from 'react-router-dom';
@@ -33,15 +33,6 @@ const handleGet = () => {
 
   const handleAddCustomer = () => {
 
-    if(!name){
-        alert("Name is required")
-        return
-    }
-    if(!email){
-        alert("Email is required")
-        return
-    }
-
     let obj = {
         name,
         email,
@@ -53,9 +44,12 @@ const handleGet = () => {
     if (subAdminObj?._id) {
         dispatch(SUBADMINUpdate(subAdminObj._id, obj));
         dispatch(subAdminObj(null))
+      toast.success("Subadmin Updated Successfully ");
     } else {
         console.log(obj);
         dispatch(SUBADMINAdd(obj));
+      toast.success(" Subadmin Added Successfully ");
+
     }
 };
 

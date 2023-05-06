@@ -16,7 +16,7 @@ export const leverHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERHISTORY.LEVERHISTORY_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -56,7 +56,7 @@ export const leverHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERHISTORY.DELETE_LEVERHISTORY_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -76,7 +76,7 @@ export const leverHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case LEVERHISTORY.UPDATE_LEVERHISTORY_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

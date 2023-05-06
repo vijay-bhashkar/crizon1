@@ -124,7 +124,7 @@ export const LEVERFOLLOWUPDelete = (id) => async (dispatch) => {
         type: DELETE_LEVERFOLLOWUP_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(LEVERFOLLOWUPGet());
+      // dispatch(LEVERFOLLOWUPGet());
     }
   } catch (err) {
     console.error(err);

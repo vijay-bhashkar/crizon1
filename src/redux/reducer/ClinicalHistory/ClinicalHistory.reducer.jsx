@@ -16,7 +16,7 @@ export const clinicalHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case CLINICALHISTORY.CLINICALHISTORY_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -56,7 +56,7 @@ export const clinicalHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case CLINICALHISTORY.DELETE_CLINICALHISTORY_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -76,7 +76,7 @@ export const clinicalHistoryReducer = (state = initialState, action) => {
         loading: true,
       };
     case CLINICALHISTORY.UPDATE_CLINICALHISTORY_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

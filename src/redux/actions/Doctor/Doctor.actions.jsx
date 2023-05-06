@@ -134,7 +134,7 @@ export const DOCTORDelete = (id) => async (dispatch) => {
         type: DELETE_DOCTOR_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(DOCTORGet());
+      // dispatch(DOCTORGet());
     }
   } catch (err) {
     console.error(err);

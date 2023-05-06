@@ -18,7 +18,7 @@ export const subAdminReducer = (state = initialState, action) => {
         loading: true,
       };
     case SUBADMIN.SUBADMIN_ADD_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
 
       return {
         ...state,
@@ -60,7 +60,7 @@ export const subAdminReducer = (state = initialState, action) => {
         loading: true,
       };
     case SUBADMIN.DELETE_SUBADMIN_BY_ID_SUCCESS:
-      toastSuccess(action.payload.message);
+      // toastSuccess(action.payload.message);
       return {
         ...state,
         loading: false,
@@ -80,7 +80,7 @@ export const subAdminReducer = (state = initialState, action) => {
         loading: true,
       };
     case SUBADMIN.UPDATE_SUBADMIN_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,
