@@ -176,10 +176,7 @@ const options = [
           </div>
           <div className="col-lg-4 text-end">
             <div className="btnlist">
-              <Link className="btn btn-defalut btn-md">
-                <AiOutlineUnorderedList className="icon" />{" "}
-                <span>View List</span>
-              </Link>
+                <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
             </div>
           </div>
         </div>
@@ -295,7 +292,11 @@ const options = [
               <div className='col-lg-12'>
                   <div className='subbtn text-center'>
                       <Link to="../Patients/treatment" className='btn btn-link mx-4'>Previous</Link>
-                      <button className='btn btn-link' onClick={handleAddInfection}>Next</button>
+                    {(infectionObj?._id)?
+                      <button className='btn btn-link' onClick={handleAddInfection}>Update</button>
+                      :
+                      <button className='btn btn-link' onClick={handleAddInfection}>Save</button>
+                    }
                   </div>
               </div>
           </div>

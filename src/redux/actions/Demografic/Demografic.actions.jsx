@@ -155,7 +155,7 @@ export const DEMOGRAFICDelete = (obj) => async (dispatch) => {
         type: DELETE_DEMOGRAFIC_BY_ID_SUCCESS,
         payload: response.message,
       });
-      dispatch(DEMOGRAFICGet(obj.query));
+      // dispatch(DEMOGRAFICGet(obj.query));
     }
   } catch (err) {
     console.error(err);

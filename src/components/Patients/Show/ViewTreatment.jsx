@@ -2,24 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link , useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { TREATMENTAdd, TREATMENTGet, SETTREATMENTObj, TREATMENTUpdate, TREATMENTDelete, TREATGet_BY_PATIENT_ID } from "../../../redux/actions/Treatment/Treatment.actions";
+import { getTreatByPatientId } from "../../../services/Treatment.service";
+// import { TREATMENTAdd, TREATMENTGet, SETTREATMENTObj, TREATMENTUpdate, TREATMENTDelete, TREATGet_BY_PATIENT_ID } from "../../../redux/actions/Treatment/Treatment.actions";
 export const ViewTreatment = () => {
 
+  var path = window.location.search;
+  var parts = path.split('=');
+  var url_id = parts[1];
+
 const [patientId, setPatientId] = useState("");
+const [treatmentObj, setTreatmentObj] = useState("");
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
-useEffect(() => {
-  if(patientId){
-dispatch(TREATGet_BY_PATIENT_ID(patientId));
-  }
-}, [patientId]);
+let getTreat = async()=>{
+  try{
+    let res = await getTreatByPatientId(url_id);
+    let totalData = res.data.data ;
+    setTreatmentObj(totalData);
+    }catch(error){
+      console.log(error);
+    }
+  } 
 
- const treatmentObj = useSelector((states) => states.treatment.treatmentsObj);
+useEffect(() => {
+  if(url_id){
+    getTreat(url_id);
+  }
+}, [url_id]);
+
+let onHandleNext = (patientId)=>{
+  navigate(`/Patients/Viewinfection?id=${patientId}`);
+}
+
+let onHandlePre = (patientId)=>{
+  navigate(`/Patients/Viewinvestigation?id=${patientId}`);
+}
+
+//  const treatmentObj = useSelector((states) => states.treatment.treatmentsObj);
  const demograficObj = useSelector((states) => states.demografic.demograficObj);  
 
  useEffect(() => {
-  dispatch(SETTREATMENTObj({}))
+  // dispatch(SETTREATMENTObj({}))
   if(demograficObj){
     setPatientId(demograficObj?._id)
   }
@@ -110,25 +134,22 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
           </div>
           <div className="col-lg-4 text-end">
             <div className="btnlist">
-              <Link className="btn btn-defalut btn-md">
-                <AiOutlineUnorderedList className="icon" />{" "}
-                <span>View List</span>
-              </Link>
+            <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div className="listheader">
-      <ul className="list-group list-group-horizontal">
-        <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-        <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-        <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
-      </ul>
+    <ul class="list-group list-group-horizontal">
+      <li className="list-group-item p-2">Demographics</li>
+      <li className="list-group-item p-2">Clinical History</li>
+      <li className="list-group-item p-2">Previous Treatment</li>
+      <li className="list-group-item p-2">Nutritional History </li>
+      <li className="list-group-item p-2">Investigations</li>
+      <li className="list-group-item p-2">Treatment </li>
+      <li className="list-group-item p-2">Infections</li>
+    </ul>
     </div>
   
     <div className="wrapper_contentbody">
@@ -347,8 +368,8 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
             <div className='row mt-4'>
               <div className='col-lg-12'>
                   <div className='subbtn text-center'>
-                    <Link to="/Patients/Viewinvestigation" className='btn btn-link mx-4'>Previous</Link>
-                    <Link to="/Patients/Viewinfection" className='btn btn-link mx-4'>Next</Link>
+                    <p onClick={()=>{onHandlePre(treatmentObj?.patientId)}} className='btn btn-link mx-4'>Previous</p>
+                    <p onClick={()=>{onHandleNext(treatmentObj?.patientId)}} className='btn btn-link mx-4'>Next</p>
                   </div>
               </div>
             </div>

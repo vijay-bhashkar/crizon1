@@ -210,7 +210,6 @@ export const Editdemographics = () => {
     }, [demograficObj]);
 
     useEffect(() => {
-        console.log(searchParams.get("edit"), "edit")
         if (!searchParams.get("edit") || !searchParams.get("edit") == "true") {
             //   dispatch(SETDEMOGRAFICObj(null))
         }
@@ -297,7 +296,7 @@ export const Editdemographics = () => {
                         </div>
                         <div className="col-lg-4 text-end">
                             <div className='btnlist'>
-                                <Link class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+                                <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
                             </div>
                         </div>
                     </div>

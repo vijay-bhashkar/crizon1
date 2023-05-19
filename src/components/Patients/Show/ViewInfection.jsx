@@ -5,8 +5,8 @@ import { AiOutlineUnorderedList } from "react-icons/ai";
 import Select from "react-select";
 import { Link , useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { INFECTIONAdd, INFECTIONGet, INFECTIONDelete, SETINFECTIONObj, INFECTIONUpdate, INFECTIONGet_BY_PATIENT_ID } from "../../../redux/actions/Infection/Infection.actions";
-import { toast } from 'react-hot-toast';
+// import { INFECTIONAdd, INFECTIONGet, INFECTIONDelete, SETINFECTIONObj, INFECTIONUpdate, INFECTIONGet_BY_PATIENT_ID } from "../../../redux/actions/Infection/Infection.actions";
+import { getInfectionByPatientId } from "../../../services/Infection.service";
 
 export const ViewInfection = () => {
   const [respiratory, setRespiratory] = useState("");
@@ -20,24 +20,43 @@ export const ViewInfection = () => {
   const [miscellaneous, setMiscellaneous] = useState("");
 
 const [patientId, setPatientId] = useState("");
+const [infectionObj, setInfectionObj] = useState("");
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
-useEffect(() => {
-  if(patientId){
-dispatch(INFECTIONGet_BY_PATIENT_ID(patientId));
-  }
-}, [patientId]);
+  var path = window.location.search;
+  var parts = path.split('=');
+  var url_id = parts[1];
 
-const infectionObj = useSelector((states) => states.infection.infectionsObj);
+let getInfe = async(url_id)=>{
+  try{
+    let res = await getInfectionByPatientId(url_id);
+    let totalData = res.data.data ;
+    setInfectionObj(totalData);
+  }catch(error){
+    console.log(error);
+  }
+}
+
+useEffect(() => {
+  if(url_id){
+    getInfe(url_id);
+  }
+}, [url_id]);
+
+// const infectionObj = useSelector((states) => states.infection.infectionsObj);
 const demograficObj = useSelector((states) => states.demografic.demograficObj); 
 
 useEffect(() => {
-  dispatch(SETINFECTIONObj({}))
+  // dispatch(SETINFECTIONObj({}))
   if(demograficObj){
     setPatientId(demograficObj?._id)
   }
 }, [demograficObj]);
+
+let onHandleNext = (patientId)=>{
+  navigate(`/Patients/Viewtreatment?id=${patientId}`);
+}
 
 useEffect(() =>{
       if(infectionObj){
@@ -68,25 +87,22 @@ useEffect(() =>{
           </div>
           <div className="col-lg-4 text-end">
             <div className="btnlist">
-              <Link className="btn btn-defalut btn-md">
-                <AiOutlineUnorderedList className="icon" />{" "}
-                <span>View List</span>
-              </Link>
+            <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div className="listheader">
-      <ul className="list-group list-group-horizontal">
-      <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-        <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-        <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
-      </ul>
+    <ul class="list-group list-group-horizontal">
+            <li className="list-group-item p-2">Demographics</li>
+            <li className="list-group-item p-2">Clinical History</li>
+            <li className="list-group-item p-2">Previous Treatment</li>
+            <li className="list-group-item p-2">Nutritional History </li>
+            <li className="list-group-item p-2">Investigations</li>
+            <li className="list-group-item p-2">Treatment </li>
+            <li className="list-group-item p-2">Infections</li>
+        </ul>
     </div>
   
     <div className="wrapper_contentbody">
@@ -101,7 +117,16 @@ useEffect(() =>{
           <div className='row'>
               <div className='col-lg-4'>
                 <div className='from-group'>
-                  <label><b>Respiratory : </b> {respiratory}</label>
+                  {
+                    (typeof respiratory == 'string') ? (
+                      <> <label><b>Respiratory : </b> {respiratory} </label></>
+                    ): (
+                      <>
+                    <label><b>Respiratory : </b> { respiratory && respiratory?.length > 0  && respiratory.map((el)=><p>{ el.value }</p>)} </label>
+                      </>
+                    )
+                  }
+                  {/* <label><b>Respiratory : </b> { respiratory && respiratory?.length > 0  && respiratory.map((el)=><p>{ el.value }</p>)}</label> */}
                
                 </div>
               </div>
@@ -157,7 +182,7 @@ useEffect(() =>{
             <div className='row mt-4'>
               <div className='col-lg-12'>
                   <div className='subbtn text-center'>
-                      <Link to="../Patients/Viewtreatment" className='btn btn-link mx-4'>Previous</Link>
+                      <p to="../Patients/Viewtreatment" onClick={()=>onHandleNext(infectionObj?.patientId)} className='btn btn-link mx-4'>Previous</p>
                       {/* <Link to="../Patients/Viewdepression" className='btn btn-link mx-4'>Next</Link> */}
                   </div>
               </div>

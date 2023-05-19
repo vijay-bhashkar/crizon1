@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { BiUserPlus } from "react-icons/bi";
-import { BiRefresh } from "react-icons/bi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import Select from "react-select";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { SETNUTRITIONObj, NUTRITIONGet_BY_PATIENT_ID } from "../../../redux/actions/Nutrition/Nutrition.actions";
-import { toast } from "react-hot-toast";
+// import { SETNUTRITIONObj, NUTRITIONGet_BY_PATIENT_ID } from "../../../redux/actions/Nutrition/Nutrition.actions";
+import { getNutritionByPatientId } from "../../../services/Nutrition.service";
 export const ViewNutrition = () => {
 
+  var path = window.location.search;
+  var parts = path.split('=');
+  var url_id = parts[1];
+
   const [ patientId, setPateintId ] = useState("");
+  const [ nutritionObj, setNutritionObj ] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if(patientId){
-  dispatch(NUTRITIONGet_BY_PATIENT_ID(patientId));
+  let getNutri = async(url_id)=>{
+    try{
+      let res = await getNutritionByPatientId(url_id);
+      let totalData = res.data.data ;
+      setNutritionObj(totalData);
+    }catch(error){
+      console.log(error);
     }
-}, [patientId]);
+  }
 
-  const nutritionObj = useSelector((states) => states.nutrition.nutritionsObj);
+  // const nutritionObj = useSelector((states) => states.nutrition.nutritionsObj);
   const demograficObj = useSelector((states) => states.demografic.demograficObj);
   
   useEffect(() => {
-    dispatch(SETNUTRITIONObj({}))
+    getNutri(url_id);
+    // dispatch(SETNUTRITIONObj({}))
     if(demograficObj){
       setPateintId(demograficObj?._id)
     }
   }, [demograficObj]);
+
+  let onHandleNext = (patientId)=>{
+    navigate(`/Patients/Viewinvestigation?id=${patientId}`)
+  }
+
+  let onHandlePre = (patientId)=>{
+    navigate(`/Patients/Viewprevioustreatment?id=${patientId}`)
+  }
 
   const [numbness, setNumbness] = useState("");
   const [tinglingSensation, setTinglingSensation] = useState("");
@@ -129,24 +144,21 @@ export const ViewNutrition = () => {
             </div>
             <div className="col-lg-4 text-end">
               <div className="btnlist">
-                <Link className="btn btn-defalut btn-md">
-                  <AiOutlineUnorderedList className="icon" />{" "}
-                  <span>View List</span>
-                </Link>
+              <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="listheader">
-        <ul className="list-group list-group-horizontal">
-        <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-        <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-        <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-        <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
+      <ul class="list-group list-group-horizontal">
+            <li className="list-group-item p-2">Demographics</li>
+            <li className="list-group-item p-2">Clinical History</li>
+            <li className="list-group-item p-2">Previous Treatment</li>
+            <li className="list-group-item p-2">Nutritional History </li>
+            <li className="list-group-item p-2">Investigations</li>
+            <li className="list-group-item p-2">Treatment </li>
+            <li className="list-group-item p-2">Infections</li>
         </ul>
       </div>
       <div className="mt-5 mb-1">
@@ -385,8 +397,8 @@ export const ViewNutrition = () => {
           <div className='row mt-4'>
             <div className='col-lg-12'>
               <div className='subbtn text-center'>
-                <Link to="../Patients/Viewprevioustreatment" className='btn btn-link mx-4'>Previous</Link>
-                <Link to="../Patients/Viewinvestigation" className='btn btn-link mx-4'>Next</Link>
+                <p onClick={()=>{onHandlePre(nutritionObj?.patientId)}} className='btn btn-link mx-4'>Previous</p>
+                <p onClick={()=>{onHandleNext(nutritionObj?.patientId)}} className='btn btn-link mx-4'>Next</p>
               </div>
             </div>
           </div>

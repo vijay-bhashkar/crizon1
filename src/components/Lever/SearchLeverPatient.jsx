@@ -132,7 +132,7 @@ const followupArr = useSelector((states)=> states.followup.followups);
           </div>
           <div className="col-lg-4">
             <h5 className="mb-0 text-center text-white">
-              Patient (Lever DISEASE)
+              Patient (Liver DISEASE)
             </h5>
           </div>
           <div className="col-lg-4 text-end">

@@ -6,7 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { DEMOGRAFICAdd, DEMOGRAFICGet, SETDEMOGRAFICObj, DEMOGRAFICUpdate, GETALLDoctor, GETALLDisease } from "../../../redux/actions/Demografic/Demografic.actions";
 import { DOCTORGet } from '../../../redux/actions/Doctor/Doctor.actions';
 import { rolesObj } from '../../../utils/roles';
+import { getById } from "../../../services/Demografic.service";
+
 export const Viewdemografics = () => {
+   
+    var path = window.location.search;
+    var parts = path.split('=');
+    var url_id = parts[1];
 
     const role = useSelector((states) => states.auth.role);
     const user = useSelector((states) => states.auth.user);
@@ -46,6 +52,18 @@ export const Viewdemografics = () => {
     const [hodArr, setHodArr] = useState("");
     const [doctorArr, setDoctorArr] = useState("");
     const [service, setService] = useState("");
+    const [demograficObj, setDemograficObj] = useState("");
+
+
+    const getdemo =  async(url_id)=>{
+        try{
+            let res = await getById(url_id);
+            let finalData = res.data.data ;
+            setDemograficObj(finalData);
+        }catch(error){
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         let query = "";
@@ -66,9 +84,10 @@ export const Viewdemografics = () => {
 
     useEffect(() => {
         dispatch(SETDEMOGRAFICObj());
+        getdemo(url_id);
     }, []);
 
-    const demograficObj = useSelector((states) => states.demografic.demograficObj);
+    // const demograficObj = useSelector((states) => states.demografic.demograficObj);
     const diseaseRedux = useSelector((states) => states.demografic.diseases);
     const hodRedux = useSelector((states) => states.hod.hods);
     const doctorRedux = useSelector((states) => states.demografic.doctors);
@@ -91,29 +110,12 @@ export const Viewdemografics = () => {
         }
     }, [doctorRedux]);
 
-    const hadleDisease = (diseaase) => {
-        setDisease(diseaase);
-        if (diseaase) {
-            let diseaseDoctor = doctorRedux.filter(el => el.disease === diseaase);
-            setDoctorArr(diseaseDoctor);
-            console.log(diseaseDoctor, "diseaseDoctor , diseaseDoctor");
-        }
-    }
-
-    const onServiceFun = (disease) => {
-        setService(disease);
-        // setDoctor(disease);
-        if (disease) {
-            let diseaseFilter = diseaseRedux.filter(el => el.service === disease);
-            let doctorReduxArr = doctorRedux.filter(el => el.service === disease);
-            setDiseaseArr(diseaseFilter);
-            setDoctorArr(doctorReduxArr);
-            console.log(diseaseFilter, "diseaseFilter");
-        }
-    }
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const onhandlenext = ()=>{
+        navigate(`/Patients/Viewclinicalhistory?id=${url_id}`);
+    }
 
     useEffect(() => {
         if (demograficObj) {
@@ -149,6 +151,7 @@ export const Viewdemografics = () => {
         }
     }, [demograficObj]);
 
+
     return (
         <div className="content_wrapper">
             <div className="contentwraper_header">
@@ -171,13 +174,13 @@ export const Viewdemografics = () => {
             </div>
             <div className='listheader'>
                 <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-                    <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-                    <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-                    <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-                    <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-                    <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-                    <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
+                    <li className="list-group-item p-2">Demographics</li>
+                    <li className="list-group-item p-2">Clinical History</li>
+                    <li className="list-group-item p-2">Previous Treatment</li>
+                    <li className="list-group-item p-2">Nutritional History </li>
+                    <li className="list-group-item p-2">Investigations</li>
+                    <li className="list-group-item p-2">Treatment </li>
+                    <li className="list-group-item p-2">Infections</li>
                 </ul>
             </div>
             <div className="wrapper_contentbody">
@@ -316,7 +319,7 @@ export const Viewdemografics = () => {
                             <div className='row mt-4'>
                                 <div className='col-lg-12'>
                                     <div className='subbtn text-center'>
-                                    <Link to="/Patients/Viewclinicalhistory" className='btn btn-link mx-3'>Next</Link>
+                                    <b onClick={(e)=>{onhandlenext()}} className='btn btn-link mx-3'>Next</b>
                                     </div>
                                 </div>
                             </div>

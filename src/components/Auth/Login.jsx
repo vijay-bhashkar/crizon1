@@ -57,7 +57,7 @@ function Login({ Unauth }) {
                 </div>
               </div>
               <div className={Unauth ? "col-12 mt-2 text-center" : "col-12 mt-2"}>
-                <CustomButton isBtn btntype="button" ClickEvent={handleSubmit} iconName="fa-solid fa-check" btnName="Submit" />
+                <CustomButton isBtn btntype="button" ClickEvent={handleSubmit} btnName="Submit" />
               </div>
             </form>
           </DashboardBox>

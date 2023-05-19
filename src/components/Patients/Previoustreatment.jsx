@@ -348,7 +348,7 @@ useEffect(() => {
             </div>
             <div className="col-lg-4 text-end">
                 <div className='btnlist'>
-                    <Link className="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+                <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
                 </div>
             </div>
             </div>

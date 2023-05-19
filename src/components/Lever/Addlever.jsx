@@ -119,7 +119,7 @@ export const Addlever = () => {
                         <div className="col-lg-4"></div>
                         <div className="col-lg-4">
                             <h5 className="mb-0 text-center text-white">
-                                Patient (LEVER DISEASE)
+                                Patient (LIVER DISEASE)
                             </h5>
                         </div>
                         <div className="col-lg-4 text-end">
@@ -218,7 +218,7 @@ export const Addlever = () => {
                                     <div className='subbtn text-center'> 
                                         { leverObj?._id ?               
                                         <button className='btn btn-link mx-4' onClick={()=>{onHandleSubmit()}}>Update</button>:
-                                        <button className='btn btn-link mx-4' onClick={()=>{onHandleSubmit()}}>Add</button> }
+                                        <button className='btn btn-link mx-4' onClick={()=>{onHandleSubmit()}}>Next</button> }
                                         {/* <Link to="/add-lever-history" className='btn btn-link mx-3'>Next</Link>  */}
                                     </div>
                                 </div>

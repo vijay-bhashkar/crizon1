@@ -91,45 +91,22 @@ useEffect(() =>{
           </div>
           <div className="col-lg-4 text-end">
             <div className="btnlist">
-              <Link className="btn btn-defalut btn-md">
-                <AiOutlineUnorderedList className="icon" />{" "}
-                <span>View List</span>
-              </Link>
+            <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div className="listheader">
-      <ul className="list-group list-group-horizontal">
-        <li className="list-group-item">
-          <Link >Demographics</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Clinical History</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Previous Treatment</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >
-            Nutritional History
-          </Link>{" "}
-        </li>
-        <li className="list-group-item">
-          <Link >Investigations</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Treatment</Link>{" "}
-        </li>
-        <li className="list-group-item">
-          <Link >Depression</Link>
-        </li>
-        <li className="list-group-item">
-          <Link >Infections</Link>
-        </li>
-        
-      </ul>
+    <ul class="list-group list-group-horizontal">
+            <li className="list-group-item p-2">Demographics</li>
+            <li className="list-group-item p-2">Clinical History</li>
+            <li className="list-group-item p-2">Previous Treatment</li>
+            <li className="list-group-item p-2">Nutritional History </li>
+            <li className="list-group-item p-2">Investigations</li>
+            <li className="list-group-item p-2">Treatment </li>
+            <li className="list-group-item p-2">Infections</li>
+        </ul>
     </div>
   
     <div className="wrapper_contentbody">

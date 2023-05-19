@@ -205,7 +205,7 @@ export const ViewLeverFollowUp = () => {
                         <div className="col-lg-4"></div>
                         <div className="col-lg-4">
                             <h5 className="mb-0 text-center text-white">
-                                Patient (LEVER DISEASE)
+                                Patient (LIVER DISEASE)
                             </h5>
                         </div>
                         <div className="col-lg-4 text-end">
@@ -223,7 +223,7 @@ export const ViewLeverFollowUp = () => {
                         <div className='col-lg-10'>
                             <div className='row mb-3'>
                                 <div className='heaind text-center'>
-                                    <h3>Lever Patient Follow Up</h3>
+                                    <h3>Liver Patient Follow Up</h3>
                                 </div>
                             </div>
                             <div className='row'>

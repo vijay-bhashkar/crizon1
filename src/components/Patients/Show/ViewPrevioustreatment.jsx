@@ -6,21 +6,38 @@ import Select from "react-select";
 import moment from 'moment/moment';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
+import { getPreTreatByPatientId } from "../../../services/PreviousTreatment.service";
 import { SETPREVIOUSTREATMENTObj, PREVIOUSTREATMENTGet_BY_PATIENT_ID } from "../../../redux/actions/PreviousTreatment/PreviousTreatment.actions";
-import { toast } from 'react-hot-toast';
 export const ViewPrevioustreatment = () => {
 
 const [patientId, setPateintId] = useState("");
+const [preTreatObj, setPreTreatObj] = useState("");
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
+var path = window.location.search;
+var parts = path.split('=');
+var url_id = parts[1];
+
+let getpretreat = async(url_id)=>{
+    try{
+        let res = await getPreTreatByPatientId(url_id);
+        let finalData = res.data.data ;
+        setPreTreatObj(finalData);
+    }catch(error){
+        console.log(error);
+    }
+    
+}
+
 useEffect(() => {
+    getpretreat(url_id);
     if(patientId){
   dispatch(PREVIOUSTREATMENTGet_BY_PATIENT_ID(patientId));
     }
 }, [patientId]);
 
-const preTreatObj = useSelector((states) => states.previoustreatment.previousTreatmentsObj); 
+// const preTreatObj = useSelector((states) => states.previoustreatment.previousTreatmentsObj); 
 const demograficObj = useSelector((states) => states.demografic.demograficObj);  
 
 useEffect(() => {
@@ -29,6 +46,14 @@ useEffect(() => {
         setPateintId(demograficObj?._id)
     }
   }, [demograficObj]);
+
+const onHandleNext = (patientId)=>{
+    navigate(`/Patients/Viewnutrition?id=${patientId}`);
+}
+
+const onHandlePre = (patientId)=>{
+    navigate(`/Patients/Viewclinicalhistory?id=${patientId}`);
+}
 
     const [oralAsaName, setOralAsaName] = useState("");
     const [oralAsaDose, setOralAsaDose] = useState("");
@@ -212,21 +237,21 @@ useEffect(() => {
             </div>
             <div className="col-lg-4 text-end">
                 <div className='btnlist'>
-                    <Link className="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+                <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
                 </div>
             </div>
             </div>
         </div>
         </div>
         <div className='listheader'>
-        <ul className="list-group list-group-horizontal">
-            <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-            <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-            <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li> 
+        <ul class="list-group list-group-horizontal">
+            <li className="list-group-item p-2">Demographics</li>
+            <li className="list-group-item p-2">Clinical History</li>
+            <li className="list-group-item p-2">Previous Treatment</li>
+            <li className="list-group-item p-2">Nutritional History </li>
+            <li className="list-group-item p-2">Investigations</li>
+            <li className="list-group-item p-2">Treatment </li>
+            <li className="list-group-item p-2">Infections</li>
         </ul>
         </div>
         <div className='pading40'>
@@ -249,10 +274,10 @@ useEffect(() => {
                     <h6><b>Dose  </b></h6>
                     </div>
                     <div className='col'>
-                    <h6><b>Date Of Start  </b></h6>
+                    <h6><b>Start Date </b></h6>
                     </div>
                     <div className='col'>
-                    <h6><b>Date Of End  </b></h6>
+                    <h6><b>End Date</b></h6>
                     </div>
                 </div>
             </div>
@@ -513,7 +538,7 @@ useEffect(() => {
                     </div>
                 </div>
 
-                <div className='row addlist-frm align-items-center mt-2'>
+                {/* <div className='row addlist-frm align-items-center mt-2'>
                     <div className='col'>
                         <div>
                             <h3><b>6-TG : </b></h3>
@@ -543,7 +568,7 @@ useEffect(() => {
                     
                     </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='row addlist-frm align-items-center mt-2'>
                     <div className='col'>
@@ -771,8 +796,8 @@ useEffect(() => {
                 <div className='row mt-4'>
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
-                                <Link to="../Patients/Viewclinicalhistory" className='btn btn-link mx-4'>Previous</Link>
-                                <Link to="../Patients/Viewnutrition" className='btn btn-link mx-4'>Next</Link>
+                                <p onClick={()=>{onHandlePre(preTreatObj?.patientId)}} className='btn btn-link mx-4'>Previous</p>
+                                <p onClick={()=>{onHandleNext(preTreatObj?.patientId)}} className='btn btn-link mx-4'>Next</p>
                             </div>
                         </div>
                     </div>

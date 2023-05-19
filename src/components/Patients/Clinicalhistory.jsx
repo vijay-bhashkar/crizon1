@@ -71,7 +71,7 @@ const [fever, setFever] = useState("No");
 const [lossAppetite, setLossAppetite] = useState("No");
 const [weightLoss, setWeightLoss] = useState("No");
 const [fatigue, setFatigue] = useState("No");
-const [clinicalOther, SetClinicalOther] = useState("No");
+const [clinicalOther, SetClinicalOther] = useState("");
 const [arthralgias, setArthralgias] = useState("No");
 const [arthritis, setArthritis] = useState("No");
 const [nephrolithiasis, setNephrolithiasis] = useState("No");
@@ -84,7 +84,7 @@ const [episcleritis, setEpiscleritis] = useState("No");
 const [osteoporosis, setOsteoporosis] = useState("No");
 const [gallstones, setGallstones] = useState("No");
 const [dvt, setDvt] = useState("No");
-const [intestinalOther, setIntestinalOther] = useState("No");
+const [intestinalOther, setIntestinalOther] = useState("");
 const [tb, setTb] = useState("No");
 const [varicella, setVaricella] = useState("No");
 const [hbv, setHbv] = useState("No");
@@ -114,7 +114,7 @@ const [smoking, setSmoking] = useState("No");
 const [ivdu, setIvdu] = useState("No");
 const [opium, setOpium] = useState("No");
 const [alcohol, setAlcohol] = useState("No");
-const [addictionOther, setAddictionOther] = useState("No");
+const [addictionOther, setAddictionOther] = useState("");
 const [hbv_1, setHbv_1] = useState("");
 const [hbv_2, setHbv_2] = useState("");
 const [hbv_3, setHbv_3] = useState("");
@@ -173,7 +173,6 @@ const handleAddClinicalHistory = ()=>{
         toast.error("Please create patient or select patient ")
         return
     }else{
-
 let obj = {
     patientId,
     diarrhoea,
@@ -300,7 +299,7 @@ let obj = {
 
     useEffect(()=>{
         if(cliHistoryObj){
-            setDiarrhoea(cliHistoryObj?.diarrhoea);
+            setDiarrhoea(cliHistoryObj?.diarrhoea ?cliHistoryObj?.diarrhoea:'No');
             setNocurnalDiarrhoea(cliHistoryObj?.nocurnalDiarrhoea);
             setBloodStools(cliHistoryObj?.bloodStools);
             setUrgency(cliHistoryObj?.urgency);
@@ -558,7 +557,7 @@ let obj = {
           </div>
           <div className="col-lg-4 text-end">
             <div className='btnlist'>
-                <Link class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+                <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
             </div>
           </div>
         </div>
@@ -594,7 +593,7 @@ let obj = {
                         </div>
                         <div className='col-lg-4'>
                             <div className='from-group'>
-                                <label>Diarrhoea</label>
+                                <label>Diarrhea</label>
                                 <select className='form-control' value={diarrhoea} onChange={(e)=>{setDiarrhoea(e.target.value)}}>
                                     { options && options.map((el)=><option value={el.value}>{el.label}</option>) }
                                 </select>
@@ -1556,7 +1555,7 @@ let obj = {
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
                                 <Link to="../Patients/editdemographics" className='btn btn-link mx-4'>Previous</Link>
-                                <button className='btn btn-link' onClick={handleAddClinicalHistory}>Next</button>
+                                <button className='btn btn-link' onClick={()=>{handleAddClinicalHistory()}}>Next</button>
                             </div>
                         </div>
                     </div>

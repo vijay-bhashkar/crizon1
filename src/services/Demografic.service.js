@@ -27,3 +27,7 @@ export const getAllDoctor = (query) => {
 export const getAllDisease = (query) => {
     return axiosApiInstance.get(`${serverUrl}/getAllDisease?${query}`);
 };
+
+export const getById = (id) =>{
+    return axiosApiInstance.get(`${serverUrl}/getById/${id}`);
+}

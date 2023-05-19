@@ -2,26 +2,50 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link , useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'; 
-import { INVESTIGATIONAdd, INVESTIGATIONGet, SETINVESTIGATIONObj, INVESTIGATIONUpdate, INVESTIGATIONDelete, INVESTIGATIONGet_BY_PATIENT_ID } from "../../../redux/actions/Investigation/Investigation.actions";
-import { toast } from 'react-hot-toast';
+// import { INVESTIGATIONAdd, INVESTIGATIONGet, SETINVESTIGATIONObj, INVESTIGATIONUpdate, INVESTIGATIONDelete, INVESTIGATIONGet_BY_PATIENT_ID } from "../../../redux/actions/Investigation/Investigation.actions";
+import { getInvestigationByPatientId } from "../../../services/Investigation.service";
 export const ViewInvestigation = () => {
 
   const [patientId, setPatientId] = useState("");
+  const [investigationObj, setInvestigationObj] = useState("");
+
+  var path = window.location.search;
+  var parts = path.split('=');
+  var url_id = parts[1];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-  if(patientId){
-  dispatch(INVESTIGATIONGet_BY_PATIENT_ID(patientId));
+  let getInvesti = async(url_id)=>{
+    try{
+      let res = await getInvestigationByPatientId(url_id);
+      let totalData = res.data.data ;
+      setInvestigationObj(totalData);
+    }catch(error){
+      console.log(error);
+    }
   }
-}, [patientId]);
 
-const investigationObj = useSelector((states) => states.investigation.investigationsObj);
+  useEffect(() => {
+    if(url_id){
+      getInvesti(url_id);
+    }
+    }, [url_id]);
+
+  let onHandlePre = (patientId)=>{
+    navigate(`/Patients/Viewnutrition?id=${patientId}`);
+  }
+
+  let onHandleNext = (patientId)=>{
+    navigate(`/Patients/Viewtreatment?id=${patientId}`);
+  }
+
+
+// const investigationObj = useSelector((states) => states.investigation.investigationsObj);
 const demograficObj = useSelector((states) => states.demografic.demograficObj);  
 
 useEffect(() => {
-  dispatch(SETINVESTIGATIONObj({}))
+  // dispatch(SETINVESTIGATIONObj({}))
   if(demograficObj){
     setPatientId(demograficObj?._id)
   }
@@ -186,24 +210,21 @@ const options = [
             </div>
             <div className="col-lg-4 text-end">
               <div className="btnlist">
-                <Link className="btn btn-defalut btn-md">
-                  <AiOutlineUnorderedList className="icon"/>{" "}
-                  <span>View List</span>
-                </Link>
+              <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="listheader">
-        <ul className="list-group list-group-horizontal">
-          <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-          <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-          <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-          <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-          <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-          <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-          <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
+      <ul class="list-group list-group-horizontal">
+            <li className="list-group-item p-2">Demographics</li>
+            <li className="list-group-item p-2">Clinical History</li>
+            <li className="list-group-item p-2">Previous Treatment</li>
+            <li className="list-group-item p-2">Nutritional History </li>
+            <li className="list-group-item p-2">Investigations</li>
+            <li className="list-group-item p-2">Treatment </li>
+            <li className="list-group-item p-2">Infections</li>
         </ul>
       </div>
     
@@ -621,8 +642,8 @@ const options = [
               <div className='row mt-4'>
                 <div className='col-lg-12'>
                     <div className='subbtn text-center'>
-                      <Link to="/Patients/Viewnutrition" className='btn btn-link mx-4'>Previous</Link>
-                      <Link to="/Patients/Viewtreatment" className='btn btn-link mx-4'>Next</Link>
+                      <p onClick={()=>{onHandlePre(investigationObj?.patientId)}} className='btn btn-link mx-4'>Previous</p>
+                      <p onClick={()=>{onHandleNext(investigationObj?.patientId)}} className='btn btn-link mx-4'>Next</p>
                     </div>
                 </div>
             </div>

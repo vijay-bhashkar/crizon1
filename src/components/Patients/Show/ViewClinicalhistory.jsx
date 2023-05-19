@@ -2,12 +2,28 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { getHistoryByPatientId } from "../../../services/ClinicalHistory.service";
 import { CLINICALHISTORYGet, SETCLINICALHISTORYObj, CLINICALHISTORYGet_BY_PATIENT_ID } from "../../../redux/actions/ClinicalHistory/ClinicalHistory.actions";
 
 export const ViewClinicalhistory = () => {
 
 const [patientId, setPateintId] = useState("");
+const [cliHistoryObj, setCliHistoryObj] = useState("");
 const dispatch = useDispatch();
+
+var path = window.location.search;
+var parts = path.split('=');
+var url_id = parts[1];
+
+const getcliHis =  async(url_id)=>{
+    try{
+        let res = await getHistoryByPatientId(url_id);
+        let finalData = res.data.data ;
+        setCliHistoryObj(finalData);
+    }catch(error){
+        console.log(error);
+    }
+}
 
 useEffect(() => {
     if(patientId){
@@ -15,12 +31,21 @@ useEffect(() => {
     }
 }, [patientId]);
 
-const cliHistoryObj = useSelector((states) => states.clinicalHistory.clinicalHistoriesObj);
 const demograficObj = useSelector((states) => states.demografic.demograficObj);
 
 const navigate = useNavigate();
 
+const onhandleCli = (patientId)=>{
+    navigate(`/Patients/Viewprevioustreatment?id=${patientId}`);
+}
+
+const onhandlePre = (patientId)=>{
+    navigate(`/Patients/Viewdemografics?id=${patientId}`);
+}
+
+
 useEffect(() => {
+    getcliHis(url_id);
     dispatch(SETCLINICALHISTORYObj({}))
     if(demograficObj){
         setPateintId(demograficObj?._id)
@@ -256,7 +281,7 @@ const [totalScore_2, setTotalScore_2] = useState("");
           </div>
           <div className="col-lg-4 text-end">
             <div className='btnlist'>
-                <Link class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
+            <Link to="/Patients/PatientListView" class="btn btn-defalut btn-md"><AiOutlineUnorderedList className='icon' /> <span>View List</span></Link>
             </div>
           </div>
         </div>
@@ -264,13 +289,13 @@ const [totalScore_2, setTotalScore_2] = useState("");
     </div>
     <div className='listheader'>
         <ul class="list-group list-group-horizontal">
-            <li class="list-group-item"><Link to="/Patients/Viewdemografics">Demographics</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewclinicalhistory">Clinical History</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewprevioustreatment">Previous Treatment</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewnutrition">Nutritional History</Link> </li>
-            <li class="list-group-item"><Link to="/Patients/Viewinvestigation">Investigations</Link></li>
-            <li class="list-group-item"><Link to="/Patients/Viewtreatment">Treatment</Link> </li>
-            <li class="list-group-item"><Link to="/Patients/Viewinfection">Infections</Link></li>
+            <li className="list-group-item p-2">Demographics</li>
+            <li className="list-group-item p-2">Clinical History</li>
+            <li className="list-group-item p-2">Previous Treatment</li>
+            <li className="list-group-item p-2">Nutritional History </li>
+            <li className="list-group-item p-2">Investigations</li>
+            <li className="list-group-item p-2">Treatment </li>
+            <li className="list-group-item p-2">Infections</li>
         </ul>
     </div>
       <div className="wrapper_contentbody">
@@ -925,7 +950,7 @@ const [totalScore_2, setTotalScore_2] = useState("");
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
-                                <label><b>Rectal Bleeding: : </b> {rectalBleeding}   </label>
+                                <label><b>Rectal Bleeding:  </b> {rectalBleeding}   </label>
                                 
                             </div>
                         </div>
@@ -983,7 +1008,7 @@ const [totalScore_2, setTotalScore_2] = useState("");
                         </div>
                         <div className='col-lg-6'>
                             <div className='from-group'>
-                                <label><b>Total score  : : </b> {totalScore}</label>
+                                <label><b>Total score  : </b> {totalScore}</label>
                                 
                             </div>
                         </div>
@@ -1039,8 +1064,8 @@ const [totalScore_2, setTotalScore_2] = useState("");
                     <div className='row mt-4'>
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
-                                <Link to="/Patients/Viewdemografics" className='btn btn-link mx-4'>Previous</Link>
-                                <Link to="/Patients/Viewprevioustreatment" className='btn btn-link mx-4'>Next</Link>
+                                <p onClick={()=>{onhandlePre(cliHistoryObj?.patientId)}} className='btn btn-link mx-4'>Previous</p>
+                                <p onClick={()=>{onhandleCli(cliHistoryObj?.patientId)}}  className='btn btn-link mx-4'>Next</p>
                             </div>
                         </div>
                     </div>

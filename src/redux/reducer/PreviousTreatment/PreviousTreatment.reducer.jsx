@@ -76,7 +76,7 @@ export const previousTreatmentReducer = (state = initialState, action) => {
         loading: true,
       };
     case PREVIOUSTREATMENT.UPDATE_PREVIOUSTREATMENT_BY_ID_SUCCESS:
-      toastSuccess(action.payload);
+      // toastSuccess(action.payload);
       return {
         ...state,
         loading: false,

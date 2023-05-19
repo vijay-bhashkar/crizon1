@@ -251,7 +251,7 @@ if(id){
                         <div className="col-lg-4"></div>
                         <div className="col-lg-4">
                             <h5 className="mb-0 text-center text-white">
-                                Patient (LEVER DISEASE)
+                                Patient (LIVER DISEASE)
                             </h5>
                         </div>
                     </div>

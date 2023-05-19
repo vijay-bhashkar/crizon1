@@ -105,7 +105,7 @@ const Sidebar = () => {
           <div class="accordion-item">
             <h5 class="accordion-header" id="headingThree">
               <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><BiUserPlus className="iconaccrion" /> <span> LEVER Patient </span>
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><BiUserPlus className="iconaccrion" /> <span> LIVER Patient </span>
               </span>
             </h5>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -139,7 +139,7 @@ const Sidebar = () => {
           <div class="accordion-item">
             <h5 class="accordion-header" id="headingfive">
               <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive"><BiUserPlus className="iconaccrion" /> <span> LEVER Followup </span>
+                data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive"><BiUserPlus className="iconaccrion" /> <span> LIVER Followup </span>
               </span>
             </h5>
             <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
@@ -226,7 +226,7 @@ const Sidebar = () => {
           <div class="accordion-item">
             <h5 class="accordion-header" id="headingThree">
               <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><BiUserPlus className="iconaccrion" /> <span> LEVER Patient </span>
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><BiUserPlus className="iconaccrion" /> <span> LIVER Patient </span>
               </span>
             </h5>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -295,7 +295,7 @@ const Sidebar = () => {
           <div class="accordion-item">
             <h5 class="accordion-header" id="headingThree">
               <span class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><BiUserPlus className="iconaccrion" /> <span> LEVER Patient </span>
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><BiUserPlus className="iconaccrion" /> <span> LIVER Patient </span>
               </span>
             </h5>
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">

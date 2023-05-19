@@ -150,7 +150,7 @@ export const AddLeverHistory = () => {
           </div>
           <div className="col-lg-4">
           <h5 className="mb-0 text-center text-white">
-          Patient (LEVER DISEASE)
+          Patient (LIVER DISEASE)
           </h5>
           </div>
           <div className="col-lg-4 text-end">
@@ -378,10 +378,10 @@ export const AddLeverHistory = () => {
                     <div className='row mt-4'>
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
+                            <Link to="../add-lever" className='btn btn-link mx-4'>Previous</Link>
                                 { leverHistoryObj?
                                 <button className='btn btn-link' onClick={()=>{onHandleSubmit()}}>Update</button>:
-                                <button className='btn btn-link' onClick={()=>{onHandleSubmit()}}>Add</button> }
-                                {/* <Link to="../etiological-work-up" className='btn btn-link mx-4'>Next</Link> */}
+                                <button className='btn btn-link' onClick={()=>{onHandleSubmit()}}>Next</button> }
                             </div>
                         </div>
                     </div>

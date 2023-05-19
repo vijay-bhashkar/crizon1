@@ -123,9 +123,9 @@ export const ShowHistory = () => {
     </div>
     <div className='listheader'>
         <ul class="list-group list-group-horizontal justify-content-center">
-            <li class="list-group-item"><Link to="/show-lever-patient" >Personal Detail</Link></li>
-            <li class="list-group-item"><Link to="/show-lever-history" >History</Link></li>
-            <li class="list-group-item"><Link to="/show-lever-etiological" >Etiological Work Up</Link></li>
+            <li class="list-group-item p-2">Personal Detail</li>
+            <li class="list-group-item p-2">History</li>
+            <li class="list-group-item p-2">Etiological Work Up</li>
         </ul>
     </div>
       <div className="wrapper_contentbody">

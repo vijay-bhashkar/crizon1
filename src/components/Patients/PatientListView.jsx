@@ -112,7 +112,7 @@ export const PatientListView = () => {
 
   const handleDemograficAllView = (row) => {
     dispatch(SETDEMOGRAFICObj(row));
-    navigate(`/Patients/Viewdemografics?edit=true&id=${row._id}`);
+    navigate(`/Patients/Viewdemografics?id=${row._id}`);
   };
 
   const handleLeverView = (row) => {
@@ -131,6 +131,7 @@ export const PatientListView = () => {
       id: row._id
     }
     dispatch(DEMOGRAFICDelete(obj))
+    handleGet();
     dispatch(SETDEMOGRAFICObj(null))
   }
 

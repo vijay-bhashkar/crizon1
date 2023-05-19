@@ -122,107 +122,112 @@ export const AddLeverFollowUp = () => {
     }
   
     const handleLeverFollowup = () =>{
-        let obj = {
-            name  , 
-            patientId,
-            enrollDate ,
-            email ,
-            contact ,
-            age ,
-            gender ,
-            height ,
-            weight ,
-            bmi ,
-            asymptomatic ,
-            malaise ,
-            fatigue ,
-            ruqPain ,
-            pruritus ,
-            jaundice ,
-            hepatitis ,
-            recurrentFever ,
-            priorSurgery , 
-            giBleed ,
-            antiviralTherapy ,
-            drugUsed ,
-            dentalExposure ,
-            renalTx ,
-            alcohol ,
-            day ,
-            week ,
-            years ,
-            familyHistory ,
-            weight_2 ,
-            height_2 ,
-            bmi_2 ,
-            bloodPressure ,
-            hbsag ,
-            antiLgmHav ,
-            antiLgmHev ,
-            hbvDna ,
-            ana ,
-            ama ,
-            antiHcv ,
-            antiLkm ,
-            antiSma ,
-            hcvrna ,
-            tsh ,
-            bldSugarf ,
-            cerulopslamin ,
-            hiv ,
-            bldSugarpp ,
-            pt ,
-            pti ,
-            inr ,
-            hb ,
-            tlc ,
-            platelets ,
-            sbil ,
-            ast ,
-            alt ,
-            albumin ,
-            globulin ,
-            sap ,
-            ggt ,
-            bloodUrea ,
-            creatinine ,
-            ferritin ,
-            iron ,
-            tibc ,
-            copper ,
-            others ,
-            triglyceride ,
-            ldl ,
-            hdl ,
-            vldl ,
-            afp ,
-            endoscopy ,
-            usgAbdomen ,
-            fibroscan ,
-            biopsy ,
-            varices ,
-            grades ,
-            stomach ,
-            duodenum ,
-            liverSpan ,
-            steatosis ,
-            splenomegaly ,
-            collaterals ,
-            pvDiameter ,
-            ascites ,
-            sol ,
-            cap ,
-            ekpa ,
-            hai ,
-            stage ,
-        }
-        if(leverFolloObj?._id){
-            dispatch(LEVERFOLLOWUPUpdate(leverFolloObj?._id , obj ));
-            toast.success("Lever Followup Updated")
+        if(patientId == '' || patientId == undefined){
+            toast.error("Please Select Patient");
         }else{
-            dispatch(LEVERFOLLOWUPAdd(obj));
-            toast.success("Lever FollowUp Added ");
+            let obj = {
+                name  , 
+                patientId,
+                enrollDate ,
+                email ,
+                contact ,
+                age ,
+                gender ,
+                height ,
+                weight ,
+                bmi ,
+                asymptomatic ,
+                malaise ,
+                fatigue ,
+                ruqPain ,
+                pruritus ,
+                jaundice ,
+                hepatitis ,
+                recurrentFever ,
+                priorSurgery , 
+                giBleed ,
+                antiviralTherapy ,
+                drugUsed ,
+                dentalExposure ,
+                renalTx ,
+                alcohol ,
+                day ,
+                week ,
+                years ,
+                familyHistory ,
+                weight_2 ,
+                height_2 ,
+                bmi_2 ,
+                bloodPressure ,
+                hbsag ,
+                antiLgmHav ,
+                antiLgmHev ,
+                hbvDna ,
+                ana ,
+                ama ,
+                antiHcv ,
+                antiLkm ,
+                antiSma ,
+                hcvrna ,
+                tsh ,
+                bldSugarf ,
+                cerulopslamin ,
+                hiv ,
+                bldSugarpp ,
+                pt ,
+                pti ,
+                inr ,
+                hb ,
+                tlc ,
+                platelets ,
+                sbil ,
+                ast ,
+                alt ,
+                albumin ,
+                globulin ,
+                sap ,
+                ggt ,
+                bloodUrea ,
+                creatinine ,
+                ferritin ,
+                iron ,
+                tibc ,
+                copper ,
+                others ,
+                triglyceride ,
+                ldl ,
+                hdl ,
+                vldl ,
+                afp ,
+                endoscopy ,
+                usgAbdomen ,
+                fibroscan ,
+                biopsy ,
+                varices ,
+                grades ,
+                stomach ,
+                duodenum ,
+                liverSpan ,
+                steatosis ,
+                splenomegaly ,
+                collaterals ,
+                pvDiameter ,
+                ascites ,
+                sol ,
+                cap ,
+                ekpa ,
+                hai ,
+                stage ,
+            }
+            if(leverFolloObj?._id){
+                dispatch(LEVERFOLLOWUPUpdate(leverFolloObj?._id , obj ));
+                toast.success("Lever Followup Updated")
+            }else{
+                dispatch(LEVERFOLLOWUPAdd(obj));
+                toast.success("Lever FollowUp Added ");
+            }
         }
+        
         
     }
 
@@ -354,7 +359,7 @@ export const AddLeverFollowUp = () => {
                         <div className="col-lg-4"></div>
                         <div className="col-lg-4">
                             <h5 className="mb-0 text-center text-white">
-                                Patient (LEVER DISEASE)
+                                Patient (LIVER DISEASE)
                             </h5>
                         </div>
                         <div className="col-lg-4 text-end">
@@ -372,7 +377,7 @@ export const AddLeverFollowUp = () => {
                         <div className='col-lg-10'>
                             <div className='row mb-3'>
                                 <div className='heaind text-center'>
-                                    <h3>Lever Patient Follow Up</h3>
+                                    <h3>Liver Patient Follow Up</h3>
                                 </div>
                             </div>
                             <div className='row'>
@@ -382,6 +387,7 @@ export const AddLeverFollowUp = () => {
                                             <label>Name <span>*</span></label>
                                             {/* <input type="text" className='form-control'  onChange={(el) => { setName(el.target.value) }} /> */}
                                             <select className='form-control' value={patientId} onChange={(el) => {setPatientData(el.target.value) }}>
+                                                <option>Please Select</option>
                                                 {leverPatientList && leverPatientList.map((el)=><option value={el._id}>{el.name}</option>)}
                                             </select>
                                         </div>

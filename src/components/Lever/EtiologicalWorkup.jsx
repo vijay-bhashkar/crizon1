@@ -671,7 +671,7 @@ export const EtiologicalWorkup = () => {
                     <div className='row mt-4'>
                         <div className='col-lg-12'>
                             <div className='subbtn text-center'>
-                            {/* <Link to="../add-lever-history" className='btn btn-link mx-4'>Previous</Link> */}
+                            <Link to="../add-lever-history" className='btn btn-link mx-4'>Previous</Link>
                             { etiologicalObj?
                             <button className='btn btn-link' onClick={()=>{handleSubmit()}}>Update</button>:
                             <button className='btn btn-link' onClick={()=>{handleSubmit()}}>Add</button>}
