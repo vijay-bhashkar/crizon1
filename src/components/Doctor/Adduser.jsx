@@ -257,33 +257,33 @@ const serviceDrop = [
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name <span>*</span></label>
+                                    <label>First Name <span></span></label>
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>
-                                    <label>Hospital/Clinic <span>*</span></label>
+                                    <label>Hospital/Clinic <span></span></label>
                                     <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Email <span>*</span></label>
+                                    <label>Email <span></span></label>
                                     <input type="text" className='form-control' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Password <span>*</span></label>
+                                    <label>Password <span></span></label>
                                     <input type="text" className='form-control' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>State <span>*</span></label>
+                                    <label>State <span></span></label>
                                     <input type="text" className='form-control' value={state} onChange={(e)=>{setState(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>City <span>*</span></label>
+                                    <label>City <span></span></label>
                                     <input type="text" className='form-control' value={city} onChange={(e)=>{setCity(e.target.value)}}/>
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Security Question <span>*</span></label>
+                                    <label>Security Question <span></span></label>
 
                                     <select  className="form-control" value={securityQuest} onChange={(e)=>{setSecurityQuest(e.target.value)}}>
                                         {
@@ -298,7 +298,7 @@ const serviceDrop = [
                                     </select>
                                 </div> */}
                                 <div className='from-group'>
-                                    <label>Service<span>*</span></label>
+                                    <label>Service<span></span></label>
                                     <select className="form-control" value={service} onChange={(e)=>{onServiceFun(e.target.value)}}>
                                         <option>Please Select</option>
                                         { serviceDrop && serviceDrop.map((el)=><option value={el.value}>{el.label}</option>) }
@@ -306,7 +306,7 @@ const serviceDrop = [
                                 </div>
 
                                 <div className='from-group'>
-                                    <label>H.O.D<span>*</span></label>
+                                    <label>H.O.D<span></span></label>
                                     <select className="form-control" value={hod} onChange={(e)=>{sethod(e.target.value)}}>
                                     <option value=""> Please Select Hod</option>
                                         { hodArr && hodArr.map((el)=><option value={el._id}>{ el.firstName }</option>) }
@@ -323,33 +323,33 @@ const serviceDrop = [
                                     <input type="text" className='form-control' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Position/Title<span>*</span></label>
+                                    <label>Position/Title<span></span></label>
                                     <input type="text" className='form-control' value={position} onChange={(e)=>{setPosition(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Phone<span>*</span></label>
+                                    <label>Phone<span></span></label>
                                     <input type="text" className='form-control' maxLength={10} value={phone} onChange={(e)=>{setPhone(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Confirm Password<span>*</span></label>
+                                    <label>Confirm Password<span></span></label>
                                     <input type="text" className='form-control ' value={conPassword} onChange={(e)=>{setConPassword(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Country<span>*</span></label>
+                                    <label>Country<span></span></label>
                                     <input type="text" className='form-control' value={country} onChange={(e)=>{setCountry(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>ZipCode<span>*</span></label>
+                                    <label>ZipCode<span></span></label>
                                     <input type="text" className='form-control' maxlength={6} value={zipCode} onChange={(e)=>{setZipCode(e.target.value)}}/>
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Answer<span>*</span></label>
+                                    <label>Answer<span></span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Disease<span>*</span></label>
+                                    <label>Disease<span></span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{hadleDisease(e.target.value)}}>
                                         <option value=""> Please Select Disease</option>
                                         { diseaseArr && diseaseArr.map((el)=><option value={el._id}>{el.disease}</option>) }

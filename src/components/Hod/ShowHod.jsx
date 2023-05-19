@@ -40,7 +40,7 @@ useEffect(() => {
     }
     if(disease){
         let diseaseName = diseasesArrRedux.find(el => el._id === disease);
-        setDiseaseName(diseaseName.disease);
+        setDiseaseName(diseaseName?.disease);
     }
   }, [diseasesArrRedux]);
 

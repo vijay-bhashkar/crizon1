@@ -150,15 +150,15 @@ export const Addlever = () => {
                                 <div className='col-lg-6'>
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
-                                            <label>Name <span>*</span></label>
+                                            <label>Name <span></span></label>
                                             <input type="text" className='form-control' value={name} onChange={(el)=>{setName(el.target.value)}} />
                                         </div>
                                         <div className='from-group'>
-                                            <label>Email<span>*</span></label>
+                                            <label>Email<span></span></label>
                                             <input type="text" className='form-control' value={email} onChange={(el)=>{setEmail(el.target.value)}} />
                                         </div>
                                         <div className='from-group'>
-                                            <label>Password <span>*</span></label>
+                                            <label>Password <span></span></label>
                                             <input type="text" className='form-control' value={password} onChange={(el)=>{setPassword(el.target.value)}}/>
                                         </div>
                                         <div className='from-group'>
@@ -178,21 +178,21 @@ export const Addlever = () => {
                                 <div className='col-lg-6'>
                                     <div className='addlist-frm'>
                                         <div className='from-group'>
-                                            <label>Date of Enrollment<span>*</span></label>
+                                            <label>Date of Enrollment<span></span></label>
                                             <input type="date" className='form-control' value={enrollDate} onChange={(el)=>{setEnrollDate(el.target.value)}}/>
                                         </div>
                                         <div className='from-group'>
-                                            <label>Contact<span>*</span></label>
+                                            <label>Contact<span></span></label>
                                             <input type="text" className='form-control' maxLength="10" value={contact} onChange={(el)=>{setContact(el.target.value)}}/>
                                         </div>
                                        
                                         <div className='from-group'>
-                                            <label>Confirm Password <span>*</span></label>
+                                            <label>Confirm Password <span></span></label>
                                             <input type="text" className='form-control' value={conPassword} onChange={(el)=>{setConPassword(el.target.value)}}/>
                                         </div>
                                         
                                         <div className='from-group'>
-                                            <label>Gender<span>*</span></label>
+                                            <label>Gender<span></span></label>
                                             <select className='form-control' value={gender} onChange={(el)=>{setGender(el.target.value)}}>
                                                 { genderDrop && genderDrop.map((el)=><option value={el.value}>{el.label}</option> )}
                                             </select>

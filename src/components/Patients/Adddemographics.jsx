@@ -583,13 +583,13 @@ export const Adddemographics = () => {
                                 </div>
                                 <div className='col-lg-6 addlist-frm mt-4'>
                                     <div className='from-group'>
-                                        <label>Socioeconomic Class<span>*</span></label>
+                                        <label>Socioeconomic Class<span></span></label>
                                         <input type="text" className='form-control' readOnly value={socioEconomy} onChange={(e) => { setSocioEconomy(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6 addlist-frm mt-4'>
                                     <div className='from-group'>
-                                        <label>Total Score<span>*</span></label>
+                                        <label>Total Score<span></span></label>
                                         <input type="text" className='form-control' readOnly value={totalScore} onChange={(e) => { setTotalScore(e.target.value) }} />
                                     </div>
                                 </div>

@@ -115,24 +115,24 @@ useEffect(() => {
                         <div className='col-lg-6'>
                             <div className='addlist-frm'>
                                 <div className='from-group'>
-                                    <label>First Name <span>*</span></label>
+                                    <label>First Name <span></span></label>
                                     <input type="text" className='form-control' value={firstName} onChange={(e)=>{setFirstName(e.target.value)}}  />
                                 </div>
                                 <div className='from-group'>
-                                    <label>Hospital/Clinic <span>*</span></label>
+                                    <label>Hospital/Clinic <span></span></label>
                                     <input type="text" className='form-control' value={company} onChange={(e)=>{setCompany(e.target.value)}}/>
                                 </div>
                                 
                                 <div className='from-group'>
-                                    <label>Email <span>*</span></label>
+                                    <label>Email <span></span></label>
                                     <input type="text" className='form-control' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>State <span>*</span></label>
+                                    <label>State <span></span></label>
                                     <input type="text" className='form-control' value={state} onChange={(e)=>{setState(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>City <span>*</span></label>
+                                    <label>City <span></span></label>
                                     <input type="text" className='form-control' value={city} onChange={(e)=>{setCity(e.target.value)}}/>
                                 </div>
                                 {/* <div className='from-group'>
@@ -146,7 +146,7 @@ useEffect(() => {
                                     </select>
                                 </div> */}
                                 <div className='from-group'>
-                                    <label>Disease<span>*</span></label>
+                                    <label>Disease<span></span></label>
                                     <select className="form-control" value={disease} onChange={(e)=>{setDisease(e.target.value)}}>
                                         <option>Please Select</option>
                                         { diseaseArr && diseaseArr.map((el)=><option value={el.disease}>{el.name}</option>) }
@@ -162,19 +162,19 @@ useEffect(() => {
                                     <input type="text" className='form-control' value={lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Position/Title<span>*</span></label>
+                                    <label>Position/Title<span></span></label>
                                     <input type="text" className='form-control' value={position} onChange={(e)=>{setPosition(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Phone<span>*</span></label>
+                                    <label>Phone<span></span></label>
                                     <input type="text" className='form-control' maxLength={10} value={phone} onChange={(e)=>{setPhone(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>Country<span>*</span></label>
+                                    <label>Country<span></span></label>
                                     <input type="text" className='form-control' value={country} onChange={(e)=>{setCountry(e.target.value)}}/>
                                 </div>
                                 <div className='from-group'>
-                                    <label>ZipCode<span>*</span></label>
+                                    <label>ZipCode<span></span></label>
                                     <input type="text" className='form-control' maxLength={6} value={zipCode} onChange={(e)=>{setZipCode(e.target.value)}}/>
                                 </div>
                                 {/* <div className='from-group'>
@@ -185,9 +185,9 @@ useEffect(() => {
                                     <label>Answer<span>*</span></label>
                                     <input type="text" className='form-control' value={securityAns} onChange={(e)=>{setSecurityAns(e.target.value)}}/>
                                 </div> */}
-                                <div className='row'>
+                                {/* <div className='row'>
                                     <div className='col-lg-6'>
-                                    <label>Verification Word*</label>
+                                    <label>Verification Word</label>
                                     <div className="input-group">
                                         <input type="text" className="form-control" value={verificationWord} onChange={(e)=>{setVerificationWord(e.target.value)}}/>
                                         <span class="input-group-text"><BiRefresh /></span>
@@ -199,7 +199,7 @@ useEffect(() => {
                                             <input type="text" className='form-control' value={conVerification} onChange={(e)=>{setConVerification(e.target.value)}}/>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

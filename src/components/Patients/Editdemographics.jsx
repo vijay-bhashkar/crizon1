@@ -349,11 +349,11 @@ export const Editdemographics = () => {
                                             <input type="text" className='form-control ' value={mrdNo} onChange={(e) => { setMrdNo(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
-                                            <label>Phone No. <span>*</span></label>
+                                            <label>Phone No. <span></span></label>
                                             <input type="text" className='form-control' maxLength={10} value={phoneNo} onChange={(e) => { setPhone(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
-                                            <label>Diagnosis Year<span>*</span></label>
+                                            <label>Diagnosis Year<span></span></label>
                                             <input type="text" className='form-control ' value={diagnosisYear} onChange={(e) => { setDiagnosisYear(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
@@ -408,7 +408,7 @@ export const Editdemographics = () => {
                                         </div>
                                         
                                         <div className='from-group'>
-                                            <label>Confirm Password. <span>*</span></label>
+                                            <label>Confirm Password. <span></span></label>
                                             <input type="text" className='form-control' value={conPassword} onChange={(e) => { setConPassword(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
@@ -416,7 +416,7 @@ export const Editdemographics = () => {
                                             <input type="text" className='form-control ' value={parentName} onChange={(e) => { setParentName(e.target.value) }} />
                                         </div>
                                         <div className='from-group'>
-                                            <label>Gender<span>*</span></label>
+                                            <label>Gender<span></span></label>
                                             <select class="form-control" value={sex} onChange={(e) => { setSex(e.target.value) }}>
                                                 {gender && gender.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>
@@ -430,12 +430,12 @@ export const Editdemographics = () => {
                                         </div>
 
                                         <div className='from-group'>
-                                            <label>Email. <span>*</span></label>
+                                            <label>Email. <span></span></label>
                                             <input type="email" className='form-control' value={email} onChange={(e) => { setEmail(e.target.value) }} />
                                         </div>
 
                                         <div className='from-group'>
-                                            <label>Diagnosis Month<span>*</span></label>
+                                            <label>Diagnosis Month<span></span></label>
                                             <select className='form-control' value={diagnosisMonth} onChange={(e) => { setDiagnosisMonth(e.target.value) }}>
                                                 {months && months.map((el) => <option value={el.value}>{el.label}</option>)}
                                             </select>
@@ -462,7 +462,7 @@ export const Editdemographics = () => {
                                 </div>
                                 <div className='col-lg-12'>
                                     <div className='from-group addlist-frm'>
-                                        <label>Address Line 1<span>*</span></label>
+                                        <label>Address Line 1<span></span></label>
                                         <input type="text" className='form-control ' value={addressLine} onChange={(e) => { setAddressLine(e.target.value) }} />
                                     </div>
                                 </div>
@@ -499,13 +499,13 @@ export const Editdemographics = () => {
                                 </div>
                                 <div className='col-lg-6 addlist-frm mt-4'>
                                     <div className='from-group'>
-                                        <label>SocioEconomic Class<span>*</span></label>
+                                        <label>SocioEconomic Class<span></span></label>
                                         <input type="text" className='form-control ' value={socioEconomy} onChange={(e) => { setSocioEconomy(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className='col-lg-6 addlist-frm mt-4'>
                                     <div className='from-group'>
-                                        <label>Total Score<span>*</span></label>
+                                        <label>Total Score<span></span></label>
                                         <input type="text" className='form-control ' value={totalScore} onChange={(e) => { setTotalScore(e.target.value) }} />
                                     </div>
                                 </div>
