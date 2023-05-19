@@ -816,3 +816,6 @@ td.listdate {
     display: block;
     line-height: 15px;
 }
+div#multiselectContainerReact {
+    background-color: #fff;
+}

@@ -53,16 +53,6 @@ useEffect(() => {
 
 const handleAddDepression = () => {
 
-  if(sadness == "" || sadness == undefined){
-    toast.error("Sadness is mandatory");
-    return
-  }if(agitation == "" || agitation == undefined){
-    toast.error("Agitation is mandatory");
-    return
-  }if(sleepingPattern == "" || sleepingPattern == undefined){
-    toast.error("Sleeping pattern is mandatory");
-    return
-  }else{
   let obj = {
     patientId,
     sadness,
@@ -97,7 +87,6 @@ const handleAddDepression = () => {
     dispatch(DEPRESSIONAdd(obj));
     toast.success(" Depression created Successfully ");
   }
-}
 };
 
 useEffect(() =>{

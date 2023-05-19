@@ -95,20 +95,8 @@ const [ctChest, setCtChest] = useState("");
 const [mriAbdomen, setMriAbdomen] = useState("");
 const [others, setOthers] = useState("");
 
-
-
 const handleAddInvestigation = ()=> {
 
-  if(hb == "" || hb == undefined){
-    toast.error("H.B is required");
-    return
-  }if(hbsAg == "" || hbsAg == undefined){
-    toast.error("HB s AG is required");
-    return
-  }if(mcv == "" || mcv == undefined){
-    toast.error("MCV is required");
-    return
-  }else{
     let obj = {
       patientId,
       hb,
@@ -191,7 +179,6 @@ const handleAddInvestigation = ()=> {
       toast.success(" Investigation Created Successfully ");
     }
       navigate("/Patients/treatment");
-  }
 };
 
 useEffect(()=>{
@@ -339,6 +326,12 @@ const options = [
                   <div className='from-group'>
                     <label>HB</label>
                     <input type="text" className='form-control' value={hb} onChange={(e)=>{setHb(e.target.value)}} />
+                  </div>
+                </div>
+                <div className='col-lg-4'>
+                  <div className='from-group'>
+                    <label>PCV</label>
+                    <input type="text" className='form-control' value={pcv} onChange={(e)=>{setPcv(e.target.value)}}/>
                   </div>
                 </div>
                 <div className='col-lg-4'>
@@ -540,13 +533,7 @@ const options = [
                     <input type="text" className='form-control' value={hbsAg} onChange={(e)=>{setHbsAg(e.target.value)}}/>
                   </div>
                 </div>
-                <div className='col-lg-4'>
-                  <div className='from-group'>
-                    <label>PCV</label>
-                    <input type="text" className='form-control' value={pcv} onChange={(e)=>{setPcv(e.target.value)}}/>
-                  </div>
-                </div>
-                
+              
                 <div className='col-lg-4'>
                   <div className='from-group'>
                     <label>Anti HCV</label>

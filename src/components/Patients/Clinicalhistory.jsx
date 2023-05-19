@@ -172,15 +172,6 @@ const handleAddClinicalHistory = ()=>{
     if(patientId == ""){
         toast.error("Please create patient or select patient ")
         return
-    }if(diarrhoea == "" || diarrhoea == undefined){
-        toast.error("Diarrhoea is mandatory")
-        return
-    }if(bloodStools == "" || bloodStools == undefined){
-        toast.error("BloodStools is mandatory")
-        return
-    }if(urgency == "" || urgency == undefined){
-        toast.error(" Urgency is mandatory")
-        return
     }else{
 
 let obj = {

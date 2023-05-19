@@ -118,10 +118,6 @@ useEffect(() => {
 
     const handleAddPreTreat = ()=> {
 
-        if(preSurgery == "" || preSurgery == undefined){
-         toast.error("Previous Surgery is required");
-         return
-        }else{
         let obj = {
         patientId,
         oralAsa:{
@@ -234,7 +230,6 @@ useEffect(() => {
     localStorage.setItem('previousTreatItems', JSON.stringify(obj));
     }
     navigate("/Patients/nutritionalhistory");
-}
 };
 
    useEffect(()=>{

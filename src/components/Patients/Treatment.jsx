@@ -63,17 +63,10 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
   const [specify, setSpecify] = useState("");
   const [death, setDeath] = useState("");
   const [deathSpecify, setDeathSpecify] = useState("");
-  const [ebv, setEbv] = useState("");
+  // const [ebv, setEbv] = useState("");
 
   const handleAddTreatment = ()=>{
 
-    if(oralAsa == "" || oralAsa == undefined){
-      toast.error("Oral ASA is mandatory");
-      return
-    }if(rectalAsa == "" || rectalAsa == undefined){
-      toast.error("Rectal ASA is mandatory");
-      return
-    }else{
     let obj = {
       patientId,
       oralAsa,
@@ -110,7 +103,7 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       specify,
       death,
       deathSpecify,
-      ebv,
+      // ebv,
     }
     console.log(obj);
     if (treatmentObj?._id) {
@@ -124,7 +117,6 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
 
     }
       navigate("/Patients/infections");
-  }
   };
 
   useEffect(() => {
@@ -163,7 +155,7 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
       setSpecify(treatmentObj?.specify);
       setDeath(treatmentObj?.death);
       setDeathSpecify(treatmentObj?.deathSpecify);
-      setEbv(treatmentObj?.ebv);
+      // setEbv(treatmentObj?.ebv);
     }
 }, [treatmentObj]);
 
@@ -543,14 +535,14 @@ dispatch(TREATGet_BY_PATIENT_ID(patientId));
                   <input type="text" className='form-control' placeholder='Specify' value={deathSpecify} onChange={(e)=>{setDeathSpecify(e.target.value)}}/>
                 </div>
               </div>
-              <div className='col-lg-6'>
+              {/* <div className='col-lg-6'>
                 <div className='from-group'>
                   <label>EBV</label>
                     <select className='form-control' value={ebv} onChange={(e)=>{setEbv(e.target.value)}}>
                     { options && options.map((ek)=><option value={ek.value}>{ek.label}</option>) }
                     </select>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className='row mt-4'>
               <div className='col-lg-12'>

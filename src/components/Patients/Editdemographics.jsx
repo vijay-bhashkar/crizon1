@@ -121,16 +121,7 @@ export const Editdemographics = () => {
 
     const handleAddDemografic = () => {
 
-        if (patientName == "" || patientName == undefined) {
-            toast.error("Patient Name is required")
-            return
-        } if (parentName == "" || parentName == undefined) {
-            toast.error("Father/Husband Name is required")
-            return
-        } if (email == "" || email == undefined) {
-            toast.error("Email is required")
-            return
-        } if (role == rolesObj.DOCTOR) {
+        if (role == rolesObj.DOCTOR) {
             setDoctor(roleUser._id);
         } else {
             let obj = {

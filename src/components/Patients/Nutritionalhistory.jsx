@@ -29,6 +29,8 @@ export const Nutritionalhistory = () => {
     }
   }, [demograficObj]);
 
+  
+
   const [numbness, setNumbness] = useState("No");
   const [tinglingSensation, setTinglingSensation] = useState("No");
   const [burning, setBurning] = useState("No");
@@ -69,15 +71,19 @@ export const Nutritionalhistory = () => {
   const [meanAttenuation, setMeanAttenuation] = useState("");
   const [tsf, setTsf] = useState("");
 
+  useEffect(()=>{
+    if(height){
+      let heightInMeter = (parseInt(height/100))
+      let totalHeight = parseInt(heightInMeter)*parseInt(heightInMeter);
+      let totalWeight = parseInt(weight);
+      let totalBmi = (totalWeight/totalHeight);
+      setBmi(totalBmi);
+      // console.log(totalBmi, "totalBmitotalBmitotalBmitotalBmitotalBmi");
+    }
+  })
+
   const handleAddNutrition =()=>{
 
-    if(numbness == "" || numbness == undefined){
-      toast.error("Numbness is required");
-      return
-    }if(tinglingSensation == "" || tinglingSensation == undefined){
-      toast.error("Tingling Sensation is required");
-      return
-    }else{
     let obj = {
       patientId,
       numbness,
@@ -131,7 +137,6 @@ export const Nutritionalhistory = () => {
       toast.success(" Nutrition Created Successfully ");
     }
     navigate("/Patients/investigations");
-  }
   };
 
   useEffect(()=>{
@@ -379,7 +384,7 @@ export const Nutritionalhistory = () => {
                 <div className="col-lg-4">
                   <div className="from-group">
                     <label>BMI</label>
-                    <input type="text" className="form-control" value={bmi} onChange={(e)=>{setBmi(e.target.value)}}/>
+                    <input type="text" readOnly className="form-control" value={bmi} onChange={(e)=>{setBmi(e.target.value)}} />
                   </div>
                 </div>
                 <div className="col-lg-4">

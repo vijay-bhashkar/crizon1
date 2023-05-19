@@ -7,9 +7,10 @@ import { Link , useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { INFECTIONAdd, INFECTIONGet, INFECTIONDelete, SETINFECTIONObj, INFECTIONUpdate, INFECTIONGet_BY_PATIENT_ID } from "../../redux/actions/Infection/Infection.actions";
 import { toast } from 'react-hot-toast';
+import { Multiselect } from "multiselect-react-dropdown"
 
 export const Infections = () => {
-  const [respiratory, setRespiratory] = useState("");
+  const [respiratory, setRespiratory] = useState([]);
   const [ent, setEnt] = useState("");
   const [skin, setSkin] = useState("");
   const [tb, setTb] = useState("");
@@ -41,17 +42,6 @@ useEffect(() => {
 
 const handleAddInfection = () => {
 
-  if(respiratory == "" || respiratory == undefined){
-    toast.error("Respiratory is mandatory");
-    return
-  }
-  if(ent == "" || ent == undefined){
-    toast.error("Ent is mandatory");
-    return
-  }if(genitourinary == "" || genitourinary == undefined){
-    toast.error("Genitourinary is mandatory");
-    return
-  }else{
   let obj = {
     patientId:demograficObj?._id,
     respiratory,
@@ -74,7 +64,6 @@ const handleAddInfection = () => {
       toast.success(" Infection Added Successfully ");
     }
     // navigate("/Patients/depression");
-  }
 };
 
 useEffect(() =>{
@@ -154,7 +143,7 @@ const options = [
     { value:"Select", label:"Select" },
     { value:"C. diff Infection", label:"C. diff Infection" },
     { value:"CMV", label:"CMV" },
-    { value:"EBV ", label:"EBV (Epstein–Barr virus ) " },
+    { value:"EBV", label:"EBV (Epstein-Barr virus )" },
   ]
   const neurologicalDrop = [
     { value:"Select", label:"Select" },
@@ -222,10 +211,11 @@ const options = [
               <div className='col-lg-4'>
                 <div className='from-group'>
                   <label>Respiratory</label>
-                  <select className='form-control' value={respiratory} onChange={(e)=>{setRespiratory(e.target.value)}}>
+                  {/* <select className='form-control' multiple={true} value={respiratory} onChange={(e)=>{setRespiratory(e.target.value)}}>
                     { respiratoryDrop && respiratoryDrop.map((el)=><option value={el.value}>{el.label}</option>) }
-                  </select>
-                  {/* <Select options={options} placeholder="Select" /> */}
+                  </select> */}
+                  <Select  options={respiratoryDrop} value={respiratory}  onChange={(e)=>{setRespiratory(e)}} placeholder="Select" isMulti />
+                  {/* <Multiselect value={respiratory} onChange={(e)=>{setRespiratory(e.target.value)}} options={respiratoryDrop} displayValue='value' /> */}
                 </div>
               </div>
               <div className='col-lg-4'>

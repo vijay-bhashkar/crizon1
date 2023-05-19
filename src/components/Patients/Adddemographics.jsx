@@ -163,17 +163,13 @@ export const Adddemographics = () => {
     const navigate = useNavigate();
 
     const handleAddDemografic = () => {
-
-        if (patientName == "" || patientName == undefined) {
-            toast.error("Patient Name is mandatory")
-            return
-        }   if (`${phoneNo}`.length != 10) {
+    if(phoneNo != ''){
+        if (`${phoneNo}`.length != 10) {
             toast.error("Phone number should be 10 digit")
             return
-        } if (email == "" || email == undefined) {
-            toast.error("email is mandatory")
-            return
-        } if (password == "" || password == undefined) {
+        }
+    }
+          if (password == "" || password == undefined) {
             toast.error("password is mandatory")
             return
         } if (password == 0 || password < 5) {
